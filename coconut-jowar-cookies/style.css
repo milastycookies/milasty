@@ -1,28 +1,33 @@
-/* RESET */
+/* =========================================================
+   RESET
+========================================================= */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-/* ROOT — COCONUT JOWAR */
+/* =========================================================
+   ROOT COLOURS — COCONUT JOWAR
+========================================================= */
 :root {
-  --jowar-brown: #6a4b3b;
-  --jowar-dark: #4b3328;
-  --coconut-cream: #e9e1d6;
-  --sesame-beige: #c8bc9a;
-  --bg-warm: #f7f1ea;
+  --jowar-brown: #6a4a35;     /* cookie body */
+  --jowar-dark: #4a3226;      /* headings */
+  --seed-cream: #e6dcc6;      /* sesame seed tone */
+  --bg-warm: #f7f0e8;         /* parchment background */
   --text-main: #3a2f28;
   --text-soft: #7a6a60;
 }
 
-/* BASE */
+/* =========================================================
+   BASE
+========================================================= */
 body {
   font-family: system-ui, -apple-system, BlinkMacSystemFont,
                "Segoe UI", Roboto, Arial, sans-serif;
   background:
-    radial-gradient(circle at 18% 20%, #f1e8dd 0%, transparent 42%),
-    radial-gradient(circle at 82% 35%, #efe4d8 0%, transparent 45%),
+    radial-gradient(circle at 20% 15%, #f1e7dc 0%, transparent 42%),
+    radial-gradient(circle at 80% 35%, #efe3d6 0%, transparent 45%),
     var(--bg-warm);
   color: var(--text-main);
   line-height: 1.6;
@@ -34,56 +39,70 @@ body {
   padding: 20px;
 }
 
-/* HEADER */
+/* =========================================================
+   HEADER
+========================================================= */
 .header {
   text-align: center;
   margin-bottom: 32px;
 }
 
+/* Wrap keeps heading centered, badge positioned */
 .title-wrap {
+  position: relative;
   display: inline-flex;
   align-items: center;
-  gap: 10px;
-  flex-wrap: wrap;
-  justify-content: center;
+  gap: 10px; /* spacing between heading & veg symbol */
 }
 
+/* Heading */
 .title-wrap h1 {
   font-size: 2rem;
   font-weight: 700;
   color: var(--jowar-dark);
+  line-height: 1.25;
 }
 
-/* subtle sesame cue */
+/* Subtle sesame cue below heading */
 .title-wrap::after {
   content: "";
-  width: 12px;
-  height: 8px;
-  margin: 6px auto 0;
-  background: var(--sesame-beige);
-  border-radius: 50%;
-  opacity: 0.8;
   display: block;
+  width: 14px;
+  height: 7px;
+  margin: 8px auto 0;
+  background: var(--seed-cream);
+  border-radius: 60% 40%;
+  opacity: 0.85;
+}
+
+/* Veg badge */
+.veg-badge {
+  display: inline-flex;
+  align-items: center;
 }
 
 .veg-icon {
   width: 16px;
   height: 16px;
+  display: inline-block;
 }
 
+/* Tagline */
 .tagline {
   margin-top: 10px;
   font-size: 0.95rem;
   color: var(--text-soft);
 }
 
-/* CARDS */
+/* =========================================================
+   CARDS — EARTHY & MATTE
+========================================================= */
 .card {
   background-color: #ffffff;
   border-radius: 16px;
   padding: 22px;
   margin-bottom: 20px;
-  box-shadow: 0 6px 14px rgba(75, 51, 40, 0.08);
+  box-shadow: 0 4px 10px rgba(79, 53, 42, 0.06);
 }
 
 .card h2 {
@@ -93,17 +112,20 @@ body {
 }
 
 .card p {
+  font-weight: 450;
   color: var(--text-main);
 }
 
-/* ALLERGEN */
+/* Ingredients / Allergen separation */
 .allergen-block {
   margin-top: 16px;
   padding-top: 12px;
   border-top: 1px dashed #e1d6cc;
 }
 
-/* LISTS */
+/* =========================================================
+   LISTS
+========================================================= */
 .card ul {
   list-style: none;
 }
@@ -111,32 +133,20 @@ body {
 .card ul li {
   position: relative;
   padding-left: 22px;
-  margin-bottom: 6px;
+  margin-bottom: 8px;
 }
 
 .card ul li::before {
   content: "✓";
   position: absolute;
   left: 0;
-  color: var(--sesame-beige);
+  color: var(--seed-cream);
   font-weight: bold;
 }
 
-/* NOTES */
-.note {
-  margin-top: 10px;
-  font-size: 0.9rem;
-  color: var(--text-soft);
-}
-
-.center-note {
-  font-size: 0.9rem;
-  color: var(--text-soft);
-  text-align: center;
-  margin: 6px 0 20px;
-}
-
-/* TABLE */
+/* =========================================================
+   TABLE
+========================================================= */
 table {
   width: 100%;
   border-collapse: collapse;
@@ -144,6 +154,7 @@ table {
 
 table td {
   padding: 8px 0;
+  vertical-align: top;
 }
 
 table td:first-child {
@@ -151,12 +162,9 @@ table td:first-child {
   font-weight: 600;
 }
 
-/* FSSAI */
-.highlight {
-  border-left: 5px solid var(--jowar-brown);
-  background-color: #fff9f4;
-}
-
+/* =========================================================
+   FSSAI BLOCK
+========================================================= */
 .fssai-header {
   display: flex;
   align-items: center;
@@ -167,26 +175,49 @@ table td:first-child {
 
 .fssai-logo {
   height: 32px;
+  width: auto;
 }
 
-/* CTA */
+.fssai-number {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-main);
+}
+
+/* Highlight card */
+.highlight {
+  border-left: 5px solid var(--jowar-brown);
+  background-color: #fff9f4;
+}
+
+/* =========================================================
+   CTA
+========================================================= */
 .cta {
   text-align: center;
   margin: 34px 0;
 }
 
 .cta a {
-  background-color: #6b7b3e;
+  display: inline-block;
+  background-color: #6b7b3e; /* millet green */
   color: #ffffff;
   text-decoration: none;
   padding: 14px 28px;
   border-radius: 999px;
   font-size: 1.05rem;
   font-weight: 600;
-  display: inline-block;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
 }
 
-/* FOOTER */
+.cta a:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.15);
+}
+
+/* =========================================================
+   FOOTER
+========================================================= */
 .footer {
   text-align: center;
   font-size: 0.85rem;
@@ -194,9 +225,15 @@ table td:first-child {
   margin-top: 32px;
 }
 
-/* MOBILE */
+/* =========================================================
+   MOBILE OPTIMISATION
+========================================================= */
 @media (max-width: 480px) {
   .title-wrap h1 {
     font-size: 1.75rem;
+  }
+
+  .title-wrap {
+    gap: 8px; /* keeps icon readable but not cramped */
   }
 }
