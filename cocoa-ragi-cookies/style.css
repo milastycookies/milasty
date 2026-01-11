@@ -24,29 +24,34 @@ body {
   padding: 20px;
 }
 
-/* =========================================================
+/* =========================
    HEADER
-========================================================= */
+========================= */
 .header {
   margin-bottom: 28px;
+  text-align: center;
 }
 
-.title-row {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
+/* Wrap that defines heading width */
+.title-wrap {
+  position: relative;
+  display: inline-block; /* key: width = heading width */
 }
 
-.title-row h1 {
+/* Heading stays perfectly centered */
+.title-wrap h1 {
   font-size: 2rem;
   font-weight: 700;
   color: #4b2416;
   line-height: 1.25;
+  margin: 0;
 }
 
-/* Veg badge */
+/* Veg badge anchored to heading */
 .veg-badge {
+  position: absolute;
+  top: 0.15em;
+  right: -6.2rem; /* controls distance from text end */
   display: inline-flex;
   align-items: center;
   gap: 6px;
@@ -54,21 +59,16 @@ body {
   font-weight: 600;
   color: #2f7d32;
   white-space: nowrap;
-  flex-shrink: 0; /* prevent collapsing */
 }
 
-/* 🔑 Critical mobile fix */
+/* SVG safety */
 .veg-icon {
   width: 16px;
   height: 16px;
   min-width: 16px;
   min-height: 16px;
-  display: inline-block;
   flex-shrink: 0;
-}
-
-svg {
-  overflow: visible;
+  display: inline-block;
 }
 
 .tagline {
@@ -199,7 +199,12 @@ table td:first-child {
     font-size: 1.75rem;
   }
 
+  .title-wrap h1 {
+    font-size: 1.75rem;
+  }
+
   .veg-badge {
+    right: -5.6rem;
     font-size: 0.75rem;
   }
 }
