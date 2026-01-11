@@ -149,3 +149,45 @@ table td:first-child {
   color: #8a8a8a;
   margin-top: 30px;
 }
+
+
+
+.title-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.title-row h1 {
+  margin: 0;
+  font-size: 2rem;
+  color: #4b2416;
+}
+
+.veg-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #2f7d32;
+  white-space: nowrap;
+}
+
+.veg-icon {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+}
+
+/* Mobile optimisation */
+@media (max-width: 480px) {
+  .title-row {
+    align-items: flex-start;
+  }
+
+  .veg-badge {
+    font-size: 0.75rem;
+  }
+}
