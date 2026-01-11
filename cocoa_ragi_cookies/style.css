@@ -1,0 +1,123 @@
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Base */
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+  background: #faf7f2;
+  color: #2d2d2d;
+  line-height: 1.6;
+}
+
+.container {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Header */
+.header {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.header h1 {
+  font-size: 2rem;
+  color: #5b2c1d;
+}
+
+.tagline {
+  margin-top: 8px;
+  font-size: 0.95rem;
+  color: #7a7a7a;
+}
+
+/* Cards */
+.card {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 18px;
+  margin-bottom: 16px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+}
+
+.card h2 {
+  margin-bottom: 10px;
+  font-size: 1.2rem;
+  color: #5b2c1d;
+}
+
+.card ul {
+  list-style: none;
+}
+
+.card ul li {
+  padding-left: 20px;
+  position: relative;
+  margin-bottom: 6px;
+}
+
+.card ul li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  color: #2f8f2f;
+  font-weight: bold;
+}
+
+/* Table */
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+table td {
+  padding: 8px 0;
+  vertical-align: top;
+}
+
+table td:first-child {
+  font-weight: 600;
+  width: 40%;
+}
+
+/* Highlight card */
+.highlight {
+  border-left: 5px solid #5b2c1d;
+  background: #fff8f5;
+}
+
+/* CTA */
+.cta {
+  text-align: center;
+  margin: 28px 0;
+}
+
+.cta a {
+  display: inline-block;
+  background: #25d366;
+  color: #ffffff;
+  text-decoration: none;
+  padding: 14px 26px;
+  border-radius: 999px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.cta a:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.15);
+}
+
+/* Footer */
+.footer {
+  text-align: center;
+  font-size: 0.85rem;
+  color: #8a8a8a;
+  margin-top: 30px;
+}
