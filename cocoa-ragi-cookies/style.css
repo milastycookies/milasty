@@ -36,6 +36,16 @@ body {
   color: #7a7a7a;
 }
 
+.allergen-block {
+  margin-top: 16px;
+  padding-top: 12px;
+  border-top: 1px dashed #ddd;
+}
+
+.allergen-block h2 {
+  margin-bottom: 6px;
+}
+
 
 .veg-badge {
   display: inline-flex;
