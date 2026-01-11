@@ -229,11 +229,8 @@ table td:first-child {
    MOBILE OPTIMISATION
 ========================================================= */
 @media (max-width: 480px) {
-  .title-wrap h1 {
-    font-size: 1.75rem;
-  }
-
-  .title-wrap {
-    gap: 8px; /* keeps icon readable but not cramped */
+  .title-wrap::after {
+    display: none;
   }
 }
+
