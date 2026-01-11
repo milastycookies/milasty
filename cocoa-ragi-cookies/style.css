@@ -161,6 +161,26 @@ table td:first-child {
   font-weight: 600;
 }
 
+/* FSSAI block */
+.fssai-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.fssai-logo {
+  height: 32px;
+  width: auto;
+}
+
+.fssai-number {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #3a2f28;
+}
+
+
 /* =========================================================
    HIGHLIGHT (FSSAI)
 ========================================================= */
