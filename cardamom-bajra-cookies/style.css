@@ -227,20 +227,24 @@ table td:first-child {
    MOBILE
 ========================================================= */
 @media (max-width: 480px) {
+
   .title-wrap {
     display: inline-flex;
     align-items: center;
+    justify-content: center;
     gap: 10px;
+    flex-wrap: wrap;   /* allows clean 2-line titles */
   }
 
   .title-wrap h1 {
     font-size: 1.75rem;
-    line-height: 1.2;
+    text-align: center;
   }
 
   .veg-badge {
-    position: static;          /* remove absolute positioning */
-    transform: none;
-    margin-top: 2px;
+    position: static;   /* IMPORTANT: remove absolute positioning */
+    margin-top: 4px;    /* slight vertical harmony */
   }
+}
+
 }
