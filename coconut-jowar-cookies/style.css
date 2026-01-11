@@ -47,32 +47,18 @@ body {
   margin-bottom: 32px;
 }
 
-/* Wrap keeps heading centered, badge positioned */
+/* Heading + veg icon */
 .title-wrap {
-  position: relative;
   display: inline-flex;
   align-items: center;
-  gap: 10px; /* spacing between heading & veg symbol */
+  gap: 10px;
 }
 
-/* Heading */
 .title-wrap h1 {
   font-size: 2rem;
   font-weight: 700;
   color: var(--jowar-dark);
   line-height: 1.25;
-}
-
-/* Subtle sesame cue below heading */
-.title-wrap::after {
-  content: "";
-  display: block;
-  width: 14px;
-  height: 7px;
-  margin: 8px auto 0;
-  background: var(--seed-cream);
-  border-radius: 60% 40%;
-  opacity: 0.85;
 }
 
 /* Veg badge */
@@ -85,6 +71,16 @@ body {
   width: 16px;
   height: 16px;
   display: inline-block;
+}
+
+/* Sesame seed cue (decorative) */
+.seed-cue {
+  width: 14px;
+  height: 7px;
+  margin: 8px auto 0;
+  background: var(--seed-cream);
+  border-radius: 60% 40%;
+  opacity: 0.85;
 }
 
 /* Tagline */
@@ -229,8 +225,11 @@ table td:first-child {
    MOBILE OPTIMISATION
 ========================================================= */
 @media (max-width: 480px) {
-  .title-wrap::after {
+  .title-wrap h1 {
+    font-size: 1.75rem;
+  }
+
+  .seed-cue {
     display: none;
   }
 }
-
