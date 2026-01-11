@@ -1,33 +1,30 @@
-/* =========================================================
-   RESET
-========================================================= */
+/* RESET */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-/* =========================================================
-   ROOT COLOURS (FROM COOKIE)
-========================================================= */
+/* ROOT — COCONUT JOWAR */
 :root {
-  --cocoa-brown: #3e2721;
-  --grain-brown: #5a3a2e;
-  --seed-green: #6f823a;
-  --bg-warm: #f4ede6;
+  --jowar-brown: #6a4b3b;
+  --jowar-dark: #4b3328;
+  --coconut-cream: #e9e1d6;
+  --sesame-beige: #c8bc9a;
+  --bg-warm: #f7f1ea;
+  --text-main: #3a2f28;
+  --text-soft: #7a6a60;
 }
 
-/* =========================================================
-   BASE
-========================================================= */
+/* BASE */
 body {
   font-family: system-ui, -apple-system, BlinkMacSystemFont,
                "Segoe UI", Roboto, Arial, sans-serif;
   background:
-    radial-gradient(circle at 15% 20%, #f1e7dc 0%, transparent 40%),
-    radial-gradient(circle at 85% 30%, #efe2d5 0%, transparent 45%),
+    radial-gradient(circle at 18% 20%, #f1e8dd 0%, transparent 42%),
+    radial-gradient(circle at 82% 35%, #efe4d8 0%, transparent 45%),
     var(--bg-warm);
-  color: #2d2d2d;
+  color: var(--text-main);
   line-height: 1.6;
 }
 
@@ -37,94 +34,76 @@ body {
   padding: 20px;
 }
 
-/* =========================================================
-   HEADER
-========================================================= */
+/* HEADER */
 .header {
   text-align: center;
-  margin-bottom: 30px;
+  margin-bottom: 32px;
 }
 
 .title-wrap {
-  position: relative;
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .title-wrap h1 {
   font-size: 2rem;
   font-weight: 700;
-  color: var(--cocoa-brown);
-  line-height: 1.25;
+  color: var(--jowar-dark);
 }
 
-/* Pumpkin-seed visual cue */
+/* subtle sesame cue */
 .title-wrap::after {
   content: "";
-  display: block;
-  width: 11px;
-  height: 7px;
-  margin: 8px auto 0;
-  background: var(--seed-green);
+  width: 12px;
+  height: 8px;
+  margin: 6px auto 0;
+  background: var(--sesame-beige);
   border-radius: 50%;
-  opacity: 0.85;
-}
-
-/* Veg badge */
-.veg-badge {
-  position: absolute;
-  top: 0.15em;
-  right: -4.8rem;
+  opacity: 0.8;
+  display: block;
 }
 
 .veg-icon {
   width: 16px;
   height: 16px;
-  min-width: 16px;
-  min-height: 16px;
-  display: inline-block;
 }
 
-/* Tagline */
 .tagline {
-  margin-top: 8px;
+  margin-top: 10px;
   font-size: 0.95rem;
-  color: #7a6a60;
+  color: var(--text-soft);
 }
 
-/* =========================================================
-   CARDS
-========================================================= */
+/* CARDS */
 .card {
-  background: linear-gradient(180deg, #ffffff 0%, #faf6f2 100%);
-  border-radius: 18px;
+  background-color: #ffffff;
+  border-radius: 16px;
   padding: 22px;
   margin-bottom: 20px;
-  box-shadow:
-    0 8px 18px rgba(62, 39, 33, 0.08),
-    inset 0 1px 0 rgba(255,255,255,0.4);
+  box-shadow: 0 6px 14px rgba(75, 51, 40, 0.08);
 }
 
 .card h2 {
   font-size: 1.2rem;
   margin-bottom: 10px;
-  color: var(--grain-brown);
+  color: var(--jowar-brown);
 }
 
 .card p {
-  font-weight: 450;
-  color: #3a2f28;
+  color: var(--text-main);
 }
 
-/* Ingredients / Allergen separation */
+/* ALLERGEN */
 .allergen-block {
   margin-top: 16px;
   padding-top: 12px;
-  border-top: 1px dashed #ddd;
+  border-top: 1px dashed #e1d6cc;
 }
 
-/* =========================================================
-   LISTS
-========================================================= */
+/* LISTS */
 .card ul {
   list-style: none;
 }
@@ -139,13 +118,25 @@ body {
   content: "✓";
   position: absolute;
   left: 0;
-  color: var(--seed-green);
+  color: var(--sesame-beige);
   font-weight: bold;
 }
 
-/* =========================================================
-   TABLE
-========================================================= */
+/* NOTES */
+.note {
+  margin-top: 10px;
+  font-size: 0.9rem;
+  color: var(--text-soft);
+}
+
+.center-note {
+  font-size: 0.9rem;
+  color: var(--text-soft);
+  text-align: center;
+  margin: 6px 0 20px;
+}
+
+/* TABLE */
 table {
   width: 100%;
   border-collapse: collapse;
@@ -153,7 +144,6 @@ table {
 
 table td {
   padding: 8px 0;
-  vertical-align: top;
 }
 
 table td:first-child {
@@ -161,78 +151,52 @@ table td:first-child {
   font-weight: 600;
 }
 
-/* FSSAI block */
+/* FSSAI */
+.highlight {
+  border-left: 5px solid var(--jowar-brown);
+  background-color: #fff9f4;
+}
+
 .fssai-header {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
   margin-bottom: 10px;
+  flex-wrap: wrap;
 }
 
 .fssai-logo {
   height: 32px;
-  width: auto;
 }
 
-.fssai-number {
-  font-size: 0.9rem;
-  font-weight: 600;
-  color: #3a2f28;
-}
-
-
-/* =========================================================
-   HIGHLIGHT (FSSAI)
-========================================================= */
-.highlight {
-  border-left: 5px solid var(--grain-brown);
-  background: #fff8f5;
-}
-
-/* =========================================================
-   CTA
-========================================================= */
+/* CTA */
 .cta {
   text-align: center;
-  margin: 32px 0;
+  margin: 34px 0;
 }
 
 .cta a {
-  display: inline-block;
-  background-color: #4f6f3a;
+  background-color: #6b7b3e;
   color: #ffffff;
   text-decoration: none;
   padding: 14px 28px;
   border-radius: 999px;
   font-size: 1.05rem;
   font-weight: 600;
-  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  display: inline-block;
 }
 
-.cta a:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.15);
-}
-
-/* =========================================================
-   FOOTER
-========================================================= */
+/* FOOTER */
 .footer {
   text-align: center;
   font-size: 0.85rem;
-  color: #7a6a60;
+  color: var(--text-soft);
   margin-top: 32px;
 }
 
-/* =========================================================
-   MOBILE
-========================================================= */
+/* MOBILE */
 @media (max-width: 480px) {
   .title-wrap h1 {
     font-size: 1.75rem;
-  }
-
-  .veg-badge {
-    right: -2.2rem;
   }
 }
