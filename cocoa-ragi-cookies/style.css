@@ -36,6 +36,24 @@ body {
   color: #7a7a7a;
 }
 
+
+.veg-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 6px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #2f7d32;
+}
+
+.veg-badge img {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+}
+
+
 /* Cards */
 .card {
   background: #ffffff;
