@@ -8,12 +8,25 @@
 }
 
 /* =========================================================
+   ROOT COLOURS (FROM COOKIE)
+========================================================= */
+:root {
+  --cocoa-brown: #3e2721;
+  --grain-brown: #5a3a2e;
+  --seed-green: #6f823a;
+  --bg-warm: #f4ede6;
+}
+
+/* =========================================================
    BASE
 ========================================================= */
 body {
   font-family: system-ui, -apple-system, BlinkMacSystemFont,
                "Segoe UI", Roboto, Arial, sans-serif;
-  background-color: #faf7f2;
+  background:
+    radial-gradient(circle at 15% 20%, #f1e7dc 0%, transparent 40%),
+    radial-gradient(circle at 85% 30%, #efe2d5 0%, transparent 45%),
+    var(--bg-warm);
   color: #2d2d2d;
   line-height: 1.6;
 }
@@ -28,89 +41,89 @@ body {
    HEADER
 ========================================================= */
 .header {
-  margin-bottom: 28px;
   text-align: center;
+  margin-bottom: 30px;
 }
 
-/* Wrap defines heading width */
 .title-wrap {
   position: relative;
-  display: inline-block; /* width = text width */
+  display: inline-block;
 }
 
-/* Centered heading */
 .title-wrap h1 {
   font-size: 2rem;
   font-weight: 700;
-  color: #4b2416;
+  color: var(--cocoa-brown);
   line-height: 1.25;
-  margin: 0;
 }
 
-/* Veg badge anchored to heading end */
+/* Pumpkin-seed visual cue */
+.title-wrap::after {
+  content: "";
+  display: block;
+  width: 11px;
+  height: 7px;
+  margin: 8px auto 0;
+  background: var(--seed-green);
+  border-radius: 50%;
+  opacity: 0.85;
+}
+
+/* Veg badge */
 .veg-badge {
   position: absolute;
   top: 0.15em;
-  right: -5.2rem;
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  font-size: 0.85rem;
-  font-weight: 600;
-  color: #2f7d32;
-  white-space: nowrap;
+  right: -4.8rem;
 }
 
-/* SVG safety (CRITICAL) */
 .veg-icon {
   width: 16px;
   height: 16px;
   min-width: 16px;
   min-height: 16px;
   display: inline-block;
-  flex-shrink: 0;
 }
 
-svg {
-  overflow: visible;
-}
-
+/* Tagline */
 .tagline {
   margin-top: 8px;
   font-size: 0.95rem;
-  color: #7a7a7a;
+  color: #7a6a60;
 }
 
 /* =========================================================
    CARDS
 ========================================================= */
 .card {
-  background-color: #ffffff;
-  border-radius: 14px;
-  padding: 20px;
-  margin-bottom: 18px;
-  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.05);
+  background: linear-gradient(180deg, #ffffff 0%, #faf6f2 100%);
+  border-radius: 18px;
+  padding: 22px;
+  margin-bottom: 20px;
+  box-shadow:
+    0 8px 18px rgba(62, 39, 33, 0.08),
+    inset 0 1px 0 rgba(255,255,255,0.4);
 }
 
 .card h2 {
   font-size: 1.2rem;
   margin-bottom: 10px;
-  color: #5b2c1d;
+  color: var(--grain-brown);
 }
 
-/* Ingredients + allergen separation */
+.card p {
+  font-weight: 450;
+  color: #3a2f28;
+}
+
+/* Ingredients / Allergen separation */
 .allergen-block {
   margin-top: 16px;
   padding-top: 12px;
   border-top: 1px dashed #ddd;
 }
 
-.allergen-block h2 {
-  margin-bottom: 6px;
-}
-
 /* =========================================================
-   LISTS (CLAIMS)
+   LISTS
 ========================================================= */
 .card ul {
   list-style: none;
@@ -126,7 +139,7 @@ svg {
   content: "✓";
   position: absolute;
   left: 0;
-  color: #2f8f2f;
+  color: var(--seed-green);
   font-weight: bold;
 }
 
@@ -149,11 +162,11 @@ table td:first-child {
 }
 
 /* =========================================================
-   HIGHLIGHT CARD (FSSAI)
+   HIGHLIGHT (FSSAI)
 ========================================================= */
 .highlight {
-  border-left: 5px solid #5b2c1d;
-  background-color: #fff8f5;
+  border-left: 5px solid var(--grain-brown);
+  background: #fff8f5;
 }
 
 /* =========================================================
@@ -161,12 +174,12 @@ table td:first-child {
 ========================================================= */
 .cta {
   text-align: center;
-  margin: 30px 0;
+  margin: 32px 0;
 }
 
 .cta a {
   display: inline-block;
-  background-color: #25d366;
+  background-color: #4f6f3a;
   color: #ffffff;
   text-decoration: none;
   padding: 14px 28px;
@@ -187,12 +200,12 @@ table td:first-child {
 .footer {
   text-align: center;
   font-size: 0.85rem;
-  color: #8a8a8a;
+  color: #7a6a60;
   margin-top: 32px;
 }
 
 /* =========================================================
-   MOBILE OPTIMISATION
+   MOBILE
 ========================================================= */
 @media (max-width: 480px) {
   .title-wrap h1 {
@@ -200,7 +213,6 @@ table td:first-child {
   }
 
   .veg-badge {
-    right: -2.6rem;
-    font-size: 0.75rem;
+    right: -2.2rem;
   }
 }
