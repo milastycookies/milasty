@@ -1,0 +1,233 @@
+:root {
+  --primary: #6b4e2e;
+  --secondary: #f3efe9;
+  --accent: #c07a3a;
+  --text: #2e2e2e;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color: var(--text);
+  background: #ffffff;
+  line-height: 1.6;
+}
+
+img {
+  width: 100%;
+  display: block;
+  border-radius: 12px;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.container {
+  max-width: 1100px;
+  margin: auto;
+  padding: 20px;
+}
+
+/* ---------- HERO ---------- */
+
+.hero {
+  background: var(--secondary);
+  padding: 32px 20px;
+  text-align: center;
+}
+
+.hero h1 {
+  font-size: 1.8rem;
+  margin-bottom: 12px;
+  color: var(--primary);
+}
+
+.hero p {
+  font-size: 1rem;
+  margin-bottom: 20px;
+}
+
+/* ---------- BUTTONS ---------- */
+
+.cta-group {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.btn {
+  padding: 12px 20px;
+  border-radius: 30px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+}
+
+.btn-primary {
+  background: var(--primary);
+  color: #fff;
+}
+
+.btn-secondary {
+  background: #fff;
+  color: var(--primary);
+  border: 2px solid var(--primary);
+}
+
+/* ---------- TRUST ---------- */
+
+.trust {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  text-align: center;
+  font-size: 0.9rem;
+}
+
+.trust div {
+  background: #fafafa;
+  padding: 12px;
+  border-radius: 10px;
+}
+
+/* ---------- SECTIONS ---------- */
+
+.section {
+  padding: 32px 0;
+}
+
+.section h2 {
+  text-align: center;
+  font-size: 1.5rem;
+  margin-bottom: 24px;
+  color: var(--primary);
+}
+
+/* ---------- PRODUCTS ---------- */
+
+.products {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+}
+
+.card {
+  border: 1px solid #eee;
+  border-radius: 16px;
+  padding: 16px;
+}
+
+.card h3 {
+  margin: 12px 0 8px;
+  color: var(--accent);
+}
+
+.card p {
+  font-size: 0.95rem;
+  margin-bottom: 12px;
+}
+
+.card a {
+  font-weight: 600;
+  color: var(--primary);
+}
+
+/* ---------- INGREDIENTS ---------- */
+
+.ingredients {
+  background: var(--secondary);
+  border-radius: 16px;
+  padding: 24px;
+  font-size: 0.95rem;
+}
+
+.ingredients ul {
+  list-style: none;
+  margin-top: 12px;
+}
+
+.ingredients li {
+  margin-bottom: 8px;
+}
+
+.note {
+  margin-top: 12px;
+  font-size: 0.85rem;
+  color: #555;
+}
+
+/* ---------- BENEFITS ---------- */
+
+.benefits ul {
+  list-style: none;
+  margin-top: 16px;
+}
+
+.benefits li {
+  margin-bottom: 10px;
+  padding-left: 18px;
+  position: relative;
+}
+
+.benefits li::before {
+  content: "✔";
+  position: absolute;
+  left: 0;
+  color: var(--accent);
+  font-weight: bold;
+}
+
+/* ---------- STORY ---------- */
+
+.story {
+  text-align: center;
+  font-size: 0.95rem;
+}
+
+/* ---------- FINAL CTA ---------- */
+
+.final-cta {
+  background: var(--primary);
+  color: #fff;
+  text-align: center;
+  padding: 36px 20px;
+}
+
+.final-cta h2 {
+  margin-bottom: 16px;
+  font-size: 1.6rem;
+}
+
+/* ---------- FOOTER ---------- */
+
+footer {
+  text-align: center;
+  font-size: 0.85rem;
+  padding: 20px;
+  color: #666;
+}
+
+/* ---------- DESKTOP ---------- */
+
+@media (min-width: 768px) {
+  .trust {
+    grid-template-columns: repeat(5, 1fr);
+  }
+
+  .products {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .hero h1 {
+    font-size: 2.4rem;
+  }
+}
