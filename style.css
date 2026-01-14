@@ -1,10 +1,18 @@
+/* ===============================
+   COLOR SYSTEM
+================================ */
 :root {
-  --primary: #6b4e2e;
-  --secondary: #f3efe9;
-  --accent: #c07a3a;
+  --primary: #6b4e2e;     /* earthy brown */
+  --secondary: #f3efe9;   /* warm off-white */
+  --accent: #c07a3a;      /* jaggery tone */
   --text: #2e2e2e;
+  --muted: #666;
+  --border: #e6e6e6;
 }
 
+/* ===============================
+   RESET & BASE
+================================ */
 * {
   box-sizing: border-box;
   margin: 0;
@@ -21,7 +29,7 @@ body {
 img {
   width: 100%;
   display: block;
-  border-radius: 12px;
+  border-radius: 14px;
 }
 
 a {
@@ -35,27 +43,30 @@ a {
   padding: 20px;
 }
 
-/* ---------- HERO ---------- */
-
+/* ===============================
+   HERO
+================================ */
 .hero {
   background: var(--secondary);
-  padding: 32px 20px;
+  padding: 36px 20px;
   text-align: center;
 }
 
 .hero h1 {
-  font-size: 1.8rem;
-  margin-bottom: 12px;
+  font-size: 1.9rem;
   color: var(--primary);
+  margin-bottom: 14px;
 }
 
 .hero p {
   font-size: 1rem;
-  margin-bottom: 20px;
+  margin-bottom: 22px;
+  color: var(--text);
 }
 
-/* ---------- BUTTONS ---------- */
-
+/* ===============================
+   BUTTONS
+================================ */
 .cta-group {
   display: flex;
   gap: 12px;
@@ -64,12 +75,13 @@ a {
 }
 
 .btn {
-  padding: 12px 20px;
+  padding: 12px 22px;
   border-radius: 30px;
   font-size: 0.95rem;
   font-weight: 600;
-  border: none;
   cursor: pointer;
+  display: inline-block;
+  text-align: center;
 }
 
 .btn-primary {
@@ -83,8 +95,9 @@ a {
   border: 2px solid var(--primary);
 }
 
-/* ---------- TRUST ---------- */
-
+/* ===============================
+   TRUST STRIP
+================================ */
 .trust {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -97,43 +110,53 @@ a {
   background: #fafafa;
   padding: 12px;
   border-radius: 10px;
+  border: 1px solid var(--border);
 }
 
-/* ---------- SECTIONS ---------- */
-
+/* ===============================
+   SECTIONS
+================================ */
 .section {
-  padding: 32px 0;
+  padding: 36px 0;
 }
 
 .section h2 {
   text-align: center;
-  font-size: 1.5rem;
+  font-size: 1.55rem;
   margin-bottom: 24px;
   color: var(--primary);
 }
 
-/* ---------- PRODUCTS ---------- */
-
+/* ===============================
+   PRODUCTS
+================================ */
 .products {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 24px;
+  gap: 26px;
 }
 
 .card {
-  border: 1px solid #eee;
-  border-radius: 16px;
+  border: 1px solid var(--border);
+  border-radius: 18px;
   padding: 16px;
+  background: #fff;
+}
+
+.card img {
+  margin-bottom: 14px;
 }
 
 .card h3 {
-  margin: 12px 0 8px;
+  font-size: 1.1rem;
   color: var(--accent);
+  margin-bottom: 6px;
 }
 
 .card p {
   font-size: 0.95rem;
   margin-bottom: 12px;
+  color: var(--text);
 }
 
 .card a {
@@ -141,18 +164,19 @@ a {
   color: var(--primary);
 }
 
-/* ---------- INGREDIENTS ---------- */
-
+/* ===============================
+   INGREDIENT TRANSPARENCY
+================================ */
 .ingredients {
   background: var(--secondary);
-  border-radius: 16px;
-  padding: 24px;
+  border-radius: 18px;
+  padding: 26px;
   font-size: 0.95rem;
 }
 
 .ingredients ul {
   list-style: none;
-  margin-top: 12px;
+  margin-top: 14px;
 }
 
 .ingredients li {
@@ -160,22 +184,24 @@ a {
 }
 
 .note {
-  margin-top: 12px;
+  margin-top: 14px;
   font-size: 0.85rem;
-  color: #555;
+  color: var(--muted);
 }
 
-/* ---------- BENEFITS ---------- */
-
+/* ===============================
+   BENEFITS
+================================ */
 .benefits ul {
   list-style: none;
-  margin-top: 16px;
+  margin-top: 18px;
 }
 
 .benefits li {
   margin-bottom: 10px;
-  padding-left: 18px;
+  padding-left: 20px;
   position: relative;
+  font-size: 0.95rem;
 }
 
 .benefits li::before {
@@ -186,39 +212,76 @@ a {
   font-weight: bold;
 }
 
-/* ---------- STORY ---------- */
-
+/* ===============================
+   BRAND STORY
+================================ */
 .story {
   text-align: center;
   font-size: 0.95rem;
 }
 
-/* ---------- FINAL CTA ---------- */
+.story p {
+  margin-bottom: 14px;
+  color: var(--text);
+}
 
+/* ===============================
+   TESTIMONIALS
+================================ */
+.testimonials {
+  text-align: center;
+}
+
+.testimonial-box {
+  background: #fafafa;
+  border-radius: 16px;
+  padding: 20px;
+  margin-bottom: 18px;
+  font-size: 0.95rem;
+  border: 1px solid var(--border);
+}
+
+.testimonial-box span {
+  display: block;
+  margin-top: 10px;
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+/* ===============================
+   FINAL CTA
+================================ */
 .final-cta {
   background: var(--primary);
   color: #fff;
   text-align: center;
-  padding: 36px 20px;
+  padding: 40px 20px;
 }
 
 .final-cta h2 {
-  margin-bottom: 16px;
   font-size: 1.6rem;
+  margin-bottom: 16px;
 }
 
-/* ---------- FOOTER ---------- */
-
+/* ===============================
+   FOOTER
+================================ */
 footer {
   text-align: center;
   font-size: 0.85rem;
-  padding: 20px;
-  color: #666;
+  padding: 22px 16px;
+  color: var(--muted);
 }
 
-/* ---------- DESKTOP ---------- */
-
+/* ===============================
+   DESKTOP / TABLET
+================================ */
 @media (min-width: 768px) {
+
+  .hero h1 {
+    font-size: 2.4rem;
+  }
+
   .trust {
     grid-template-columns: repeat(5, 1fr);
   }
@@ -227,7 +290,7 @@ footer {
     grid-template-columns: repeat(3, 1fr);
   }
 
-  .hero h1 {
-    font-size: 2.4rem;
+  .section h2 {
+    font-size: 1.8rem;
   }
 }
