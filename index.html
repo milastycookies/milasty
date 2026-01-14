@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Milasty – Honest Millet Cookies</title>
+
+  <style>
+    :root {
+      --primary: #6b4e2e;   /* earthy brown */
+      --secondary: #f3efe9; /* warm off-white */
+      --accent: #c07a3a;    /* jaggery tone */
+      --text: #2e2e2e;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--text);
+      background: #ffffff;
+      line-height: 1.6;
+    }
+
+    img {
+      width: 100%;
+      display: block;
+      border-radius: 12px;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1100px;
+      margin: auto;
+      padding: 20px;
+    }
+
+    /* ---------- HERO ---------- */
+
+    .hero {
+      background: var(--secondary);
+      padding: 32px 20px;
+      text-align: center;
+    }
+
+    .hero h1 {
+      font-size: 1.8rem;
+      margin-bottom: 12px;
+      color: var(--primary);
+    }
+
+    .hero p {
+      font-size: 1rem;
+      margin-bottom: 20px;
+    }
+
+    .cta-group {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      padding: 12px 20px;
+      border-radius: 30px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      border: none;
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: #fff;
+    }
+
+    .btn-secondary {
+      background: #fff;
+      color: var(--primary);
+      border: 2px solid var(--primary);
+    }
+
+    /* ---------- TRUST STRIP ---------- */
+
+    .trust {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      padding: 24px 20px;
+      text-align: center;
+      font-size: 0.9rem;
+    }
+
+    .trust div {
+      background: #fafafa;
+      padding: 12px;
+      border-radius: 10px;
+    }
+
+    /* ---------- PRODUCTS ---------- */
+
+    .section {
+      padding: 32px 20px;
+    }
+
+    .section h2 {
+      text-align: center;
+      font-size: 1.5rem;
+      margin-bottom: 24px;
+      color: var(--primary);
+    }
+
+    .products {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 24px;
+    }
+
+    .card {
+      border: 1px solid #eee;
+      border-radius: 16px;
+      padding: 16px;
+    }
+
+    .card h3 {
+      margin: 12px 0 8px;
+      color: var(--accent);
+    }
+
+    .card p {
+      font-size: 0.95rem;
+      margin-bottom: 12px;
+    }
+
+    .card a {
+      font-weight: 600;
+      color: var(--primary);
+    }
+
+    /* ---------- INGREDIENTS ---------- */
+
+    .ingredients {
+      background: var(--secondary);
+      border-radius: 16px;
+      padding: 24px;
+      font-size: 0.95rem;
+    }
+
+    .ingredients ul {
+      list-style: none;
+      margin-top: 12px;
+    }
+
+    .ingredients li {
+      margin-bottom: 8px;
+    }
+
+    .note {
+      margin-top: 12px;
+      font-size: 0.85rem;
+      color: #555;
+    }
+
+    /* ---------- BENEFITS ---------- */
+
+    .benefits ul {
+      list-style: none;
+      margin-top: 16px;
+    }
+
+    .benefits li {
+      margin-bottom: 10px;
+      padding-left: 18px;
+      position: relative;
+    }
+
+    .benefits li::before {
+      content: "✔";
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+      font-weight: bold;
+    }
+
+    /* ---------- STORY ---------- */
+
+    .story {
+      text-align: center;
+      font-size: 0.95rem;
+    }
+
+    /* ---------- CTA ---------- */
+
+    .final-cta {
+      background: var(--primary);
+      color: #fff;
+      text-align: center;
+      padding: 36px 20px;
+    }
+
+    .final-cta h2 {
+      margin-bottom: 16px;
+      font-size: 1.6rem;
+    }
+
+    .final-cta .btn {
+      margin-top: 10px;
+    }
+
+    /* ---------- FOOTER ---------- */
+
+    footer {
+      text-align: center;
+      font-size: 0.85rem;
+      padding: 20px;
+      color: #666;
+    }
+
+    /* ---------- DESKTOP ---------- */
+
+    @media (min-width: 768px) {
+      .trust {
+        grid-template-columns: repeat(5, 1fr);
+      }
+
+      .products {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .hero h1 {
+        font-size: 2.4rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- HERO -->
+  <section class="hero">
+    <h1>Wholesome Millet Cookies, Baked the Honest Way</h1>
+    <p>
+      Made with ragi, jowar & bajra, sweetened with jaggery, baked in desi ghee.
+      No maida. No preservatives. No added colour.
+    </p>
+
+    <div class="cta-group">
+      <a href="#products" class="btn btn-primary">Explore Cookies</a>
+      <a href="YOUR_WHATSAPP_LINK" class="btn btn-secondary">Order via WhatsApp</a>
+    </div>
+  </section>
+
+  <!-- TRUST -->
+  <section class="trust container">
+    <div>🌾 Millet-Based</div>
+    <div>🍯 Sweetened with Jaggery</div>
+    <div>🧈 Desi Ghee + Rice Bran Oil</div>
+    <div>🚫 No Maida</div>
+    <div>🏠 Home-Baked</div>
+  </section>
+
+  <!-- PRODUCTS -->
+  <section class="section container" id="products">
+    <h2>Our Signature Cookies</h2>
+
+    <div class="products">
+      <div class="card">
+        <h3>Cardamom Bajra Cookies</h3>
+        <p>Warm cardamom flavour with fibre-rich bajra and gentle jaggery sweetness.</p>
+        <a href="https://milasty.com/cardamom-bajra-cookies/">View Product →</a>
+      </div>
+
+      <div class="card">
+        <h3>Coconut Jowar Cookies</h3>
+        <p>Aromatic coconut with wholesome jowar—light, comforting, and satisfying.</p>
+        <a href="https://milasty.com/coconut-jowar-cookies/">View Product →</a>
+      </div>
+
+      <div class="card">
+        <h3>Cocoa Ragi Cookies</h3>
+        <p>Rich cocoa taste paired with calcium-rich ragi for mindful indulgence.</p>
+        <a href="https://milasty.com/cocoa-ragi-cookies/">View Product →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- INGREDIENTS -->
+  <section class="section container">
+    <div class="ingredients">
+      <h2>Ingredient Transparency</h2>
+
+      <ul>
+        <li>✔ Millets: Ragi, Jowar, Bajra</li>
+        <li>✔ Sweetened with Jaggery (no refined sugar)</li>
+        <li>✔ Desi ghee + small amount of rice bran oil</li>
+        <li>✔ Small quantity of whole wheat (no maida)</li>
+      </ul>
+
+      <p class="note">
+        ⚠️ These cookies are not gluten-free as they contain a small amount of whole wheat.
+      </p>
+    </div>
+  </section>
+
+  <!-- BENEFITS -->
+  <section class="section container benefits">
+    <h2>Why Choose Milasty Cookies?</h2>
+    <ul>
+      <li>Better grains than refined flour cookies</li>
+      <li>No refined sugar or artificial ingredients</li>
+      <li>Better fats for flavour and satiety</li>
+      <li>Balanced sweetness—not overly sugary</li>
+      <li>Ideal for daily snacking & mindful gifting</li>
+    </ul>
+  </section>
+
+  <!-- STORY -->
+  <section class="section container story">
+    <h2>Baked with Care</h2>
+    <p>
+      Milasty began in a home kitchen with one intention—create cookies that feel good to eat every day.
+      Small batches, honest ingredients, and flavours people genuinely enjoy.
+    </p>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section class="final-cta">
+    <h2>Ready to Try Milasty?</h2>
+    <a href="YOUR_WHATSAPP_LINK" class="btn btn-secondary">Order via WhatsApp</a>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    Milasty · Home-baked millet cookies · Greater Noida West
+  </footer>
+
+</body>
+</html>
