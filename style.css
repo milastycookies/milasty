@@ -130,6 +130,7 @@ a {
    TRUST STRIP
 ================================ */
 .trust {
+   margin-top: 28px;
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 12px;
@@ -194,6 +195,14 @@ a {
   font-weight: 600;
   color: var(--primary);
 }
+
+.section-intro {
+  text-align: center;
+  font-size: 0.95rem;
+  color: var(--muted);
+  margin-bottom: 18px;
+}
+
 
 /* ===============================
    INGREDIENT TRANSPARENCY
