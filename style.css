@@ -79,6 +79,15 @@ a {
 
 .hero {
   background: var(--secondary);
+   text-align: center;
+}
+
+.hero h1.brand-name {
+  font-size: 2.2rem;              /* more presence on mobile */
+  font-weight: 800;               /* bold but premium */
+  letter-spacing: 0.12em;         /* brand-like spacing */
+  color: var(--primary);          /* earthy brown */
+  margin-bottom: 6px;
 }
 
 
@@ -307,6 +316,11 @@ a {
     font-size: 2.4rem;
   }
 
+   .hero h1.brand-name {
+    font-size: 2.8rem;            /* strong desktop presence */
+    letter-spacing: 0.14em;
+  }
+   
   .trust {
     grid-template-columns: repeat(5, 1fr);
   }
