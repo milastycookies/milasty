@@ -259,6 +259,8 @@ a {
    BRAND STORY
 ================================ */
 .story {
+   padding-left: 20px;
+  padding-right: 20px;
   text-align: center;
   font-size: 0.95rem;
 }
