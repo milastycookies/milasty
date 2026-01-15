@@ -49,7 +49,7 @@ a {
 
 .brand-meaning {
   font-size: 0.95rem;
-  font-style: italic;
+  font-style: normal;
   color: var(--muted);
   margin-bottom: 14px;
    opacity: 0.65;
