@@ -319,8 +319,9 @@ a {
 }
 
 .footer-slogan {
+   text-align: center;        /* center everything */
   font-size: 0.85rem;
-  margin-top: 4px;
+  margin-top: 2px;
   opacity: 0.75;
 }
 
