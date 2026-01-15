@@ -309,9 +309,11 @@ a {
 ================================ */
 
 .footer-brand {
+   text-align: center;        /* center everything */
+  padding: 28px 16px;        /* a bit more breathing room */
+  color: var(--muted);
   font-weight: 600;
   letter-spacing: 0.08em;
-  color: var(--text);
 }
 
 .footer-slogan {
