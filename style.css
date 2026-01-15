@@ -87,7 +87,7 @@ a {
   font-size: 2.2rem;              /* more presence on mobile */
   font-weight: 800;               /* bold but premium */
   letter-spacing: 0.12em;         /* brand-like spacing */
-  /* color: var(--primary);          /* earthy brown */ */
+  /* color: var(--primary);*/          /* earthy brown */ 
   color: #5a4025;                  /* deeper brown */
    text-shadow: 0 1px 0 rgba(0,0,0,0.05);
   margin-bottom: 6px;
