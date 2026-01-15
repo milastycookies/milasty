@@ -326,13 +326,10 @@ a {
 ================================ */
 @media (min-width: 768px) {
 
-  .hero h1 {
-    font-size: 2.4rem;
-  }
 
    .hero h1.brand-name {
-    font-size: 2.8rem;            /* strong desktop presence */
-    letter-spacing: 0.14em;
+    font-size: 3.4rem;            /* strong desktop presence */
+    letter-spacing: 0.16em;
   }
    
   .trust {
