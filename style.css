@@ -44,25 +44,34 @@ a {
 }
 
 /* ===============================
-   HERO
+   HERO – BRAND REFINEMENTS
 ================================ */
-.hero {
-  background: var(--secondary);
-  padding: 36px 20px;
-  text-align: center;
-}
 
-.hero h1 {
-  font-size: 1.9rem;
-  color: var(--primary);
+.brand-meaning {
+  font-size: 0.95rem;
+  font-style: italic;
+  color: var(--muted);
   margin-bottom: 14px;
 }
 
-.hero p {
-  font-size: 1rem;
-  margin-bottom: 22px;
-  color: var(--text);
+.hero-description {
+  max-width: 640px;
+  margin: 0 auto 14px;
 }
+
+.hero-features {
+  font-size: 0.9rem;
+  color: var(--muted);
+  margin-bottom: 10px;
+}
+
+.hero-note {
+  font-size: 0.85rem;
+  font-style: italic;
+  color: var(--muted);
+  margin-bottom: 22px;
+}
+
 
 /* ===============================
    BUTTONS
@@ -264,14 +273,21 @@ a {
 }
 
 /* ===============================
-   FOOTER
+   FOOTER – BRAND CLOSURE
 ================================ */
-footer {
-  text-align: center;
-  font-size: 0.85rem;
-  padding: 22px 16px;
-  color: var(--muted);
+
+.footer-brand {
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  color: var(--text);
 }
+
+.footer-slogan {
+  font-size: 0.85rem;
+  margin-top: 4px;
+  opacity: 0.75;
+}
+
 
 /* ===============================
    DESKTOP / TABLET
