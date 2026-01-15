@@ -80,7 +80,7 @@ a {
 .hero {
   background: var(--secondary);
    text-align: center;
-   padding: 56px 20px 48px;
+   padding: 46px 20px 48px;
 }
 
 .hero h1.brand-name {
