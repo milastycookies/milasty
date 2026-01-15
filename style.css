@@ -80,13 +80,16 @@ a {
 .hero {
   background: var(--secondary);
    text-align: center;
+   padding: 56px 20px 48px;
 }
 
 .hero h1.brand-name {
   font-size: 2.2rem;              /* more presence on mobile */
   font-weight: 800;               /* bold but premium */
   letter-spacing: 0.12em;         /* brand-like spacing */
-  color: var(--primary);          /* earthy brown */
+  /* color: var(--primary);          /* earthy brown */ */
+  color: #5a4025;                  /* deeper brown */
+   text-shadow: 0 1px 0 rgba(0,0,0,0.05);
   margin-bottom: 6px;
 }
 
@@ -103,7 +106,7 @@ a {
 
 .btn {
   padding: 12px 22px;
-  border-radius: 30px;
+  border-radius: 36px;
   font-size: 0.95rem;
   font-weight: 600;
   cursor: pointer;
@@ -120,6 +123,7 @@ a {
   background: #fff;
   color: var(--primary);
   border: 2px solid var(--primary);
+   border-width: 1.5px;
 }
 
 /* ===============================
