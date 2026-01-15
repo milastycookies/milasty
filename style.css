@@ -234,6 +234,8 @@ a {
    BENEFITS
 ================================ */
 .benefits ul {
+   padding-left: 20px;
+  padding-right: 20px;
   list-style: none;
   margin-top: 18px;
 }
