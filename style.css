@@ -233,9 +233,12 @@ a {
 /* ===============================
    BENEFITS
 ================================ */
-.benefits ul {
-   padding-left: 20px;
+.benefits {
+  padding-left: 20px;
   padding-right: 20px;
+}
+
+.benefits ul {
   list-style: none;
   margin-top: 18px;
 }
@@ -312,18 +315,21 @@ a {
    FOOTER – BRAND CLOSURE
 ================================ */
 
-.footer-brand {
-   text-align: center;        /* center everything */
-  padding: 28px 16px;        /* a bit more breathing room */
+footer {
+  text-align: center;
+  padding: 28px 16px;
   color: var(--muted);
+}
+
+.footer-brand {
   font-weight: 600;
   letter-spacing: 0.08em;
+  color: var(--text);
+  margin-bottom: 4px;
 }
 
 .footer-slogan {
-   text-align: center;        /* center everything */
   font-size: 0.85rem;
-  margin-top: 2px;
   opacity: 0.75;
 }
 
