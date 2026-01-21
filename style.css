@@ -259,47 +259,42 @@ a {
 }
 
 /* ===============================
-   HOMEPAGE STORY – STYLE ALIGNMENT
+   HOMEPAGE STORY – MATCH INGREDIENT CARD
    =============================== */
 
 .homepage-story {
   background: var(--secondary);
   border-radius: 18px;
-  padding: 40px 48px;
-  max-width: 900px;
-  margin: 0 auto;
+  padding: 26px;              /* same padding feel as ingredients */
 }
 
-/* Heading style match */
-.homepage-story h2 {
-  margin-bottom: 22px;
-}
-
-/* Paragraph rhythm */
+/* Keep text readable like ingredients */
 .homepage-story p {
   line-height: 1.75;
-  max-width: 720px;
-  margin-left: auto;
-  margin-right: auto;
+  margin-bottom: 14px;
 }
 
-/* Emotional punch line */
+/* Heading spacing */
+.homepage-story h2 {
+  margin-bottom: 20px;
+}
+
+/* Punch line emphasis */
 .homepage-story .story-punch {
-  font-size: 1.25rem;
-  margin-top: 2rem;
+  font-size: 1.2rem;
+  margin-top: 1.6rem;
 }
 
 /* Founder line */
 .homepage-story .story-founder {
-  margin-top: 1.2rem;
-  font-style: italic;
+  margin-top: 1rem;
   opacity: 0.75;
 }
 
-/* "Read full story" link */
+/* Read full story link */
 .homepage-story a {
   display: inline-block;
-  margin-top: 14px;
+  margin-top: 12px;
   font-weight: 600;
   color: var(--primary);
 }
@@ -309,17 +304,16 @@ a {
    =============================== */
 
 @media (max-width: 768px) {
-
   .homepage-story {
-    padding: 28px 22px;
+    padding: 22px;
     border-radius: 14px;
   }
 
   .homepage-story p {
-    max-width: 100%;
     line-height: 1.8;
   }
 }
+
 
 
 /* ===============================
