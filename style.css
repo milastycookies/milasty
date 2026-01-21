@@ -258,6 +258,45 @@ a {
   font-weight: bold;
 }
 
+/* ===============================
+   HOMEPAGE STORY – DESKTOP POLISH
+   =============================== */
+
+.homepage-story {
+  max-width: 820px;
+  margin: 0 auto;
+  background: #fafafa;
+  padding: 42px 48px;
+  border-radius: 18px;
+}
+
+.homepage-story h2 {
+  margin-bottom: 20px;
+}
+
+.homepage-story p {
+  line-height: 1.75;
+}
+
+/* Emphasise punch line */
+.homepage-story .story-punch {
+  margin-top: 2rem;
+  font-size: 1.25rem;
+}
+
+/* Founder signature */
+.homepage-story .story-founder {
+  margin-top: 1.2rem;
+  opacity: 0.75;
+}
+
+/* Keep mobile clean */
+@media (max-width: 768px) {
+  .homepage-story {
+    background: none;
+    padding: 0;
+  }
+}
 
 
 /* ===============================
@@ -467,3 +506,4 @@ footer {
      letter-spacing: 0.01em;
   }
 }
+
