@@ -258,145 +258,6 @@ a {
   font-weight: bold;
 }
 
-/* ===============================
-   BRAND STORY
-================================ */
-.story {
-   padding-left: 20px;
-  padding-right: 20px;
-  text-align: center;
-  font-size: 0.95rem;
-}
-
-.story p {
-  margin-bottom: 14px;
-  color: var(--text);
-}
-
-
-.story-punch {
-  font-size: 1.2rem;
-  margin-top: 1.5rem;
-}
-
-.story-founder {
-  margin-top: 1rem;
-  font-style: italic;
-  opacity: 0.8;
-}
-
-
-/* ===============================
-   OUR STORY PAGE – FINAL VERSION
-   =============================== */
-
-/* Page scope */
-.our-story-page {
-  line-height: 1.75;
-}
-
-/* Readable width & centering */
-.our-story-page .story-content {
-  max-width: 720px;
-  margin: 0 auto;
-}
-
-/* Paragraph rhythm */
-.our-story-page .story-content p {
-  margin-bottom: 1.3rem;
-  text-align: left;
-  color: #333;
-}
-
-/* Founder section */
-.our-story-page .founder-wrapper {
-  display: flex;
-  gap: 2rem;
-  align-items: center;
-  flex-wrap: wrap;
-}
-
-.our-story-page .founder-image img {
-  max-width: 280px;
-  border-radius: 12px;
-}
-
-.our-story-page .founder-message {
-  max-width: 500px;
-}
-
-.our-story-page .founder-intro {
-  font-size: 1.15rem;
-  line-height: 1.6;
-}
-
-/* Emotional pause line */
-.our-story-page .story-break {
-  font-size: 1.05rem;
-  font-style: italic;
-  text-align: center;
-  margin: 2.2rem 0;
-  opacity: 0.85;
-}
-
-/* Pull quotes */
-.our-story-page .story-quote {
-  font-size: 1.2rem;
-  line-height: 1.6;
-  margin: 2.5rem 0;
-  padding-left: 1rem;
-  border-left: 3px solid #ddd;
-  font-style: italic;
-  color: #333;
-}
-
-/* Section divider */
-.our-story-page .story-divider {
-  margin: 3rem 0;
-  border: none;
-  height: 1px;
-  background: #eee;
-}
-
-/* Final punch line */
-.our-story-page .story-ending {
-  font-size: 1.35rem;
-  line-height: 1.6;
-  text-align: center;
-  margin: 3rem 0 1rem;
-}
-
-/* ===============================
-   MOBILE OPTIMIZATION
-   =============================== */
-
-@media (max-width: 768px) {
-
-  .our-story-page .founder-wrapper {
-    flex-direction: column;
-    text-align: center;
-  }
-
-  .our-story-page .founder-image img {
-    max-width: 200px;
-  }
-
-  .our-story-page .story-content p {
-    font-size: 1rem;
-  }
-}
-
-@media (max-width: 480px) {
-
-  .our-story-page {
-    font-size: 1.02rem;
-  }
-
-  .our-story-page .story-ending {
-    font-size: 1.2rem;
-  }
-}
-
 
 
 /* ===============================
@@ -485,28 +346,99 @@ footer {
 }
 
 
+/* =================================================
+   OUR STORY PAGE – SINGLE SOURCE OF TRUTH
+   ================================================= */
 
+.our-story-page {
+  line-height: 1.75;
+}
 
+.our-story-page .story-content {
+  max-width: 720px;
+  margin: 0 auto;
+}
 
-/* ========== OUR STORY PAGE ========== */
+.our-story-page .story-content p {
+  margin-bottom: 1.3rem;
+  text-align: left;
+  color: #333;
+}
 
-.founder-wrapper {
+.our-story-page .founder-wrapper {
   display: flex;
   gap: 2rem;
   align-items: center;
   flex-wrap: wrap;
 }
 
-.founder-image img {
+.our-story-page .founder-image img {
   max-width: 280px;
   border-radius: 12px;
 }
 
-.founder-message {
+.our-story-page .founder-message {
   max-width: 500px;
 }
 
-.story-punch {
-  font-size: 1.3rem;
-  margin-top: 2rem;
+.our-story-page .founder-intro {
+  font-size: 1.15rem;
+  line-height: 1.6;
+}
+
+.our-story-page .story-break {
+  font-size: 1.05rem;
+  font-style: italic;
+  text-align: center;
+  margin: 2.2rem 0;
+  opacity: 0.85;
+}
+
+.our-story-page .story-quote {
+  font-size: 1.2rem;
+  line-height: 1.6;
+  margin: 2.5rem 0;
+  padding-left: 1rem;
+  border-left: 3px solid #ddd;
+  font-style: italic;
+  color: #333;
+}
+
+.our-story-page .story-divider {
+  margin: 3rem 0;
+  border: none;
+  height: 1px;
+  background: #eee;
+}
+
+.our-story-page .story-ending {
+  font-size: 1.35rem;
+  line-height: 1.6;
+  text-align: center;
+  margin: 3rem 0 1rem;
+}
+
+@media (max-width: 768px) {
+  .our-story-page .founder-wrapper {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .our-story-page .founder-image img {
+    max-width: 200px;
+  }
+
+  .our-story-page .story-content p {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .our-story-page {
+    font-size: 1.02rem;
+  }
+
+  .our-story-page .story-ending {
+    font-size: 1.2rem;
+  }
 }
