@@ -273,6 +273,19 @@ a {
   color: var(--text);
 }
 
+
+.story-punch {
+  font-size: 1.2rem;
+  margin-top: 1.5rem;
+}
+
+.story-founder {
+  margin-top: 1rem;
+  font-style: italic;
+  opacity: 0.8;
+}
+
+
 /* ===============================
    TESTIMONIALS
 ================================ */
