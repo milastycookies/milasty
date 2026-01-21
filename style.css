@@ -464,5 +464,6 @@ footer {
   .our-story-page .story-content {
     padding-left: 1.5rem;
     padding-right: 1.5rem;
+     letter-spacing: 0.01em;
   }
 }
