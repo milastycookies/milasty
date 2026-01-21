@@ -370,3 +370,30 @@ footer {
     font-size: 1.8rem;
   }
 }
+
+
+
+
+
+/* ========== OUR STORY PAGE ========== */
+
+.founder-wrapper {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.founder-image img {
+  max-width: 280px;
+  border-radius: 12px;
+}
+
+.founder-message {
+  max-width: 500px;
+}
+
+.story-punch {
+  font-size: 1.3rem;
+  margin-top: 2rem;
+}
