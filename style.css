@@ -312,6 +312,100 @@ a {
 }
 
 
+
+/* =========================
+   OUR STORY – MOBILE POLISH
+   ========================= */
+
+/* Scope only to Our Story page */
+.our-story-page {
+  line-height: 1.75;
+}
+
+/* Improve paragraph spacing on mobile */
+.our-story-page .story-content p {
+  margin-bottom: 1.2rem;
+}
+
+/* Founder section mobile layout */
+@media (max-width: 768px) {
+
+  .founder-wrapper {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .founder-image img {
+    max-width: 200px;
+    margin-bottom: 1rem;
+  }
+
+  .founder-message {
+    max-width: 100%;
+  }
+
+  .founder-intro {
+    font-size: 1.1rem;
+    line-height: 1.6;
+  }
+}
+
+/* Story break lines (emotional pauses) */
+.story-break {
+  font-size: 1.05rem;
+  font-style: italic;
+  text-align: center;
+  margin: 2rem 0;
+  opacity: 0.85;
+}
+
+/* Pull quotes – mobile friendly */
+.story-quote {
+  font-size: 1.15rem;
+  line-height: 1.6;
+  margin: 2rem 0;
+  padding-left: 1rem;
+  border-left: 3px solid #ddd;
+  color: #333;
+}
+
+/* Divider spacing */
+.story-divider {
+  margin: 2.5rem 0;
+  border: none;
+  height: 1px;
+  background: #eee;
+}
+
+/* Ending punch line */
+.story-ending {
+  font-size: 1.25rem;
+  line-height: 1.6;
+  text-align: center;
+  margin: 3rem 0 1rem;
+}
+
+/* Make text slightly larger on small screens */
+@media (max-width: 480px) {
+
+  .our-story-page {
+    font-size: 1.02rem;
+  }
+
+  .story-quote {
+    font-size: 1.1rem;
+  }
+
+  .story-ending {
+    font-size: 1.2rem;
+  }
+}
+
+.story-content {
+  max-width: 720px;
+}
+
+
 /* ===============================
    TESTIMONIALS
 ================================ */
