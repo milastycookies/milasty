@@ -286,6 +286,32 @@ a {
 }
 
 
+.story-break {
+  font-size: 1.1rem;
+  font-style: italic;
+  margin: 2rem 0;
+  opacity: 0.85;
+}
+
+.story-quote {
+  font-size: 1.3rem;
+  margin: 2.5rem 0;
+  padding-left: 1rem;
+  border-left: 3px solid #ccc;
+  font-style: italic;
+}
+
+.story-divider {
+  margin: 3rem 0;
+  opacity: 0.2;
+}
+
+.story-ending {
+  font-size: 1.4rem;
+  margin-top: 3rem;
+}
+
+
 /* ===============================
    TESTIMONIALS
 ================================ */
