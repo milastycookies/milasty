@@ -542,18 +542,19 @@ footer {
    OUR STORY HEADING – STYLE ALIGNMENT
    =============================== */
 
+/* Base (mobile-first) */
 .story-hero h1 {
-  text-align: center;
-  font-size: 1.55rem;       /* same as .section h2 */
+  font-size: 2rem;               /* bigger than section h2 */
   color: var(--primary);
-  margin-bottom: 24px;
-  font-weight: 600;
+  font-weight: 700;
+  margin-bottom: 28px;
+  text-align: center;            /* mobile centered */
 }
 
-/* Desktop enhancement (match other headings) */
+/* Desktop behavior */
 @media (min-width: 768px) {
   .story-hero h1 {
-    font-size: 1.8rem;      /* same as desktop .section h2 */
+    font-size: 2.6rem;           /* clear visual importance */
+    text-align: left;            /* desktop left-aligned */
   }
 }
-
