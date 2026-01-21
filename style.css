@@ -527,3 +527,13 @@ footer {
   }
 }
 
+/* ===============================
+   OUR STORY – MOBILE HEADING ALIGN
+   =============================== */
+
+@media (max-width: 768px) {
+  .story-hero h1 {
+    text-align: center;
+  }
+}
+
