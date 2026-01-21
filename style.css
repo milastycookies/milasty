@@ -442,3 +442,27 @@ footer {
     font-size: 1.2rem;
   }
 }
+
+/* ===============================
+   OUR STORY – MOBILE COMFORT SPACING
+   =============================== */
+
+@media (max-width: 768px) {
+
+  .our-story-page .story-content {
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+  }
+
+  .our-story-page .story-content p {
+    line-height: 1.8;
+  }
+}
+
+@media (max-width: 480px) {
+
+  .our-story-page .story-content {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+}
