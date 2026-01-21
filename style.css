@@ -259,42 +259,65 @@ a {
 }
 
 /* ===============================
-   HOMEPAGE STORY – DESKTOP POLISH
+   HOMEPAGE STORY – STYLE ALIGNMENT
    =============================== */
 
 .homepage-story {
-  max-width: 820px;
-  margin: 0 auto;
-  background: #fafafa;
-  padding: 42px 48px;
+  background: var(--secondary);
   border-radius: 18px;
+  padding: 40px 48px;
+  max-width: 900px;
+  margin: 0 auto;
 }
 
+/* Heading style match */
 .homepage-story h2 {
-  margin-bottom: 20px;
+  margin-bottom: 22px;
 }
 
+/* Paragraph rhythm */
 .homepage-story p {
   line-height: 1.75;
+  max-width: 720px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-/* Emphasise punch line */
+/* Emotional punch line */
 .homepage-story .story-punch {
-  margin-top: 2rem;
   font-size: 1.25rem;
+  margin-top: 2rem;
 }
 
-/* Founder signature */
+/* Founder line */
 .homepage-story .story-founder {
   margin-top: 1.2rem;
+  font-style: italic;
   opacity: 0.75;
 }
 
-/* Keep mobile clean */
+/* "Read full story" link */
+.homepage-story a {
+  display: inline-block;
+  margin-top: 14px;
+  font-weight: 600;
+  color: var(--primary);
+}
+
+/* ===============================
+   MOBILE TUNING
+   =============================== */
+
 @media (max-width: 768px) {
+
   .homepage-story {
-    background: none;
-    padding: 0;
+    padding: 28px 22px;
+    border-radius: 14px;
+  }
+
+  .homepage-story p {
+    max-width: 100%;
+    line-height: 1.8;
   }
 }
 
