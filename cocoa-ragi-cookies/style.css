@@ -236,3 +236,157 @@ table td:first-child {
     right: -2.2rem;
   }
 }
+
+
+
+
+
+/* =========================================================
+   ✅ PREMIUM RESPONSIVE NUTRITION CARD (MILASTY)
+========================================================= */
+
+/* Nutrition Card Container */
+.nutrition-card {
+  padding: 26px;
+}
+
+/* Title Styling */
+.nutrition-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #5a3d2b;
+  margin-bottom: 10px;
+}
+
+.nutrition-title span {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #8a6f5c;
+}
+
+/* Swipe Note (Mobile Only) */
+.scroll-note {
+  font-size: 0.82rem;
+  color: #8a6f5c;
+  margin-bottom: 10px;
+  text-align: center;
+  display: none; /* hidden on desktop */
+}
+
+/* Nutrition Table Outer Box */
+.nutrition-table-wrap {
+  margin-top: 12px;
+  border-radius: 14px;
+  border: 1px solid #e7ddd4;
+  background: #fffaf6;
+  overflow: visible !important; /* ✅ allow scrolling */
+}
+
+/* ✅ Scroll Container */
+.nutrition-scroll {
+  width: 100%;
+  overflow-x: auto !important;
+  overflow-y: hidden;
+  display: block;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Scrollbar Styling (Premium) */
+.nutrition-scroll::-webkit-scrollbar {
+  height: 6px;
+}
+
+.nutrition-scroll::-webkit-scrollbar-thumb {
+  background: #d8c2b2;
+  border-radius: 6px;
+}
+
+/* Table Base */
+.nutrition-table {
+  border-collapse: collapse;
+  width: 100%;
+  min-width: 680px; /* ✅ perfect for 4 columns */
+  font-size: 0.95rem;
+}
+
+/* Prevent Column Crushing */
+.nutrition-table th,
+.nutrition-table td {
+  padding: 13px 14px;
+  white-space: nowrap; /* ✅ stops wrapping */
+}
+
+/* Header Row */
+.nutrition-table thead th {
+  background: #f3e7dd;
+  color: #4b2f1f;
+  font-weight: 700;
+  text-align: left;
+}
+
+/* Center Align Numeric Columns */
+.nutrition-table th:nth-child(2),
+.nutrition-table td:nth-child(2),
+.nutrition-table th:nth-child(3),
+.nutrition-table td:nth-child(3),
+.nutrition-table th:nth-child(4),
+.nutrition-table td:nth-child(4) {
+  text-align: center;
+}
+
+/* Body Rows */
+.nutrition-table tbody td {
+  border-top: 1px solid #efe5dc;
+  color: #3d2b1f;
+}
+
+/* Soft Alternate Rows */
+.nutrition-table tbody tr:nth-child(even) td {
+  background: #fffdfb;
+}
+
+/* Nutrient Name Emphasis */
+.nutrition-table tbody td:first-child {
+  font-weight: 600;
+}
+
+/* Report Link */
+.nutrition-report-link {
+  margin-top: 14px;
+  font-size: 0.92rem;
+}
+
+.nutrition-report-link a {
+  color: #7a4a2d;
+  font-weight: 600;
+  text-decoration: none;
+  border-bottom: 1px dashed #c8a68f;
+  padding-bottom: 1px;
+}
+
+.nutrition-report-link a:hover {
+  color: #4b2f1f;
+  border-bottom: 1px solid #4b2f1f;
+}
+
+/* =========================================================
+   ✅ MOBILE OPTIMIZATION
+========================================================= */
+@media (max-width: 600px) {
+
+  /* Show swipe note only on mobile */
+  .scroll-note {
+    display: block;
+  }
+
+  /* Slightly smaller font */
+  .nutrition-table {
+    font-size: 0.88rem;
+  }
+
+  /* Reduce padding for compact view */
+  .nutrition-table th,
+  .nutrition-table td {
+    padding: 11px 12px;
+  }
+}
