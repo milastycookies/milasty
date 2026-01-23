@@ -349,3 +349,40 @@ table td:first-child {
   text-align: center;
 }
 
+
+/* ✅ Mobile Friendly Nutrition Table */
+.nutrition-scroll {
+  width: 100%;
+  overflow-x: auto;          /* allows horizontal scrolling */
+  -webkit-overflow-scrolling: touch;
+}
+
+.nutrition-table {
+  min-width: 520px;          /* prevents table from crushing */
+}
+
+/* Optional: Scroll hint styling */
+.nutrition-scroll::-webkit-scrollbar {
+  height: 6px;
+}
+
+.nutrition-scroll::-webkit-scrollbar-thumb {
+  background: #d8c2b2;
+  border-radius: 6px;
+}
+
+.scroll-note {
+  font-size: 0.82rem;
+  color: #8a6f5c;
+  margin-bottom: 8px;
+  text-align: center;
+  display: none;
+}
+
+/* Show note only on small screens */
+@media (max-width: 600px) {
+  .scroll-note {
+    display: block;
+  }
+}
+
