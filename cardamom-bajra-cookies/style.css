@@ -334,3 +334,15 @@ table td:first-child {
   color: #4b2f1f;
   border-bottom: 1px solid #4b2f1f;
 }
+
+.nutrition-table th,
+.nutrition-table td {
+  padding: 12px;
+}
+
+.nutrition-table th:nth-child(2),
+.nutrition-table td:nth-child(2),
+.nutrition-table th:nth-child(3),
+.nutrition-table td:nth-child(3) {
+  text-align: center;
+}
