@@ -186,7 +186,6 @@ table td:first-child {
 
 .card td:last-child {
   width: 30%;
-  text-align: right;
   white-space: nowrap;
 }
 
