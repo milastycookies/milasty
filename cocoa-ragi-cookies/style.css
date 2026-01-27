@@ -161,6 +161,43 @@ table td:first-child {
   font-weight: 600;
 }
 
+.product-card {
+  position: relative;
+  padding-bottom: 40px;
+}
+
+.mrp-note {
+  position: absolute;
+  bottom: 12px;
+  right: 18px;
+  font-size: 12px;
+  color: gray;
+  font-style: italic;
+}
+
+.card table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.card td:first-child {
+  width: 70%;
+  padding-right: 50px;
+}
+
+.card td:last-child {
+  width: 30%;
+  white-space: nowrap;
+}
+
+.pack-info {
+  font-size: 13px;
+  color: gray;
+  margin-top: 3px;
+}
+
+
+
 /* FSSAI block */
 .fssai-header {
   display: flex;
