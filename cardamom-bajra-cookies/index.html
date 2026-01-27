@@ -279,10 +279,12 @@
           Best Before 90 days from date of manufacture
         </li>
         <li>Store in a cool, dry place. Keep away from moisture.</li>
-    </section>
-    <p class="mrp-note">
+
+        <p class="mrp-note">
       *MRPs are inclusive of all taxes.
     </p>
+    </section>
+    
       
 
       <!-- FSSAI -->
@@ -326,11 +328,19 @@
   </div>
 </body>
 
-  <style>
+ <style>
+  .product-card {
+    position: relative;   /* Important */
+    padding-bottom: 30px; /* Space for the note */
+  }
+
   .mrp-note {
-    font-size: 13px;
+    position: absolute;
+    bottom: 10px;
+    right: 15px;
+    font-size: 12px;
     color: gray;
-    margin-top: 8px;
   }
 </style>
+
 </html>
