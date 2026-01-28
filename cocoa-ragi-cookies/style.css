@@ -427,3 +427,24 @@ table td:first-child {
     padding: 11px 12px;
   }
 }
+
+
+
+
+
+.back-home {
+  text-align: center;
+  margin-top: 30px;
+  font-size: 0.95rem;
+  color: #6b5a50;
+}
+
+.back-home a {
+  color: inherit;
+  text-decoration: underline;
+  font-weight: 500;
+}
+
+.back-home a:hover {
+  opacity: 0.75;
+}
