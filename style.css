@@ -357,27 +357,77 @@ a {
   margin-bottom: 16px;
 }
 
-/* ===============================
-   FOOTER – BRAND CLOSURE
-================================ */
+/* ----------------------------- */
+/*          MILASTY FOOTER        */
+/* ----------------------------- */
 
-footer {
+.site-footer {
+  padding: 55px 20px;
   text-align: center;
-  padding: 28px 16px;
-  color: var(--muted);
+  background: #fffaf3; /* warm bakery cream */
+  border-top: 1px solid rgba(0, 0, 0, 0.06);
 }
 
 .footer-brand {
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  color: var(--text);
-  margin-bottom: 4px;
+  font-size: 26px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  margin-bottom: 6px;
 }
 
 .footer-slogan {
-  font-size: 0.85rem;
+  font-size: 15px;
   opacity: 0.75;
+  margin-bottom: 18px;
 }
+
+.footer-social-line {
+  font-size: 14px;
+  margin-bottom: 18px;
+  color: rgba(0, 0, 0, 0.65);
+}
+
+/* Social Icons */
+.social-icons {
+  display: flex;
+  justify-content: center;
+  gap: 18px;
+  margin-bottom: 22px;
+}
+
+.social-icons a {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.03);
+  transition: all 0.25s ease;
+}
+
+.social-icons a svg {
+  fill: rgba(0, 0, 0, 0.75);
+  transition: all 0.25s ease;
+}
+
+/* Hover = MILASTY Premium Accent */
+.social-icons a:hover {
+  background: rgba(0, 0, 0, 0.06);
+  transform: translateY(-2px);
+}
+
+.social-icons a:hover svg {
+  fill: var(--primary);
+}
+
+/* Footer Note */
+.footer-note {
+  font-size: 13px;
+  opacity: 0.55;
+  margin-top: 10px;
+}
+
 
 
 /* ===============================
