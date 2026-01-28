@@ -435,7 +435,7 @@ table td:first-child {
 .back-home {
   text-align: center;
   margin-top: 8px;
-  font-size: 0.4rem;
+  font-size: 0.2rem;
   color: #6b5a50;
 }
 
@@ -455,5 +455,5 @@ table td:first-child {
 
 
 .back-home a:hover {
-  opacity: 0.75;
+  opacity: 0.4;
 }
