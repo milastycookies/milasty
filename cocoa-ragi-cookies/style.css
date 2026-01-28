@@ -445,6 +445,15 @@ table td:first-child {
   font-weight: 500;
 }
 
+.back-home a {
+  background: none !important;
+  padding: 0 !important;
+  border-radius: 0 !important;
+  display: inline !important;
+  text-decoration: underline;
+}
+
+
 .back-home a:hover {
   opacity: 0.75;
 }
