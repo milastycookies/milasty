@@ -361,6 +361,44 @@ a {
   margin-bottom: 16px;
 }
 
+
+
+/* ===============================
+   FAQs
+================================ */
+.faq {
+  margin-top: 60px;
+}
+
+.faq h2 {
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+.faq-item {
+  background: #fff;
+  border-radius: 14px;
+  padding: 18px 20px;
+  margin-bottom: 14px;
+  box-shadow: 0 6px 14px rgba(0,0,0,0.05);
+}
+
+.faq-item h3 {
+  font-size: 1rem;
+  margin-bottom: 6px;
+  color: var(--primary);
+}
+
+.faq-item p {
+  font-size: 0.92rem;
+  color: #444;
+  margin: 0;
+  line-height: 1.5;
+}
+
+
+
+
 /* ----------------------------- */
 /*          MILASTY FOOTER        */
 /* ----------------------------- */
