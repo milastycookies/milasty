@@ -442,7 +442,8 @@ table td:first-child {
 .back-home a {
   color: inherit;
   text-decoration: underline;
-  font-weight: 200;
+  font-weight: 300;
+  font-size: 0.4rem;
 }
 
 .back-home a {
