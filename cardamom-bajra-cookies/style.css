@@ -442,3 +442,33 @@ table td:first-child {
     padding: 11px 12px;
   }
 }
+
+
+
+
+.back-home {
+  text-align: center;
+  margin-top: 8px;
+  font-size: 0.2rem;
+  color: #6b5a50;
+}
+
+.back-home a {
+  color: inherit;
+  text-decoration: underline;
+  font-weight: 300;
+  font-size: 0.75rem;
+}
+
+.back-home a {
+  background: none !important;
+  padding: 0 !important;
+  border-radius: 0 !important;
+  display: inline !important;
+  text-decoration: underline;
+}
+
+
+.back-home a:hover {
+  opacity: 0.4;
+}
