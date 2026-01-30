@@ -234,6 +234,17 @@ a {
 
 
 
+.brand-meaning {
+  white-space: nowrap;
+}
+
+@media (max-width: 480px) {
+  .brand-meaning {
+    font-size: 1.15rem;
+  }
+}
+
+
 
 
 
