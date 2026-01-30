@@ -148,8 +148,10 @@ a {
   font-weight: 800;
   letter-spacing: 6px;
 
-  color: white;
-  text-shadow: 0 6px 22px rgba(0,0,0,0.65);
+  color: white !important;
+
+  /* Premium shadow for readability */
+  text-shadow: 0 6px 20px rgba(0, 0, 0, 0.7);
 }
 
 
@@ -203,6 +205,15 @@ a {
 
   text-shadow: -2px -2px 8px rgba(0, 0, 0, 0.65);
 }
+
+.brand-meaning {
+  display: inline-block;
+  padding: 8px 18px;
+  border-radius: 20px;
+
+  background: rgba(255,255,255,0.12);
+}
+
 
 
 
