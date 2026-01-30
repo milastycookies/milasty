@@ -285,6 +285,16 @@ a {
 }
 
 
+@media (max-width: 600px) {
+  .hero-price {
+    font-size: 0.82rem;      /* smaller text */
+    padding: 6px 14px;      /* tighter badge */
+    margin: 14px 0 18px;    /* less vertical space */
+    opacity: 0.95;
+  }
+}
+
+
 
 
 /* ===============================
