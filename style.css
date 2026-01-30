@@ -121,7 +121,7 @@ a {
   inset: 0;
 
   /* Premium soft dark overlay */
-  background: rgba(0, 0, 0, 0.25);
+  background: rgba(0, 0, 0, 0.22);
 }
 
 
@@ -129,16 +129,17 @@ a {
 
 
 .hero-content {
-  background: rgba(255, 255, 255, 0.12);
-  backdrop-filter: blur(6px);
+  background: rgba(255, 255, 255, 0.14);
+  backdrop-filter: blur(10px);
 
-  padding: 60px 50px;
-  border-radius: 28px;
+  border-radius: 30px;
+  padding: 70px 60px;
 
-  border: 1px solid rgba(255, 255, 255, 0.25);
+  border: 1px solid rgba(255,255,255,0.25);
 
-  max-width: 720px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.25);
 }
+
 
 
 
@@ -148,17 +149,20 @@ a {
   letter-spacing: 6px;
 
   color: white;
-  text-shadow: 0 6px 18px rgba(0,0,0,0.6);
+  text-shadow: 0 6px 22px rgba(0,0,0,0.65);
 }
+
 
 
 .hero-description {
-  font-size: 1.25rem;
-  line-height: 1.7;
-  color: rgba(255,255,255,0.92);
+  font-size: 1.35rem;
+  line-height: 1.8;
+  max-width: 600px;
+  margin: 20px auto;
 
-  margin-top: 18px;
+  color: rgba(255,255,255,0.95);
 }
+
 
 
 .hero-features {
@@ -176,20 +180,22 @@ a {
 }
 
 .btn-primary {
-  background: #d8a24a; /* millet gold */
+  background: linear-gradient(90deg, #d8a24a, #c98b2c);
   color: white;
   border: none;
+
+  box-shadow: 0 8px 22px rgba(0,0,0,0.25);
 }
 
 .btn-secondary {
-  background: transparent;
-  border: 1.5px solid white;
+  border: 1.5px solid rgba(255,255,255,0.85);
   color: white;
 }
 
 .btn-secondary:hover {
   background: rgba(255,255,255,0.15);
 }
+
 
 
 .hero-content p {
