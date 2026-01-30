@@ -94,6 +94,47 @@ a {
 }
 
 
+
+.hero {
+  position: relative;
+  min-height: 90vh;
+
+  background-image: url("images/HERO_1.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding: 60px 20px;
+}
+
+
+
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+
+  background: rgba(0, 0, 0, 0.55);
+}
+
+
+
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+
+  text-align: center;
+  color: white;
+  max-width: 800px;
+}
+
+
+
 /* ===============================
    BUTTONS
 ================================ */
