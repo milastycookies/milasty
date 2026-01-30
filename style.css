@@ -60,6 +60,7 @@ a {
   margin: 0 auto 14px;
 }
 
+
 .hero-features {
   font-size: 0.85rem;
   color: var(--muted);
@@ -119,33 +120,77 @@ a {
   position: absolute;
   inset: 0;
 
-  /* light fade effect */
-  background: rgba(255, 255, 255, 0.45);
+  /* Premium soft dark overlay */
+  background: rgba(0, 0, 0, 0.25);
 }
+
 
 
 
 
 .hero-content {
-  position: relative;
-  z-index: 2;
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(6px);
 
-  text-align: center;
-  max-width: 900px;
-  color: white;
+  padding: 60px 50px;
+  border-radius: 28px;
+
+  border: 1px solid rgba(255, 255, 255, 0.25);
+
+  max-width: 720px;
 }
+
 
 
 .brand-name {
-  font-size: 4.5rem;
+  font-size: 5rem;
   font-weight: 800;
-  letter-spacing: 3px;
+  letter-spacing: 6px;
 
   color: white;
-
-  /* Shadow at -45 degree */
-  text-shadow: -4px -4px 10px rgba(0, 0, 0, 0.75);
+  text-shadow: 0 6px 18px rgba(0,0,0,0.6);
 }
+
+
+.hero-description {
+  font-size: 1.25rem;
+  line-height: 1.7;
+  color: rgba(255,255,255,0.92);
+
+  margin-top: 18px;
+}
+
+
+.hero-features {
+  font-size: 0.95rem;
+  opacity: 0.85;
+  margin-top: 20px;
+}
+
+
+.btn {
+  padding: 14px 32px;
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.btn-primary {
+  background: #d8a24a; /* millet gold */
+  color: white;
+  border: none;
+}
+
+.btn-secondary {
+  background: transparent;
+  border: 1.5px solid white;
+  color: white;
+}
+
+.btn-secondary:hover {
+  background: rgba(255,255,255,0.15);
+}
+
 
 .hero-content p {
   color: white;
