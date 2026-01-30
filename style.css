@@ -168,9 +168,10 @@ a {
 
 
 .hero-features {
-  font-size: 0.95rem;
-  opacity: 0.85;
+  font-size: 0.9rem;
+  opacity: 0.75;
   margin-top: 20px;
+   line-height: 1.6;
 }
 
 
@@ -179,6 +180,11 @@ a {
   border-radius: 999px;
   font-weight: 600;
   font-size: 1rem;
+   transition: all 0.25s ease;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
 }
 
 .btn-primary {
