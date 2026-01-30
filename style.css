@@ -210,6 +210,59 @@ a {
   }
 }
 
+/* ===============================
+   HERO – MOBILE FIX
+================================ */
+@media (max-width: 600px) {
+
+  /* Make hero card smaller */
+  .hero-content {
+    padding: 45px 22px;
+    border-radius: 22px;
+  }
+
+  /* Reduce brand name size */
+  .brand-name {
+    font-size: 2.6rem;
+    letter-spacing: 4px;
+  }
+
+  /* Tagline: force single line by shrinking */
+  .brand-meaning {
+    font-size: 1.05rem;
+    padding: 8px 16px;
+    white-space: nowrap;
+  }
+
+  /* Description text more compact */
+  .hero-description {
+    font-size: 1.05rem;
+    line-height: 1.6;
+    margin-bottom: 16px;
+  }
+
+  /* Features smaller */
+  .hero-features {
+    font-size: 0.82rem;
+    line-height: 1.5;
+    margin-bottom: 14px;
+  }
+
+  .hero-note {
+    font-size: 0.82rem;
+    margin-bottom: 22px;
+  }
+
+  /* Buttons full width but tighter */
+  .btn {
+    width: 100%;
+    max-width: 280px;
+    margin: 8px auto;
+    padding: 13px 18px;
+    font-size: 0.95rem;
+  }
+}
+
 
 
 
