@@ -252,15 +252,20 @@ body {
   text-align: center;
   padding: 70px 20px;
 
-  background: #f3e6d6;  /* golden chocolate */
-  border-top: 1px solid rgba(0,0,0,0.08);
+  background: linear-gradient(
+    180deg,
+    #5a3522,
+    #3b1f14
+  );
+
+  border-top: 1px solid rgba(255,255,255,0.12);
 }
 
 .nutrition-footer h2 {
   font-size: 1.8rem;
   font-weight: 700;
   margin-bottom: 14px;
-  color: #2a1a12;
+  color: white;
 }
 
 .nutrition-footer p {
@@ -269,8 +274,27 @@ body {
 
   font-size: 1rem;
   line-height: 1.7;
-  color: rgba(42, 26, 18, 0.78);
+  color: rgba(255, 255, 255, 0.82);
 }
+
+.back-btn {
+  display: inline-block;
+  margin-top: 25px;
+
+  padding: 12px 22px;
+  border-radius: 999px;
+
+  border: 1px solid rgba(255,255,255,0.35);
+  text-decoration: none;
+
+  font-weight: 600;
+  color: white;
+}
+
+.back-btn:hover {
+  background: rgba(255,255,255,0.12);
+}
+
 
 
 
