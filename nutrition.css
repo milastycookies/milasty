@@ -178,3 +178,89 @@ body {
     padding: 22px;
   }
 }
+
+
+/* ===============================
+   Nutrition Page Hero Banner
+================================ */
+
+.nutrition-hero {
+  position: relative;
+  min-height: 70vh;
+
+  background-image: url("images/HERO_2.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 80px 20px;
+  text-align: center;
+}
+
+/* Soft Overlay */
+.nutrition-overlay {
+  position: absolute;
+  inset: 0;
+
+  background: rgba(0, 0, 0, 0.25);
+}
+
+/* Glass Content Box */
+.nutrition-hero-content {
+  position: relative;
+  z-index: 2;
+
+  max-width: 750px;
+  padding: 60px 55px;
+
+  border-radius: 28px;
+
+  background: rgba(255, 255, 255, 0.14);
+  backdrop-filter: blur(10px);
+
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  box-shadow: 0 25px 70px rgba(0,0,0,0.30);
+
+  color: white;
+}
+
+/* Title Styling */
+.nutrition-hero-content h1 {
+  font-size: clamp(2.4rem, 5vw, 3.6rem);
+  font-weight: 800;
+  margin-bottom: 18px;
+
+  text-shadow: 0 6px 18px rgba(0,0,0,0.65);
+}
+
+/* Subtitle Text */
+.nutrition-hero-content p {
+  font-size: 1.15rem;
+  line-height: 1.7;
+
+  opacity: 0.92;
+  text-shadow: 0 3px 12px rgba(0,0,0,0.55);
+}
+
+
+
+@media (max-width: 600px) {
+
+  .nutrition-hero {
+    min-height: 60vh;
+    padding: 60px 18px;
+  }
+
+  .nutrition-hero-content {
+    padding: 45px 22px;
+    border-radius: 20px;
+  }
+
+  .nutrition-hero-content p {
+    font-size: 1.05rem;
+  }
+}
