@@ -248,6 +248,32 @@ body {
 
 
 
+.nutrition-footer {
+  text-align: center;
+  padding: 70px 20px;
+
+  background: #f3e6d6;  /* golden chocolate */
+  border-top: 1px solid rgba(0,0,0,0.08);
+}
+
+.nutrition-footer h2 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-bottom: 14px;
+  color: #2a1a12;
+}
+
+.nutrition-footer p {
+  max-width: 700px;
+  margin: auto;
+
+  font-size: 1rem;
+  line-height: 1.7;
+  color: rgba(42, 26, 18, 0.78);
+}
+
+
+
 @media (max-width: 600px) {
 
   .nutrition-hero {
