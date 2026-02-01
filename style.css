@@ -1028,3 +1028,79 @@ a {
     text-align: left;            /* desktop left-aligned */
   }
 }
+
+
+
+
+
+/* ===============================
+   MILASTY FLOATING WHATSAPP BUTTON
+================================ */
+
+.whatsapp-float {
+  position: fixed;
+  bottom: 18px;
+  right: 18px;
+  z-index: 999;
+
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  background: var(--primary); /* MILASTY earthy brown */
+  color: white;
+
+  padding: 14px 18px;
+  border-radius: 999px;
+
+  font-size: 0.95rem;
+  font-weight: 600;
+
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+
+  transition: all 0.25s ease;
+}
+
+/* Hover effect (Premium) */
+.whatsapp-float:hover {
+  transform: translateY(-3px);
+  background: #5a3f25; /* slightly darker chocolate */
+}
+
+/* Icon styling */
+.whatsapp-float svg {
+  flex-shrink: 0;
+}
+
+/* Text label */
+.whatsapp-text {
+  white-space: nowrap;
+}
+
+/* ===============================
+   MOBILE VERSION (Icon Only)
+================================ */
+
+@media (max-width: 600px) {
+
+  .whatsapp-float {
+    width: 56px;
+    height: 56px;
+
+    padding: 0;
+    border-radius: 50%;
+
+    justify-content: center;
+  }
+
+  /* Hide text on mobile */
+  .whatsapp-text {
+    display: none;
+  }
+
+  /* Icon slightly bigger */
+  .whatsapp-float svg {
+    width: 26px;
+    height: 26px;
+  }
+}
