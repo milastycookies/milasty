@@ -608,6 +608,13 @@ a {
   padding: 26px;              /* same padding feel as ingredients */
 }
 
+@media (min-width: 768px) {
+  .homepage-story {
+    margin-bottom: 60px;
+  }
+}
+
+
 /* Keep text readable like ingredients */
 .homepage-story p {
   line-height: 1.75;
