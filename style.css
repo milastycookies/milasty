@@ -457,8 +457,8 @@ a {
 }
 
 .pack-card p {
-  font-size: 1rem;
-  font-weight: 600;
+  font-size: 1.05rem;
+  font-weight: 700;
   margin-bottom: 6px;
 }
 
@@ -472,6 +472,12 @@ a {
   font-size: 0.85rem;
   opacity: 0.75;
 }
+
+.pack-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.06);
+}
+
 
 
 /* ===============================
