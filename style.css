@@ -871,6 +871,39 @@ a {
 }
 
 
+
+/* Footer Links Styling */
+.footer-links a {
+  display: inline-block;
+  padding: 6px 10px;
+
+  color: rgba(0, 0, 0, 0.72);
+  font-weight: 500;
+
+  position: relative;
+  transition: all 0.25s ease;
+}
+
+/* Premium Hover */
+.footer-links a:hover {
+  color: var(--primary);
+}
+
+.footer-links a:hover::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 2px;
+
+  width: 100%;
+  height: 1.5px;
+
+  background: var(--primary);
+  border-radius: 2px;
+}
+
+
+
 /* ===============================
    DESKTOP / TABLET
 ================================ */
