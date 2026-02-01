@@ -612,8 +612,10 @@ a {
 .site-footer {
   padding: 55px 20px;
   text-align: center;
-  background: #fffaf3; /* warm bakery cream */
-  border-top: 1px solid rgba(0, 0, 0, 0.06);
+
+  background: #e6c7a8; /* light chocolate brown */
+
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
 }
 
 .footer-brand {
