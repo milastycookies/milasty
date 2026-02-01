@@ -678,6 +678,13 @@ a {
   margin-top: 10px;
 }
 
+.social-icons a {
+  background: rgba(255, 255, 255, 0.4);
+}
+
+.social-icons a:hover {
+  background: rgba(255, 255, 255, 0.6);
+}
 
 
 /* ===============================
