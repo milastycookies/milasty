@@ -1158,3 +1158,72 @@ a {
     height: 26px;
   }
 }
+
+
+
+
+/* =========================================
+   CONTACT / ABOUT PAGE HERO (CLEAN VERSION)
+========================================= */
+
+.page-hero {
+  background-image: url("images/HERO_1.webp");
+  background-size: cover;
+  background-position: center;
+  padding: 90px 20px;
+  text-align: center;
+  position: relative;
+}
+
+/* Soft overlay for readability */
+.page-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+}
+
+/* Hero Content Box */
+.page-hero-content {
+  position: relative;
+  max-width: 850px;
+  margin: auto;
+  color: white;
+  z-index: 2;
+}
+
+.page-hero-content h1 {
+  font-size: 3rem;
+  font-weight: 800;
+  margin-bottom: 14px;
+}
+
+.page-subtitle {
+  font-size: 1.2rem;
+  opacity: 0.9;
+  margin-bottom: 18px;
+}
+
+.page-intro {
+  font-size: 1.05rem;
+  line-height: 1.7;
+  opacity: 0.92;
+  max-width: 720px;
+  margin: auto;
+}
+
+/* Mobile Responsive */
+@media (max-width: 600px) {
+  .page-hero {
+    padding: 70px 18px;
+  }
+
+  .page-hero-content h1 {
+    font-size: 2.3rem;
+  }
+
+  .page-intro {
+    font-size: 1rem;
+  }
+}
+
