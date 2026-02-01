@@ -4,43 +4,57 @@
   <url>
     <loc>https://milasty.com/</loc>
     <priority>1.0</priority>
-    <lastmod>2026-01-29</lastmod>
+    <changefreq>weekly</changefreq>
+    <lastmod>2026-02-01</lastmod>
   </url>
 
   <url>
     <loc>https://milasty.com/cardamom-bajra-cookies/</loc>
     <priority>0.9</priority>
-    <lastmod>2026-01-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <lastmod>2026-02-01</lastmod>
   </url>
 
   <url>
     <loc>https://milasty.com/coconut-jowar-cookies/</loc>
     <priority>0.9</priority>
-    <lastmod>2026-01-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <lastmod>2026-02-01</lastmod>
   </url>
 
   <url>
     <loc>https://milasty.com/cocoa-ragi-cookies/</loc>
     <priority>0.9</priority>
-    <lastmod>2026-01-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <lastmod>2026-02-01</lastmod>
   </url>
 
   <url>
     <loc>https://milasty.com/our-story.html</loc>
     <priority>0.8</priority>
-    <lastmod>2026-01-29</lastmod>
+    <changefreq>yearly</changefreq>
+    <lastmod>2026-02-01</lastmod>
   </url>
 
   <url>
     <loc>https://milasty.com/about.html</loc>
     <priority>0.8</priority>
-    <lastmod>2026-01-29</lastmod>
+    <changefreq>yearly</changefreq>
+    <lastmod>2026-02-01</lastmod>
   </url>
 
   <url>
     <loc>https://milasty.com/contact.html</loc>
     <priority>0.8</priority>
-    <lastmod>2026-01-29</lastmod>
+    <changefreq>yearly</changefreq>
+    <lastmod>2026-02-01</lastmod>
+  </url>
+
+  <url>
+    <loc>https://milasty.com/nutrition.html</loc>
+    <priority>0.7</priority>
+    <changefreq>yearly</changefreq>
+    <lastmod>2026-02-01</lastmod>
   </url>
 
 </urlset>
