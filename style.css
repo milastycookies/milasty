@@ -478,10 +478,12 @@ a {
 /* Grid Layout */
 .mood-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  grid-template-columns: repeat(3, 1fr);
   gap: 22px;
-  margin-top: 10px;
+  margin-top: 30px;
+  justify-content: center;
 }
+
 
 /* Card Styling */
 .mood-card {
@@ -572,6 +574,19 @@ a {
     padding: 22px 18px;
   }
 }
+
+@media (max-width: 900px) {
+  .mood-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .mood-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
 
 
 
