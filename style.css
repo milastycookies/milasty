@@ -644,6 +644,13 @@ a {
 }
 
 
+.mood-note {
+  margin-top: 28px;
+  font-size: 0.95rem;
+  color: #666;
+  text-align: center;
+  font-style: italic;
+}
 
 
 /* ===============================
