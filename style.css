@@ -475,17 +475,19 @@ a {
   line-height: 1.6;
 }
 
-/* Grid Layout */
+/* GRID LAYOUT */
+
 .mood-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 22px;
-  margin-top: 30px;
-  justify-content: center;
+
+  max-width: 1100px;
+  margin: 30px auto 0;
 }
 
+/* CARD STYLING */
 
-/* Card Styling */
 .mood-card {
   background: #faf6f0; /* warm creamy beige */
   border: 1px solid rgba(0, 0, 0, 0.06);
@@ -495,54 +497,12 @@ a {
 
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.04);
   transition: all 0.28s ease;
+
   position: relative;
   overflow: hidden;
 }
 
-/* Soft Premium Hover */
-.mood-card:hover {
-  transform: translateY(-7px);
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
-}
-
-/* Card Headings */
-.mood-card h3 {
-  font-size: 1.12rem;
-  font-weight: 700;
-  margin-bottom: 10px;
-  color: var(--primary);
-}
-
-/* Card Text */
-.mood-card p {
-  font-size: 0.97rem;
-  color: #444;
-  line-height: 1.55;
-  margin-bottom: 16px;
-}
-
-/* Highlight Product Name */
-.mood-card p strong {
-  font-weight: 700;
-  color: #2e2e2e;
-}
-
-/* Link Styling */
-.mood-card a {
-  font-weight: 600;
-  font-size: 0.95rem;
-  color: var(--accent);
-  text-decoration: none;
-  display: inline-block;
-  transition: 0.2s ease;
-}
-
-.mood-card a:hover {
-  color: var(--primary);
-  text-decoration: underline;
-}
-
-/* Subtle Decorative Glow */
+/* Decorative Accent Glow */
 .mood-card::before {
   content: "";
   position: absolute;
@@ -550,20 +510,96 @@ a {
   right: -50%;
   width: 180px;
   height: 180px;
-  background: rgba(192, 122, 58, 0.09); /* accent glow */
+  background: rgba(192, 122, 58, 0.09);
   border-radius: 50%;
   filter: blur(45px);
 }
 
+/* Hover Effect (Desktop Only) */
+.mood-card:hover {
+  transform: translateY(-7px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+}
+
+/* Disable Hover Lift on Touch Devices */
+@media (hover: none) {
+  .mood-card:hover {
+    transform: none;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.04);
+  }
+}
+
+/* TEXT + TYPOGRAPHY */
+
+.mood-card h3 {
+  font-size: 1.12rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: var(--primary);
+}
+
+.mood-card p {
+  font-size: 0.97rem;
+  color: #444;
+  line-height: 1.55;
+  margin-bottom: 16px;
+}
+
+.mood-card p strong {
+  font-weight: 700;
+  color: #2e2e2e;
+}
+
+/* TAG BADGES (GenZ Style)*/
+
+.mood-tag {
+  display: inline-block;
+  font-size: 0.75rem;
+  padding: 5px 10px;
+  border-radius: 12px;
+  margin-bottom: 10px;
+  font-weight: 600;
+
+  background: rgba(192, 122, 58, 0.15);
+  color: var(--primary);
+}
+
+/* Trio Tag */
+.mood-card:nth-child(4) .mood-tag {
+  background: rgba(120, 180, 90, 0.15);
+  color: #2f5d2f;
+}
+
+/* Royal Tag */
+.mood-card:nth-child(5) .mood-tag {
+  background: rgba(192, 122, 58, 0.15);
+  color: var(--primary);
+}
+
+/* Imperial Tag */
+.mood-card:nth-child(6) .mood-tag {
+  background: rgba(80, 60, 150, 0.15);
+  color: #3c2e70;
+}
+
+
+
+/* CTA BUTTON LINKS */
 
 .mood-card a {
   display: inline-block;
   margin-top: 10px;
   padding: 9px 14px;
   border-radius: 14px;
-  background: rgba(192, 122, 58, 0.10);
+
+  font-size: 0.95rem;
   font-weight: 600;
-  transition: 0.25s;
+  text-decoration: none;
+
+  background: rgba(192, 122, 58, 0.10);
+  color: var(--primary);
+
+  transition: 0.25s ease;
 }
 
 .mood-card a:hover {
@@ -571,37 +607,17 @@ a {
   transform: translateY(-2px);
 }
 
-.mood-tag {
-  display: inline-block;
-  font-size: 0.75rem;
-  padding: 5px 10px;
-  border-radius: 12px;
-  background: rgba(192, 122, 58, 0.15);
-  color: var(--primary);
-  margin-bottom: 10px;
-  font-weight: 600;
+
+/* RESPONSIVE BREAKPOINTS*/
+
+/* Tablet */
+@media (max-width: 900px) {
+  .mood-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
-/* Trio */
-.mood-card:nth-child(4) .mood-tag {
-  background: rgba(120, 180, 90, 0.15);
-  color: #2f5d2f;
-}
-
-/* Royal */
-.mood-card:nth-child(5) .mood-tag {
-  background: rgba(192, 122, 58, 0.15);
-  color: var(--primary);
-}
-
-/* Imperial */
-.mood-card:nth-child(6) .mood-tag {
-  background: rgba(80, 60, 150, 0.15);
-  color: #3c2e70;
-}
-
-
-/* Mobile Optimization */
+/* Mobile */
 @media (max-width: 600px) {
   .mood-section {
     padding: 55px 18px;
@@ -616,149 +632,12 @@ a {
     margin-bottom: 30px;
   }
 
+  .mood-grid {
+    grid-template-columns: 1fr;
+  }
+
   .mood-card {
     padding: 22px 18px;
-  }
-}
-
-@media (max-width: 900px) {
-  .mood-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (max-width: 600px) {
-  .mood-grid {
-    grid-template-columns: 1fr;
-  }
-}
-
-
-
-
-/* ===============================
-   UNIVERSAL PACK SIZE SECTION
-================================ */
-
-.pack-section {
-  text-align: center;
-}
-
-.pack-subtext {
-  font-size: 0.95rem;
-  color: var(--muted);
-  margin-bottom: 20px;
-}
-
-.pack-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
-  gap: 16px;
-  margin-top: 20px;
-}
-
-.pack-card {
-  background: var(--secondary);
-  border: 1px solid var(--border);
-  border-radius: 16px;
-  padding: 18px;
-  transition: transform 0.2s ease;
-}
-
-.pack-card:hover {
-  transform: translateY(-3px);
-}
-
-.pack-card h3 {
-  font-size: 1.05rem;
-  color: var(--primary);
-  margin-bottom: 6px;
-}
-
-.pack-card p {
-  font-size: 1.05rem;
-  font-weight: 700;
-  margin-bottom: 6px;
-}
-
-.pack-card span {
-  font-size: 0.85rem;
-  color: rgba(0,0,0,0.65);
-}
-
-.pack-note {
-  margin-top: 18px;
-  font-size: 0.85rem;
-  opacity: 0.75;
-}
-
-.pack-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 10px 25px rgba(0,0,0,0.06);
-}
-
-.delivery-line {
-  font-size: 0.9rem;
-  color: rgba(0, 0, 0, 0.65);
-  margin-top: 14px;
-  text-align: center;
-}
-
-
-/* ===============================
-   PACK SECTION – MOBILE POLISH
-================================ */
-
-@media (max-width: 520px) {
-
-  .pack-section h2 {
-    font-size: 1.45rem;
-  }
-
-  .pack-subtext {
-    font-size: 0.9rem;
-    margin-bottom: 16px;
-  }
-
-  .pack-grid {
-    grid-template-columns: 1fr;
-    gap: 14px;
-  }
-
-  .pack-card {
-    padding: 15px;
-  }
-
-  .pack-card p {
-    font-size: 1.1rem;
-    font-weight: 700;
-  }
-}
-
-@media (max-width: 520px) {
-
-  .pack-section {
-    padding-left: 18px;
-    padding-right: 18px;
-  }
-
-  .pack-grid {
-    gap: 16px;
-  }
-
-  .pack-card {
-    padding: 18px;
-    border-radius: 18px;
-  }
-}
-
-@media (max-width: 600px) {
-  .delivery-line {
-    font-size: 0.85rem;      /* slightly smaller */
-    line-height: 1.5;        /* better readability */
-    padding: 0 18px;         /* side breathing space */
-    margin-top: 12px;
-    opacity: 0.8;
   }
 }
 
