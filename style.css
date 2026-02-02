@@ -662,6 +662,136 @@ a {
 }
 
 
+
+/* ===============================
+   UNIVERSAL PACK SIZE SECTION
+================================ */
+
+.pack-section {
+  text-align: center;
+}
+
+.pack-subtext {
+  font-size: 0.95rem;
+  color: var(--muted);
+  margin-bottom: 20px;
+}
+
+.pack-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 16px;
+  margin-top: 20px;
+}
+
+.pack-card {
+  background: var(--secondary);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 18px;
+  transition: transform 0.2s ease;
+}
+
+.pack-card:hover {
+  transform: translateY(-3px);
+}
+
+.pack-card h3 {
+  font-size: 1.05rem;
+  color: var(--primary);
+  margin-bottom: 6px;
+}
+
+.pack-card p {
+  font-size: 1.05rem;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+
+.pack-card span {
+  font-size: 0.85rem;
+  color: rgba(0,0,0,0.65);
+}
+
+.pack-note {
+  margin-top: 18px;
+  font-size: 0.85rem;
+  opacity: 0.75;
+}
+
+.pack-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.06);
+}
+
+.delivery-line {
+  font-size: 0.9rem;
+  color: rgba(0, 0, 0, 0.65);
+  margin-top: 14px;
+  text-align: center;
+}
+
+
+/* ===============================
+   PACK SECTION – MOBILE POLISH
+================================ */
+
+@media (max-width: 520px) {
+
+  .pack-section h2 {
+    font-size: 1.45rem;
+  }
+
+  .pack-subtext {
+    font-size: 0.9rem;
+    margin-bottom: 16px;
+  }
+
+  .pack-grid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .pack-card {
+    padding: 15px;
+  }
+
+  .pack-card p {
+    font-size: 1.1rem;
+    font-weight: 700;
+  }
+}
+
+@media (max-width: 520px) {
+
+  .pack-section {
+    padding-left: 18px;
+    padding-right: 18px;
+  }
+
+  .pack-grid {
+    gap: 16px;
+  }
+
+  .pack-card {
+    padding: 18px;
+    border-radius: 18px;
+  }
+}
+
+@media (max-width: 600px) {
+  .delivery-line {
+    font-size: 0.85rem;      /* slightly smaller */
+    line-height: 1.5;        /* better readability */
+    padding: 0 18px;         /* side breathing space */
+    margin-top: 12px;
+    opacity: 0.8;
+  }
+}
+
+
+
+
 /* ===============================
    GOOGLE REVIEWS – PREMIUM BLOCK
 ================================ */
