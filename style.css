@@ -564,23 +564,23 @@ a {
   color: var(--primary);
 }
 
-/* Trio Tag */
+/* 🌱 Starter Ritual — Fresh Green */
 .mood-card:nth-child(4) .mood-tag {
-  background: rgba(120, 180, 90, 0.15);
-  color: #2f5d2f;
+  background: rgba(120, 180, 90, 0.22);
+  color: #245024;
 }
 
-/* Royal Tag */
+/* 🎁 Gift-Ready — Elegant Outline Stamp */
 .mood-card:nth-child(5) .mood-tag {
-  background: rgba(240, 220, 190, 0.70);
+  background: transparent;
+  border: 1px solid rgba(192, 122, 58, 0.55);
   color: #6b4e2e;
 }
 
-
-/* Imperial Tag */
+/* 👑 Wedding-Worth It — Gold Luxury Fill */
 .mood-card:nth-child(6) .mood-tag {
-  background: rgba(255, 200, 120, 0.28);
-  color: #6b4e2e;
+  background: rgba(255, 200, 120, 0.45);
+  color: #5a3b1c;
 }
 
 
