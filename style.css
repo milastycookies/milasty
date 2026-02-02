@@ -451,6 +451,131 @@ a {
 
 
 /* ===============================
+   MILASTY MOMENT SECTION (PREMIUM)
+================================ */
+
+.mood-section {
+  padding: 70px 0;
+  text-align: center;
+}
+
+.mood-section h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--primary);
+  margin-bottom: 12px;
+  letter-spacing: 0.4px;
+}
+
+.mood-subtext {
+  font-size: 1.05rem;
+  color: #555;
+  max-width: 650px;
+  margin: 0 auto 45px;
+  line-height: 1.6;
+}
+
+/* Grid Layout */
+.mood-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 22px;
+  margin-top: 10px;
+}
+
+/* Card Styling */
+.mood-card {
+  background: #faf6f0; /* warm creamy beige */
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  border-radius: 22px;
+  padding: 26px 22px;
+  text-align: left;
+
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.04);
+  transition: all 0.28s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Soft Premium Hover */
+.mood-card:hover {
+  transform: translateY(-7px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+}
+
+/* Card Headings */
+.mood-card h3 {
+  font-size: 1.12rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: var(--primary);
+}
+
+/* Card Text */
+.mood-card p {
+  font-size: 0.97rem;
+  color: #444;
+  line-height: 1.55;
+  margin-bottom: 16px;
+}
+
+/* Highlight Product Name */
+.mood-card p strong {
+  font-weight: 700;
+  color: #2e2e2e;
+}
+
+/* Link Styling */
+.mood-card a {
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--accent);
+  text-decoration: none;
+  display: inline-block;
+  transition: 0.2s ease;
+}
+
+.mood-card a:hover {
+  color: var(--primary);
+  text-decoration: underline;
+}
+
+/* Subtle Decorative Glow */
+.mood-card::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  right: -50%;
+  width: 180px;
+  height: 180px;
+  background: rgba(192, 122, 58, 0.09); /* accent glow */
+  border-radius: 50%;
+  filter: blur(45px);
+}
+
+/* Mobile Optimization */
+@media (max-width: 600px) {
+  .mood-section {
+    padding: 55px 18px;
+  }
+
+  .mood-section h2 {
+    font-size: 1.6rem;
+  }
+
+  .mood-subtext {
+    font-size: 0.98rem;
+    margin-bottom: 30px;
+  }
+
+  .mood-card {
+    padding: 22px 18px;
+  }
+}
+
+
+
+/* ===============================
    UNIVERSAL PACK SIZE SECTION
 ================================ */
 
