@@ -578,7 +578,26 @@ a {
   border-radius: 12px;
   background: rgba(192, 122, 58, 0.15);
   color: var(--primary);
-  margin-bottom: 8px;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+/* Trio */
+.mood-card:nth-child(4) .mood-tag {
+  background: rgba(120, 180, 90, 0.15);
+  color: #2f5d2f;
+}
+
+/* Royal */
+.mood-card:nth-child(5) .mood-tag {
+  background: rgba(192, 122, 58, 0.15);
+  color: var(--primary);
+}
+
+/* Imperial */
+.mood-card:nth-child(6) .mood-tag {
+  background: rgba(80, 60, 150, 0.15);
+  color: #3c2e70;
 }
 
 
