@@ -451,6 +451,219 @@ a {
 
 
 /* ===============================
+   MILASTY MOMENT SECTION (PREMIUM)
+================================ */
+
+.mood-section {
+  padding: 70px 0;
+  text-align: center;
+}
+
+.mood-section h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--primary);
+  margin-bottom: 12px;
+  letter-spacing: 0.4px;
+}
+
+.mood-subtext {
+  font-size: 1.05rem;
+  color: #555;
+  max-width: 650px;
+  margin: 0 auto 45px;
+  line-height: 1.6;
+}
+
+/* GRID LAYOUT */
+
+.mood-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+
+  max-width: 1100px;
+  margin: 30px auto 0;
+}
+
+/* CARD STYLING */
+
+.mood-card {
+  background: #faf6f0; /* warm creamy beige */
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  border-radius: 22px;
+  padding: 26px 22px;
+  text-align: left;
+
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.04);
+  transition: all 0.28s ease;
+
+  position: relative;
+  overflow: hidden;
+}
+
+/* Decorative Accent Glow */
+.mood-card::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  right: -50%;
+  width: 180px;
+  height: 180px;
+  background: rgba(192, 122, 58, 0.09);
+  border-radius: 50%;
+  filter: blur(45px);
+}
+
+/* Hover Effect (Desktop Only) */
+.mood-card:hover {
+  transform: translateY(-7px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+}
+
+/* Disable Hover Lift on Touch Devices */
+@media (hover: none) {
+  .mood-card:hover {
+    transform: none;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.04);
+  }
+}
+
+/* TEXT + TYPOGRAPHY */
+
+.mood-card h3 {
+  font-size: 1.12rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: var(--primary);
+}
+
+.mood-card p {
+  font-size: 0.97rem;
+  color: #444;
+  line-height: 1.55;
+  margin-bottom: 16px;
+}
+
+.mood-card p strong {
+  font-weight: 700;
+  color: #2e2e2e;
+}
+
+/* TAG BADGES (GenZ Style)*/
+
+.mood-tag {
+  display: inline-block;
+  font-size: 0.75rem;
+  padding: 5px 10px;
+  border-radius: 12px;
+  margin-bottom: 10px;
+  font-weight: 600;
+
+  background: rgba(192, 122, 58, 0.15);
+  color: var(--primary);
+}
+
+/* 🌱 Starter Ritual — Fresh Green */
+.mood-card:nth-child(4) .mood-tag {
+  background: rgba(120, 180, 90, 0.22);
+  color: #245024;
+}
+
+/* 🎁 Gift-Ready — Elegant Outline Stamp */
+.mood-card:nth-child(5) .mood-tag {
+  background: transparent;
+  border: 1px solid rgba(192, 122, 58, 0.55);
+  color: #6b4e2e;
+}
+
+/* 👑 Wedding-Worth It — Gold Luxury Fill */
+.mood-card:nth-child(6) .mood-tag {
+  background: rgba(255, 200, 120, 0.45);
+  color: #5a3b1c;
+}
+
+
+
+.mood-card:nth-child(4),
+.mood-card:nth-child(5),
+.mood-card:nth-child(6) {
+  border: 1.3px solid rgba(192, 122, 58, 0.20);
+  background: #fffaf4;
+}
+
+
+
+
+/* CTA BUTTON LINKS */
+
+.mood-card a {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 9px 14px;
+  border-radius: 14px;
+
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-decoration: none;
+
+  background: rgba(192, 122, 58, 0.10);
+  color: var(--primary);
+
+  transition: 0.25s ease;
+}
+
+.mood-card a:hover {
+  background: rgba(192, 122, 58, 0.20);
+  transform: translateY(-2px);
+}
+
+
+/* RESPONSIVE BREAKPOINTS*/
+
+/* Tablet */
+@media (max-width: 900px) {
+  .mood-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  .mood-section {
+    padding: 55px 18px;
+  }
+
+  .mood-section h2 {
+    font-size: 1.6rem;
+  }
+
+  .mood-subtext {
+    font-size: 0.98rem;
+    margin-bottom: 30px;
+  }
+
+  .mood-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .mood-card {
+    padding: 22px 18px;
+  }
+}
+
+
+.mood-note {
+  margin-top: 28px;
+  font-size: 0.95rem;
+  color: #666;
+  text-align: center;
+  font-style: italic;
+}
+
+
+
+/* ===============================
    UNIVERSAL PACK SIZE SECTION
 ================================ */
 
