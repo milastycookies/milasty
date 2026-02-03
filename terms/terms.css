@@ -176,45 +176,52 @@ body {
   font-size: 0.92rem;
 }
 
+/* Brand line */
 .footer-brand {
   margin: 0;
   font-size: 0.95rem;
   opacity: 0.95;
 }
 
+/* Links row */
 .footer-links {
-  margin: 12px 0 18px;
+  margin: 14px 0 18px;
   display: flex;
   justify-content: center;
-  gap: 10px;
+  gap: 8px;
   flex-wrap: wrap;
 }
 
 .footer-links a {
-  color: #ffd7a8;
+  color: #ffd7a8 !important;   /* ✅ Fix purple links */
   text-decoration: none;
   font-weight: 500;
 }
 
+.footer-links a:visited {
+  color: #ffd7a8 !important;   /* ✅ Prevent visited purple */
+}
+
 .footer-links a:hover {
   text-decoration: underline;
+  opacity: 0.9;
 }
 
 .footer-links span {
-  opacity: 0.5;
+  color: rgba(255, 255, 255, 0.5);
 }
 
-/* FSSAI */
+/* FSSAI block */
 .footer-fssai {
+  margin-top: 8px;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 6px;
-  margin-top: 10px;
 }
 
 .fssai-logo {
-  width: 90px;
+  width: 85px;
   height: auto;
 }
 
@@ -222,7 +229,6 @@ body {
   margin: 0;
   font-size: 0.85rem;
   opacity: 0.85;
-  line-height: 1.4;
 }
 
 /* ===============================
