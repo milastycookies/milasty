@@ -223,6 +223,19 @@ body {
   display: block;
   margin: auto;
 }
+/* ✅ Footer Logo Top Center */
+.footer-logo-wrap {
+  margin-bottom: 14px;
+}
+
+.footer-logo {
+  width: 85px;       /* Premium size */
+  height: auto;
+  display: block;
+  margin: 0 auto;
+  opacity: 0.97;
+}
+
 
 .fssai-number {
   font-size: 0.85rem;
