@@ -1135,118 +1135,145 @@ a {
 
 
 
-/* ----------------------------- */
-/*          MILASTY FOOTER        */
-/* ----------------------------- */
+/* ===============================
+   FOOTER UPGRADE (HOMEPAGE)
+================================ */
 
 .site-footer {
-  padding: 55px 20px;
+  background: #f8f3eb;
   text-align: center;
-
-  background: #e6c7a8; /* light chocolate brown */
-
-  border-top: 1px solid rgba(0, 0, 0, 0.08);
+  padding: 55px 18px;
+  color: #2e2e2e;
 }
 
 .footer-brand {
-  font-size: 26px;
+  font-size: 1.4rem;
   font-weight: 700;
-  letter-spacing: 1px;
+  color: #6b4e2e;
   margin-bottom: 6px;
 }
 
 .footer-slogan {
-  font-size: 15px;
+  font-size: 0.95rem;
   opacity: 0.75;
   margin-bottom: 18px;
 }
 
-.footer-social-line {
-  font-size: 14px;
-  margin-bottom: 18px;
-  color: rgba(0, 0, 0, 0.65);
+.footer-about {
+  max-width: 520px;
+  margin: auto;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  opacity: 0.85;
 }
 
-/* Social Icons */
+/* ✅ Staggered Links Grid */
+.footer-links-grid {
+  margin: 28px auto;
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+  gap: 14px 40px;
+  justify-content: center;
+}
+
+.footer-links-grid a {
+  text-decoration: none;
+  font-weight: 600;
+  color: #6b4e2e;
+  opacity: 0.9;
+  transition: 0.2s;
+}
+
+.footer-links-grid a:hover {
+  opacity: 1;
+  text-decoration: underline;
+}
+
+/* ✅ Social Line */
+.footer-social-line {
+  margin-top: 25px;
+  font-size: 0.95rem;
+  opacity: 0.8;
+}
+
+/* Social icons */
 .social-icons {
+  margin-top: 15px;
   display: flex;
   justify-content: center;
   gap: 18px;
-  margin-bottom: 22px;
 }
 
 .social-icons a {
-  width: 42px;
-  height: 42px;
-  border-radius: 50%;
+  color: #6b4e2e;
+  opacity: 0.85;
+}
+
+.social-icons a:hover {
+  opacity: 1;
+}
+
+/* ✅ FSSAI Trust Badge */
+.footer-fssai {
+  margin-top: 35px;
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  background: rgba(0, 0, 0, 0.03);
-  transition: all 0.25s ease;
+  gap: 8px;
 }
 
-.social-icons a svg {
-  fill: rgba(0, 0, 0, 0.75);
-  transition: all 0.25s ease;
+.fssai-logo {
+  width: 85px;
+  height: auto;
+  opacity: 0.95;
 }
 
-/* Hover = MILASTY Premium Accent */
-.social-icons a:hover {
-  background: rgba(0, 0, 0, 0.06);
-  transform: translateY(-2px);
+.fssai-text {
+  margin: 0;
+  font-size: 0.85rem;
+  opacity: 0.75;
+  line-height: 1.4;
 }
 
-.social-icons a:hover svg {
-  fill: var(--primary);
-}
-
-/* Footer Note */
+/* Bottom Note */
 .footer-note {
-  font-size: 13px;
-  opacity: 0.55;
-  margin-top: 10px;
+  margin-top: 30px;
+  font-size: 0.9rem;
+  opacity: 0.7;
 }
 
-.social-icons a {
-  background: rgba(255, 255, 255, 0.4);
+.footer-note a {
+  color: #6b4e2e;
+  font-weight: 600;
+  text-decoration: none;
 }
 
-.social-icons a:hover {
-  background: rgba(255, 255, 255, 0.6);
+.footer-note a:hover {
+  text-decoration: underline;
+}
+
+/* Copyright */
+.footer-copy {
+  margin-top: 18px;
+  font-size: 0.85rem;
+  opacity: 0.6;
+}
+
+/* ✅ Mobile Footer Layout */
+@media (max-width: 650px) {
+
+  .footer-links-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .fssai-logo {
+    width: 70px;
+  }
 }
 
 
 
-/* Footer Links Styling */
-.footer-links a {
-  display: inline-block;
-  padding: 6px 10px;
-
-  color: rgba(0, 0, 0, 0.72);
-  font-weight: 500;
-
-  position: relative;
-  transition: all 0.25s ease;
-}
-
-/* Premium Hover */
-.footer-links a:hover {
-  color: var(--primary);
-}
-
-.footer-links a:hover::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: 2px;
-
-  width: 100%;
-  height: 1.5px;
-
-  background: var(--primary);
-  border-radius: 2px;
-}
 
 
 
