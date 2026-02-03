@@ -342,3 +342,9 @@ body {
   }
 }
 
+@media (max-width: 650px) {
+
+  .footer-logo {
+    width: 70px;  /* Smaller on mobile */
+  }
+}
