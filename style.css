@@ -1136,19 +1136,21 @@ a {
 
 
 /* ===============================
-   FOOTER UPGRADE (HOMEPAGE)
+   FOOTER (HOMEPAGE FINAL PREMIUM)
 ================================ */
 
 .site-footer {
   background: #f8f3eb;
   text-align: center;
-  padding: 55px 18px;
+  padding: 45px 18px;
   color: #2e2e2e;
 }
 
+/* Brand */
 .footer-brand {
-  font-size: 1.4rem;
+  font-size: 1.45rem;
   font-weight: 700;
+  letter-spacing: 1px;
   color: #6b4e2e;
   margin-bottom: 6px;
 }
@@ -1167,29 +1169,37 @@ a {
   opacity: 0.85;
 }
 
-/* ✅ Staggered Links Grid */
+/* ✅ Links Grid (Desktop) */
 .footer-links-grid {
   margin: 28px auto;
   display: grid;
   grid-template-columns: repeat(2, auto);
-  gap: 14px 40px;
+  gap: 14px 45px;
   justify-content: center;
 }
 
+/* Link styling */
 .footer-links-grid a {
   text-decoration: none;
   font-weight: 600;
+  font-size: 0.95rem;
   color: #6b4e2e;
   opacity: 0.9;
-  transition: 0.2s;
+  transition: 0.2s ease;
 }
 
 .footer-links-grid a:hover {
   opacity: 1;
   text-decoration: underline;
+  transform: translateY(-1px);
 }
 
-/* ✅ Social Line */
+/* ✅ Center last item ("Shipping") nicely */
+.footer-links-grid a:last-child {
+  grid-column: span 2;
+}
+
+/* Social line */
 .footer-social-line {
   margin-top: 25px;
   font-size: 0.95rem;
@@ -1207,6 +1217,7 @@ a {
 .social-icons a {
   color: #6b4e2e;
   opacity: 0.85;
+  transition: 0.2s ease;
 }
 
 .social-icons a:hover {
@@ -1215,15 +1226,15 @@ a {
 
 /* ✅ FSSAI Trust Badge */
 .footer-fssai {
-  margin-top: 35px;
+  margin-top: 28px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 8px;
+  gap: 6px;
 }
 
 .fssai-logo {
-  width: 85px;
+  width: 70px;
   height: auto;
   opacity: 0.95;
 }
@@ -1235,9 +1246,9 @@ a {
   line-height: 1.4;
 }
 
-/* Bottom Note */
+/* Footer note */
 .footer-note {
-  margin-top: 30px;
+  margin-top: 26px;
   font-size: 0.9rem;
   opacity: 0.7;
 }
@@ -1259,87 +1270,32 @@ a {
   opacity: 0.6;
 }
 
-/* ✅ Mobile Footer Layout */
+/* ===============================
+   ✅ MOBILE PREMIUM ADJUSTMENTS
+================================ */
 @media (max-width: 650px) {
 
+  /* Keep 2-column staggered grid */
   .footer-links-grid {
-    grid-template-columns: 1fr;
-    gap: 12px;
-  }
-
-  .fssai-logo {
-    width: 70px;
-  }
-}
-
-
-
-.footer-fssai {
-  margin-top: 30px;
-  text-align: center;
-}
-
-.fssai-logo {
-  width: 70px !important;
-  height: auto !important;
-  margin: 0 auto 8px;
-}
-
-.fssai-text {
-  font-size: 0.85rem;
-  opacity: 0.75;
-  line-height: 1.4;
-}
-
-
-
-.footer-links-grid a {
-  font-size: 0.95rem;
-}
-
-
-.footer-links-grid a:hover {
-  opacity: 1;
-  transform: translateY(-1px);
-}
-
-
-.footer-brand {
-  letter-spacing: 1px;
-}
-
-
-.site-footer {
-  padding: 45px 18px;
-}
-
-
-@media (max-width: 650px) {
-
-  /* ✅ Keep 2-column staggered layout */
-  .footer-links-grid {
-    grid-template-columns: repeat(2, auto) !important;
-    gap: 12px 30px !important;
-    justify-content: center !important;
-    text-align: center;
+    grid-template-columns: repeat(2, auto);
+    gap: 12px 30px;
   }
 
   .footer-links-grid a {
-    font-size: 0.95rem !important;
-    display: block;
+    font-size: 0.95rem;
   }
 
-  /* ✅ Fix FSSAI logo size */
+  /* Smaller FSSAI on mobile */
   .fssai-logo {
-    width: 60px !important;
-    height: auto !important;
+    width: 55px;
   }
 
-  /* ✅ Reduce footer padding */
+  /* Reduce padding */
   .site-footer {
-    padding: 38px 16px !important;
+    padding: 38px 16px;
   }
 }
+
 
 
 
