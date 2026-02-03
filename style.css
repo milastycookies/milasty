@@ -1274,6 +1274,24 @@ a {
 
 
 
+.footer-fssai {
+  margin-top: 30px;
+  text-align: center;
+}
+
+.fssai-logo {
+  width: 70px !important;
+  height: auto !important;
+  margin: 0 auto 8px;
+}
+
+.fssai-text {
+  font-size: 0.85rem;
+  opacity: 0.75;
+  line-height: 1.4;
+}
+
+
 
 
 
