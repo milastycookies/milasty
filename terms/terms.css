@@ -234,73 +234,55 @@ body {
 ================================ */
 @media (max-width: 650px) {
 
-  /* ✅ Header stays in one line */
+  /* ✅ FORCE HEADER INTO ONE LINE */
   .site-header {
-    position: relative;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    padding: 16px 18px;
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+
+    padding: 16px 18px !important;
+    position: relative !important;
   }
 
-  /* ✅ Center Logo */
+  /* ✅ Keep Logo Center */
   .logo {
-    flex: 1;
-    text-align: center;
+    flex: 1 !important;
+    text-align: center !important;
   }
 
-  /* ✅ Show Hamburger Top Right */
+  /* ✅ FORCE HAMBURGER TOP RIGHT */
   .menu-toggle {
-    display: block;
-    position: absolute;
-    right: 18px;
-    top: 18px;
+    display: block !important;
+    position: absolute !important;
+    right: 18px !important;
+    top: 18px !important;
+    z-index: 2000 !important;
   }
 
-  /* ✅ Mobile Dropdown Menu */
+  /* ✅ Dropdown Menu */
   .nav-links {
-    display: none;
-    flex-direction: column;
-    background: var(--primary);
+    display: none !important;
+    flex-direction: column !important;
+    background: var(--primary) !important;
 
-    position: absolute;
-    top: 70px;
-    left: 0;
-    width: 100%;
+    position: absolute !important;
+    top: 70px !important;
+    left: 0 !important;
+    width: 100% !important;
 
-    padding: 14px 0;
-    border-radius: 0 0 14px 14px;
-    text-align: center;
-    z-index: 999;
+    padding: 14px 0 !important;
+    text-align: center !important;
+    border-radius: 0 0 14px 14px !important;
+    z-index: 1500 !important;
   }
 
-  /* ✅ Show Menu When Active */
   .nav-links.active {
-    display: flex;
+    display: flex !important;
   }
 
   .nav-links a {
-    margin: 0;
-    padding: 12px 0;
-    font-size: 1rem;
-  }
-
-  /* Hero Scaling */
-  .page-title h1 {
-    font-size: 1.6rem;
-  }
-
-  .page-title p {
-    font-size: 0.95rem;
-  }
-
-  /* Card Padding */
-  .policy-card {
-    padding: 18px;
-  }
-
-  /* Smaller FSSAI Logo */
-  .fssai-logo {
-    width: 70px;
+    padding: 12px 0 !important;
+    margin: 0 !important;
   }
 }
