@@ -419,7 +419,7 @@ a {
 }
 
 .brand-stamp img {
-  width: 200px !important;
+  width: 240px !important;
   height: auto !important;
   display: block !important;
 
@@ -432,8 +432,8 @@ a {
 
 .brand-stamp p {
   margin-top: 12px !important;
-  font-size: 1.4rem !important;
-  font-weight: 900 !important;
+  font-size: 1.6rem !important;
+  font-weight: 1100 !important;
   color: #6b4e2e !important;
   opacity: 0.85 !important;
 }
@@ -441,7 +441,7 @@ a {
 /* ✅ Mobile Size Fix */
 @media (max-width: 650px) {
   .brand-stamp img {
-    width: 120px !important;
+    width: 150px !important;
   }
 
   .brand-stamp p {
