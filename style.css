@@ -1299,6 +1299,79 @@ a {
 
 
 
+@media (max-width: 650px) {
+
+  /* ✅ Make footer tighter */
+  .site-footer {
+    padding: 32px 18px !important;
+  }
+
+  /* ✅ Premium Link Grid */
+  .footer-links-grid {
+    grid-template-columns: 1fr 1fr !important; /* 2-column grid */
+    gap: 14px 22px !important;
+    margin-top: 22px !important;
+  }
+
+  .footer-links-grid a {
+    font-size: 0.95rem !important;
+    font-weight: 600;
+    padding: 10px 0;
+    border-radius: 10px;
+    background: rgba(107, 78, 46, 0.06); /* soft premium highlight */
+  }
+
+  /* ✅ Softer hover/tap feel */
+  .footer-links-grid a:active {
+    transform: scale(0.98);
+  }
+
+  /* ✅ Social icons larger */
+  .social-icons {
+    gap: 20px !important;
+    margin-top: 18px !important;
+  }
+
+  .social-icons a svg {
+    width: 24px;
+    height: 24px;
+    opacity: 0.9;
+  }
+
+  /* ✅ FSSAI block looks like a trust card */
+  .footer-fssai {
+    margin-top: 28px !important;
+    padding: 14px 12px;
+    border-radius: 14px;
+    background: rgba(107, 78, 46, 0.05);
+    display: inline-block;
+  }
+
+  .fssai-logo {
+    width: 55px !important;
+    margin-bottom: 6px;
+  }
+
+  .fssai-text {
+    font-size: 0.82rem !important;
+    opacity: 0.8;
+  }
+
+  /* ✅ Bottom note smaller */
+  .footer-note {
+    font-size: 0.85rem !important;
+    line-height: 1.5;
+    margin-top: 22px !important;
+  }
+}
+
+
+.footer-fssai {
+  border-top: 1px solid rgba(107, 78, 46, 0.15);
+}
+
+
+
 /* ===============================
    DESKTOP / TABLET
 ================================ */
