@@ -1169,6 +1169,7 @@ a {
   opacity: 0.85;
 }
 
+
 /* ✅ Links Grid (Desktop) */
 .footer-links-grid {
   margin: 28px auto;
@@ -1192,6 +1193,8 @@ a {
   opacity: 1;
   text-decoration: underline;
   transform: translateY(-1px);
+  background: rgba(107, 78, 46, 0.08);
+  border-radius: 10px;
 }
 
 /* ✅ Center last item ("Shipping") */
@@ -1199,12 +1202,14 @@ a {
   grid-column: span 2;
 }
 
+
 /* Social line */
 .footer-social-line {
   margin-top: 25px;
   font-size: 0.95rem;
   opacity: 0.8;
 }
+
 
 /* Social icons */
 .social-icons {
@@ -1216,7 +1221,7 @@ a {
 
 .social-icons a {
   color: #6b4e2e;
-  opacity: 0.85;
+  opacity: 0.75;
   transition: 0.2s ease;
 }
 
@@ -1224,11 +1229,20 @@ a {
   opacity: 1;
 }
 
-/* ✅ FSSAI Trust Badge */
+
+/* ===============================
+   ✅ FSSAI TRUST BADGE (FIXED)
+================================ */
+
 .footer-fssai {
-  margin-top: 28px;
-  padding: 14px 12px;
-  border-radius: 14px;
+  margin: 30px auto 0;
+  padding: 16px 18px;
+
+  /* ✅ KEY FIX: Prevent Banner Stretch */
+  width: fit-content;
+  max-width: 320px;
+
+  border-radius: 16px;
   background: rgba(107, 78, 46, 0.05);
 
   display: flex;
@@ -1240,19 +1254,20 @@ a {
 }
 
 .fssai-logo {
-  width: 55px !important;
-  height: auto !important;
+  width: 60px;
+  height: auto;
   display: block;
   margin: 0 auto 6px;
+  opacity: 0.95;
 }
-
 
 .fssai-text {
   margin: 0;
   font-size: 0.85rem;
-  opacity: 0.75;
+  opacity: 0.78;
   line-height: 1.4;
 }
+
 
 /* Footer note */
 .footer-note {
@@ -1272,6 +1287,7 @@ a {
   text-decoration: underline;
 }
 
+
 /* Copyright */
 .footer-copy {
   margin-top: 18px;
@@ -1279,9 +1295,11 @@ a {
   opacity: 0.6;
 }
 
+
 /* ===============================
    ✅ MOBILE PREMIUM OPTIMIZATION
 ================================ */
+
 @media (max-width: 650px) {
 
   .site-footer {
@@ -1311,7 +1329,12 @@ a {
     height: 24px;
   }
 
-  /* Smaller FSSAI */
+  /* ✅ Compact FSSAI Badge Mobile */
+  .footer-fssai {
+    max-width: 260px;
+    padding: 14px 14px;
+  }
+
   .fssai-logo {
     width: 55px;
   }
@@ -1324,22 +1347,6 @@ a {
     font-size: 0.85rem;
     margin-top: 22px;
   }
-}
-
-
-
-
-.footer-links-grid a:hover {
-  background: rgba(107, 78, 46, 0.10);
-}
-
-
-.social-icons a {
-  opacity: 0.75;
-}
-
-.social-icons a:hover {
-  opacity: 1;
 }
 
 
