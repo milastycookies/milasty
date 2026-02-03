@@ -195,3 +195,82 @@ body {
     font-size: 1.6rem;
   }
 }
+
+
+
+/* ===============================
+   PREMIUM FOOTER (MILASTY STYLE)
+================================ */
+.site-footer {
+  background: #5a3f24;
+  color: white;
+  text-align: center;
+  padding: 26px 14px;
+  font-size: 0.92rem;
+}
+
+/* Brand line */
+.footer-brand {
+  margin: 0;
+  font-size: 0.95rem;
+  opacity: 0.95;
+}
+
+/* Links row */
+.footer-links {
+  margin: 12px 0 18px;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.footer-links a {
+  color: #ffd7a8;
+  text-decoration: none;
+  font-weight: 500;
+  transition: 0.2s ease;
+}
+
+.footer-links a:hover {
+  text-decoration: underline;
+  opacity: 1;
+}
+
+.footer-links span {
+  opacity: 0.5;
+}
+
+/* FSSAI block */
+.footer-fssai {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  margin-top: 10px;
+}
+
+.fssai-logo {
+  width: 90px;      /* Perfect premium size */
+  height: auto;
+  opacity: 0.95;
+}
+
+.fssai-text {
+  margin: 0;
+  font-size: 0.85rem;
+  opacity: 0.85;
+  line-height: 1.4;
+}
+
+/* Mobile adjustments */
+@media (max-width: 600px) {
+  .fssai-logo {
+    width: 75px;
+  }
+
+  .footer-brand {
+    font-size: 0.9rem;
+  }
+}
+
