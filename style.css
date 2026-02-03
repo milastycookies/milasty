@@ -406,17 +406,32 @@ a {
 
 
 
+/* ===============================
+   MILASTY BRAND STAMP (FIXED)
+================================ */
+
 .brand-stamp {
-  text-align: center;
-  padding: 55px 20px 25px;
+  width: 100%;
+  display: flex;
+  justify-content: center;   /* ✅ Centers inner block */
+  padding: 55px 20px 30px;
 }
 
+.brand-stamp-inner {
+  text-align: center;
+}
+
+/* ✅ Logo size controlled */
 .brand-stamp img {
-  width: 115px;
+  width: 110px;        /* Desktop ideal */
+  max-width: 100%;
   height: auto;
+  display: block;
+  margin: 0 auto;      /* ✅ Forces center */
   opacity: 0.96;
 }
 
+/* Tagline under logo */
 .brand-stamp p {
   margin-top: 12px;
   font-size: 1rem;
@@ -425,15 +440,18 @@ a {
   opacity: 0.85;
 }
 
+/* ✅ Mobile Fix: Smaller Logo */
 @media (max-width: 650px) {
   .brand-stamp img {
-    width: 90px;
+    width: 80px;       /* Perfect mobile size */
   }
 
   .brand-stamp p {
-    font-size: 0.95rem;
+    font-size: 0.92rem;
+    line-height: 1.4;
   }
 }
+
 
 
 
