@@ -1227,20 +1227,25 @@ a {
 /* ✅ FSSAI Trust Badge */
 .footer-fssai {
   margin-top: 28px;
-  padding-top: 18px;
-  border-top: 1px solid rgba(107, 78, 46, 0.15);
+  padding: 14px 12px;
+  border-radius: 14px;
+  background: rgba(107, 78, 46, 0.05);
 
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 6px;
+  justify-content: center;
+
+  text-align: center;
 }
 
 .fssai-logo {
-  width: 70px;
-  height: auto;
-  opacity: 0.95;
+  width: 55px !important;
+  height: auto !important;
+  display: block;
+  margin: 0 auto 6px;
 }
+
 
 .fssai-text {
   margin: 0;
@@ -1321,6 +1326,21 @@ a {
   }
 }
 
+
+
+
+.footer-links-grid a:hover {
+  background: rgba(107, 78, 46, 0.10);
+}
+
+
+.social-icons a {
+  opacity: 0.75;
+}
+
+.social-icons a:hover {
+  opacity: 1;
+}
 
 
 
