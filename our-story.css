@@ -173,3 +173,76 @@
   font-size: 0.85rem;
   opacity: 0.85;
 }
+
+
+
+/* =========================================
+   ✅ STORY PAGE CTA (Unique + Premium)
+========================================= */
+
+.story-cta {
+  background: #F3E6D6;
+  color: #6b4e2e;
+  text-align: center;
+
+  padding: 70px 20px;
+  margin-top: 60px;
+
+  border-top: 1px solid rgba(107, 78, 46, 0.12);
+}
+
+/* CTA Heading */
+.story-cta h2 {
+  font-size: 1.9rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+  color: #6b4e2e;
+}
+
+/* ✅ CTA Button */
+.story-cta-btn {
+  display: inline-block;
+
+  background: #6b4e2e;
+  color: white;
+
+  padding: 14px 34px;
+  border-radius: 30px;
+
+  font-size: 1rem;
+  font-weight: 600;
+  text-decoration: none;
+
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+  transition: all 0.25s ease;
+}
+
+/* Hover */
+.story-cta-btn:hover {
+  background: #563b22;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.18);
+}
+
+/* Mobile Tap */
+.story-cta-btn:active {
+  transform: scale(0.97);
+}
+
+/* ✅ Mobile Responsive */
+@media (max-width: 650px) {
+
+  .story-cta {
+    padding: 55px 18px;
+  }
+
+  .story-cta h2 {
+    font-size: 1.55rem;
+  }
+
+  .story-cta-btn {
+    width: 85%;
+    max-width: 280px;
+    padding: 14px 0;
+  }
+}
