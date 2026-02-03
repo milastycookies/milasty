@@ -231,5 +231,24 @@
     
   </footer>
 
+
+
+  <script>
+    const toggleBtn = document.getElementById("menuToggle");
+    const navMenu = document.getElementById("navMenu");
+  
+    toggleBtn.addEventListener("click", () => {
+      navMenu.classList.toggle("active");
+      toggleBtn.classList.toggle("open");
+    });
+  
+    document.querySelectorAll(".nav-links a").forEach(link => {
+      link.addEventListener("click", () => {
+        navMenu.classList.remove("active");
+        toggleBtn.classList.remove("open");
+      });
+    });
+  </script>
+
 </body>
 </html>
