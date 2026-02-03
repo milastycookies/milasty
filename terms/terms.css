@@ -11,6 +11,9 @@
   --border: rgba(0, 0, 0, 0.08);
 }
 
+/* ===============================
+   GLOBAL RESET
+================================ */
 body {
   margin: 0;
   font-family: "Segoe UI", sans-serif;
@@ -25,20 +28,23 @@ body {
 .site-header {
   background: var(--primary);
   color: white;
+
   display: flex;
   justify-content: space-between;
   align-items: center;
+
   padding: 16px 24px;
 }
 
+/* Logo */
 .logo a {
   color: white;
-  font-size: 1.5rem;
+  font-size: 1.7rem;
   font-weight: bold;
   text-decoration: none;
 }
 
-/* Desktop nav */
+/* Desktop Navigation */
 .nav-links {
   display: flex;
 }
@@ -61,7 +67,7 @@ body {
    HAMBURGER BUTTON
 ================================ */
 .menu-toggle {
-  display: none;
+  display: none; /* Hidden on desktop */
   background: none;
   border: none;
   cursor: pointer;
@@ -73,8 +79,21 @@ body {
   height: 3px;
   margin: 5px;
   background: white;
-  border-radius: 5px;
+  border-radius: 6px;
   transition: 0.3s ease;
+}
+
+/* Hamburger → X Animation */
+.menu-toggle.open span:nth-child(1) {
+  transform: rotate(45deg) translate(6px, 6px);
+}
+
+.menu-toggle.open span:nth-child(2) {
+  opacity: 0;
+}
+
+.menu-toggle.open span:nth-child(3) {
+  transform: rotate(-45deg) translate(6px, -6px);
 }
 
 /* ===============================
@@ -82,7 +101,7 @@ body {
 ================================ */
 .page-title {
   text-align: center;
-  padding: 32px 16px;
+  padding: 34px 16px;
 }
 
 .page-title h1 {
@@ -93,15 +112,16 @@ body {
 
 .page-title p {
   color: var(--muted);
+  font-size: 1rem;
 }
 
 /* ===============================
-   CONTENT CARD
+   MAIN CONTENT
 ================================ */
 .container {
   max-width: 900px;
   margin: auto;
-  padding: 0 16px 40px;
+  padding: 0 16px 45px;
 }
 
 .policy-card {
@@ -122,7 +142,7 @@ body {
    SECTIONS
 ================================ */
 .section {
-  margin-bottom: 26px;
+  margin-bottom: 28px;
 }
 
 .section h2 {
@@ -151,7 +171,7 @@ body {
 
 /* Contact Box */
 .contact-box {
-  margin-top: 30px;
+  margin-top: 35px;
   padding: 18px;
   border-radius: 16px;
   background: var(--primary);
@@ -166,94 +186,74 @@ body {
 }
 
 /* ===============================
-   PREMIUM FOOTER
+   FOOTER (MILASTY PREMIUM)
 ================================ */
 .site-footer {
-  background: #5a3f24;
+  background: #5a3f24; /* MILASTY dark chocolate */
   color: white;
   text-align: center;
-  padding: 26px 14px;
+  padding: 30px 14px;
   font-size: 0.92rem;
 }
 
-/* Brand line */
-.footer-brand {
-  margin: 0;
-  font-size: 0.95rem;
-  opacity: 0.95;
-}
-
-/* Links row */
-.footer-links {
-  margin: 14px 0 18px;
-  display: flex;
-  justify-content: center;
-  gap: 8px;
-  flex-wrap: wrap;
-}
-
-.footer-links a {
-  color: #ffd7a8 !important;   /* ✅ Fix purple links */
-  text-decoration: none;
+/* Footer Links */
+.site-footer a {
+  color: #ffd7a8 !important;
   font-weight: 500;
+  text-decoration: none;
 }
 
-.footer-links a:visited {
-  color: #ffd7a8 !important;   /* ✅ Prevent visited purple */
+.site-footer a:visited {
+  color: #ffd7a8 !important; /* Prevent purple visited links */
 }
 
-.footer-links a:hover {
+.site-footer a:hover {
   text-decoration: underline;
   opacity: 0.9;
 }
 
-.footer-links span {
-  color: rgba(255, 255, 255, 0.5);
-}
-
-/* FSSAI block */
+/* FSSAI Block */
 .footer-fssai {
-  margin-top: 8px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 6px;
+  margin-top: 18px;
 }
 
 .fssai-logo {
   width: 85px;
   height: auto;
+  display: block;
+  margin: auto;
 }
 
-.fssai-text {
-  margin: 0;
+.fssai-number {
   font-size: 0.85rem;
   opacity: 0.85;
 }
 
 /* ===============================
-   ✅ MOBILE RESPONSIVE + HAMBURGER
+   ✅ MOBILE RESPONSIVE + MENU
 ================================ */
 @media (max-width: 650px) {
 
-  /* Show hamburger */
+  /* Show Hamburger */
   .menu-toggle {
     display: block;
   }
 
-  /* Hide desktop menu */
+  /* Hide Desktop Menu */
   .nav-links {
     display: none;
     flex-direction: column;
     width: 100%;
+
     background: var(--primary);
-    padding: 12px 0;
-    margin-top: 12px;
-    border-radius: 12px;
+    padding: 14px 0;
+    margin-top: 14px;
+    border-radius: 14px;
+
     text-align: center;
   }
 
-  /* Show menu when active */
+  /* Show Menu When Active */
   .nav-links.active {
     display: flex;
   }
@@ -264,36 +264,29 @@ body {
     font-size: 1rem;
   }
 
-  /* Header layout */
+  /* Header Stacks */
   .site-header {
     flex-direction: column;
-    align-items: center;
     gap: 10px;
-  }
-
-  /* Hamburger → X animation */
-  .menu-toggle.open span:nth-child(1) {
-    transform: rotate(45deg) translate(6px, 6px);
-  }
-
-  .menu-toggle.open span:nth-child(2) {
-    opacity: 0;
-  }
-
-  .menu-toggle.open span:nth-child(3) {
-    transform: rotate(-45deg) translate(6px, -6px);
-  }
-
-  /* Page scaling */
-  .policy-card {
     padding: 18px;
   }
 
+  /* Hero Text Scaling */
   .page-title h1 {
     font-size: 1.6rem;
   }
 
+  .page-title p {
+    font-size: 0.95rem;
+  }
+
+  /* Card Padding */
+  .policy-card {
+    padding: 18px;
+  }
+
+  /* Smaller FSSAI Logo */
   .fssai-logo {
-    width: 75px;
+    width: 70px;
   }
 }
