@@ -1293,6 +1293,27 @@ a {
 
 
 
+.footer-links-grid a {
+  font-size: 0.95rem;
+}
+
+
+.footer-links-grid a:hover {
+  opacity: 1;
+  transform: translateY(-1px);
+}
+
+
+.footer-brand {
+  letter-spacing: 1px;
+}
+
+
+.site-footer {
+  padding: 45px 18px;
+}
+
+
 
 
 /* ===============================
