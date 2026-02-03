@@ -23,7 +23,7 @@ body {
 }
 
 /* ===============================
-   HEADER
+   HEADER (DESKTOP)
 ================================ */
 .site-header {
   background: var(--primary);
@@ -64,10 +64,10 @@ body {
 }
 
 /* ===============================
-   HAMBURGER BUTTON
+   HAMBURGER BUTTON (DEFAULT HIDDEN)
 ================================ */
 .menu-toggle {
-  display: none; /* Hidden on desktop */
+  display: none;
   background: none;
   border: none;
   cursor: pointer;
@@ -189,7 +189,7 @@ body {
    FOOTER (MILASTY PREMIUM)
 ================================ */
 .site-footer {
-  background: #5a3f24; /* MILASTY dark chocolate */
+  background: #5a3f24;
   color: white;
   text-align: center;
   padding: 30px 14px;
@@ -204,7 +204,7 @@ body {
 }
 
 .site-footer a:visited {
-  color: #ffd7a8 !important; /* Prevent purple visited links */
+  color: #ffd7a8 !important;
 }
 
 .site-footer a:hover {
@@ -230,48 +230,62 @@ body {
 }
 
 /* ===============================
-   ✅ MOBILE RESPONSIVE + MENU
+   ✅ MOBILE PREMIUM MENU FIX
 ================================ */
 @media (max-width: 650px) {
 
-  /* Show Hamburger */
-  .menu-toggle {
-    display: block;
+  /* ✅ Header stays in one line */
+  .site-header {
+    position: relative;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 18px;
   }
 
-  /* Hide Desktop Menu */
-  .nav-links {
-    display: none;
-    flex-direction: column;
-    width: 100%;
-
-    background: var(--primary);
-    padding: 14px 0;
-    margin-top: 14px;
-    border-radius: 14px;
-
+  /* ✅ Center Logo */
+  .logo {
+    flex: 1;
     text-align: center;
   }
 
-  /* Show Menu When Active */
+  /* ✅ Show Hamburger Top Right */
+  .menu-toggle {
+    display: block;
+    position: absolute;
+    right: 18px;
+    top: 18px;
+  }
+
+  /* ✅ Mobile Dropdown Menu */
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    background: var(--primary);
+
+    position: absolute;
+    top: 70px;
+    left: 0;
+    width: 100%;
+
+    padding: 14px 0;
+    border-radius: 0 0 14px 14px;
+    text-align: center;
+    z-index: 999;
+  }
+
+  /* ✅ Show Menu When Active */
   .nav-links.active {
     display: flex;
   }
 
   .nav-links a {
     margin: 0;
-    padding: 10px 0;
+    padding: 12px 0;
     font-size: 1rem;
   }
 
-  /* Header Stacks */
-  .site-header {
-    flex-direction: column;
-    gap: 10px;
-    padding: 18px;
-  }
-
-  /* Hero Text Scaling */
+  /* Hero Scaling */
   .page-title h1 {
     font-size: 1.6rem;
   }
