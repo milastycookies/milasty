@@ -19,7 +19,6 @@ body {
   line-height: 1.7;
 }
 
-
 /* ===============================
    HEADER
 ================================ */
@@ -32,11 +31,16 @@ body {
   padding: 16px 24px;
 }
 
-.site-header .logo a {
+.logo a {
   color: white;
-  font-size: 1.4rem;
+  font-size: 1.5rem;
   font-weight: bold;
   text-decoration: none;
+}
+
+/* Desktop nav */
+.nav-links {
+  display: flex;
 }
 
 .nav-links a {
@@ -53,13 +57,11 @@ body {
   text-decoration: underline;
 }
 
-
 /* ===============================
-   HAMBURGER MENU BUTTON
+   HAMBURGER BUTTON
 ================================ */
-
 .menu-toggle {
-  display: none; /* Hidden on desktop */
+  display: none;
   background: none;
   border: none;
   cursor: pointer;
@@ -75,71 +77,8 @@ body {
   transition: 0.3s ease;
 }
 
-
 /* ===============================
-   MOBILE MENU STYLE
-================================ */
-
-@media (max-width: 650px) {
-
-  /* Show hamburger button */
-  .menu-toggle {
-    display: block;
-  }
-
-  /* Hide menu by default */
-  .nav-links {
-    display: none;
-    flex-direction: column;
-    width: 100%;
-    background: var(--primary);
-    padding: 12px 0;
-    margin-top: 12px;
-    border-radius: 12px;
-    text-align: center;
-  }
-
-  .nav-links a {
-    padding: 10px 0;
-    margin: 0;
-    font-size: 1rem;
-    color: white;
-    text-decoration: none;
-  }
-
-  .nav-links a:hover {
-    text-decoration: underline;
-  }
-
-  /* Show when active */
-  .nav-links.active {
-    display: flex;
-  }
-
-  /* Header layout */
-  .site-header {
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
-  }
-}
-
-
-.menu-toggle.open span:nth-child(1) {
-  transform: rotate(45deg) translate(6px, 6px);
-}
-
-.menu-toggle.open span:nth-child(2) {
-  opacity: 0;
-}
-
-.menu-toggle.open span:nth-child(3) {
-  transform: rotate(-45deg) translate(6px, -6px);
-}
-
-
-/* ===============================
-   TITLE SECTION
+   PAGE TITLE
 ================================ */
 .page-title {
   text-align: center;
@@ -156,9 +95,8 @@ body {
   color: var(--muted);
 }
 
-
 /* ===============================
-   CONTENT
+   CONTENT CARD
 ================================ */
 .container {
   max-width: 900px;
@@ -179,7 +117,6 @@ body {
   color: var(--muted);
   margin-bottom: 20px;
 }
-
 
 /* ===============================
    SECTIONS
@@ -203,10 +140,7 @@ body {
   color: var(--muted);
 }
 
-
-/* ===============================
-   HIGHLIGHT BOX
-================================ */
+/* Highlight Box */
 .highlight {
   margin-top: 12px;
   padding: 14px 16px;
@@ -215,10 +149,7 @@ body {
   border-radius: 12px;
 }
 
-
-/* ===============================
-   CONTACT BOX
-================================ */
+/* Contact Box */
 .contact-box {
   margin-top: 30px;
   padding: 18px;
@@ -234,56 +165,8 @@ body {
   text-decoration: underline;
 }
 
-
 /* ===============================
-   FOOTER
-================================ */
-.site-footer {
-  text-align: center;
-  padding: 22px;
-  background: #5a3f24;
-  color: white;
-  font-size: 0.9rem;
-}
-
-.site-footer a {
-  color: #ffd7a8;
-  text-decoration: none;
-  margin: 0 6px;
-}
-
-.site-footer a:hover {
-  text-decoration: underline;
-}
-
-
-/* ===============================
-   MOBILE FRIENDLY
-================================ */
-@media (max-width: 650px) {
-
-  .site-header {
-    flex-direction: column;
-    gap: 10px;
-  }
-
-  .nav-links a {
-    margin: 0 10px;
-  }
-
-  .policy-card {
-    padding: 18px;
-  }
-
-  .page-title h1 {
-    font-size: 1.6rem;
-  }
-}
-
-
-
-/* ===============================
-   PREMIUM FOOTER (MILASTY STYLE)
+   PREMIUM FOOTER
 ================================ */
 .site-footer {
   background: #5a3f24;
@@ -293,14 +176,12 @@ body {
   font-size: 0.92rem;
 }
 
-/* Brand line */
 .footer-brand {
   margin: 0;
   font-size: 0.95rem;
   opacity: 0.95;
 }
 
-/* Links row */
 .footer-links {
   margin: 12px 0 18px;
   display: flex;
@@ -313,19 +194,17 @@ body {
   color: #ffd7a8;
   text-decoration: none;
   font-weight: 500;
-  transition: 0.2s ease;
 }
 
 .footer-links a:hover {
   text-decoration: underline;
-  opacity: 1;
 }
 
 .footer-links span {
   opacity: 0.5;
 }
 
-/* FSSAI block */
+/* FSSAI */
 .footer-fssai {
   display: flex;
   flex-direction: column;
@@ -335,9 +214,8 @@ body {
 }
 
 .fssai-logo {
-  width: 90px;      /* Perfect premium size */
+  width: 90px;
   height: auto;
-  opacity: 0.95;
 }
 
 .fssai-text {
@@ -347,14 +225,69 @@ body {
   line-height: 1.4;
 }
 
-/* Mobile adjustments */
-@media (max-width: 600px) {
+/* ===============================
+   ✅ MOBILE RESPONSIVE + HAMBURGER
+================================ */
+@media (max-width: 650px) {
+
+  /* Show hamburger */
+  .menu-toggle {
+    display: block;
+  }
+
+  /* Hide desktop menu */
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    background: var(--primary);
+    padding: 12px 0;
+    margin-top: 12px;
+    border-radius: 12px;
+    text-align: center;
+  }
+
+  /* Show menu when active */
+  .nav-links.active {
+    display: flex;
+  }
+
+  .nav-links a {
+    margin: 0;
+    padding: 10px 0;
+    font-size: 1rem;
+  }
+
+  /* Header layout */
+  .site-header {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+
+  /* Hamburger → X animation */
+  .menu-toggle.open span:nth-child(1) {
+    transform: rotate(45deg) translate(6px, 6px);
+  }
+
+  .menu-toggle.open span:nth-child(2) {
+    opacity: 0;
+  }
+
+  .menu-toggle.open span:nth-child(3) {
+    transform: rotate(-45deg) translate(6px, -6px);
+  }
+
+  /* Page scaling */
+  .policy-card {
+    padding: 18px;
+  }
+
+  .page-title h1 {
+    font-size: 1.6rem;
+  }
+
   .fssai-logo {
     width: 75px;
   }
-
-  .footer-brand {
-    font-size: 0.9rem;
-  }
 }
-
