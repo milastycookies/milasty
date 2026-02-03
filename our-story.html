@@ -12,6 +12,37 @@
 
 <body class="our-story-page">
 
+  <!-- ✅ HEADER (MILASTY Story Page) -->
+<header class="site-header">
+
+  <!-- Logo -->
+  <div class="logo">
+    <a href="index.html">MILASTY</a>
+  </div>
+
+  <!-- Hamburger Button (Mobile Only) -->
+  <button class="menu-toggle" id="menuToggle" aria-label="Open Menu">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+
+  <!-- Navigation Links -->
+  <nav class="nav-links" id="navMenu">
+    <a href="index.html">Home</a>
+    <a href="about.html" class="active">Our Story</a>
+    <a href="index.html#products">Products</a>
+    <a href="contact.html">Contact</a>
+
+    <a href="terms/terms.html">Terms & Conditions</a>
+    <a href="privacy/privacy.html">Privacy Policy</a>
+    <a href="refund/refund.html">Refund Policy</a>
+    <a href="shipping/shipping.html">Shipping Policy</a>
+  </nav>
+
+</header>
+
+
   <!-- STORY HERO -->
   <section class="section container story-hero">
     <h1>Our Story</h1>
@@ -212,6 +243,76 @@
     <h2>Explore Our Millet Cookies</h2>
     <a href="index.html#brand-logo" class="btn btn-primary">View Products</a>
   </section>
+
+
+  <!-- ✅ FOOTER (MILASTY Story Page) -->
+<footer class="site-footer">
+
+  <!-- Footer Logo (Optional) -->
+  <div class="footer-logo-wrap">
+    <img src="images/MILASTY-logo.webp" alt="MILASTY Logo" class="footer-logo">
+  </div>
+
+  <!-- Brand Line -->
+  <p class="footer-brand">
+    © 2026 <strong>MILASTY</strong> | Baked with Millets, Jaggery & Love 🍪
+  </p>
+
+  <!-- Footer Links -->
+  <div class="footer-links">
+    <a href="index.html">Home</a>
+    <span>|</span>
+
+    <a href="terms/terms.html">Terms & Conditions</a>
+    <span>|</span>
+
+    <a href="privacy/privacy.html">Privacy Policy</a>
+    <span>|</span>
+
+    <a href="refund/refund.html">Refund Policy</a>
+    <span>|</span>
+
+    <a href="shipping/shipping.html">Shipping Policy</a>
+  </div>
+
+  <!-- ✅ FSSAI Badge -->
+  <div class="footer-fssai">
+    <img
+      src="images/FSSAI_logo.png"
+      alt="FSSAI Logo"
+      class="fssai-logo"
+    />
+    <p class="fssai-number">
+      Lic. No: <strong>22726446000086</strong>
+    </p>
+  </div>
+
+  <!-- Bottom Note -->
+  <p style="margin-top: 18px; font-size: 0.88rem; opacity: 0.85;">
+    📍 Baked in Greater Noida West • Delivered Across India
+  </p>
+
+</footer>
+
+
+
+  <script>
+  const toggleBtn = document.getElementById("menuToggle");
+  const navMenu = document.getElementById("navMenu");
+
+  toggleBtn.addEventListener("click", () => {
+    navMenu.classList.toggle("active");
+    toggleBtn.classList.toggle("open");
+  });
+
+  document.querySelectorAll(".nav-links a").forEach(link => {
+    link.addEventListener("click", () => {
+      navMenu.classList.remove("active");
+      toggleBtn.classList.remove("open");
+    });
+  });
+</script>
+
 
 </body>
 </html>
