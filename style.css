@@ -1243,12 +1243,14 @@ a {
   border-radius: 16px;
   background: rgba(107, 78, 46, 0.05);
   display: inline-block;
+  text-align: center !important;
 }
 
 .fssai-logo {
   width: 65px;
   height: auto;
-  margin-bottom: 8px;
+  display: block !important;
+  margin: 0 auto 8px auto !important;
   opacity: 0.95;
 }
 
