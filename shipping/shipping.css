@@ -11,6 +11,9 @@
   --border: rgba(0, 0, 0, 0.08);
 }
 
+/* ===============================
+   GLOBAL RESET
+================================ */
 body {
   margin: 0;
   font-family: "Segoe UI", sans-serif;
@@ -19,24 +22,31 @@ body {
   line-height: 1.7;
 }
 
-
 /* ===============================
-   HEADER
+   HEADER (DESKTOP)
 ================================ */
 .site-header {
   background: var(--primary);
   color: white;
+
   display: flex;
   justify-content: space-between;
   align-items: center;
+
   padding: 16px 24px;
 }
 
-.site-header .logo a {
+/* Logo */
+.logo a {
   color: white;
-  font-size: 1.4rem;
+  font-size: 1.7rem;
   font-weight: bold;
   text-decoration: none;
+}
+
+/* Desktop Navigation */
+.nav-links {
+  display: flex;
 }
 
 .nav-links a {
@@ -53,13 +63,45 @@ body {
   text-decoration: underline;
 }
 
+/* ===============================
+   HAMBURGER BUTTON (DEFAULT HIDDEN)
+================================ */
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.menu-toggle span {
+  display: block;
+  width: 26px;
+  height: 3px;
+  margin: 5px;
+  background: white;
+  border-radius: 6px;
+  transition: 0.3s ease;
+}
+
+/* Hamburger → X Animation */
+.menu-toggle.open span:nth-child(1) {
+  transform: rotate(45deg) translate(6px, 6px);
+}
+
+.menu-toggle.open span:nth-child(2) {
+  opacity: 0;
+}
+
+.menu-toggle.open span:nth-child(3) {
+  transform: rotate(-45deg) translate(6px, -6px);
+}
 
 /* ===============================
-   TITLE SECTION
+   PAGE TITLE
 ================================ */
 .page-title {
   text-align: center;
-  padding: 32px 16px;
+  padding: 34px 16px;
 }
 
 .page-title h1 {
@@ -70,16 +112,16 @@ body {
 
 .page-title p {
   color: var(--muted);
+  font-size: 1rem;
 }
 
-
 /* ===============================
-   CONTENT
+   MAIN CONTENT
 ================================ */
 .container {
   max-width: 900px;
   margin: auto;
-  padding: 0 16px 40px;
+  padding: 0 16px 45px;
 }
 
 .policy-card {
@@ -96,12 +138,11 @@ body {
   margin-bottom: 20px;
 }
 
-
 /* ===============================
    SECTIONS
 ================================ */
 .section {
-  margin-bottom: 26px;
+  margin-bottom: 28px;
 }
 
 .section h2 {
@@ -119,10 +160,7 @@ body {
   color: var(--muted);
 }
 
-
-/* ===============================
-   HIGHLIGHT BOX
-================================ */
+/* Highlight Box */
 .highlight {
   margin-top: 12px;
   padding: 14px 16px;
@@ -131,12 +169,9 @@ body {
   border-radius: 12px;
 }
 
-
-/* ===============================
-   CONTACT BOX
-================================ */
+/* Contact Box */
 .contact-box {
-  margin-top: 30px;
+  margin-top: 35px;
   padding: 18px;
   border-radius: 16px;
   background: var(--primary);
@@ -150,126 +185,166 @@ body {
   text-decoration: underline;
 }
 
-
 /* ===============================
-   FOOTER
+   FOOTER (MILASTY PREMIUM)
 ================================ */
 .site-footer {
-  text-align: center;
-  padding: 22px;
   background: #5a3f24;
   color: white;
-  font-size: 0.9rem;
+  text-align: center;
+  padding: 30px 14px;
+  font-size: 0.92rem;
 }
 
+/* Footer Links */
 .site-footer a {
-  color: #ffd7a8;
+  color: #ffd7a8 !important;
+  font-weight: 500;
   text-decoration: none;
-  margin: 0 6px;
+}
+
+.site-footer a:visited {
+  color: #ffd7a8 !important;
 }
 
 .site-footer a:hover {
   text-decoration: underline;
+  opacity: 0.9;
+}
+
+/* FSSAI Block */
+.footer-fssai {
+  margin-top: 18px;
+}
+
+.fssai-logo {
+  width: 85px;
+  height: auto;
+  display: block;
+  margin: auto;
+}
+/* ✅ Footer Logo Top Center */
+.footer-logo-wrap {
+  margin-bottom: 14px;
+}
+
+.footer-logo {
+  width: 85px;       /* Premium size */
+  height: auto;
+  display: block;
+  margin: 0 auto;
+  opacity: 0.97;
 }
 
 
-/* ===============================
-   MOBILE RESPONSIVE
-================================ */
-@media (max-width: 650px) {
-
-  .site-header {
-    flex-direction: column;
-    gap: 10px;
-  }
-
-  .nav-links a {
-    margin: 0 10px;
-  }
-
-  .policy-card {
-    padding: 18px;
-  }
-
-  .page-title h1 {
-    font-size: 1.6rem;
-  }
+.fssai-number {
+  font-size: 0.85rem;
+  opacity: 0.85;
 }
 
-
-
-/* ===============================
-   PREMIUM FOOTER (MILASTY STYLE)
-================================ */
-.site-footer {
-  background: #5a3f24;
-  color: white;
-  text-align: center;
-  padding: 26px 14px;
-  font-size: 0.92rem;
-}
-
-/* Brand line */
-.footer-brand {
-  margin: 0;
-  font-size: 0.95rem;
-  opacity: 0.95;
-}
-
-/* Links row */
+/* Footer links row */
 .footer-links {
-  margin: 12px 0 18px;
+  margin-top: 14px;
   display: flex;
   justify-content: center;
-  gap: 10px;
   flex-wrap: wrap;
+  gap: 8px;
+  line-height: 1.6;
 }
 
 .footer-links a {
-  color: #ffd7a8;
+  color: #ffd7a8 !important;
   text-decoration: none;
   font-weight: 500;
-  transition: 0.2s ease;
+  font-size: 0.92rem;
 }
 
 .footer-links a:hover {
   text-decoration: underline;
-  opacity: 1;
 }
 
 .footer-links span {
   opacity: 0.5;
 }
 
-/* FSSAI block */
-.footer-fssai {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 6px;
-  margin-top: 10px;
-}
 
-.fssai-logo {
-  width: 90px;      /* Perfect premium size */
-  height: auto;
-  opacity: 0.95;
-}
+/* ===============================
+   ✅ MOBILE PREMIUM MENU FIX
+================================ */
+@media (max-width: 650px) {
 
-.fssai-text {
-  margin: 0;
-  font-size: 0.85rem;
-  opacity: 0.85;
-  line-height: 1.4;
-}
+  /* ✅ FORCE HEADER INTO ONE LINE */
+  .site-header {
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: space-between !important;
+    align-items: center !important;
 
-/* Mobile adjustments */
-@media (max-width: 600px) {
-  .fssai-logo {
-    width: 75px;
+    padding: 16px 18px !important;
+    position: relative !important;
   }
 
-  .footer-brand {
-    font-size: 0.9rem;
+  /* ✅ Keep Logo Center */
+  .logo {
+    flex: 1 !important;
+    text-align: center !important;
+  }
+
+  /* ✅ FORCE HAMBURGER TOP RIGHT */
+  .menu-toggle {
+    display: block !important;
+    position: absolute !important;
+    right: 18px !important;
+    top: 18px !important;
+    z-index: 2000 !important;
+  }
+
+  /* ✅ Dropdown Menu */
+  .nav-links {
+    display: none !important;
+    flex-direction: column !important;
+    background: var(--primary) !important;
+
+    position: absolute !important;
+    top: 70px !important;
+    left: 0 !important;
+    width: 100% !important;
+
+    padding: 14px 0 !important;
+    text-align: center !important;
+    border-radius: 0 0 14px 14px !important;
+    z-index: 1500 !important;
+  }
+
+  .nav-links.active {
+    display: flex !important;
+  }
+
+  .nav-links a {
+    padding: 12px 0 !important;
+    margin: 0 !important;
+  }
+}
+
+@media (max-width: 650px) {
+
+  .footer-links {
+    flex-direction: column; /* ✅ Stack links vertically */
+    gap: 6px;
+  }
+
+  .footer-links span {
+    display: none; /* ✅ Remove separators on mobile */
+  }
+
+  .footer-links a {
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 650px) {
+
+  .footer-logo {
+    width: 70px;  /* Smaller on mobile */
   }
 }
