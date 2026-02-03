@@ -229,6 +229,32 @@ body {
   opacity: 0.85;
 }
 
+/* Footer links row */
+.footer-links {
+  margin-top: 14px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  line-height: 1.6;
+}
+
+.footer-links a {
+  color: #ffd7a8 !important;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 0.92rem;
+}
+
+.footer-links a:hover {
+  text-decoration: underline;
+}
+
+.footer-links span {
+  opacity: 0.5;
+}
+
+
 /* ===============================
    ✅ MOBILE PREMIUM MENU FIX
 ================================ */
@@ -286,3 +312,20 @@ body {
     margin: 0 !important;
   }
 }
+
+@media (max-width: 650px) {
+
+  .footer-links {
+    flex-direction: column; /* ✅ Stack links vertically */
+    gap: 6px;
+  }
+
+  .footer-links span {
+    display: none; /* ✅ Remove separators on mobile */
+  }
+
+  .footer-links a {
+    font-size: 0.95rem;
+  }
+}
+
