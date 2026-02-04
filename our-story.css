@@ -138,13 +138,13 @@
   object-fit: cover;
 }
 
-/* ✅ Mobile Fix */
+/* /* ✅ Mobile Fix */
 @media (max-width: 600px) {
   .founder-image img {
     object-fit: contain;   /* No cropping */
     background: #f3f3f3;   /* Optional: adds padding look */
   }
-}
+} */
 
 
 
