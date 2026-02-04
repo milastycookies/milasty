@@ -58,6 +58,11 @@
   transition: 0.3s ease;
 }
 
+.story-hero {
+  text-align: center;
+}
+
+
 .story-subtitle {
   text-align: center;
   font-size: 1.05rem;
