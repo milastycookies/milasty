@@ -291,3 +291,29 @@
     width: 70px;  /* Smaller on mobile */
   }
 }
+
+
+
+/* ✅ FINAL FOOTER OVERRIDE (Our Story Only) */
+.our-story-page footer.site-footer {
+  background: #5a3f24 !important;
+  color: white !important;
+}
+
+/* ✅ Footer Links Visibility Fix */
+.our-story-page .site-footer a {
+  color: #ffd7a8 !important;
+  opacity: 1 !important;
+  font-weight: 600 !important;
+}
+
+/* ✅ Footer Row Links */
+.our-story-page .footer-links a {
+  color: #ffd7a8 !important;
+  font-size: 0.95rem !important;
+}
+
+/* ✅ Separators */
+.our-story-page .footer-links span {
+  opacity: 0.6 !important;
+}
