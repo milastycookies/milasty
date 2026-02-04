@@ -134,9 +134,16 @@
   width: 100%;
   max-width: 420px;
   /* aspect-ratio: 1 / 1; */
-  height: auto;  
+  height: 530px;
   border-radius: 18px;
   object-fit: cover;
+}
+
+@media (max-width: 600px) {
+  .founder-image img {
+    max-width: 280px;
+    height: 380px;
+  }
 }
 
 /* /* ✅ Mobile Fix */
