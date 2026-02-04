@@ -275,16 +275,21 @@
 
 @media (max-width: 650px) {
 
-  .our-story-page .site-footer {
-    padding: 42px 16px;
-  }
-
-  .our-story-page .footer-links a {
-    font-size: 0.92rem;
-    padding: 6px 8px;
-  }
-
+  .our-story-page .site-footer,
+  .our-story-page .site-footer p,
+  .our-story-page .site-footer a,
+  .our-story-page .footer-links a,
   .our-story-page .footer-note {
-    font-size: 0.84rem;
+    color: #4a2e16 !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+  }
+
+  .our-story-page .footer-links span {
+    color: rgba(74, 46, 22, 0.5) !important;
+  }
+
+  .our-story-page .site-footer a:hover {
+    text-decoration: underline !important;
   }
 }
