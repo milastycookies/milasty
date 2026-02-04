@@ -162,126 +162,136 @@
 
 
 /* =========================================
-   ✅ STORY PAGE FOOTER (Scoped Override)
+   ✅ PREMIUM STORY PAGE FOOTER (MILASTY)
 ========================================= */
 
 .our-story-page .site-footer {
   background: #5a3f24;
-  color: white;
+  color: rgba(255, 255, 255, 0.92);
+
   text-align: center;
-  padding: 32px 16px;
-  font-size: 0.92rem;
-  margin-top: 60px;
+  padding: 50px 18px;
+  margin-top: 70px;
+
+  font-size: 0.95rem;
+  line-height: 1.6;
 }
 
-/* Links */
-.our-story-page .site-footer a {
-  color: #ffd7a8;
-  text-decoration: none;
+/* ✅ Footer Logo */
+.our-story-page .footer-logo {
+  width: 85px;
+  margin: 0 auto 14px;
+  display: block;
+  opacity: 0.95;
+}
+
+/* ✅ Brand Line */
+.our-story-page .site-footer p {
+  margin: 10px 0;
   font-weight: 500;
 }
 
-.our-story-page .site-footer a:hover {
-  text-decoration: underline;
-}
-
-/* Footer Links Row */
-.our-story-page .footer-links {
-  margin-top: 14px;
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-  flex-wrap: wrap;
-}
-
-/* Footer Logo */
-.our-story-page .footer-logo {
-  width: 75px;
-  margin: 0 auto 12px;
-  display: block;
-}
-
-/* FSSAI */
-.our-story-page .fssai-logo {
-  width: 70px;
-  display: block;
-  margin: 14px auto 6px;
-}
-
-.our-story-page .fssai-number {
-  font-size: 0.85rem;
-  opacity: 0.85;
-}
-
-
-
 /* =========================================
-   ✅ STORY PAGE CTA (Unique + Premium)
+   ✅ FOOTER LINKS (Very Visible + Premium)
 ========================================= */
 
-.story-cta {
-  background: #F3E6D6;
-  color: #6b4e2e;
-  text-align: center;
+.our-story-page .footer-links {
+  margin-top: 18px;
 
-  padding: 70px 20px;
-  margin-top: 60px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
 
-  border-top: 1px solid rgba(107, 78, 46, 0.12);
+  gap: 14px;
 }
 
-/* CTA Heading */
-.story-cta h2 {
-  font-size: 1.9rem;
-  font-weight: 700;
-  margin-bottom: 20px;
-  color: #6b4e2e;
-}
-
-/* ✅ CTA Button */
-.story-cta-btn {
-  display: inline-block;
-
-  background: #6b4e2e;
-  color: white;
-
-  padding: 14px 34px;
-  border-radius: 30px;
-
-  font-size: 1rem;
+/* ✅ Footer Link Style */
+.our-story-page .footer-links a {
+  color: #ffffff;
   font-weight: 600;
-  text-decoration: none;
+  font-size: 0.95rem;
 
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+  text-decoration: none;
+  padding: 6px 10px;
+  border-radius: 8px;
+
   transition: all 0.25s ease;
 }
 
-/* Hover */
-.story-cta-btn:hover {
-  background: #563b22;
-  transform: translateY(-2px);
-  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.18);
+/* ✅ Hover Glow */
+.our-story-page .footer-links a:hover {
+  background: rgba(255, 215, 168, 0.18);
+  color: #ffd7a8;
+  text-decoration: underline;
 }
 
-/* Mobile Tap */
-.story-cta-btn:active {
-  transform: scale(0.97);
+/* Separator cleaner */
+.our-story-page .footer-links span {
+  color: rgba(255, 255, 255, 0.35);
 }
 
-/* ✅ Mobile Responsive */
+/* =========================================
+   ✅ FSSAI SECTION (Premium Badge Block)
+========================================= */
+
+.our-story-page .footer-fssai {
+  margin-top: 26px;
+}
+
+.our-story-page .fssai-logo {
+  width: 75px;
+  display: block;
+  margin: 0 auto 8px;
+  opacity: 0.95;
+}
+
+.our-story-page .fssai-number {
+  font-size: 0.88rem;
+  font-weight: 500;
+  opacity: 0.85;
+}
+
+/* =========================================
+   ✅ FOOTER NOTE (Location + WhatsApp)
+========================================= */
+
+.our-story-page .footer-note {
+  margin-top: 22px;
+  font-size: 0.88rem;
+  opacity: 0.88;
+}
+
+.our-story-page .footer-note a {
+  color: #ffd7a8;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.our-story-page .footer-note a:hover {
+  text-decoration: underline;
+}
+
+/* =========================================
+   ✅ MOBILE FOOTER OPTIMIZATION
+========================================= */
+
 @media (max-width: 650px) {
 
-  .story-cta {
-    padding: 55px 18px;
+  .our-story-page .site-footer {
+    padding: 42px 16px;
   }
 
-  .story-cta h2 {
-    font-size: 1.55rem;
+  .our-story-page .footer-links {
+    gap: 10px;
   }
 
-  .story-cta-btn {
-    width: 85%;
-    max-width: 280px;
-    padding: 14px 0;
+  .our-story-page .footer-links a {
+    font-size: 0.92rem;
+    padding: 6px 8px;
+  }
+
+  .our-story-page .footer-note {
+    font-size: 0.84rem;
+    line-height: 1.5;
   }
 }
