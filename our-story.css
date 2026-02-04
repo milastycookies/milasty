@@ -165,8 +165,8 @@
    FOOTER (MILASTY PREMIUM)
 ================================ */
 .site-footer {
-  background: #5a3f24;
-  color: white;
+  background: #5a3f24 !important;
+  color: white !important;
   text-align: center;
   padding: 30px 14px;
   font-size: 0.92rem;
@@ -256,7 +256,7 @@
 }
 
 .our-story-page .footer-note a {
-  color: #6b4e2e;
+  color: #6b4e2e !important;
   font-weight: 600;
   text-decoration: none;
 }
