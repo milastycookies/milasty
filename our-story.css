@@ -133,7 +133,8 @@
 .founder-image img {
   width: 100%;
   max-width: 420px;
-  aspect-ratio: 1 / 1;
+  /* aspect-ratio: 1 / 1; */
+  height: auto;  
   border-radius: 18px;
   object-fit: cover;
 }
