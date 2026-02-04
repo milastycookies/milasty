@@ -25,7 +25,7 @@
   <meta property="og:title" content="Our Story | MILASTY" />
   <meta property="og:description" content="Founded by Anwesha, MILASTY was born from a journey toward mindful and wholesome millet-based food." />
   <meta property="og:image" content="https://milasty.com/images/preview.webp" />
-  <meta property="og:url" content="https://milasty.com/about.html" />
+  <meta property="og:url" content="https://milasty.com/our-story.html" />
   <meta property="og:type" content="article" />
 
   <link rel="stylesheet" href="style.css" />
@@ -37,27 +37,51 @@
         href="https://milasty.com/images/Founder-anwesha.webp"
         fetchpriority="high">
 
-  <!-- Minimal AboutPage Schema -->
+  
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "AboutPage",
-    "name": "Our Story | MILASTY",
-    "url": "https://milasty.com/about.html",
-    "description": "The story behind MILASTY — founded by Anwesha and built around mindful millet-based baking.",
-    "worksFor": {
-      "@id": "https://milasty.com/#organization"
-    },
-    "about": {
-      "@type": "Organization",
-      "name": "MILASTY",
-      "url": "https://milasty.com/"
-    }
+    "@graph": [
+  
+      {
+        "@type": "Organization",
+        "@id": "https://milasty.com/#organization",
+        "name": "MILASTY",
+        "url": "https://milasty.com/"
+      },
+  
+      {
+        "@type": "Person",
+        "@id": "https://milasty.com/#founder",
+        "name": "Anwesha",
+        "jobTitle": "Founder",
+        "worksFor": {
+          "@id": "https://milasty.com/#organization"
+        }
+      },
+  
+      {
+        "@type": "AboutPage",
+        "@id": "https://milasty.com/our-story.html#aboutpage",
+        "name": "Our Story | MILASTY",
+        "url": "https://milasty.com/our-story.html",
+        "description": "The story behind MILASTY — founded by Anwesha and built around mindful millet-based baking.",
+        "about": {
+          "@id": "https://milasty.com/#organization"
+        },
+        "mainEntity": {
+          "@id": "https://milasty.com/#founder"
+        }
+      }
+  
+    ]
   }
   </script>
+  
 </head>
 
 
+  
 <body class="our-story-page">
 
   <!-- ✅ HEADER (MILASTY Story Page) -->
