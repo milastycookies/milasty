@@ -58,8 +58,8 @@
   transition: 0.3s ease;
 }
 
-.story-hero {
-  text-align: center;
+.our-story-page .story-hero h1 {
+  text-align: center !important;
 }
 
 
