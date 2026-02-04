@@ -317,3 +317,49 @@
 .our-story-page .footer-links span {
   opacity: 0.6 !important;
 }
+
+
+/* =========================================
+   ✅ FORCE CTA BUTTON FIX (Our Story Page)
+========================================= */
+
+.our-story-page .story-cta {
+  text-align: center !important;
+  padding: 70px 20px;
+  background: #F3E6D6;
+}
+
+/* ✅ CTA Button Proper Styling */
+.our-story-page .story-cta-btn {
+  display: inline-block !important;
+  margin-top: 18px !important;
+
+  background: #6b4e2e !important;
+  color: white !important;
+
+  padding: 14px 36px !important;
+  border-radius: 30px !important;
+
+  font-size: 1rem !important;
+  font-weight: 600 !important;
+  text-decoration: none !important;
+
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15) !important;
+  transition: all 0.25s ease;
+}
+
+/* ✅ Hover Effect */
+.our-story-page .story-cta-btn:hover {
+  background: #563b22 !important;
+  transform: translateY(-2px);
+}
+
+
+@media (max-width: 650px) {
+  .our-story-page .story-cta-btn {
+    width: 85% !important;
+    max-width: 280px !important;
+    text-align: center !important;
+  }
+}
+
