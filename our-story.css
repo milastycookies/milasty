@@ -130,6 +130,22 @@
 }
 
 
+.founder-image img {
+  width: 100%;
+  max-width: 420px;
+  aspect-ratio: 1 / 1;
+  border-radius: 18px;
+  object-fit: cover;
+}
+
+/* ✅ Mobile Fix */
+@media (max-width: 600px) {
+  .founder-image img {
+    object-fit: contain;   /* No cropping */
+    background: #f3f3f3;   /* Optional: adds padding look */
+  }
+}
+
 
 
 /* =========================================
