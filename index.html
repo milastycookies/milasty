@@ -44,199 +44,270 @@
 
 
 
-
-  
-
-
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "Brand",
-    "name": "MILASTY",
-    "description": "MILASTY is an Indian millet-based bakery brand making cookies, baked snacks, and wholesome treats with ragi, jowar, bajra, jaggery, and desi ghee.",
-    "url": "https://milasty.com",
-    "logo": "https://milasty.com/images/logo.png",
-    "sameAs": [
-      "https://instagram.com/milasty_/",
-      "https://www.facebook.com/profile.php?id=61587126537376"
+    "@graph": [
+  
+      /* ✅ BRAND */
+      {
+        "@type": "Brand",
+        "@id": "https://milasty.com/#brand",
+        "name": "MILASTY",
+        "description": "MILASTY is an Indian millet-based bakery brand making cookies, baked snacks, and wholesome treats with ragi, jowar, bajra, jaggery, and desi ghee.",
+        "url": "https://milasty.com/",
+        "logo": "https://milasty.com/images/logo.png",
+        "sameAs": [
+          "https://instagram.com/milasty_/",
+          "https://www.facebook.com/profile.php?id=61587126537376"
+        ]
+      },
+  
+      /* ✅ ORGANIZATION */
+      {
+        "@type": "Organization",
+        "@id": "https://milasty.com/#organization",
+        "name": "MILASTY",
+        "url": "https://milasty.com/",
+        "logo": "https://milasty.com/images/logo.png",
+        "brand": {
+          "@id": "https://milasty.com/#brand"
+        },
+        "sameAs": [
+          "https://instagram.com/milasty_/",
+          "https://www.facebook.com/profile.php?id=61587126537376"
+        ]
+      },
+  
+      /* ✅ LOCAL BUSINESS */
+      {
+        "@type": "LocalBusiness",
+        "@id": "https://milasty.com/#localbusiness",
+        "name": "MILASTY",
+        "image": "https://milasty.com/images/preview.webp",
+        "url": "https://milasty.com/",
+        "telephone": "+91-8927142056",
+        "priceRange": "₹99–₹649",
+        "description": "MILASTY is a premium millet-based bakery brand crafting cookies and wholesome baked snacks with jaggery and desi ghee. No maida, no refined sugar, no preservatives. Fresh baked on request and delivered across India via trusted courier partners.",
+        "parentOrganization": {
+          "@id": "https://milasty.com/#organization"
+        },
+  
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Sector 4, Greater Noida West, Near Gaur City Mall",
+          "addressLocality": "Greater Noida",
+          "addressRegion": "Uttar Pradesh",
+          "postalCode": "201306",
+          "addressCountry": "IN"
+        },
+  
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": 28.6117538,
+          "longitude": 77.4367988
+        },
+  
+        "hasMap": "https://maps.app.goo.gl/NaJizeWZFN5fXpau7",
+  
+        "areaServed": [
+          "Greater Noida West",
+          "Ghaziabad",
+          "Indirapuram",
+          "Greater Noida",
+          "Noida",
+          "Delhi NCR",
+          {
+            "@type": "Country",
+            "name": "India"
+          }
+        ],
+  
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "telephone": "+91-8927142056",
+          "contactType": "Customer Support",
+          "availableLanguage": ["English", "Hindi"]
+        }
+      },
+  
+      /* ✅ WEBSITE + SEARCH ACTION */
+      {
+        "@type": "WebSite",
+        "@id": "https://milasty.com/#website",
+        "name": "MILASTY",
+        "url": "https://milasty.com/",
+        "description": "MILASTY is a premium millet-based bakery brand crafting cookies and wholesome baked snacks with jaggery and desi ghee.",
+        "publisher": {
+          "@id": "https://milasty.com/#organization"
+        },
+        "potentialAction": {
+          "@type": "SearchAction",
+          "target": "https://milasty.com/?s={search_term_string}",
+          "query-input": "required name=search_term_string"
+        }
+      },
+  
+      /* ✅ ITEMLIST: SIGNATURE COOKIES */
+      {
+        "@type": "ItemList",
+        "@id": "https://milasty.com/#cookies",
+        "name": "MILASTY Signature Millet Cookies",
+        "url": "https://milasty.com/",
+        "description": "Explore MILASTY’s signature handcrafted millet cookies baked with jaggery and desi ghee.",
+        "numberOfItems": 3,
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Cardamom Bajra Cookies",
+            "url": "https://milasty.com/cardamom-bajra-cookies/",
+            "image": "https://milasty.com/images/cardamom-bajra.webp"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Coconut Jowar Cookies",
+            "url": "https://milasty.com/coconut-jowar-cookies/",
+            "image": "https://milasty.com/images/coconut-jowar.webp"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Cocoa Ragi Cookies",
+            "url": "https://milasty.com/cocoa-ragi-cookies/",
+            "image": "https://milasty.com/images/cocoa-ragi.webp"
+          }
+        ]
+      },
+  
+      /* ✅ ITEMLIST: GIFT BOXES */
+      {
+        "@type": "ItemList",
+        "@id": "https://milasty.com/#giftboxes",
+        "name": "MILASTY Gift Boxes",
+        "url": "https://milasty.com/#mood",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Signature Trio Box",
+            "url": "https://milasty.com/#mood"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Royal Gifting Collection",
+            "url": "https://milasty.com/#mood"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Imperial Wedding Collection",
+            "url": "https://milasty.com/#mood"
+          }
+        ]
+      },
+  
+      /* ✅ FAQ PAGE (AEO BOOST) */
+      {
+        "@type": "FAQPage",
+        "@id": "https://milasty.com/#faq",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Are MILASTY cookies made with maida?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. MILASTY cookies are made using wholesome millets and a small amount of whole wheat atta — we do not use refined flour (maida)."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Do you use refined sugar in your baked snacks?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. MILASTY products are naturally sweetened with jaggery, not refined white sugar."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Are MILASTY cookies baked in desi ghee?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. Our cookies are baked using pure desi cow ghee, with a small amount of rice bran oil for balance."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Do MILASTY cookies contain preservatives?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. We bake in small batches and do not add preservatives, artificial colours, or flavour enhancers."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Do you bake MILASTY cookies fresh?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. MILASTY products are baked in small batches, often on-demand, so customers receive fresh cookies made with care rather than mass-produced stock."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How can I order MILASTY products?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "You can order directly through WhatsApp. We deliver across India via trusted courier partners."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Are these cookies suitable for families?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "MILASTY cookies are made with familiar home-style ingredients and balanced sweetness, making them a thoughtful snack choice for families."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Are MILASTY cookies suitable for children?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "MILASTY cookies are crunchy due to millets. We do not recommend them for children below 6 years. For older children, serve in small pieces under supervision."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Do your cookies contain gluten or milk?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. Our cookies contain a small quantity of whole wheat (atta) and milk powder, so they are not gluten-free or dairy-free."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What is the shelf life of MILASTY cookies?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "MILASTY cookies are best enjoyed within 45 days from manufacture when stored in a cool, dry place."
+            }
+          }
+        ]
+      }
+  
     ]
   }
   </script>
 
 
-  <!-- LocalBusiness + Organization Schema Markup -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@graph": [
-
-    {
-      "@type": "Organization",
-      "@id": "https://milasty.com/#organization",
-      "name": "MILASTY",
-      "url": "https://milasty.com/",
-      "logo": "https://milasty.com/images/logo.png",
-      "sameAs": [
-        "https://instagram.com/milasty_/",
-        "https://www.facebook.com/profile.php?id=61587126537376"
-      ]
-    },
-
-    {
-      "@type": "LocalBusiness",
-      "@id": "https://milasty.com/#localbusiness",
-      "name": "MILASTY",
-      "image": "https://milasty.com/images/preview.webp",
-      "url": "https://milasty.com/",
-      "telephone": "+91-8927142056",
-      "priceRange": "₹99–₹649",
-      "description": "MILASTY is a premium millet-based bakery brand crafting cookies and wholesome baked snacks with jaggery and desi ghee. No maida, no refined sugar, no preservatives. Fresh baked on request and delivered across India via trusted courier partners.",
-
-      "address": {
-      "@type": "PostalAddress",
-      "streetAddress": "Sector 4, Greater Noida West, Near Gaur City Mall",
-      "addressLocality": "Greater Noida",
-      "addressRegion": "Uttar Pradesh",
-      "postalCode": "201306",
-      "addressCountry": "IN"
-    },
-
-
-      "areaServed": [
-        "Greater Noida West",
-        "Gaziabad",
-        "Indirapuram",
-        "Greater Noida",
-        "Noida",
-        "Delhi NCR",
-        {
-          "@type": "Country",
-          "name": "India"
-        }
-      ],
-
-    "geo": {
-      "@type": "GeoCoordinates",
-      "latitude": 28.6117538,
-      "longitude": 77.4367988
-    },
-
-
-      "hasMap": "https://maps.app.goo.gl/NaJizeWZFN5fXpau7",
-
-      "contactPoint": {
-        "@type": "ContactPoint",
-        "telephone": "+91-8927142056",
-        "contactType": "Customer Support",
-        "availableLanguage": ["English", "Hindi"]
-      }
-    }
-
-  ]
-}
-</script>
-
-
-
-
-  
-  <!-- ✅ WebSite + SearchAction Schema for MILASTY -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "WebSite",
-  "@id": "https://milasty.com/#website",
-  "name": "MILASTY",
-  "url": "https://milasty.com/",
-  "description": "MILASTY is a premium millet-based bakery brand crafting cookies and wholesome baked snacks with jaggery and desi ghee.",
-  "publisher": {
-    "@id": "https://milasty.com/#organization"
-  },
-  "potentialAction": {
-    "@type": "SearchAction",
-    "target": "https://milasty.com/?s={search_term_string}",
-    "query-input": "required name=search_term_string"
-  }
-}
-</script>
-
-
-  
-
   
 
 
 
 
 
-
-  <!-- ✅ ItemList Schema for MILASTY Product Collection -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "ItemList",
-  "name": "MILASTY Signature Millet Cookies",
-  "url": "https://milasty.com/",
-  "description": "Explore MILASTY’s signature handcrafted millet cookies baked with jaggery and desi ghee.",
-  "numberOfItems": 3,
-  "itemListElement": [
-
-    {
-      "@type": "ListItem",
-      "position": 1,
-      "name": "Cardamom Bajra Cookies",
-      "url": "https://milasty.com/cardamom-bajra-cookies/",
-      "image": "https://milasty.com/images/cardamom-bajra.webp"
-    },
-
-    {
-      "@type": "ListItem",
-      "position": 2,
-      "name": "Coconut Jowar Cookies",
-      "url": "https://milasty.com/coconut-jowar-cookies/",
-      "image": "https://milasty.com/images/coconut-jowar.webp"
-    },
-
-    {
-      "@type": "ListItem",
-      "position": 3,
-      "name": "Cocoa Ragi Cookies",
-      "url": "https://milasty.com/cocoa-ragi-cookies/",
-      "image": "https://milasty.com/images/cocoa-ragi.webp"
-    }
-
-  ]
-}
-</script>
-
-
-  <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "ItemList",
-  "name": "MILASTY Gift Boxes",
-  "itemListElement": [
-    {
-      "@type": "ListItem",
-      "position": 1,
-      "name": "Signature Trio Box",
-      "url": "https://milasty.com/#mood"
-    },
-    {
-      "@type": "ListItem",
-      "position": 2,
-      "name": "Royal Gifting Collection",
-      "url": "https://milasty.com/#mood"
-    },
-    {
-      "@type": "ListItem",
-      "position": 3,
-      "name": "Imperial Wedding Collection",
-      "url": "https://milasty.com/#mood"
-    }
-  ]
-}
-</script>
 
 
 
@@ -291,6 +362,14 @@
     },
     {
       "@type": "Question",
+      "name": "Are MILASTY cookies healthy?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "MILASTY cookies are made with millets, jaggery, and desi ghee, without maida, palm oil, or preservatives. They are a more wholesome alternative to regular refined flour cookies, best enjoyed as a balanced snack."
+      }
+    },
+    {
+      "@type": "Question",
       "name": "How can I order MILASTY products?",
       "acceptedAnswer": {
         "@type": "Answer",
@@ -319,6 +398,14 @@
       "acceptedAnswer": {
         "@type": "Answer",
         "text": "Yes. Our cookies contain a small quantity of whole wheat (atta) and milk powder, so they are not gluten-free or dairy-free."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What makes MILASTY cookies different from regular cookies?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "MILASTY cookies are handcrafted with millet flours, jaggery, and desi ghee instead of maida, refined sugar, and palm oil. They are baked fresh in small batches for a more premium, home-style snack experience."
       }
     },
     {
@@ -764,6 +851,12 @@
     </p>
   </div>
 
+  <div class="faq-item">
+    <h3>Are MILASTY cookies healthy?</h3>
+    <p>
+      MILASTY cookies are made with millets, jaggery, and desi ghee, without maida, palm oil, or preservatives. They are a more wholesome alternative to regular refined flour cookies, best enjoyed as a balanced snack.
+    </p>
+  </div>
 
   <div class="faq-item">
     <h3>How can I order MILASTY products?</h3>
@@ -796,6 +889,14 @@
       so they are not gluten-free or dairy-free.
     </p>
   </div>
+
+  <div class="faq-item">
+    <h3>What makes MILASTY cookies different from regular cookies?</h3>
+    <p>
+      MILASTY cookies are handcrafted with millet flours, jaggery, and desi ghee instead of maida, refined sugar, and palm oil. They are baked fresh in small batches for a more premium, home-style snack experience.
+    </p>
+  </div>
+
 
   <div class="faq-item">
     <h3>What is the shelf life of MILASTY cookies?</h3>
