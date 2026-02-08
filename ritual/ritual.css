@@ -1,6 +1,33 @@
+/* 🌿 GLOBAL */
+
+body {
+  margin: 0;
+  font-family: "Georgia", serif;
+  background: #f6efe7;
+  color: #3b2a1f;
+}
+
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: auto;
+  padding: 60px 0;
+}
+
+h1, h2, h3 {
+  margin-bottom: 15px;
+}
+
+p {
+  color: #6b4f3a;
+  line-height: 1.6;
+}
+
+
+
 /* =========================================================
-   🌾 BALANCED RITUAL HERO
-   Product + Experience Equilibrium
+   🌾 HERO — BALANCED PRODUCT + EXPERIENCE
+   (Structure Preserved)
 ========================================================= */
 
 .ritual-hero {
@@ -8,7 +35,7 @@
   position: relative;
   height: 88vh;
 
-  /* Balanced cinematic gradient */
+  /* Balanced gradient — cookies + tea equilibrium */
   background:
     linear-gradient(
       90deg,
@@ -34,9 +61,7 @@
 
 
 
-/* =========================================================
-   Subtle Luxury Grain Texture (Optional)
-========================================================= */
+/* Subtle luxury grain texture */
 
 .ritual-hero::after {
   content: "";
@@ -63,12 +88,14 @@
 
   max-width: 520px;
   margin-left: 10%;
+
+  /* Slightly richer contrast */
   color: #2a1a12;
 }
 
 
 
-/* Editorial headline */
+/* Editorial luxury headline */
 
 .hero-content h1 {
 
@@ -97,7 +124,7 @@
 
 
 /* =========================================================
-   PREMIUM CTA
+   PREMIUM CTA BUTTON
 ========================================================= */
 
 .hero-btn {
@@ -118,6 +145,7 @@
 
   border-radius: 10px;
 
+  /* Added glow separation */
   box-shadow:
     0 6px 18px rgba(0,0,0,0.18),
     0 0 0 4px rgba(255,255,255,0.25);
@@ -137,7 +165,7 @@
 
 
 /* =========================================================
-   📱 MOBILE BALANCE
+   📱 HERO MOBILE OPTIMIZATION
 ========================================================= */
 
 @media (max-width: 768px) {
@@ -146,7 +174,7 @@
 
     height: 72vh;
 
-    /* Keeps cookies + tea visible together */
+    /* Keeps cookies + tea balanced */
     background-position: 65% center;
   }
 
@@ -159,6 +187,157 @@
   .hero-content h1 {
     font-size: 32px;
     line-height: 1.2;
+  }
+
+}
+
+
+
+/* =========================================================
+   🍪 PRODUCTS
+========================================================= */
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+}
+
+.product-card {
+  background: #fffaf5;
+  border-radius: 16px;
+  overflow: hidden;
+  text-align: center;
+  padding-bottom: 20px;
+
+  box-shadow: 0 8px 22px rgba(0,0,0,0.08);
+  transition: 0.35s ease;
+}
+
+.product-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 14px 30px rgba(0,0,0,0.14);
+}
+
+.product-card img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.product-card:hover img {
+  transform: scale(1.05);
+}
+
+.btn {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 10px 22px;
+  background: #8b5e3c;
+  color: white;
+  text-decoration: none;
+  border-radius: 8px;
+  font-size: 14px;
+}
+
+.btn:hover {
+  background: #6f472c;
+}
+
+
+
+/* =========================================================
+   ☕ RITUAL MOMENTS
+========================================================= */
+
+.ritual-moments {
+  background: #fff7ef;
+}
+
+.moments-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 25px;
+}
+
+.moment-card {
+  text-align: center;
+}
+
+.moment-card img {
+  width: 100%;
+  height: 200px;
+  border-radius: 14px;
+  object-fit: cover;
+  margin-bottom: 10px;
+}
+
+
+
+/* =========================================================
+   🪔 RITUAL STEPS
+========================================================= */
+
+.steps-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 25px;
+  text-align: center;
+}
+
+.step {
+  background: #fffaf5;
+  padding: 25px;
+  border-radius: 14px;
+
+  box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+}
+
+.step span {
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  background: #8b5e3c;
+  color: white;
+  border-radius: 50%;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+
+
+/* =========================================================
+   📦 CTA
+========================================================= */
+
+.ritual-cta {
+  text-align: center;
+  background: #3b2a1f;
+  color: white;
+  padding: 80px 20px;
+}
+
+.btn-whatsapp {
+  background: #25D366;
+  margin-top: 15px;
+}
+
+.btn-whatsapp:hover {
+  background: #1ebe5d;
+}
+
+
+
+/* =========================================================
+   📱 GLOBAL MOBILE
+========================================================= */
+
+@media (max-width: 768px) {
+
+  .container {
+    padding: 40px 0;
   }
 
 }
