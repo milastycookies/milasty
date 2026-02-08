@@ -248,6 +248,29 @@ p {
   background: #6f472c;
 }
 
+/* Section label */
+
+.section-label {
+  text-align: center;
+  font-size: 13px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #9a7a5c;
+  margin-bottom: 10px;
+}
+
+
+/* Ritual badge */
+
+.ritual-badge {
+  display: inline-block;
+  background: #f1e6db;
+  color: #6a4a33;
+  font-size: 12px;
+  padding: 6px 12px;
+  border-radius: 20px;
+  margin-bottom: 12px;
+}
 
 
 /* =========================================================
