@@ -1,4 +1,6 @@
-/* 🌿 GLOBAL */
+/* =========================================================
+   🌿 GLOBAL
+========================================================= */
 
 body {
   margin: 0;
@@ -26,7 +28,7 @@ p {
 
 
 /* =========================================================
-   🌾 HERO — PREMIUM RITUAL HERO SECTION
+   🌾 HERO — MICRO POLISHED PREMIUM HERO
 ========================================================= */
 
 .ritual-hero {
@@ -34,15 +36,15 @@ p {
   position: relative;
   height: 88vh;
 
-  /* Cinematic gradient overlay */
+  /* Cinematic directional gradient (reduced bottom haze) */
   background:
     linear-gradient(
       90deg,
-      rgba(246,239,231,0.95) 0%,
-      rgba(246,239,231,0.85) 25%,
-      rgba(246,239,231,0.55) 45%,
+      rgba(246,239,231,0.96) 0%,
+      rgba(246,239,231,0.86) 25%,
+      rgba(246,239,231,0.58) 45%,
       rgba(246,239,231,0.20) 65%,
-      rgba(246,239,231,0.05) 85%
+      rgba(246,239,231,0.08) 85%
     ),
     url("../images/ritual-hero.webp");
 
@@ -55,19 +57,22 @@ p {
 }
 
 
-/* Subtle luxury grain texture */
+/* Subtle luxury grain texture (optional) */
 
 .ritual-hero::after {
   content: "";
   position: absolute;
   inset: 0;
   background: url("../images/grain.png");
-  opacity: 0.06;
+  opacity: 0.05;
   pointer-events: none;
 }
 
 
-/* Overlay container */
+
+/* =========================================================
+   HERO CONTENT
+========================================================= */
 
 .hero-overlay {
   width: 100%;
@@ -75,30 +80,29 @@ p {
   z-index: 2;
 }
 
-
-/* Text content */
-
 .hero-content {
 
   max-width: 520px;
   margin-left: 10%;
-  color: #2f1e14;
+  color: #2a1a12;   /* Slightly richer contrast */
 }
 
 
-/* Heading — luxury serif feel */
+
+/* Editorial luxury headline */
 
 .hero-content h1 {
 
   font-size: 54px;
   font-weight: 500;
   letter-spacing: 1px;
-  line-height: 1.2;
+  line-height: 1.15;
 
   margin-bottom: 22px;
 
   text-shadow: 0 3px 10px rgba(0,0,0,0.08);
 }
+
 
 
 /* Subtext */
@@ -112,7 +116,10 @@ p {
 }
 
 
-/* CTA — premium tactile button */
+
+/* =========================================================
+   PREMIUM CTA BUTTON
+========================================================= */
 
 .hero-btn {
 
@@ -132,8 +139,10 @@ p {
 
   border-radius: 10px;
 
+  /* Premium depth + glow separation */
   box-shadow:
-    0 6px 18px rgba(0,0,0,0.18);
+    0 6px 18px rgba(0,0,0,0.18),
+    0 0 0 4px rgba(255,255,255,0.25);
 
   transition: all 0.3s ease;
 }
@@ -143,7 +152,8 @@ p {
   transform: translateY(-2px);
 
   box-shadow:
-    0 10px 26px rgba(0,0,0,0.28);
+    0 10px 26px rgba(0,0,0,0.28),
+    0 0 0 4px rgba(255,255,255,0.35);
 }
 
 
@@ -156,7 +166,9 @@ p {
 
   .ritual-hero {
     height: 72vh;
-    background-position: center;
+
+    /* Keeps tea + cookies visible */
+    background-position: 70% center;
   }
 
   .hero-content {
@@ -167,6 +179,7 @@ p {
 
   .hero-content h1 {
     font-size: 32px;
+    line-height: 1.2;
   }
 
 }
