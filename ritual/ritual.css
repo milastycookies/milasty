@@ -197,78 +197,165 @@ p {
 
 
 /* =========================================================
-   🍪 PRODUCTS
+   🍪 RITUAL STARTERS — PREMIUM UPGRADE
 ========================================================= */
 
 .product-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 30px;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 34px;
 }
+
+
+/* ---------------------------------------------------------
+   PRODUCT CARD
+--------------------------------------------------------- */
 
 .product-card {
+  position: relative; /* Needed for badge anchoring */
+
   background: #fffaf5;
-  border-radius: 16px;
+  border-radius: 18px;
   overflow: hidden;
   text-align: center;
-  padding-bottom: 20px;
 
-  box-shadow: 0 8px 22px rgba(0,0,0,0.08);
-  transition: 0.35s ease;
+  padding: 0 0 26px 0;
+
+  box-shadow:
+    0 10px 26px rgba(0,0,0,0.08);
+
+  transition: all 0.4s ease;
 }
+
+
+/* Hover elevation */
 
 .product-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 14px 30px rgba(0,0,0,0.14);
+  transform: translateY(-10px);
+
+  box-shadow:
+    0 20px 44px rgba(0,0,0,0.16);
 }
+
+
+/* ---------------------------------------------------------
+   PRODUCT IMAGE
+--------------------------------------------------------- */
 
 .product-card img {
   width: 100%;
-  height: 220px;
+  height: 240px; /* Increased for product dominance */
   object-fit: cover;
-  transition: transform 0.4s ease;
+
+  transition: transform 0.5s ease;
 }
 
+
+/* Subtle zoom on hover */
+
 .product-card:hover img {
-  transform: scale(1.05);
+  transform: scale(1.06);
 }
+
+
+/* ---------------------------------------------------------
+   BADGE — ANCHORED PREMIUM LABEL
+--------------------------------------------------------- */
+
+.ritual-badge {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+
+  background: rgba(255,250,245,0.92);
+  backdrop-filter: blur(6px);
+
+  color: #6a4a33;
+  font-size: 11px;
+  letter-spacing: 0.6px;
+
+  padding: 6px 12px;
+  border-radius: 20px;
+
+  box-shadow:
+    0 4px 10px rgba(0,0,0,0.08);
+}
+
+
+/* ---------------------------------------------------------
+   CARD TYPOGRAPHY
+--------------------------------------------------------- */
+
+.product-card h3 {
+  margin-top: 18px;
+  font-size: 20px;
+  color: #24150f;
+}
+
+.product-card p {
+  font-size: 14.5px;
+  color: #6a4a33;
+  line-height: 1.6;
+
+  padding: 0 18px;
+  margin-top: 6px;
+}
+
+
+/* ---------------------------------------------------------
+   CTA BUTTON — TACTILE PREMIUM
+--------------------------------------------------------- */
 
 .btn {
   display: inline-block;
-  margin-top: 10px;
-  padding: 10px 22px;
-  background: #8b5e3c;
-  color: white;
+  margin-top: 14px;
+
+  padding: 11px 24px;
+
+  background: linear-gradient(
+    145deg,
+    #9a6b47,
+    #7c4f2f
+  );
+
+  color: #fff;
   text-decoration: none;
-  border-radius: 8px;
   font-size: 14px;
+  letter-spacing: 0.4px;
+
+  border-radius: 10px;
+
+  box-shadow:
+    0 6px 16px rgba(0,0,0,0.18),
+    0 0 0 3px rgba(255,255,255,0.35);
+
+  transition: all 0.3s ease;
 }
+
+
+/* CTA hover */
 
 .btn:hover {
-  background: #6f472c;
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 10px 26px rgba(0,0,0,0.28),
+    0 0 0 3px rgba(255,255,255,0.45);
 }
 
-/* Section label */
+
+/* ---------------------------------------------------------
+   SECTION LABEL
+--------------------------------------------------------- */
 
 .section-label {
   text-align: center;
-  font-size: 13px;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  color: #9a7a5c;
-  margin-bottom: 10px;
-}
-
-
-/* Ritual badge */
-
-.ritual-badge {
-  display: inline-block;
-  background: #f1e6db;
-  color: #6a4a33;
   font-size: 12px;
-  padding: 6px 12px;
-  border-radius: 20px;
+  letter-spacing: 2.4px;
+  text-transform: uppercase;
+
+  color: #9a7a5c;
+
   margin-bottom: 12px;
 }
 
