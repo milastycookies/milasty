@@ -243,8 +243,8 @@ p {
 --------------------------------------------------------- */
 
 .product-card img {
-  width: 100%;
-  height: 450px; /* Increased for product dominance */
+  width: 80%;
+  height: 420px; /* Increased for product dominance */
   object-fit: cover;
 
   transition: transform 0.5s ease;
