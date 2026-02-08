@@ -42,7 +42,7 @@ p {
       90deg,
       rgba(246,239,231,0.96) 0%,
       rgba(246,239,231,0.86) 25%,
-      rgba(246,239,231,0.58) 45%,
+      rgba(246,239,231,0.50) 45%,
       rgba(246,239,231,0.20) 65%,
       rgba(246,239,231,0.08) 85%
     ),
@@ -151,6 +151,8 @@ p {
 
   transform: translateY(-2px);
 
+  filter: brightness(1.05);
+
   box-shadow:
     0 10px 26px rgba(0,0,0,0.28),
     0 0 0 4px rgba(255,255,255,0.35);
@@ -168,7 +170,7 @@ p {
     height: 72vh;
 
     /* Keeps tea + cookies visible */
-    background-position: 70% center;
+    background-position: 70% center;     /*reduce this for mobile hero section */
   }
 
   .hero-content {
