@@ -43,6 +43,97 @@ p {
   margin: auto;
 }
 
+/* 🌾 HERO BACKGROUND */
+
+.ritual-hero {
+
+  height: 85vh;
+
+  background:
+    linear-gradient(
+      rgba(246,239,231,0.78),
+      rgba(246,239,231,0.78)
+    ),
+    url("../images/ritual-hero.jpg");
+
+  background-size: cover;
+  background-position: center right;
+  background-repeat: no-repeat;
+
+  display: flex;
+  align-items: center;
+}
+
+
+/* Overlay container */
+
+.hero-overlay {
+  width: 100%;
+}
+
+
+/* Text content */
+
+.hero-content {
+
+  max-width: 600px;
+  margin-left: 8%;
+  color: #3b2a1f;
+}
+
+
+.hero-content h1 {
+  font-size: 48px;
+  margin-bottom: 20px;
+}
+
+
+.hero-content p {
+  font-size: 18px;
+  line-height: 1.6;
+  margin-bottom: 25px;
+}
+
+
+/* CTA Button */
+
+.hero-btn {
+
+  display: inline-block;
+  padding: 12px 26px;
+  background: #8b5e3c;
+  color: white;
+  text-decoration: none;
+  border-radius: 8px;
+  font-size: 15px;
+  transition: 0.3s;
+}
+
+.hero-btn:hover {
+  background: #6f472c;
+}
+
+
+@media (max-width: 768px) {
+
+  .ritual-hero {
+    height: 70vh;
+    background-position: center;
+  }
+
+  .hero-content {
+    margin: 0 auto;
+    text-align: center;
+    padding: 0 20px;
+  }
+
+  .hero-content h1 {
+    font-size: 30px;
+  }
+
+}
+
+
 
 /* 🍪 PRODUCTS */
 
