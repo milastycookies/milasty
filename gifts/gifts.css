@@ -172,7 +172,24 @@ box-shadow: 0 24px 60px rgba(80,50,20,0.25);
   width: 100%;
   height: 100%;
   object-fit: contain;
-  transition: transform 0.2s ease;
+  transition: transform 0.25s ease;
+}
+
+/* Default view */
+
+.zoom-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;    /* Show full gift */
+  transition: transform 0.25s ease;
+}
+
+
+/* Hover zoom */
+
+.zoom-wrap:hover .zoom-img {
+  transform: scale(1.8);   /* Zoom strength */
+  cursor: zoom-in;
 }
 
 
