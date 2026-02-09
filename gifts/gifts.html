@@ -36,7 +36,11 @@
 
     <!-- Elegant -->
     <div class="gift-card" id="elegant">
-      <img src="/images/elegant.webp" />
+      <div class="zoom-container">
+        <img src="../images/elegant.webp" class="zoom-image" />
+        <div class="zoom-lens"></div>
+      </div>
+
       <h2>Elegant Gifting Collection</h2>
       <p>
         A thoughtfully curated millet gifting box crafted for warm, intimate moments. Elegant in presentation. Wholesome in experience. Memorable in emotion. <br> Perfect for Birthdays • Thank-you • Festive gestures
@@ -55,7 +59,11 @@
 
     <!-- Imperial -->
     <div class="gift-card imperial" id="imperial">
-      <img src="/images/gift-box1.webp" />
+      <div class="zoom-container">
+        <img src="../images/gift-box1.webp" class="zoom-image" />
+        <div class="zoom-lens"></div>
+      </div>
+
       <h2>Imperial Wedding Collection</h2>
       <p>
         Our most luxurious gifting ritual — designed to leave a lasting impression. Opulent presentation. Artisanal millet indulgence. Royal gifting statement. <br> Ideal for Weddings • Grand celebrations • Anniversaries
@@ -211,7 +219,46 @@
   </footer>
 
 
-  
+
+
+  <script>
+
+    document.querySelectorAll(".zoom-container").forEach(container => {
+    
+      const img = container.querySelector(".zoom-image");
+      const lens = container.querySelector(".zoom-lens");
+    
+      container.addEventListener("mousemove", moveLens);
+      container.addEventListener("mouseenter", () => {
+        lens.style.display = "block";
+      });
+    
+      container.addEventListener("mouseleave", () => {
+        lens.style.display = "none";
+      });
+    
+      function moveLens(e) {
+    
+        const rect = container.getBoundingClientRect();
+    
+        let x = e.clientX - rect.left;
+        let y = e.clientY - rect.top;
+    
+        x = Math.max(60, Math.min(x, rect.width - 60));
+        y = Math.max(60, Math.min(y, rect.height - 60));
+    
+        lens.style.left = (x - 60) + "px";
+        lens.style.top = (y - 60) + "px";
+    
+        lens.style.backgroundImage = `url(${img.src})`;
+        lens.style.backgroundPosition =
+          `-${x * 2 - 120}px -${y * 2 - 120}px`;
+      }
+    
+    });
+    
+    </script>
+
 
 </body>
 </html>
