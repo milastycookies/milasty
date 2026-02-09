@@ -98,8 +98,10 @@ box-shadow: 0 26px 60px rgba(60,40,20,0.22);
 
 .gift-card img {
 width: 100%;
-height: 360px;
-object-fit: cover;
+height: auto;
+object-fit: contain;
+padding: 12px;
+background: #fffaf5;
 transition: 0.4s ease;
 }
 
@@ -409,7 +411,8 @@ gap: 28px;
 }
 
 .gift-card img {
-height: 320px;
+width: 100%;
+height: auto;
 }
 
 .gift-card h2 {
