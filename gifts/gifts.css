@@ -1,0 +1,537 @@
+ <!-- ==========================================
+       🌿 MILASTY GIFTING LANDING — CSS
+  =========================================== -->
+
+  /* Reset */
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Segoe UI", serif;
+  }
+
+  body {
+    background: #f6f1ea;
+    color: #2b1d15;
+  }
+
+  /* ==========================================
+     🏛 HERO SECTION
+  ========================================== */
+
+  .hero {
+    background: linear-gradient(
+        rgba(40,25,18,0.55),
+        rgba(40,25,18,0.55)
+      ),
+      url("/images/gift-hero.webp");
+
+    background-size: cover;
+    background-position: center;
+
+    padding: 120px 20px;
+    text-align: center;
+    color: white;
+  }
+
+  .hero h1 {
+    font-size: 42px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    margin-bottom: 18px;
+  }
+
+  .hero p {
+    font-size: 18px;
+    opacity: 0.9;
+    margin-bottom: 30px;
+  }
+
+  .hero-btns a {
+    text-decoration: none;
+    margin: 8px;
+    padding: 12px 26px;
+    border-radius: 30px;
+    background: #c9a27e;
+    color: white;
+    font-size: 14px;
+    transition: 0.3s ease;
+  }
+
+  .hero-btns a:hover {
+    background: #a97c56;
+  }
+
+    .hero-overlay {
+    background: linear-gradient(
+      rgba(0,0,0,0.35),
+      rgba(0,0,0,0.45)
+    );
+  }
+
+
+  /* ==========================================
+     🎁 GIFT TIERS
+  ========================================== */
+
+  .gift-section {
+    padding: 80px 20px;
+    max-width: 1200px;
+    margin: auto;
+  }
+
+  .gift-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 40px;
+  }
+
+  .gift-card {
+    background: #fffaf5;
+    border-radius: 22px;
+    overflow: hidden;
+    text-align: center;
+    padding-bottom: 28px;
+    box-shadow: 0 18px 40px rgba(60,40,20,0.18);
+    transition: 0.4s ease;
+  }
+
+  .gift-card:hover {
+    transform: translateY(-10px);
+  }
+
+  .gift-card img {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+  }
+
+  .gift-card h2 {
+    margin-top: 20px;
+    font-size: 24px;
+  }
+
+  .gift-card p {
+    font-size: 15px;
+    padding: 0 24px;
+    margin-top: 10px;
+    line-height: 1.6;
+    color: #6a4a33;
+  }
+
+  .gift-btn {
+    display: inline-block;
+    margin-top: 18px;
+    padding: 12px 26px;
+    background: linear-gradient(145deg,#9a6b47,#7c4f2f);
+    color: white;
+    text-decoration: none;
+    border-radius: 10px;
+    font-size: 14px;
+    transition: 0.3s ease;
+  }
+
+  .gift-btn:hover {
+    transform: translateY(-2px);
+  }
+
+  /* Imperial Highlight */
+  .imperial {
+    background: linear-gradient(#fffaf5,#f1e6db);
+    transform: scale(1.04);
+  }
+
+
+/* ==========================================
+💰 PRICE BLOCK — PREMIUM STYLE
+========================================== */
+
+.price-block {
+  margin-top: 14px;
+}
+
+.price {
+  font-size: 20px;
+  font-weight: 600;
+  color: #2b1d15;
+  letter-spacing: 0.3px;
+}
+
+.price-note {
+  font-size: 13px;
+  color: #8a6a52;
+  margin-top: 6px;
+  line-height: 1.5;
+}
+
+
+  /* ==========================================
+   🌟 WHY SECTION — PREMIUM UPGRADE
+========================================== */
+
+.why {
+  padding: 90px 20px;
+  text-align: center;
+  background: linear-gradient(#efe6dc,#e8ded3);
+}
+
+
+/* Grid Layout */
+
+.why-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(240px,1fr));
+  gap: 26px;
+  max-width: 1100px;
+  margin: auto;
+  justify-content: center;
+  grid-template-columns: repeat(3, 260px);
+}
+
+.why h2 {
+  font-size: 30px;
+  margin-bottom: 50px;
+  font-weight: 600;
+  letter-spacing: 0.4px;
+
+  max-width: 520px;   /* Controls line wrap */
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.3;
+  text-align: center;
+}
+
+
+/* Card Design */
+
+.why-box {
+  background: white;
+  padding: 30px 26px;
+  border-radius: 18px;
+  box-shadow: 0 12px 28px rgba(60,40,20,0.08);
+  transition: 0.35s ease;
+  position: relative;
+}
+
+/* Hover Lift */
+
+.why-box:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 18px 36px rgba(60,40,20,0.14);
+}
+
+/* Icon Style */
+
+.why-icon {
+  font-size: 32px;
+  margin-bottom: 14px;
+}
+
+/* Title */
+
+.why-box h3 {
+  font-size: 17px;
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+
+/* Description */
+
+.why-box p {
+  font-size: 14px;
+  line-height: 1.6;
+  color: #6a4a33;
+}
+
+
+
+
+
+  /* ==========================================
+     🪔 OCCASIONS
+  ========================================== */
+
+  .occasions {
+    padding: 70px 20px;
+    text-align: center;
+  }
+
+  .occasions h2 {
+    margin-bottom: 30px;
+    font-size: 28px;
+  }
+
+  .occasion-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 16px;
+  }
+
+  .occasion {
+    background: #fffaf5;
+    padding: 14px 22px;
+    border-radius: 30px;
+    font-size: 14px;
+    box-shadow: 0 6px 16px rgba(0,0,0,0.08);
+  }
+
+  /* ==========================================
+     📦 DELIVERY
+  ========================================== */
+
+  .delivery {
+    background: #efe6dc;
+    padding: 70px 20px;
+    text-align: center;
+  }
+
+  .delivery h2 {
+    margin-bottom: 30px;
+  }
+
+  .delivery p {
+    margin: 8px 0;
+    font-size: 15px;
+  }
+
+  /* ==========================================
+     🔚 FINAL CTA
+  ========================================== */
+
+  .final-cta {
+    padding: 80px 20px;
+    text-align: center;
+  }
+
+  .final-cta h2 {
+    margin-bottom: 24px;
+  }
+
+  footer {
+    text-align: center;
+    padding: 30px;
+    font-size: 13px;
+    color: #7a5a42;
+  }
+
+
+
+    /* ==========================================
+   📱 GLOBAL MOBILE OPTIMIZATION
+========================================== */
+
+@media (max-width: 768px) {
+
+  /* Body spacing */
+  body {
+    overflow-x: hidden;
+  }
+
+  section {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+
+  /* ==========================================
+     🏛 HERO SECTION
+  ========================================== */
+
+  .hero {
+    padding: 90px 16px;
+    background-position: center;
+  }
+
+  .hero h1 {
+    font-size: 26px;
+    line-height: 1.35;
+  }
+
+  .hero p {
+    font-size: 15px;
+    line-height: 1.6;
+    margin-bottom: 24px;
+  }
+
+  .hero-btns {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .hero-btns a {
+    width: 90%;
+    max-width: 280px;
+    padding: 12px;
+    font-size: 14px;
+  }
+
+
+  /* ==========================================
+     🎁 GIFT CARDS
+  ========================================== */
+
+  .gift-section {
+    padding: 60px 16px;
+  }
+
+  .gift-grid {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  .gift-card {
+    border-radius: 18px;
+  }
+
+  .gift-card img {
+    height: 320px;
+  }
+
+  .gift-card h2 {
+    font-size: 20px;
+  }
+
+  .gift-card p {
+    font-size: 14px;
+    padding: 0 18px;
+  }
+
+  .gift-card p br {
+    display: block;
+    margin-top: 8px;
+  }
+
+
+  .gift-btn {
+    width: 90%;
+    max-width: 280px;
+    text-align: center;
+  }
+
+  /* Remove imperial scale on mobile */
+  .imperial {
+    transform: none;
+  }
+
+  .price {
+    font-size: 19px;
+  }
+  
+  .price-note {
+    font-size: 13px;
+  }
+
+
+  /* ==========================================
+     🌟 WHY SECTION
+  ========================================== */
+
+  .why {
+    padding: 60px 16px;
+  }
+
+  .why h2 {
+    font-size: 24px;
+    margin-bottom: 30px;
+    line-height: 1.3;
+  }
+
+  .why-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+  }
+
+  .why-box {
+    padding: 18px 14px;
+    border-radius: 12px;
+  }
+
+  .why-icon {
+    font-size: 22px;
+    margin-bottom: 8px;
+  }
+
+  .why-box h3 {
+    font-size: 14px;
+    line-height: 1.3;
+  }
+  
+  .why-box p {
+    font-size: 12px;
+    line-height: 1.5;
+  }
+
+
+  /* ==========================================
+     🪔 OCCASIONS
+  ========================================== */
+
+  .occasions {
+    padding: 60px 16px;
+  }
+
+  .occasions h2 {
+    font-size: 24px;
+  }
+
+  .occasion-grid {
+    gap: 10px;
+  }
+
+  .occasion {
+    font-size: 13px;
+    padding: 10px 16px;
+  }
+
+
+  /* ==========================================
+     📦 DELIVERY
+  ========================================== */
+
+  .delivery {
+    padding: 60px 16px;
+  }
+
+  .delivery h2 {
+    font-size: 24px;
+  }
+
+  .delivery p {
+    font-size: 14px;
+  }
+
+
+  /* ==========================================
+     🔚 FINAL CTA
+  ========================================== */
+
+  .final-cta {
+    padding: 70px 16px;
+  }
+
+  .final-cta h2 {
+    font-size: 24px;
+    line-height: 1.3;
+  }
+
+  .final-cta .gift-btn {
+    display: block;
+    width: 90%;
+    max-width: 280px;
+    margin: 10px auto;
+  }
+
+
+  /* ==========================================
+     🦶 FOOTER
+  ========================================== */
+
+  footer {
+    font-size: 12px;
+    padding: 24px 16px;
+  }
+
+}
