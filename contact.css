@@ -5,7 +5,7 @@
 
 /* ✅ HERO SECTION */
 .contact-hero {
-  background: url("images/HERO_2.webp") center/cover no-repeat;
+  background: url("../assets/images/HERO_2.webp") center/cover no-repeat;
   padding: 100px 20px;
   position: relative;
   text-align: center;

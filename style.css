@@ -52,7 +52,7 @@ a {
   position: relative;
   min-height: 90vh;
 
-  background-image: url("images/HERO_1.webp");
+  background-image: url("assets/images/HERO_1.webp");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -1577,7 +1577,7 @@ a {
 ========================================= */
 
 .page-hero {
-  background-image: url("images/HERO_1.webp");
+  background-image: url("assets/images/HERO_1.webp");
   background-size: cover;
   background-position: center;
   padding: 90px 20px;
