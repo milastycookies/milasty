@@ -98,3 +98,200 @@
   color: #6b4e2e;
   text-decoration: none;
 }
+
+
+
+/* ===============================
+   SITE HEADER
+================================ */
+
+.site-header {
+  background: var(--primary);
+  color: white;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 16px 24px;
+}
+
+/* Logo */
+.logo a {
+  color: white;
+  font-size: 1.7rem;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+/* Desktop Nav */
+.nav-links {
+  display: flex;
+}
+
+.nav-links a {
+  color: white;
+  text-decoration: none;
+  margin-left: 18px;
+  font-size: 0.95rem;
+  opacity: 0.9;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+  opacity: 1;
+  text-decoration: underline;
+}
+
+
+
+
+/* ===============================
+   HAMBURGER MENU
+================================ */
+
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.menu-toggle span {
+  display: block;
+  width: 26px;
+  height: 3px;
+  margin: 5px;
+  background: white;
+  border-radius: 6px;
+  transition: 0.3s ease;
+}
+
+/* X animation */
+.menu-toggle.open span:nth-child(1) {
+  transform: rotate(45deg) translate(6px, 6px);
+}
+
+.menu-toggle.open span:nth-child(2) {
+  opacity: 0;
+}
+
+.menu-toggle.open span:nth-child(3) {
+  transform: rotate(-45deg) translate(6px, -6px);
+}
+
+
+
+
+/* ===============================
+   MOBILE NAV
+================================ */
+
+@media (max-width: 650px) {
+
+  .site-header {
+    position: relative;
+  }
+
+  .logo {
+    flex: 1;
+    text-align: center;
+  }
+
+  .menu-toggle {
+    display: block;
+    position: absolute;
+    right: 18px;
+    top: 18px;
+  }
+
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    background: var(--primary);
+
+    position: absolute;
+    top: 70px;
+    left: 0;
+    width: 100%;
+
+    padding: 14px 0;
+    text-align: center;
+  }
+
+  .nav-links.active {
+    display: flex;
+  }
+
+  .nav-links a {
+    padding: 12px 0;
+    margin: 0;
+  }
+}
+
+
+
+
+/* Footer social line */
+.footer-social-line {
+  margin-top: 25px;
+  font-size: 0.95rem;
+  opacity: 0.75;
+}
+
+/* Social icons */
+.social-icons {
+  margin-top: 14px;
+  display: flex;
+  justify-content: center;
+  gap: 18px;
+}
+
+/* FSSAI */
+.footer-fssai {
+  margin-top: 35px;
+  padding: 16px;
+  border-radius: 16px;
+  background: rgba(107, 78, 46, 0.05);
+  display: inline-block;
+}
+
+.fssai-logo {
+  width: 65px;
+  margin: auto;
+}
+
+.fssai-text {
+  font-size: 0.85rem;
+  opacity: 0.78;
+}
+
+/* Copyright */
+.footer-copy {
+  margin-top: 18px;
+  font-size: 0.85rem;
+  opacity: 0.6;
+}
+
+
+
+
+@media (max-width: 600px) {
+
+  .page-hero {
+    padding: 70px 18px;
+  }
+
+  .page-hero-content h1 {
+    font-size: 2.3rem;
+  }
+
+  .page-intro {
+    font-size: 1rem;
+  }
+}
+
+
+
+
+
