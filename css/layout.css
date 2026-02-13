@@ -1,0 +1,100 @@
+/* ===============================
+   SECTIONS
+================================ */
+
+.section {
+  padding: 36px 0;
+}
+
+.section h2 {
+  text-align: center;
+  font-size: 1.55rem;
+  margin-bottom: 24px;
+  color: var(--primary);
+}
+
+/* ===============================
+   PAGE HERO (Contact / Story / About)
+================================ */
+
+.page-hero {
+  background-image: url("images/HERO_1.webp");
+  background-size: cover;
+  background-position: center;
+  padding: 90px 20px;
+  text-align: center;
+  position: relative;
+}
+
+.page-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+}
+
+.page-hero-content {
+  position: relative;
+  max-width: 850px;
+  margin: auto;
+  color: white;
+  z-index: 2;
+}
+
+.page-hero-content h1 {
+  font-size: 3rem;
+  font-weight: 800;
+  margin-bottom: 14px;
+}
+
+.page-subtitle {
+  font-size: 1.2rem;
+  opacity: 0.9;
+  margin-bottom: 18px;
+}
+
+.page-intro {
+  font-size: 1.05rem;
+  line-height: 1.7;
+  opacity: 0.92;
+  max-width: 720px;
+  margin: auto;
+}
+
+/* ===============================
+   PREMIUM FOOTER
+================================ */
+
+.site-footer {
+  background: #f8f3eb;
+  text-align: center;
+  padding: 55px 18px;
+  color: #2e2e2e;
+}
+
+.footer-brand {
+  font-size: 1.55rem;
+  font-weight: 700;
+  color: #6b4e2e;
+  margin-bottom: 6px;
+}
+
+.footer-slogan {
+  font-size: 0.95rem;
+  opacity: 0.75;
+  margin-bottom: 20px;
+}
+
+.footer-links-grid {
+  margin: 32px auto 10px;
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+  gap: 16px 60px;
+  justify-content: center;
+}
+
+.footer-links-grid a {
+  font-weight: 600;
+  color: #6b4e2e;
+  text-decoration: none;
+}
