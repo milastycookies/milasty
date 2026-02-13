@@ -1,0 +1,75 @@
+/* ===============================
+   HERO
+================================ */
+
+.hero {
+  position: relative;
+  min-height: 90vh;
+  background-image: url("images/HERO_1.webp");
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.22);
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  padding: 70px 60px;
+  border-radius: 30px;
+  background: rgba(255,255,255,0.14);
+  backdrop-filter: blur(10px);
+}
+
+/* BRAND */
+
+.brand-name {
+  font-size: clamp(2.8rem, 5vw, 5rem);
+  font-weight: 800;
+  color: white;
+}
+
+.brand-meaning {
+  padding: 10px 22px;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.18);
+  color: white;
+}
+
+/* ===============================
+   MOOD SECTION
+================================ */
+
+.mood-section {
+  padding: 70px 0;
+  text-align: center;
+}
+
+.mood-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+}
+
+.mood-card {
+  background: #faf6f0;
+  border-radius: 22px;
+  padding: 26px;
+}
+
+/* ===============================
+   REVIEWS
+================================ */
+
+.reviews-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 18px;
+}
