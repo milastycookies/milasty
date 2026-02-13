@@ -2,7 +2,7 @@
    CARDAMOM BAJRA THEME
 ========================================================= */
 
-.theme-bajra {
+.theme-cardamom-bajra {
   --product-primary: #6b4a3a;
   --product-dark: #4f352a;
 }
@@ -11,7 +11,7 @@
    COCOA RAGI THEME
 ========================================================= */
 
-.theme-cocoa {
+.theme-cocoa-ragi {
   --product-primary: #3e2721;
   --product-dark: #5a3a2e;
 }
@@ -20,7 +20,7 @@
    COCONUT JOWAR THEME
 ========================================================= */
 
-.theme-jowar {
+.theme-coconut-jowar {
   --product-primary: #6a4a35;
   --product-dark: #4a3226;
 }
