@@ -1,3 +1,9 @@
+/* =========================================================
+   MILASTY — LAYOUT SYSTEM
+   Structure • Header • Footer • Hero • Sections
+========================================================= */
+
+
 /* ===============================
    SECTIONS
 ================================ */
@@ -13,9 +19,11 @@
   color: var(--primary);
 }
 
-/* ===============================
-   PAGE HERO (Contact / Story / About)
-================================ */
+
+
+/* =========================================================
+   PAGE HERO (Contact / About / Story / Legal)
+========================================================= */
 
 .page-hero {
   background-image: url("images/HERO_1.webp");
@@ -61,62 +69,31 @@
   margin: auto;
 }
 
-/* ===============================
-   PREMIUM FOOTER
-================================ */
-
-.site-footer {
-  background: #f8f3eb;
-  text-align: center;
-  padding: 55px 18px;
-  color: #2e2e2e;
-}
-
-.footer-brand {
-  font-size: 1.55rem;
-  font-weight: 700;
-  color: #6b4e2e;
-  margin-bottom: 6px;
-}
-
-.footer-slogan {
-  font-size: 0.95rem;
-  opacity: 0.75;
-  margin-bottom: 20px;
-}
-
-.footer-links-grid {
-  margin: 32px auto 10px;
-  display: grid;
-  grid-template-columns: repeat(2, auto);
-  gap: 16px 60px;
-  justify-content: center;
-}
-
-.footer-links-grid a {
-  font-weight: 600;
-  color: #6b4e2e;
-  text-decoration: none;
-}
 
 
-
-/* ===============================
+/* =========================================================
    SITE HEADER
-================================ */
+========================================================= */
 
 .site-header {
   background: var(--primary);
   color: white;
+  padding: 16px 24px;
+}
+
+/* Inner width lock */
+.header-inner {
+  max-width: 1100px;
+  margin: auto;
+  width: 100%;
 
   display: flex;
   justify-content: space-between;
   align-items: center;
-
-  padding: 16px 24px;
 }
 
 /* Logo */
+
 .logo a {
   color: white;
   font-size: 1.7rem;
@@ -124,7 +101,12 @@
   text-decoration: none;
 }
 
-/* Desktop Nav */
+
+
+/* =========================================================
+   DESKTOP NAVIGATION
+========================================================= */
+
 .nav-links {
   display: flex;
 }
@@ -135,6 +117,7 @@
   margin-left: 18px;
   font-size: 0.95rem;
   opacity: 0.9;
+  transition: 0.2s ease;
 }
 
 .nav-links a:hover,
@@ -145,10 +128,9 @@
 
 
 
-
-/* ===============================
+/* =========================================================
    HAMBURGER MENU
-================================ */
+========================================================= */
 
 .menu-toggle {
   display: none;
@@ -167,7 +149,8 @@
   transition: 0.3s ease;
 }
 
-/* X animation */
+/* Hamburger → X Animation */
+
 .menu-toggle.open span:nth-child(1) {
   transform: rotate(45deg) translate(6px, 6px);
 }
@@ -182,15 +165,15 @@
 
 
 
-
-/* ===============================
-   MOBILE NAV
-================================ */
+/* =========================================================
+   MOBILE NAVIGATION
+========================================================= */
 
 @media (max-width: 650px) {
 
   .site-header {
     position: relative;
+    padding: 16px 18px;
   }
 
   .logo {
@@ -203,6 +186,7 @@
     position: absolute;
     right: 18px;
     top: 18px;
+    z-index: 2000;
   }
 
   .nav-links {
@@ -217,6 +201,8 @@
 
     padding: 14px 0;
     text-align: center;
+    border-radius: 0 0 14px 14px;
+    z-index: 1500;
   }
 
   .nav-links.active {
@@ -231,15 +217,79 @@
 
 
 
+/* =========================================================
+   PREMIUM FOOTER
+========================================================= */
 
-/* Footer social line */
+.site-footer {
+  background: #f8f3eb;
+  text-align: center;
+  padding: 55px 18px;
+  color: #2e2e2e;
+}
+
+/* Brand */
+
+.footer-brand {
+  font-size: 1.55rem;
+  font-weight: 700;
+  color: #6b4e2e;
+  margin-bottom: 6px;
+}
+
+.footer-slogan {
+  font-size: 0.95rem;
+  opacity: 0.75;
+  margin-bottom: 20px;
+}
+
+/* Links Grid */
+
+.footer-links-grid {
+  margin: 32px auto 10px;
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+  gap: 16px 60px;
+  justify-content: center;
+}
+
+.footer-links-grid a {
+  font-weight: 600;
+  color: #6b4e2e;
+  text-decoration: none;
+  position: relative;
+  padding-bottom: 2px;
+}
+
+/* Underline animation */
+
+.footer-links-grid a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 100%;
+  height: 2px;
+  background: rgba(107, 78, 46, 0.35);
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: 0.25s ease;
+}
+
+.footer-links-grid a:hover::after {
+  transform: scaleX(1);
+}
+
+
+
+/* Social */
+
 .footer-social-line {
   margin-top: 25px;
   font-size: 0.95rem;
   opacity: 0.75;
 }
 
-/* Social icons */
 .social-icons {
   margin-top: 14px;
   display: flex;
@@ -247,7 +297,10 @@
   gap: 18px;
 }
 
-/* FSSAI */
+
+
+/* FSSAI Block */
+
 .footer-fssai {
   margin-top: 35px;
   padding: 16px;
@@ -266,7 +319,10 @@
   opacity: 0.78;
 }
 
+
+
 /* Copyright */
+
 .footer-copy {
   margin-top: 18px;
   font-size: 0.85rem;
@@ -275,6 +331,28 @@
 
 
 
+/* =========================================================
+   FOOTER — MOBILE TUNING
+========================================================= */
+
+@media (max-width: 650px) {
+
+  .site-footer {
+    padding: 42px 16px;
+  }
+
+  .footer-links-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px 30px;
+    max-width: 320px;
+  }
+}
+
+
+
+/* =========================================================
+   HERO MOBILE
+========================================================= */
 
 @media (max-width: 600px) {
 
@@ -290,8 +368,3 @@
     font-size: 1rem;
   }
 }
-
-
-
-
-
