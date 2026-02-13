@@ -1,18 +1,28 @@
-/* ===============================
-   BUTTONS
-================================ */
+/* =========================================================
+   MILASTY — COMPONENT SYSTEM
+   Buttons • Cards • Grids • Tables • CTA • UI blocks
+========================================================= */
+
+
+/* =========================================================
+   BUTTON SYSTEM
+========================================================= */
 
 .btn {
+  display: inline-block;
   padding: 14px 34px;
   border-radius: 999px;
   font-size: 1rem;
   font-weight: 600;
   transition: all 0.25s ease;
+  text-align: center;
 }
 
 .btn:hover {
   transform: translateY(-2px);
 }
+
+/* Primary CTA */
 
 .btn-primary {
   background: linear-gradient(90deg, #d8a24a, #c98b2c);
@@ -20,13 +30,29 @@
   border: none;
 }
 
+/* Secondary CTA */
+
 .btn-secondary {
   background: transparent;
   border: 1.5px solid rgba(255, 255, 255, 0.85);
   color: white;
 }
 
-/* CTA group */
+/* Brown variant */
+
+.btn-brown {
+  background: rgba(107, 78, 46, 0.12);
+  color: var(--primary);
+}
+
+.btn-brown:hover {
+  background: rgba(107, 78, 46, 0.18);
+}
+
+
+
+/* CTA GROUP */
+
 .cta-group {
   display: flex;
   gap: 12px;
@@ -34,18 +60,25 @@
   flex-wrap: wrap;
 }
 
-/* ===============================
-   CARDS
-================================ */
+
+
+/* =========================================================
+   UNIVERSAL CARD SYSTEM
+========================================================= */
 
 .card {
   border: 1px solid var(--border);
   border-radius: 18px;
-  padding: 16px;
-  background: #fff;
+  padding: 20px;
+  background: #ffffff;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.04);
 }
 
-/* PRODUCTS GRID */
+
+
+/* =========================================================
+   PRODUCT GRID
+========================================================= */
 
 .products {
   display: grid;
@@ -53,19 +86,297 @@
   gap: 26px;
 }
 
-/* REVIEW CARD */
+@media (min-width: 768px) {
+  .products {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+
+
+/* =========================================================
+   REVIEW COMPONENTS
+========================================================= */
 
 .review-card {
   background: #fff;
   border: 1px solid var(--border);
   border-radius: 18px;
   padding: 20px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.04);
 }
 
-/* PACK CARD */
+.review-card p {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin-bottom: 12px;
+}
+
+.review-card span {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--primary);
+}
+
+
+
+/* =========================================================
+   PACK SIZE CARDS
+========================================================= */
 
 .pack-card {
   background: var(--secondary);
+  border: 1px solid var(--border);
   border-radius: 16px;
   padding: 18px;
+  transition: 0.25s ease;
+}
+
+.pack-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.06);
+}
+
+.pack-card h3 {
+  font-size: 1.05rem;
+  color: var(--primary);
+  margin-bottom: 6px;
+}
+
+.pack-card p {
+  font-size: 1.05rem;
+  font-weight: 700;
+}
+
+
+
+/* =========================================================
+   PACK INFO BOX (Product Pages)
+========================================================= */
+
+.pack-info-box {
+  margin: 20px 0;
+  padding: 18px 22px;
+
+  border-radius: 18px;
+  background: #fffaf3;
+  border: 1px solid rgba(0,0,0,0.08);
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 18px;
+
+  box-shadow: 0 6px 18px rgba(0,0,0,0.04);
+}
+
+.pack-title {
+  font-size: 0.82rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  opacity: 0.65;
+  margin-bottom: 6px;
+  color: var(--primary);
+}
+
+.pack-btn {
+  padding: 10px 18px;
+  border-radius: 999px;
+  background: rgba(107,78,46,0.12);
+  color: var(--primary);
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+@media (max-width: 768px) {
+
+  .pack-info-box {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .pack-btn {
+    width: 100%;
+  }
+}
+
+
+
+/* =========================================================
+   NUTRITION TABLE SYSTEM
+========================================================= */
+
+.nutrition-card {
+  padding: 26px;
+}
+
+.nutrition-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #5a3d2b;
+  margin-bottom: 10px;
+}
+
+.scroll-note {
+  font-size: 0.82rem;
+  color: #8a6f5c;
+  margin-bottom: 10px;
+  text-align: center;
+  display: none;
+}
+
+/* Table wrapper */
+
+.nutrition-table-wrap {
+  margin-top: 12px;
+  border-radius: 14px;
+  border: 1px solid #e7ddd4;
+  background: #fffaf6;
+}
+
+/* Scroll container */
+
+.nutrition-scroll {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Table */
+
+.nutrition-table {
+  width: 100%;
+  min-width: 680px;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+}
+
+.nutrition-table th,
+.nutrition-table td {
+  padding: 13px 14px;
+  white-space: nowrap;
+}
+
+.nutrition-table thead th {
+  background: #f3e7dd;
+  font-weight: 700;
+}
+
+.nutrition-table tbody td {
+  border-top: 1px solid #efe5dc;
+}
+
+.nutrition-table tbody tr:nth-child(even) td {
+  background: #fffdfb;
+}
+
+@media (max-width: 600px) {
+
+  .scroll-note {
+    display: block;
+  }
+
+  .nutrition-table {
+    font-size: 0.88rem;
+  }
+}
+
+
+
+/* =========================================================
+   FAQ COMPONENT
+========================================================= */
+
+.faq-item {
+  background: #fff;
+  border-radius: 14px;
+  padding: 18px 20px;
+  margin-bottom: 14px;
+  box-shadow: 0 6px 14px rgba(0,0,0,0.05);
+}
+
+.faq-item h3 {
+  font-size: 1rem;
+  margin-bottom: 6px;
+  color: var(--primary);
+}
+
+.faq-item p {
+  font-size: 0.92rem;
+  color: #444;
+}
+
+
+
+/* =========================================================
+   INGREDIENT / BENEFITS BLOCKS
+========================================================= */
+
+.ingredients {
+  background: var(--secondary);
+  border-radius: 18px;
+  padding: 26px;
+  font-size: 0.95rem;
+}
+
+.benefits ul {
+  list-style: none;
+  margin-top: 18px;
+}
+
+.benefits li {
+  margin-bottom: 10px;
+  padding-left: 20px;
+  position: relative;
+}
+
+.benefits li::before {
+  content: "✔";
+  position: absolute;
+  left: 0;
+  color: var(--accent);
+  font-weight: bold;
+}
+
+
+
+/* =========================================================
+   FLOATING WHATSAPP BUTTON
+========================================================= */
+
+.whatsapp-float {
+  position: fixed;
+  bottom: 18px;
+  right: 18px;
+  z-index: 999;
+
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  background: var(--primary);
+  color: white;
+
+  padding: 14px 18px;
+  border-radius: 999px;
+
+  font-size: 0.95rem;
+  font-weight: 600;
+
+  box-shadow: 0 12px 30px rgba(0,0,0,0.25);
+}
+
+@media (max-width: 600px) {
+
+  .whatsapp-float {
+    width: 56px;
+    height: 56px;
+    padding: 0;
+    border-radius: 50%;
+    justify-content: center;
+  }
+
+  .whatsapp-text {
+    display: none;
+  }
 }
