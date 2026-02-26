@@ -445,20 +445,63 @@ p {
     #f3e7db,
     #e6d5c3
   );
-  color: white;
+  color: #3b2a1f;
   padding: 80px 20px;
+  border-top: 1px solid rgba(60,40,20,0.08);
 }
 
 .btn-whatsapp {
-  background: #25D366;
+
+  background: linear-gradient(
+    145deg,
+    #3f5a3f,   /* earthy green */
+    #2f4530    /* brownish deep green */
+  );
+
+  color: #f6efe7;  /* warm beige text */
+
+  font-weight: 600;
+  letter-spacing: 0.4px;
+
   margin-top: 15px;
+
+  border: 1px solid rgba(60,40,20,0.35);
+
+  box-shadow:
+    0 6px 18px rgba(0,0,0,0.22),
+    0 0 0 3px rgba(255,255,255,0.25);
+
+  transition: all 0.3s ease;
 }
+
 
 .btn-whatsapp:hover {
-  background: #1ebe5d;
+
+  background: linear-gradient(
+    145deg,
+    #4e6a4e,
+    #3a533b
+  );
+
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 10px 26px rgba(0,0,0,0.28),
+    0 0 0 3px rgba(255,255,255,0.35);
 }
 
 
+.btn-whatsapp::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(255,255,255,0.18),
+    rgba(255,255,255,0.02)
+  );
+  border-radius: inherit;
+}
 
 /* =========================================================
    📱 GLOBAL MOBILE
