@@ -1,0 +1,49 @@
+/* ===============================
+   FOOTER (MILASTY PREMIUM)
+================================ */
+.site-footer {
+  background: #5a3f24;
+  color: white;
+  text-align: center;
+  padding: 30px 14px;
+  font-size: 0.92rem;
+}
+
+.site-footer a {
+  color: #ffd7a8 !important;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.site-footer a:hover {
+  text-decoration: underline;
+}
+
+.footer-logo {
+  width: 85px;
+  display: block;
+  margin: 0 auto;
+}
+
+.footer-links {
+  margin-top: 14px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.footer-fssai {
+  margin-top: 18px;
+}
+
+.fssai-logo {
+  width: 85px;
+  display: block;
+  margin: auto;
+}
+
+.fssai-number {
+  font-size: 0.85rem;
+  opacity: 0.85;
+}
