@@ -440,7 +440,11 @@ p {
 
 .ritual-cta {
   text-align: center;
-  background: #3b2a1f;
+  background: linear-gradient(
+    145deg,
+    #f3e7db,
+    #e6d5c3
+  );
   color: white;
   padding: 80px 20px;
 }
