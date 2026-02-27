@@ -1,0 +1,88 @@
+body {
+  margin: 0;
+  font-family: "Georgia", serif;
+  background: #f6efe7;
+  color: #3b2a1f;
+}
+
+.daily-hero {
+  text-align: center;
+  padding: 80px 20px 50px;
+}
+
+.daily-hero h1 {
+  font-size: 42px;
+  font-weight: 500;
+}
+
+.daily-hero p {
+  color: #8a6a52;
+  margin-top: 10px;
+}
+
+.daily-products {
+  padding: 40px 6% 80px;
+}
+
+.daily-products h2 {
+  text-align: center;
+  font-size: 34px;
+  margin-bottom: 60px;
+}
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 40px;
+}
+
+.product-card {
+  background: #fffaf5;
+  border-radius: 20px;
+  padding: 25px;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.08);
+  transition: 0.3s ease;
+}
+
+.product-card:hover {
+  transform: translateY(-8px);
+}
+
+.product-card img {
+  width: 100%;
+  border-radius: 18px;
+  margin-bottom: 20px;
+}
+
+.product-card h3 {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.product-card p {
+  font-size: 14px;
+  color: #6b4f3a;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+.pack-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.pack-btn {
+  text-decoration: none;
+  background: linear-gradient(145deg, #9a6b47, #7c4f2f);
+  color: white;
+  padding: 8px;
+  text-align: center;
+  border-radius: 8px;
+  font-size: 13px;
+  transition: 0.3s ease;
+}
+
+.pack-btn:hover {
+  background: linear-gradient(145deg, #b07a50, #8b5a35);
+}
