@@ -316,6 +316,10 @@ p {
   text-decoration: underline;
 }
 
+.site-footer p {
+  color: #ffffff;
+}
+
 .footer-logo,
 .fssai-logo {
   width: 85px;
