@@ -33,10 +33,21 @@ body {
   position: absolute;
   inset: 0;
   background: linear-gradient(
-    rgba(245, 232, 220, 0.90),
-    rgba(240, 225, 210, 0.92)
+    rgba(245, 232, 220, 0.78),
+    rgba(240, 225, 210, 0.82)
   );
-  backdrop-filter: blur(2px);
+}
+
+
+.daily-hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(0,0,0,0) 60%,
+    rgba(0,0,0,0.08) 100%
+  );
 }
 
 .daily-hero .hero-content {
@@ -45,10 +56,10 @@ body {
 }
 
 .daily-hero h1 {
-  font-size: 48px;
+  font-size: 52px;
   font-weight: 500;
   margin-bottom: 18px;
-  letter-spacing: 0.6px;
+  letter-spacing: 1px;
   color: #4a3425;
 }
 
