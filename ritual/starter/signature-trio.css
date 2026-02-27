@@ -92,6 +92,30 @@ ul {
   transform: translateY(-2px);
 }
 
+
+
+
+/* ===============================
+   BENEFIT STRIP
+================================ */
+
+.benefit-strip {
+  margin-top: 25px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.benefit-strip span {
+  background: #efe6db;   /* soft ritual beige */
+  color: #5a3f24;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+
 /* ===============================
    IMAGE GRID SECTION
 ================================ */
