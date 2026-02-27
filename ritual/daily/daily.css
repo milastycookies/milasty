@@ -76,6 +76,27 @@ body {
    PREMIUM CLAIM CARDS
 ===================================== */
 
+.claims-heading {
+  text-align: center;
+  font-size: 42px;
+  font-weight: 500;
+  letter-spacing: 1.5px;
+  color: #3b2a1f;
+  margin-bottom: 70px;
+  position: relative;
+}
+
+/* Elegant gold underline */
+.claims-heading::after {
+  content: "";
+  width: 60px;
+  height: 2px;
+  background: #c6a46c;
+  display: block;
+  margin: 18px auto 0;
+  opacity: 0.8;
+}
+
 .ingredient-strip {
   padding: 90px 6%;
   background: #f9f3ec;
