@@ -137,6 +137,41 @@ p {
    🍪 RITUAL STARTERS
 ========================================================= */
 
+.ritual-starters {
+  padding: 70px 6%;
+}
+
+.section-heading {
+  text-align: center;
+  margin-bottom: 55px;
+}
+
+.section-heading .section-label {
+  font-size: 12px;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: #9a7a5c;
+  margin-bottom: 12px;
+}
+
+.section-heading h2 {
+  font-size: 38px;
+  font-weight: 500;
+  letter-spacing: 1.2px;
+  color: #23140d;
+  margin-bottom: 12px;
+}
+
+.section-heading h2::after {
+  content: "";
+  width: 70px;
+  height: 2px;
+  background: #9a6b47;
+  display: block;
+  margin: 16px auto 0;
+  opacity: 0.6;
+}
+
 .product-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
