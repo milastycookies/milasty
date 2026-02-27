@@ -110,6 +110,21 @@ body {
   font-weight: 400;
 }
 
+
+@media (max-width: 768px) {
+  .ingredient-grid {
+    gap: 18px 30px;
+  }
+
+  .ingredient-grid span {
+    font-size: 14px;
+  }
+
+  .ingredient-grid span::after {
+    display: none;
+  }
+}
+
 /* =====================================
    PRODUCTS SECTION – ULTRA REFINED
 ===================================== */
