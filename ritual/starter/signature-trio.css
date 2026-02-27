@@ -246,3 +246,27 @@ ul {
     padding: 0 6%;
   }
 }
+
+
+
+/* ===============================
+   WHATSAPP ORDER BUTTON
+================================ */
+
+.whatsapp-btn {
+  display: inline-block;
+  margin-top: 15px;
+  background: #1e4d2b;   /* dark green with brown undertone */
+  color: white;
+  padding: 16px 32px;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.whatsapp-btn:hover {
+  background: #163b22;
+  transform: translateY(-2px);
+}
