@@ -1,6 +1,138 @@
+/* =====================================
+   MILASTY – SIGNATURE TRIO PAGE STYLES
+====================================== */
+
+/* ===============================
+   GLOBAL BASE
+================================ */
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: #f6efe7;   /* Ritual Beige */
+  color: #2c2c2c;
+}
+
+section {
+  padding: 60px 10%;
+}
+
+h1 {
+  font-size: 36px;
+  margin-bottom: 10px;
+  font-weight: 700;
+}
+
+h2 {
+  font-size: 22px;
+  margin-top: 30px;
+  font-weight: 600;
+}
+
+p {
+  line-height: 1.6;
+  font-size: 16px;
+}
+
+ul {
+  line-height: 1.7;
+}
+
+/* ===============================
+   PRODUCT HERO SECTION
+================================ */
+
+.product-hero {
+  display: flex;
+  gap: 60px;
+  align-items: flex-start;
+  max-width: 1200px;
+  margin: 60px auto;
+}
+
+.product-gallery {
+  flex: 1;
+}
+
+.product-gallery img {
+  width: 100%;
+  border-radius: 14px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+}
+
+.product-info {
+  flex: 1;
+}
+
+.product-info .subtitle {
+  font-size: 16px;
+  opacity: 0.8;
+}
+
+.product-info .price {
+  font-size: 26px;
+  font-weight: 700;
+  margin: 20px 0;
+}
+
+.product-info button {
+  background: #2d5f3b;
+  color: white;
+  padding: 16px 32px;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.product-info button:hover {
+  background: #234d30;
+  transform: translateY(-2px);
+}
+
+/* ===============================
+   IMAGE GRID SECTION
+================================ */
+
+.image-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+  max-width: 1100px;
+  margin: 60px auto;
+}
+
+.image-grid img {
+  width: 100%;
+  border-radius: 14px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.06);
+}
+
+/* ===============================
+   CONTENT SECTION BELOW PRODUCT
+================================ */
+
+.content-section {
+  max-width: 900px;
+  margin: 60px auto;
+  padding: 0 10%;
+}
+
+.content-section h2 {
+  margin-top: 40px;
+}
+
+.content-section ul {
+  margin-top: 10px;
+  padding-left: 18px;
+}
+
 /* ===============================
    FOOTER (MILASTY PREMIUM)
 ================================ */
+
 .site-footer {
   background: #5a3f24;
   color: white;
@@ -46,4 +178,29 @@
 .fssai-number {
   font-size: 0.85rem;
   opacity: 0.85;
+}
+
+/* ===============================
+   RESPONSIVE DESIGN
+================================ */
+
+@media (max-width: 768px) {
+
+  .product-hero {
+    flex-direction: column;
+    gap: 40px;
+    margin: 40px auto;
+  }
+
+  .image-grid {
+    grid-template-columns: 1fr;
+  }
+
+  section {
+    padding: 40px 6%;
+  }
+
+  .content-section {
+    padding: 0 6%;
+  }
 }
