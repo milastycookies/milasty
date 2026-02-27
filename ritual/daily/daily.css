@@ -73,57 +73,68 @@ body {
 
 
 /* =====================================
-   PREMIUM CLAIM STRIP
+   PREMIUM CLAIM CARDS
 ===================================== */
 
 .ingredient-strip {
+  padding: 90px 6%;
   background: #f9f3ec;
-  padding: 45px 20px;
+}
+
+.claims-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 40px;
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+  .claims-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .claims-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Card */
+
+.claim-card {
+  background: #fffdf9;
+  border-radius: 28px;
+  padding: 40px 30px;
   text-align: center;
+  box-shadow: 0 25px 60px rgba(60,40,20,0.05);
+  transition: 0.4s ease;
 }
 
-.ingredient-grid {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 28px 50px;
-  max-width: 1000px;
-  margin: 0 auto;
+.claim-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 35px 90px rgba(60,40,20,0.1);
 }
 
-/* Individual Claim */
-.ingredient-grid span {
-  position: relative;
-  font-size: 15px;
-  letter-spacing: 0.8px;
-  color: #5a3f2c;
+.claim-icon {
+  font-size: 28px;
+  margin-bottom: 18px;
+}
+
+.claim-card h3 {
+  font-size: 20px;
   font-weight: 500;
-  padding: 8px 18px;
+  margin-bottom: 14px;
+  color: #4a3425;
 }
 
-/* Add subtle separator dot */
-.ingredient-grid span:not(:last-child)::after {
-  content: "•";
-  position: absolute;
-  right: -30px;
-  color: #c6a46c;
-  font-weight: 400;
+.claim-card p {
+  font-size: 15px;
+  line-height: 1.7;
+  color: #6b4f3a;
 }
 
 
-@media (max-width: 768px) {
-  .ingredient-grid {
-    gap: 18px 30px;
-  }
-
-  .ingredient-grid span {
-    font-size: 14px;
-  }
-
-  .ingredient-grid span::after {
-    display: none;
-  }
-}
 
 /* =====================================
    PRODUCTS SECTION – ULTRA REFINED
