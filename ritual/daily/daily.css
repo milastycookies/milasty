@@ -73,26 +73,42 @@ body {
 
 
 /* =====================================
-   INGREDIENT STRIP – REFINED
+   PREMIUM CLAIM STRIP
 ===================================== */
 
 .ingredient-strip {
-  background: #fffaf5;
-  padding: 30px 10px;
-  border-top: 1px solid rgba(60,40,20,0.05);
-  border-bottom: 1px solid rgba(60,40,20,0.05);
+  background: #f9f3ec;
+  padding: 45px 20px;
+  text-align: center;
 }
 
 .ingredient-grid {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 28px;
-  font-size: 14px;
-  color: #6b4f3a;
-  letter-spacing: 0.4px;
+  gap: 28px 50px;
+  max-width: 1000px;
+  margin: 0 auto;
 }
 
+/* Individual Claim */
+.ingredient-grid span {
+  position: relative;
+  font-size: 15px;
+  letter-spacing: 0.8px;
+  color: #5a3f2c;
+  font-weight: 500;
+  padding: 8px 18px;
+}
+
+/* Add subtle separator dot */
+.ingredient-grid span:not(:last-child)::after {
+  content: "•";
+  position: absolute;
+  right: -30px;
+  color: #c6a46c;
+  font-weight: 400;
+}
 
 /* =====================================
    PRODUCTS SECTION – ULTRA REFINED
