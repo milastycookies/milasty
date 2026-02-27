@@ -239,6 +239,25 @@ body {
   border: 2px solid rgba(255,255,255,0.6);
   box-shadow: 0 6px 20px rgba(154,107,71,0.4);
 }
+
+
+.pack-btn.most-loved::before {
+  content: "Most Loved";
+  position: absolute;
+  top: -14px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 9px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #9a6b47;
+  background: #fffdf9;
+  padding: 2px 8px;
+  border-radius: 20px;
+  font-weight: 600;
+}
+
+
 /* =====================================
    FOOTER
 ===================================== */
