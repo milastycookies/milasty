@@ -64,19 +64,30 @@ body {
 
 
 /* =====================================
-   PRODUCTS SECTION – PREMIUM UPGRADE
+   PRODUCTS SECTION – 95% LUXURY VERSION
 ===================================== */
 
 .daily-products {
-  padding: 90px 6% 100px;
+  padding: 110px 6% 120px;
 }
 
 .daily-products h2 {
   text-align: center;
-  font-size: 38px;
+  font-size: 40px;
   font-weight: 500;
-  margin-bottom: 80px;
+  margin-bottom: 90px;
   letter-spacing: 1px;
+  position: relative;
+}
+
+.daily-products h2::after {
+  content: "";
+  width: 60px;
+  height: 2px;
+  background: #9a6b47;
+  display: block;
+  margin: 18px auto 0;
+  opacity: 0.6;
 }
 
 
@@ -87,7 +98,7 @@ body {
 .product-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 60px;
+  gap: 70px;
 }
 
 @media (max-width: 992px) {
@@ -104,52 +115,83 @@ body {
 
 
 /* =====================================
-   CARD – CLEANER & LIGHTER
+   CARD
 ===================================== */
 
 .product-card {
   background: #fffdf9;
-  border-radius: 26px;
-  padding: 30px;
-  box-shadow: 0 20px 50px rgba(60,40,20,0.08);
-  transition: 0.35s ease;
+  border-radius: 28px;
+  padding: 34px;
+  box-shadow: 0 30px 70px rgba(60,40,20,0.07);
+  transition: all 0.4s ease;
+  position: relative;
 }
 
 .product-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 28px 60px rgba(60,40,20,0.14);
+  transform: translateY(-10px);
+  box-shadow: 0 40px 90px rgba(60,40,20,0.12);
 }
 
 
-/* IMAGE – FULL VISIBILITY */
+/* IMAGE */
 
 .product-card img {
   width: 100%;
-  height: auto;              /* IMPORTANT: no cropping */
-  border-radius: 20px;
-  margin-bottom: 28px;
+  height: auto;
+  border-radius: 22px;
+  margin-bottom: 30px;
   display: block;
 }
 
 
-/* TEXT */
+/* =====================================
+   TITLE + PRICE
+===================================== */
 
-.product-card h3 {
+.product-title {
   font-size: 22px;
-  margin-bottom: 12px;
+  font-weight: 500;
+  margin-bottom: 8px;
+  position: relative;
+  display: inline-block;
+}
+
+.product-title::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 0%;
+  height: 2px;
+  background: #9a6b47;
+  transition: 0.3s ease;
+}
+
+.product-card:hover .product-title::after {
+  width: 100%;
+}
+
+.price-from {
+  display: block;
+  font-size: 14px;
+  color: #9a6b47;
+  margin-top: 4px;
   font-weight: 500;
 }
+
+
+/* DESCRIPTION */
 
 .product-card p {
   font-size: 15px;
   color: #6b4f3a;
   line-height: 1.7;
-  margin-bottom: 30px;
+  margin-bottom: 35px;
 }
 
 
 /* =====================================
-   PACK BUTTONS – PREMIUM CAPSULE STYLE
+   PACK SELECTOR – CAPSULE STYLE
 ===================================== */
 
 .pack-grid {
@@ -163,27 +205,53 @@ body {
   flex: 1;
   text-align: center;
   text-decoration: none;
-  padding: 10px 0;
+  padding: 11px 0;
   border-radius: 50px;
   font-size: 13px;
   font-weight: 500;
   letter-spacing: 0.4px;
 
-  background: #f3e7db;
+  background: #f4ede6;
   color: #5b4030;
 
-  border: 1px solid rgba(60,40,20,0.12);
+  border: 1px solid rgba(60,40,20,0.15);
 
-  transition: 0.3s ease;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
 }
 
 .pack-btn:hover {
   background: linear-gradient(145deg, #9a6b47, #7c4f2f);
-  color: #fff;
+  color: white;
   border-color: transparent;
   transform: translateY(-2px);
 }
 
+
+/* =====================================
+   MOST LOVED HIGHLIGHT
+===================================== */
+
+.pack-btn.most-loved {
+  background: linear-gradient(145deg, #9a6b47, #7c4f2f);
+  color: white;
+  border: none;
+}
+
+.pack-btn.most-loved::after {
+  content: "Most Loved";
+  position: absolute;
+  top: -22px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 10px;
+  background: #9a6b47;
+  color: white;
+  padding: 4px 10px;
+  border-radius: 20px;
+  letter-spacing: 0.5px;
+}
 /* =====================================
    FOOTER
 ===================================== */
