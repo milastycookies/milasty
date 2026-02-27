@@ -523,6 +523,7 @@ p {
 /* ===============================
    FOOTER (MILASTY PREMIUM)
 ================================ */
+
 .site-footer {
   background: #5a3f24;
   color: white;
@@ -531,45 +532,38 @@ p {
   font-size: 0.92rem;
 }
 
-/* Footer Links */
 .site-footer a {
   color: #ffd7a8 !important;
   font-weight: 500;
   text-decoration: none;
 }
 
-.site-footer a:visited {
-  color: #ffd7a8 !important;
-}
-
 .site-footer a:hover {
   text-decoration: underline;
-  opacity: 0.9;
 }
 
-/* FSSAI Block */
+.footer-logo {
+  width: 85px;
+  display: block;
+  margin: 0 auto;
+}
+
+.footer-links {
+  margin-top: 14px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
 .footer-fssai {
   margin-top: 18px;
 }
 
 .fssai-logo {
   width: 85px;
-  height: auto;
   display: block;
   margin: auto;
-}
-
-/* Footer Logo */
-.footer-logo-wrap {
-  margin-bottom: 14px;
-}
-
-.footer-logo {
-  width: 85px;
-  height: auto;
-  display: block;
-  margin: 0 auto;
-  opacity: 0.97;
 }
 
 .fssai-number {
@@ -577,48 +571,28 @@ p {
   opacity: 0.85;
 }
 
-/* Footer links row */
-.footer-links {
-  margin-top: 14px;
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 8px;
-  line-height: 1.6;
-}
+/* ===============================
+   RESPONSIVE DESIGN
+================================ */
 
-.footer-links a {
-  color: #ffd7a8 !important;
-  text-decoration: none;
-  font-weight: 500;
-  font-size: 0.92rem;
-}
+@media (max-width: 768px) {
 
-.footer-links a:hover {
-  text-decoration: underline;
-}
-
-.footer-links span {
-  opacity: 0.5;
-}
-
-/* Mobile Footer */
-@media (max-width: 650px) {
-
-  .footer-links {
+  .product-hero {
     flex-direction: column;
-    gap: 6px;
+    gap: 40px;
+    margin: 40px auto;
   }
 
-  .footer-links span {
-    display: none;
+  .image-grid {
+    grid-template-columns: 1fr;
   }
 
-  .footer-links a {
-    font-size: 0.95rem;
+  section {
+    padding: 40px 6%;
   }
 
-  .footer-logo {
-    width: 70px;
+  .content-section {
+    padding: 0 6%;
   }
 }
+
