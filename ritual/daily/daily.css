@@ -236,21 +236,8 @@ body {
 .pack-btn.most-loved {
   background: linear-gradient(145deg, #9a6b47, #7c4f2f);
   color: white;
-  border: none;
-}
-
-.pack-btn.most-loved::after {
-  content: "Most Loved";
-  position: absolute;
-  top: -22px;
-  left: 50%;
-  transform: translateX(-50%);
-  font-size: 10px;
-  background: #9a6b47;
-  color: white;
-  padding: 4px 10px;
-  border-radius: 20px;
-  letter-spacing: 0.5px;
+  border: 2px solid rgba(255,255,255,0.6);
+  box-shadow: 0 6px 20px rgba(154,107,71,0.4);
 }
 /* =====================================
    FOOTER
