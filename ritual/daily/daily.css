@@ -185,6 +185,9 @@ body {
 }
 
 
+
+
+
 /* =====================================
    GRID
 ===================================== */
@@ -227,6 +230,15 @@ body {
   box-shadow: 0 40px 100px rgba(60,40,20,0.12);
 }
 
+
+.product-card {
+  border: 1px solid rgba(60,40,20,0.06);
+  background: linear-gradient(
+    180deg,
+    #fffdf9 0%,
+    #fcf6ee 100%
+  );
+}
 
 /* IMAGE */
 
