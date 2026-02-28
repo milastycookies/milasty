@@ -416,6 +416,30 @@ p {
   opacity: 0.85;
 }
 
+@media (max-width: 650px) {
+
+  .footer-links {
+    flex-direction: column; /* ✅ Stack links vertically */
+    gap: 6px;
+  }
+
+  .footer-links span {
+    display: none; /* ✅ Remove separators on mobile */
+  }
+
+  .footer-links a {
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 650px) {
+
+  .footer-logo {
+    width: 70px;  /* Smaller on mobile */
+  }
+}
+
+
 
 
 /* =========================================================
