@@ -267,8 +267,8 @@ body {
   font-size: 22px;
   font-weight: 500;
   margin-bottom: 8px;
-  position: relative;
-  display: inline-block;
+  text-align: center;
+  display: block;
 }
 
 .product-title::after {
