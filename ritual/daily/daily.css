@@ -223,6 +223,7 @@ body {
   box-shadow: 0 25px 70px rgba(60,40,20,0.06);
   transition: all 0.4s ease;
   position: relative;
+  text-align: center;
 }
 
 .product-card:hover {
@@ -414,7 +415,7 @@ body {
   }
 
   .pack-btn {
-    flex: 0 0 48%;
+    flex: 0 0 calc(50% - 6px);;
   }
 }
 
