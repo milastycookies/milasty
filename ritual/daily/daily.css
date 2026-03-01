@@ -324,8 +324,8 @@ body {
   align-items: center;
   justify-content: center;
 
-  padding: 22px 14px;
-  border-radius: 26px;
+  padding: 16px 10px;
+  border-radius: 20px;
 
   background: #f4ede6;
   border: 1px solid rgba(60,40,20,0.12);
@@ -336,11 +336,11 @@ body {
 }
 
 
-.pack-story {
-  font-size: 13px;
-  letter-spacing: 1px;
+.pack-title {
+  font-size: 12px;
+  letter-spacing: 1.5px;
   text-transform: uppercase;
-  margin-bottom: 6px;
+  margin-bottom: 8px;
   color: #3b2a1f;
 }
 
@@ -365,7 +365,7 @@ body {
   box-shadow: 0 12px 30px rgba(60,40,20,0.25);
 }
 
-.pack-btn:hover .pack-story,
+.pack-btn:hover .pack-title,
 .pack-btn:hover .pack-price,
 .pack-btn:hover .pack-weight {
   color: white;
@@ -401,6 +401,19 @@ body {
   border-radius: 12px;
   letter-spacing: 1px;
 }
+
+
+@media (max-width: 600px) {
+  .pack-grid {
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .pack-btn {
+    flex: 0 0 48%;
+  }
+}
+
 
 /* =====================================
    FOOTER – REFINED
