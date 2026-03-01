@@ -314,3 +314,111 @@ body {
     font-size: 1.05rem;
   }
 }
+
+
+
+/* ===============================
+   FOOTER (MILASTY PREMIUM)
+================================ */
+.site-footer {
+  background: #5a3f24;
+  color: white;
+  text-align: center;
+  padding: 30px 14px;
+  font-size: 0.92rem;
+}
+
+/* Footer Links */
+.site-footer a {
+  color: #ffd7a8 !important;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.site-footer a:visited {
+  color: #ffd7a8 !important;
+}
+
+.site-footer a:hover {
+  text-decoration: underline;
+  opacity: 0.9;
+}
+
+/* FSSAI Block */
+.footer-fssai {
+  margin-top: 18px;
+}
+
+.fssai-logo {
+  width: 85px;
+  height: auto;
+  display: block;
+  margin: auto;
+}
+/* ✅ Footer Logo Top Center */
+.footer-logo-wrap {
+  margin-bottom: 14px;
+}
+
+.footer-logo {
+  width: 85px;       /* Premium size */
+  height: auto;
+  display: block;
+  margin: 0 auto;
+  opacity: 0.97;
+}
+
+
+.fssai-number {
+  font-size: 0.85rem;
+  opacity: 0.85;
+}
+
+/* Footer links row */
+.footer-links {
+  margin-top: 14px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  line-height: 1.6;
+}
+
+.footer-links a {
+  color: #ffd7a8 !important;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 0.92rem;
+}
+
+.footer-links a:hover {
+  text-decoration: underline;
+}
+
+.footer-links span {
+  opacity: 0.5;
+}
+
+@media (max-width: 650px) {
+
+  .footer-links {
+    flex-direction: column; /* ✅ Stack links vertically */
+    gap: 6px;
+  }
+
+  .footer-links span {
+    display: none; /* ✅ Remove separators on mobile */
+  }
+
+  .footer-links a {
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 650px) {
+
+  .footer-logo {
+    width: 70px;  /* Smaller on mobile */
+  }
+}
+
