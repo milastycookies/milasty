@@ -306,6 +306,11 @@ body {
   margin-bottom: 38px;
 }
 
+@media (max-width: 600px) {
+  .product-card {
+    padding: 28px 22px;
+  }
+}
 
 /* =====================================
    PACK SELECTOR – PREMIUM CAPSULES
@@ -410,7 +415,6 @@ body {
 
 @media (max-width: 600px) {
   .pack-grid {
-    flex-wrap: wrap;
     gap: 12px;
   }
 
