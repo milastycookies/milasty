@@ -104,7 +104,8 @@ body {
 
 .small-note {
   text-align: center;
-  margin-top: 50px;
+  margin-top: 20px;
+  margin: 10px auto 0 auto;
   padding-bottom: 10px;
   font-size: 20px;
   letter-spacing: 2px;
@@ -215,7 +216,7 @@ body {
   text-align: center;
   font-size: 42px;
   font-weight: 500;
-  margin-bottom: 50px;
+  margin-bottom: 30px;
   letter-spacing: 1.2px;
   position: relative;
 }
