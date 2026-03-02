@@ -100,14 +100,6 @@ body {
   margin-top: 8px;
 }
 
-.order-note::before {
-  content: "";
-  display: block;
-  width: 40px;
-  height: 1px;
-  background: #c7a17a;
-  margin: 0 auto 15px auto;
-}
 
 
 .small-note {
