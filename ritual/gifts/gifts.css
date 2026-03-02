@@ -27,7 +27,7 @@ overflow-x: hidden;
 .hero {
 background:
 linear-gradient(rgba(40,25,18,0.55), rgba(40,25,18,0.55)),
-url("../images/gift-hero.webp");
+url("/images/gift-hero.webp");
 
 background-size: cover;
 background-position: center;
