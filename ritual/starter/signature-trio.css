@@ -2,7 +2,18 @@
    MILASTY – SIGNATURE TRIO PAGE STYLES
 ====================================== */
 
-
+/* ===============================
+   MILASTY THEME COLORS
+================================ */
+:root {
+  --primary: #6b4e2e;
+  --secondary: #fdf8f2;
+  --accent: #c07a3a;
+  --text: #2e2e2e;
+  --muted: #666;
+  --card: #ffffff;
+  --border: rgba(0, 0, 0, 0.08);
+}
 
 /* ===============================
    HEADER (DESKTOP)
