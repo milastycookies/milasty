@@ -28,8 +28,8 @@
       <a href="/our-story.html">About</a>
       <a href="/ritual/ritual.html">Products</a>
       <a href="/contact.html">Contact</a>
-      <a href="/ritual/starter/signature-trio.html" class="active">Starter Favorite</a>
-      <a href="/ritual/daily/daily.html">Daily Ritual</a>
+      <a href="/ritual/starter/signature-trio.html">Starter Favorite</a>
+      <a href="/ritual/daily/daily.html" class="active">Daily Ritual</a>
       <a href="/ritual/gifts/gifts.html">Gifting Ritual</a>
     </nav>
   </header>
@@ -310,6 +310,24 @@
 
 </footer>
 
+
+
+   <script>
+    const toggleBtn = document.getElementById("menuToggle");
+    const navMenu = document.getElementById("navMenu");
+  
+    toggleBtn.addEventListener("click", () => {
+      navMenu.classList.toggle("active");
+      toggleBtn.classList.toggle("open");
+    });
+  
+    document.querySelectorAll(".nav-links a").forEach(link => {
+      link.addEventListener("click", () => {
+        navMenu.classList.remove("active");
+        toggleBtn.classList.remove("open");
+      });
+    });
+  </script>
 
 </body>
 </html>
