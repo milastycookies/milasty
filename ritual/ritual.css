@@ -365,6 +365,18 @@ p {
 }
 
 
+.cta-trust {
+  margin-top: 18px;
+
+  font-size: 0.9rem;
+  letter-spacing: 0.5px;
+
+  color: #6b4f3a;   /* warm earthy brown */
+  font-weight: 400;
+
+  text-align: center;
+}
+
 
 /* =========================================================
    FOOTER
