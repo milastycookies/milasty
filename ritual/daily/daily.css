@@ -159,17 +159,21 @@ body {
 /* Card */
 
 .claim-card {
-  background: #fffdf9;
+  background: #f3eee7;
   border-radius: 28px;
   padding: 40px 30px;
   text-align: center;
-  box-shadow: 0 25px 60px rgba(60,40,20,0.05);
+  box-shadow: 
+    0 10px 25px rgba(0, 0, 0, 0.04),
+    0 2px 6px rgba(0, 0, 0, 0.03);
   transition: 0.4s ease;
 }
 
 .claim-card:hover {
   transform: translateY(-8px);
-  box-shadow: 0 35px 90px rgba(60,40,20,0.1);
+  box-shadow: 
+    0 18px 35px rgba(0, 0, 0, 0.06),
+    0 4px 10px rgba(0, 0, 0, 0.04);
 }
 
 .claim-icon {
