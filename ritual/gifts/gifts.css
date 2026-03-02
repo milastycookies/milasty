@@ -99,7 +99,7 @@ box-shadow: 0 26px 60px rgba(60,40,20,0.22);
 
 .gift-card:hover img {
   height: 360px;        /* Expand image area */
-  object-fit: cover;    /* Fill & crop */
+  object-fit: contain;    /* Fill & crop */
   padding: 0;           /* Remove breathing space */
   transform: scale(1.05);
 }
@@ -107,7 +107,7 @@ box-shadow: 0 26px 60px rgba(60,40,20,0.22);
 .gift-card img {
 width: 100%;
 height: 420px;
-object-fit: cover;
+object-fit: contain;
 padding: 12px;
 background: #fffaf5;
 transition: 0.4s ease;
