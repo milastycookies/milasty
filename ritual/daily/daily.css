@@ -88,7 +88,7 @@ body {
   opacity: 0.9;
   font-style: italic;
   position: relative;
-  display: inline-block;
+  display: block;
 }
 
 .order-note::after {
