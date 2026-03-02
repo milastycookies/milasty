@@ -77,10 +77,15 @@ body {
 ===================================== */
 
 .order-note {
+  text-align: center;
   font-size: 14px;
-  letter-spacing: 0.5px;
+  letter-spacing: 0.8px;
   color: #6b4a34;              /* warm brown tone */
-  margin-bottom: 35px;
+  margin: 0 auto 40px auto;
+  max-width: 420px;
+  line-height: 1.6;
+  font-weight: 500;
+  opacity: 0.9;
   font-style: italic;
   position: relative;
   display: inline-block;
@@ -93,6 +98,15 @@ body {
   height: 2px;
   background: #c7a17a;         /* subtle gold accent */
   margin-top: 8px;
+}
+
+.order-note::before {
+  content: "";
+  display: block;
+  width: 40px;
+  height: 1px;
+  background: #c7a17a;
+  margin: 0 auto 15px auto;
 }
 
 
