@@ -313,6 +313,10 @@ p {
    🪔 RITUAL STEPS
 ========================================================= */
 
+.ritual-steps h2 {
+  text-align: center;
+}
+
 .steps-intro {
   margin-top: 14px;
   margin-bottom: 44px;
