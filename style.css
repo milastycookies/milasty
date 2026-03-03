@@ -629,11 +629,11 @@ a {
 @media (max-width: 600px) {
 
   .google-reviews {
-    background: #f1ebe3; /* slightly darker warm tone */
+    background: #ffffff; 
   }
 
   .review-inner {
-    background: #ffffff;
+    background: #f1ebe3;
     border: 1px solid rgba(107, 78, 46, 0.12);
 
     box-shadow:
