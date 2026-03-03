@@ -391,84 +391,101 @@ p {
 
 
 /* ================================
-   WHY MILLET SECTION
+   WHY MILLET SECTION – PREMIUM
 ================================ */
 
 .why-millets {
-  padding: 100px 20px;
-  background: #f7f2ec; /* soft warm beige */
+  padding: 120px 20px;
+  background: #f7f2ec;
   text-align: center;
 }
 
 .why-millets .container {
-  max-width: 1100px;
+  max-width: 1080px;
   margin: 0 auto;
 }
 
 /* Heading */
 .why-millets h2 {
-  font-size: 2rem;
-  margin-bottom: 18px;
+  font-size: 2.1rem;
   letter-spacing: 0.4px;
   color: #3e2f24;
+  margin-bottom: 16px;
+  position: relative;
+}
+
+/* Elegant divider */
+.why-millets h2::after {
+  content: "";
+  display: block;
+  width: 60px;
+  height: 2px;
+  background: #8b5e3c;
+  margin: 20px auto 0;
 }
 
 /* Subline */
 .why-subline {
-  max-width: 750px;
-  margin: 0 auto 28px;
+  max-width: 720px;
+  margin: 28px auto 32px;
   font-size: 1.05rem;
-  line-height: 1.7;
+  line-height: 1.75;
   color: #6b4f3a;
 }
 
 /* Intro paragraph */
 .why-intro {
-  max-width: 800px;
-  margin: 0 auto 24px;
+  max-width: 760px;
+  margin: 0 auto 22px;
   font-size: 1rem;
-  line-height: 1.8;
+  line-height: 1.85;
   color: #5c4433;
 }
 
 /* Benefits summary */
 .why-benefits-summary {
-  max-width: 820px;
-  margin: 0 auto 60px;
+  max-width: 780px;
+  margin: 0 auto 70px;
   font-size: 1rem;
-  line-height: 1.8;
+  line-height: 1.85;
   color: #5c4433;
 }
 
-/* Grid */
+/* Grid separation */
 .why-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 40px;
-  margin-bottom: 50px;
+  gap: 50px;
+  padding-top: 40px;
+  border-top: 1px solid rgba(0, 0, 0, 0.06);
+  margin-bottom: 60px;
 }
 
 /* Each point */
 .why-point {
-  padding: 10px 10px;
+  padding: 0 12px;
 }
 
 .why-point h3 {
-  font-size: 1.1rem;
-  margin-bottom: 12px;
+  font-size: 1.12rem;
+  font-weight: 600;
+  margin-bottom: 14px;
+  letter-spacing: 0.3px;
   color: #3e2f24;
 }
 
 .why-point p {
   font-size: 0.95rem;
-  line-height: 1.7;
+  line-height: 1.75;
   color: #6b4f3a;
 }
 
 /* Ritual link */
 .ritual-link {
+  margin-top: 50px;
   font-size: 0.95rem;
   letter-spacing: 0.3px;
+  color: #5c4433;
 }
 
 .ritual-link a {
@@ -476,11 +493,12 @@ p {
   text-decoration: none;
   border-bottom: 1px solid #8b5e3c;
   padding-bottom: 2px;
-  transition: opacity 0.3s ease;
+  transition: all 0.3s ease;
 }
 
 .ritual-link a:hover {
-  opacity: 0.7;
+  opacity: 0.75;
+  letter-spacing: 0.5px;
 }
 
 /* ================================
@@ -490,32 +508,36 @@ p {
 @media (max-width: 768px) {
 
   .why-millets {
-    padding: 70px 20px;
+    padding: 80px 22px;
   }
 
   .why-millets h2 {
     font-size: 1.6rem;
+    line-height: 1.3;
   }
 
   .why-subline {
     font-size: 1rem;
-    margin-bottom: 22px;
+    margin-bottom: 26px;
   }
 
   .why-intro,
   .why-benefits-summary {
     font-size: 0.95rem;
-    line-height: 1.7;
-    margin-bottom: 20px;
+    line-height: 1.75;
+    margin-bottom: 22px;
   }
 
   .why-grid {
     grid-template-columns: 1fr;
-    gap: 30px;
+    gap: 38px;
+    padding-top: 30px;
   }
 
   .why-point {
-    padding: 0 10px;
+    max-width: 420px;
+    margin: 0 auto;
+    padding: 0;
   }
 
   .why-point h3 {
@@ -526,17 +548,10 @@ p {
     font-size: 0.9rem;
   }
 
+  .ritual-link {
+    margin-top: 40px;
+  }
 }
-
-.why-millets h2::after {
-  content: "";
-  display: block;
-  width: 60px;
-  height: 2px;
-  background: #8b5e3c;
-  margin: 20px auto 0;
-}
-
 /* =========================================================
    📦 CTA
 ========================================================= */
