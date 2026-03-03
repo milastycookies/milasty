@@ -378,6 +378,36 @@ p {
   margin-bottom: 14px;
 }
 
+
+.ritual-link a {
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 500;
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+.ritual-link a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 100%;
+  height: 1px;
+  background: var(--accent);
+  opacity: 0.6;
+  transition: all 0.3s ease;
+}
+
+.ritual-link a:hover {
+  color: var(--accent-deep);
+}
+
+.ritual-link a:hover::after {
+  opacity: 1;
+  height: 2px;
+}
+
 /* =========================================================
    FAQ
 ========================================================= */
