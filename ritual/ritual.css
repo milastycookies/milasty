@@ -382,7 +382,8 @@ p {
 .ritual-link a {
   color: var(--accent);
   text-decoration: none;
-  font-weight: 500;
+  font-weight: 600;
+  letter-spacing: 0.3px;
   position: relative;
   transition: color 0.3s ease;
 }
