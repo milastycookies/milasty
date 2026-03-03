@@ -630,6 +630,23 @@ a {
 }
 
 
+@media (max-width: 600px) {
+
+  .google-reviews {
+    background: #f1ebe3; /* slightly darker warm tone */
+  }
+
+  .review-inner {
+    background: #ffffff;
+    border: 1px solid rgba(107, 78, 46, 0.12);
+
+    box-shadow:
+      0 6px 18px rgba(0, 0, 0, 0.06),
+      0 2px 6px rgba(0, 0, 0, 0.04);
+  }
+
+}
+
 
 /* ===============================
    INGREDIENT TRANSPARENCY
