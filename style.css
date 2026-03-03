@@ -103,39 +103,37 @@ a {
 
 /* BRAND MEANING (Wordplay Line) */
 .brand-meaning {
-  font-size: clamp(0.95rem, 2vw, 1.2rem);
-  font-weight: 400;
+  font-size: clamp(1rem, 2.2vw, 1.25rem);
+  font-weight: 500;
   letter-spacing: 0.08em;
 
-  color: rgba(255,255,255,0.85);
+  color: rgba(255,255,255,0.92);
 
-  margin-bottom: 22px;
+  margin-bottom: 16px;
 
-  background: none;
-  padding: 0;
-
-  text-shadow: 0 2px 8px rgba(0,0,0,0.5);
+  text-shadow: 0 3px 10px rgba(0,0,0,0.6);
 }
 
 /* TAGLINE (always single line) */
 .brand-positioning {
   display: inline-block;
 
-  font-size: clamp(1rem, 2vw, 1.5rem);
-  font-weight: 500;
+  font-size: clamp(0.95rem, 2vw, 1.15rem);
+  font-weight: 600;
+  letter-spacing: 0.03em;
 
-  padding: 10px 22px;
+  padding: 8px 18px;
   border-radius: 999px;
 
-  white-space: nowrap;
+  background: rgba(255,255,255,0.18);
+  color: white;
 
-  background: rgba(255, 255, 255, 0.18);
-  color: rgba(255, 255, 255, 0.95);
+  margin-bottom: 22px;
 
-  margin-bottom: 25px;
-
-  text-shadow: 0 3px 12px rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(4px);
 }
+
+
 
 /* DESCRIPTION */
 .hero-description {
