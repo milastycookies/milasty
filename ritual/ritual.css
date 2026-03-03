@@ -55,7 +55,7 @@ p {
       rgba(246,239,231,0.10) 80%,
       rgba(246,239,231,0.05) 95%
     ),
-    url("../images/ritual-hero.webp");
+    url("/images/ritual-hero.webp");
 
   background-size: cover;
   background-position: 58% center;
