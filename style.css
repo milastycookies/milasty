@@ -571,9 +571,13 @@ a {
 
 .google-reviews {
   padding: 80px 0;
-  background: #faf8f5;
+  background: linear-gradient(
+    180deg,
+    #f7f3ee 0%,
+    #f1ebe3 100%
+  );
   text-align: center;
-  overflow: hidden; /* CRITICAL */
+  overflow: hidden;
 }
 
 .reviews-wrapper {
@@ -590,6 +594,27 @@ a {
 .review-card {
   flex: 0 0 33.3333%;
   padding: 20px;
+}
+
+.review-inner {
+  background: #ffffff;
+  padding: 32px;
+  border-radius: 20px;
+
+  border: 1px solid rgba(107, 78, 46, 0.08);
+
+  box-shadow:
+    0 12px 28px rgba(107, 78, 46, 0.08),
+    0 4px 10px rgba(0, 0, 0, 0.04);
+
+  height: 100%;
+}
+
+@media (min-width: 768px) {
+  .review-inner:hover {
+    transform: translateY(-4px);
+    transition: 0.3s ease;
+  }
 }
 
 @media (max-width: 1024px) {
