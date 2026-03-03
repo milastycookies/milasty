@@ -1,28 +1,52 @@
 /* =========================================================
+   🌿 DESIGN SYSTEM
+========================================================= */
+
+:root {
+  --bg-main: #f6efe7;
+  --bg-soft: #f7f2ec;
+  --bg-accent: #fff7ef;
+  --bg-card: #fffaf5;
+
+  --text-dark: #3b2a1f;
+  --text-soft: #6b4f3a;
+  --text-muted: #8a6a52;
+
+  --accent: #8b5e3c;
+  --accent-deep: #7c4f2f;
+
+  --radius-lg: 18px;
+  --radius-md: 14px;
+
+  --shadow-soft: 0 12px 28px rgba(0,0,0,0.08);
+  --shadow-premium: 0 18px 40px rgba(60,40,20,0.12);
+}
+
+/* =========================================================
    🌿 GLOBAL
 ========================================================= */
 
 body {
   margin: 0;
   font-family: "Georgia", serif;
-  background: #f6efe7;
-  color: #3b2a1f;
+  background: var(--bg-main);
+  color: var(--text-dark);
 }
 
 .container {
   width: 90%;
   max-width: 1200px;
   margin: auto;
-  padding: 80px 0;
 }
 
 section {
-  padding: 80px 6%;
+  padding: 100px 6%;
 }
 
 h1, h2, h3 {
-  margin-bottom: 18px;
+  margin-bottom: 20px;
   font-weight: 500;
+  line-height: 1.3;
 }
 
 h2 {
@@ -30,12 +54,10 @@ h2 {
 }
 
 p {
-  color: #6b4f3a;
-  line-height: 1.7;
+  color: var(--text-soft);
+  line-height: 1.85;
   font-size: 16px;
 }
-
-
 
 /* =========================================================
    🌾 HERO
@@ -43,7 +65,8 @@ p {
 
 .ritual-hero {
   position: relative;
-  height: 88vh;
+  min-height: 88vh;
+  padding: 100px 0;
 
   background:
     linear-gradient(
@@ -98,15 +121,12 @@ p {
   margin-bottom: 28px;
 }
 
-
-
 /* =========================================================
-   PREMIUM BUTTON (GLOBAL)
+   PREMIUM BUTTONS
 ========================================================= */
 
 .hero-btn,
 .btn {
-  position: relative;
   display: inline-block;
   padding: 13px 28px;
   border-radius: 10px;
@@ -115,9 +135,7 @@ p {
   letter-spacing: 0.4px;
   transition: all 0.3s ease;
   color: #fff;
-
-  background: linear-gradient(145deg, #9a6b47, #7c4f2f);
-
+  background: linear-gradient(145deg, #9a6b47, var(--accent-deep));
   box-shadow:
     0 6px 18px rgba(0,0,0,0.18),
     0 0 0 3px rgba(255,255,255,0.25);
@@ -131,27 +149,21 @@ p {
     0 0 0 3px rgba(255,255,255,0.35);
 }
 
-
-
-
-
-
+/* =========================================================
+   BRAND DEFINITION
+========================================================= */
 
 .brand-definition {
-  padding: 70px 20px 50px;
+  padding: 80px 20px 60px;
   text-align: center;
-  background: #f6f1ea; /* slightly lighter than main background */
+  background: #f6f1ea;
 }
 
 .brand-definition p {
   max-width: 850px;
   margin: 0 auto;
-
   font-size: 1.1rem;
-  line-height: 1.8;
-
-  color: #5c4433;
-
+  line-height: 1.9;
   letter-spacing: 0.3px;
 }
 
@@ -160,22 +172,17 @@ p {
   display: block;
   width: 60px;
   height: 2px;
-  background: #8b5e3c;
+  background: var(--accent);
   margin: 30px auto 0;
 }
 
-
 /* =========================================================
-   🍪 RITUAL STARTERS
+   SECTION HEADING (GLOBAL)
 ========================================================= */
-
-.ritual-starters {
-  padding: 70px 6%;
-}
 
 .section-heading {
   text-align: center;
-  margin-bottom: 55px;
+  margin-bottom: 60px;
 }
 
 .section-heading .section-label {
@@ -188,21 +195,23 @@ p {
 
 .section-heading h2 {
   font-size: 38px;
-  font-weight: 500;
   letter-spacing: 1.2px;
   color: #23140d;
-  margin-bottom: 12px;
 }
 
 .section-heading h2::after {
   content: "";
   width: 70px;
   height: 2px;
-  background: #9a6b47;
+  background: var(--accent);
   display: block;
   margin: 16px auto 0;
   opacity: 0.6;
 }
+
+/* =========================================================
+   🍪 RITUAL STARTERS
+========================================================= */
 
 .product-grid {
   display: grid;
@@ -212,35 +221,30 @@ p {
 
 .product-card {
   position: relative;
-  background: #fffaf5;
-  border-radius: 18px;
+  background: var(--bg-card);
+  border-radius: var(--radius-lg);
   overflow: hidden;
   text-align: center;
   padding-bottom: 28px;
-
   border: 1px solid rgba(60,40,20,0.06);
-
-  box-shadow:
-    0 18px 40px rgba(60,40,20,0.12);
-
-  transition: all 0.4s ease;
+  box-shadow: var(--shadow-premium);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
 }
 
 .product-card:hover {
   transform: translateY(-10px);
-  box-shadow:
-    0 25px 50px rgba(60,40,20,0.18);
+  box-shadow: 0 25px 50px rgba(60,40,20,0.18);
 }
 
 .product-card img {
   width: 100%;
-  height: 380px;
+  height: 340px;
   object-fit: cover;
   transition: transform 0.5s ease;
 }
 
 .product-card:hover img {
-  transform: scale(1.06);
+  transform: scale(1.05);
 }
 
 .ritual-badge {
@@ -269,50 +273,19 @@ p {
 }
 
 
-
 /* =========================================================
    ☕ RITUAL MOMENTS
 ========================================================= */
 
 .ritual-moments {
-  background: #fff7ef;
-  padding: 60px 6%;
-}
-
-.section-heading {
-  text-align: center;
-  margin-bottom: 50px;
-}
-
-.section-heading h2 {
-  font-size: 38px;
-  font-weight: 500;
-  letter-spacing: 1.5px;
-  color: #23140d;
-  margin-bottom: 10px;
-}
-
-.section-heading h2::after {
-  content: "";
-  width: 60px;
-  height: 2px;
-  background: #9a6b47;
-  display: block;
-  margin: 14px auto 0;
-  opacity: 0.6;
+  background: var(--bg-accent);
 }
 
 .moments-subline {
   font-size: 15px;
-  color: #8a6a52;
+  color: var(--text-muted);
   margin-top: 14px;
   letter-spacing: 0.4px;
-}
-
-
-.ritual-moments {
-  background: #fff7ef;
-  padding: 60px 6%;
 }
 
 .moments-grid {
@@ -333,13 +306,11 @@ p {
 .moment-card img {
   width: 100%;
   height: 220px;
-  border-radius: 16px;
+  border-radius: var(--radius-md);
   object-fit: cover;
   margin-bottom: 12px;
-  box-shadow: 0 12px 28px rgba(0,0,0,0.08);
+  box-shadow: var(--shadow-soft);
 }
-
-
 
 /* =========================================================
    🪔 RITUAL STEPS
@@ -350,14 +321,10 @@ p {
 }
 
 .steps-intro {
-  margin-top: 14px;
-  margin-bottom: 44px;
-
+  margin: 14px 0 44px;
   font-size: 1rem;
   font-style: italic;
-
-  color: #8a6a55;
-
+  color: var(--text-muted);
   text-align: center;
 }
 
@@ -369,10 +336,10 @@ p {
 }
 
 .step {
-  background: #fffaf5;
+  background: var(--bg-card);
   padding: 30px;
-  border-radius: 16px;
-  box-shadow: 0 10px 26px rgba(0,0,0,0.08);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-soft);
 }
 
 .step span {
@@ -380,256 +347,88 @@ p {
   width: 44px;
   height: 44px;
   line-height: 44px;
-  background: #8b5e3c;
+  background: var(--accent);
   color: white;
   border-radius: 50%;
   margin-bottom: 12px;
   font-weight: bold;
 }
 
-
-
-
-/* ================================
-   WHY MILLET SECTION – PREMIUM
-================================ */
+/* =========================================================
+   WHY MILLET
+========================================================= */
 
 .why-millets {
-  padding: 120px 20px;
-  background: #f7f2ec;
+  background: var(--bg-soft);
   text-align: center;
 }
 
-.why-millets .container {
-  max-width: 1080px;
-  margin: 0 auto;
-}
-
-/* Heading */
-.why-millets h2 {
-  font-size: 2.1rem;
-  letter-spacing: 0.4px;
-  color: #3e2f24;
-  margin-bottom: 16px;
-  position: relative;
-}
-
-/* Elegant divider */
-.why-millets h2::after {
-  content: "";
-  display: block;
-  width: 60px;
-  height: 2px;
-  background: #8b5e3c;
-  margin: 20px auto 0;
-}
-
-/* Subline */
-.why-subline {
-  max-width: 720px;
-  margin: 28px auto 32px;
-  font-size: 1.05rem;
-  line-height: 1.75;
-  color: #6b4f3a;
-}
-
-/* Intro paragraph */
-.why-intro {
-  max-width: 760px;
-  margin: 0 auto 22px;
-  font-size: 1rem;
-  line-height: 1.85;
-  color: #5c4433;
-}
-
-/* Benefits summary */
-.why-benefits-summary {
-  max-width: 780px;
-  margin: 0 auto 70px;
-  font-size: 1rem;
-  line-height: 1.85;
-  color: #5c4433;
-}
-
-/* Grid separation */
 .why-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 50px;
   padding-top: 40px;
-  border-top: 1px solid rgba(0, 0, 0, 0.06);
+  border-top: 1px solid rgba(0,0,0,0.06);
   margin-bottom: 60px;
 }
 
-/* Each point */
-.why-point {
-  padding: 0 12px;
-}
-
 .why-point h3 {
-  font-size: 1.12rem;
+  font-size: 1.1rem;
   font-weight: 600;
   margin-bottom: 14px;
-  letter-spacing: 0.3px;
-  color: #3e2f24;
 }
 
-.why-point p {
-  font-size: 0.95rem;
-  line-height: 1.75;
-  color: #6b4f3a;
-}
-
-/* Ritual link */
-.ritual-link {
-  margin-top: 50px;
-  font-size: 0.95rem;
-  letter-spacing: 0.3px;
-  color: #5c4433;
-}
-
-.ritual-link a {
-  color: #8b5e3c;
-  text-decoration: none;
-  border-bottom: 1px solid #8b5e3c;
-  padding-bottom: 2px;
-  transition: all 0.3s ease;
-}
-
-.ritual-link a:hover {
-  opacity: 0.75;
-  letter-spacing: 0.5px;
-}
-
-/* ================================
-   MOBILE RESPONSIVE
-================================ */
-
-@media (max-width: 768px) {
-
-  .why-millets {
-    padding: 80px 22px;
-  }
-
-  .why-millets h2 {
-    font-size: 1.6rem;
-    line-height: 1.3;
-  }
-
-  .why-subline {
-    font-size: 1rem;
-    margin-bottom: 26px;
-  }
-
-  .why-intro,
-  .why-benefits-summary {
-    font-size: 0.95rem;
-    line-height: 1.75;
-    margin-bottom: 22px;
-  }
-
-  .why-grid {
-    grid-template-columns: 1fr;
-    gap: 38px;
-    padding-top: 30px;
-  }
-
-  .why-point {
-    max-width: 420px;
-    margin: 0 auto;
-    padding: 0;
-  }
-
-  .why-point h3 {
-    font-size: 1rem;
-  }
-
-  .why-point p {
-    font-size: 0.9rem;
-  }
-
-  .ritual-link {
-    margin-top: 40px;
-  }
-}
-
-
-
-/* ================================
-   RITUAL FAQ – PREMIUM
-================================ */
+/* =========================================================
+   FAQ
+========================================================= */
 
 .ritual-faq {
-  padding: 120px 20px;
   background: #ffffff;
+  text-align: center;
   border-top: 1px solid rgba(0,0,0,0.05);
   border-bottom: 1px solid rgba(0,0,0,0.05);
-  text-align: center;
 }
 
 .ritual-faq .container {
   max-width: 900px;
-  margin: 0 auto;
 }
 
 .ritual-faq h2 {
   font-size: 2rem;
-  margin-bottom: 50px;
-  color: #3e2f24;
+  margin-bottom: 60px;
 }
 
 .faq-item {
-  margin-bottom: 55px;
+  padding-bottom: 40px;
+  margin-bottom: 40px;
+  border-bottom: 1px solid rgba(0,0,0,0.05);
   text-align: left;
 }
 
+.faq-item:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+}
+
 .faq-item h3 {
-  font-size: 1.15rem;
-  font-weight: 600;
+  font-size: 1.1rem;
   margin-bottom: 12px;
-  color: #3e2f24;
-  letter-spacing: 0.3px;
 }
 
-.faq-item p {
-  font-size: 0.95rem;
-  line-height: 1.8;
-  color: #6b4f3a;
-  max-width: 780px;
-}
-
-@media (max-width: 768px) {
-
-  .ritual-faq {
-    padding: 80px 22px;
-  }
-
-  .ritual-faq h2 {
-    font-size: 1.6rem;
-  }
-
-  .faq-item {
-    text-align: left;
-  }
-
-  .faq-item h3 {
-    font-size: 1rem;
-  }
-
-  .faq-item p {
-    font-size: 0.9rem;
-  }
-
-}
 /* =========================================================
-   📦 CTA
+   CTA
 ========================================================= */
 
 .ritual-cta {
+  padding: 100px 20px;
   text-align: center;
   background: linear-gradient(145deg, #f3e7db, #e6d5c3);
-  color: #3b2a1f;
   border-top: 1px solid rgba(60,40,20,0.08);
+}
+
+.ritual-cta h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
 }
 
 .btn-whatsapp {
@@ -644,19 +443,12 @@ p {
   background: linear-gradient(145deg, #4e6a4e, #3a533b);
 }
 
-
 .cta-trust {
   margin-top: 18px;
-
   font-size: 0.9rem;
   letter-spacing: 0.5px;
-
-  color: #6b4f3a;   /* warm earthy brown */
-  font-weight: 400;
-
-  text-align: center;
+  color: var(--text-soft);
 }
-
 
 /* =========================================================
    FOOTER
@@ -666,7 +458,7 @@ p {
   background: #5a3f24;
   color: white;
   text-align: center;
-  padding: 40px 14px;
+  padding: 50px 14px;
   font-size: 0.92rem;
 }
 
@@ -678,10 +470,6 @@ p {
 
 .site-footer a:hover {
   text-decoration: underline;
-}
-
-.site-footer p {
-  color: #ffffff;
 }
 
 .footer-logo,
@@ -708,44 +496,18 @@ p {
   opacity: 0.85;
 }
 
-@media (max-width: 650px) {
-
-  .footer-links {
-    flex-direction: column; /* ✅ Stack links vertically */
-    gap: 6px;
-  }
-
-  .footer-links span {
-    display: none; /* ✅ Remove separators on mobile */
-  }
-
-  .footer-links a {
-    font-size: 0.95rem;
-  }
-}
-
-@media (max-width: 650px) {
-
-  .footer-logo {
-    width: 70px;  /* Smaller on mobile */
-  }
-}
-
-
-
-
 /* =========================================================
    📱 MOBILE
 ========================================================= */
 
 @media (max-width: 768px) {
 
-  .container {
-    padding: 50px 0;
+  section {
+    padding: 70px 6%;
   }
 
   .ritual-hero {
-    height: 72vh;
+    min-height: 72vh;
     background-position: 65% center;
   }
 
@@ -759,11 +521,24 @@ p {
     font-size: 32px;
   }
 
-  .product-card img {
-    height: 280px;
+  .hero-content p {
+    font-size: 16px;
   }
 
-  section {
-    padding: 60px 6%;
+  .product-card img {
+    height: 260px;
+  }
+
+  .why-grid {
+    gap: 38px;
+  }
+
+  .footer-links {
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .footer-links span {
+    display: none;
   }
 }
