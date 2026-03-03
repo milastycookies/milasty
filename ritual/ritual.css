@@ -138,20 +138,31 @@ p {
 
 
 .brand-definition {
-  padding: 60px 20px;
+  padding: 70px 20px 50px;
   text-align: center;
+  background: #f6f1ea; /* slightly lighter than main background */
 }
 
 .brand-definition p {
-  max-width: 800px;
+  max-width: 850px;
   margin: 0 auto;
 
-  font-size: 1rem;
-  line-height: 1.7;
+  font-size: 1.1rem;
+  line-height: 1.8;
 
   color: #5c4433;
+
+  letter-spacing: 0.3px;
 }
 
+.brand-definition::after {
+  content: "";
+  display: block;
+  width: 60px;
+  height: 2px;
+  background: #8b5e3c;
+  margin: 30px auto 0;
+}
 
 
 /* =========================================================
