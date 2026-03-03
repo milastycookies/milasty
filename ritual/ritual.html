@@ -462,5 +462,23 @@
 
 </footer>
 
+
+
+  <script>
+  if (window.innerWidth <= 768) {
+    document.querySelectorAll('.product-card').forEach(function(card) {
+      const link = card.querySelector('a.btn');
+      if (link) {
+        card.style.cursor = "pointer";
+        card.addEventListener('click', function(e) {
+          if (!e.target.closest('a')) {
+            window.location = link.href;
+          }
+        });
+      }
+    });
+  }
+</script>
+
 </body>
 </html>
