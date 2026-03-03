@@ -571,161 +571,36 @@ a {
   padding: 80px 0;
   background: #faf8f5;
   text-align: center;
+  overflow: hidden; /* CRITICAL */
 }
 
 .reviews-wrapper {
   overflow: hidden;
-  margin-top: 40px;
+  width: 100%;
 }
 
 .reviews-track {
   display: flex;
   transition: transform 0.6s ease;
+  width: 100%;
 }
 
 .review-card {
-  flex: 0 0 33.33%;
+  flex: 0 0 33.3333%;
   padding: 20px;
-  box-sizing: border-box;
 }
 
-.review-inner {
-  background: white;
-  padding: 30px;
-  border-radius: 18px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.06);
-  height: 100%;
-}
-
-.review-author {
-  margin-top: 15px;
-  font-weight: 600;
-  color: #6b4f2b;
-}
-
-/* Tablet */
 @media (max-width: 1024px) {
   .review-card {
     flex: 0 0 50%;
   }
 }
 
-/* Mobile */
 @media (max-width: 600px) {
   .review-card {
     flex: 0 0 100%;
   }
 }
-
-/* .reviews { */
-  /* text-align: center; */
-/* } */
-
-/* .reviews-subtext { */
-  /* font-size: 0.95rem; */
-  /* color: var(--muted); */
-  /* margin-bottom: 22px; */
-/* } */
-
-/* .reviews-grid { */
-  /* display: grid; */
-  /* grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); */
-  /* gap: 18px; */
-  /* margin-top: 18px; */
-/* } */
-
-/* .review-card { */
-  /* background: #fff; */
-  /* border: 1px solid var(--border); */
-  /* border-radius: 18px; */
-  /* padding: 20px; */
-  /* text-align: left; */
-  /* box-shadow: 0 6px 18px rgba(0,0,0,0.04); */
-}/
-
-/* .review-card p { */
-  /* font-size: 0.95rem; */
-  /* line-height: 1.6; */
-  /* color: #333; */
-  /* margin-bottom: 12px; */
-/* } */
-
-/* .review-card span { */
-  /* font-size: 0.85rem; */
-  /* font-weight: 600; */
-  /* color: var(--primary); */
-/* } */
-
-/* .review-link { */
-  /* display: inline-block; */
-  /* margin-top: 22px; */
-  /* font-weight: 600; */
-  /* color: var(--primary); */
-  /* text-decoration: none; */
-/* } */
-
-/* .review-link:hover { */
-  /* text-decoration: underline; */
-/* } */
-
-
-/* @media (max-width: 520px) { */
-
-  /* .reviews-grid { */
-    /* grid-template-columns: 1fr; */
-  /* } */
-
-  /* .review-card { */
-    /* padding: 18px; */
-  /* } */
-/* } */
-
-
-/* ===============================
-   REVIEWS – PREMIUM MOBILE SPACING
-================================ */
-/* @media (max-width: 600px) { */
-
-  /* Add side padding to the whole reviews section */
-  /* .reviews { */
-    /* padding-left: 18px; */
-    /* padding-right: 18px; */
-  /* } */
-
-  /* Make review cards not stretch full width */
-  /* .review-card { */
-    /* margin-left: auto; */
-    /* margin-right: auto; */
-    /* padding: 20px 18px; */
-    /* border-radius: 18px; */
-  /* } */
-
-  /* Softer readable text */
-  /* .review-card p { */
-    /* font-size: 0.95rem; */
-    /* line-height: 1.65; */
-  /* } */
-
-  /* Add space between cards */
-  /* .reviews-grid { */
-    /* gap: 18px; */
-  /* } */
-
-  /* Make headline spacing cleaner */
-  /* .reviews h2 { */
-    /* padding-left: 6px; */
-    /* padding-right: 6px; */
-    /* line-height: 1.25; */
-  /* } */
-
-  /* Premium subtext alignment */
-  /* .reviews-subtext { */
-    /* padding-left: 10px; */
-    /* padding-right: 10px; */
-    /* font-size: 0.92rem; */
-    /* line-height: 1.5; */
-  /* } */
-/* } */
 
 
 
