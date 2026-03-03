@@ -552,6 +552,60 @@ p {
     margin-top: 40px;
   }
 }
+
+
+
+/* ================================
+   RITUAL FAQ – PREMIUM
+================================ */
+
+.ritual-faq {
+  padding: 100px 20px;
+  background: #ffffff;
+  text-align: center;
+}
+
+.ritual-faq .container {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.ritual-faq h2 {
+  font-size: 2rem;
+  margin-bottom: 50px;
+  color: #3e2f24;
+}
+
+.faq-item {
+  margin-bottom: 40px;
+  text-align: left;
+}
+
+.faq-item h3 {
+  font-size: 1.1rem;
+  margin-bottom: 10px;
+  color: #3e2f24;
+}
+
+.faq-item p {
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: #6b4f3a;
+}
+
+@media (max-width: 768px) {
+  .ritual-faq {
+    padding: 70px 20px;
+  }
+
+  .ritual-faq h2 {
+    font-size: 1.6rem;
+  }
+
+  .faq-item {
+    text-align: center;
+  }
+}
 /* =========================================================
    📦 CTA
 ========================================================= */
