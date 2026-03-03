@@ -560,8 +560,10 @@ p {
 ================================ */
 
 .ritual-faq {
-  padding: 100px 20px;
+  padding: 120px 20px;
   background: #ffffff;
+  border-top: 1px solid rgba(0,0,0,0.05);
+  border-bottom: 1px solid rgba(0,0,0,0.05);
   text-align: center;
 }
 
@@ -577,25 +579,29 @@ p {
 }
 
 .faq-item {
-  margin-bottom: 40px;
+  margin-bottom: 55px;
   text-align: left;
 }
 
 .faq-item h3 {
-  font-size: 1.1rem;
-  margin-bottom: 10px;
+  font-size: 1.15rem;
+  font-weight: 600;
+  margin-bottom: 12px;
   color: #3e2f24;
+  letter-spacing: 0.3px;
 }
 
 .faq-item p {
   font-size: 0.95rem;
-  line-height: 1.7;
+  line-height: 1.8;
   color: #6b4f3a;
+  max-width: 780px;
 }
 
 @media (max-width: 768px) {
+
   .ritual-faq {
-    padding: 70px 20px;
+    padding: 80px 22px;
   }
 
   .ritual-faq h2 {
@@ -603,8 +609,17 @@ p {
   }
 
   .faq-item {
-    text-align: center;
+    text-align: left;
   }
+
+  .faq-item h3 {
+    font-size: 1rem;
+  }
+
+  .faq-item p {
+    font-size: 0.9rem;
+  }
+
 }
 /* =========================================================
    📦 CTA
