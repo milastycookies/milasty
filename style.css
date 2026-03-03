@@ -503,6 +503,25 @@ a {
   letter-spacing: 0.3px;
 }
 
+
+.ritual-funnel {
+  background: linear-gradient(180deg, #f3e7db 0%, #ead8c6 100%);
+  position: relative;
+}
+
+.ritual-funnel::before {
+  content: "";
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 500px;
+  height: 300px;
+  background: radial-gradient(circle, rgba(255,255,255,0.4) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+
 /* Mobile */
 @media (max-width: 768px) {
 
