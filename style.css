@@ -44,9 +44,10 @@ a {
 }
 
 .container {
+  width: 100%;
   max-width: 1100px;
-  margin: auto;
-  padding: 20px;
+  margin: 0 auto;
+  padding: 0 20px;
 }
 
 /* ===============================
@@ -1285,3 +1286,7 @@ a {
   }
 }
 
+
+body {
+  overscroll-behavior-x: none;
+}
