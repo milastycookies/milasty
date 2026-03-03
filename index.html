@@ -664,15 +664,20 @@ fetch("/data/google-reviews.json")
     });
 
     let index = 0;
-    const cardsPerView = window.innerWidth <= 600 ? 1 :
-                         window.innerWidth <= 1024 ? 2 : 3;
 
+    function getCardsPerView() {
+      if (window.innerWidth <= 600) return 1;
+      if (window.innerWidth <= 1024) return 2;
+      return 3;
+    }
+    
     setInterval(() => {
-      index++;
-      if (index > reviews.length - cardsPerView) {
-        index = 0;
-      }
-      track.style.transform = `translateX(-${index * 100}%)`;
+      const cardsPerView = getCardsPerView();
+      const maxIndex = reviews.length - cardsPerView;
+    
+      index = index >= maxIndex ? 0 : index + 1;
+    
+      track.style.transform = `translateX(-${index * (100 / cardsPerView)}%)`;
     }, 5000);
 
   });
