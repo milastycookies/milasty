@@ -389,6 +389,46 @@ p {
 
 
 
+
+.why-millets {
+  padding: 80px 20px;
+  text-align: center;
+  background: #f8f4ee;
+}
+
+.why-millets h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+.why-intro {
+  max-width: 700px;
+  margin: 0 auto 50px;
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: #5c4433;
+}
+
+.why-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 40px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.why-point h3 {
+  font-size: 1.1rem;
+  margin-bottom: 10px;
+}
+
+.why-point p {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: #6b4f3a;
+}
+
+
 /* =========================================================
    📦 CTA
 ========================================================= */
