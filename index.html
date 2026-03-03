@@ -712,6 +712,45 @@ discover small-batch millet bakes crafted with jaggery and desi ghee.
 </footer>
 
 
+  <script>
+fetch("/data/google-reviews.json")
+  .then(res => res.json())
+  .then(reviews => {
+
+    const track = document.querySelector(".reviews-track");
+
+    reviews.forEach(review => {
+      const card = document.createElement("div");
+      card.classList.add("review-card");
+
+      card.innerHTML = `
+        <div class="review-inner">
+          <p>"${review.text}"</p>
+          <div class="review-author">
+            — ${review.author} ★★★★★
+          </div>
+        </div>
+      `;
+
+      track.appendChild(card);
+    });
+
+    let index = 0;
+    const cardsPerView = window.innerWidth <= 600 ? 1 :
+                         window.innerWidth <= 1024 ? 2 : 3;
+
+    setInterval(() => {
+      index++;
+      if (index > reviews.length - cardsPerView) {
+        index = 0;
+      }
+      track.style.transform = `translateX(-${index * (100 / cardsPerView)}%)`;
+    }, 5000);
+
+  });
+</script>
+
+
 
  
 
