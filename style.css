@@ -571,11 +571,7 @@ a {
 
 .google-reviews {
   padding: 80px 0;
-  background: linear-gradient(
-    180deg,
-    #f7f3ee 0%,
-    #f1ebe3 100%
-  );
+  background: #ffffff; 
   text-align: center;
   overflow: hidden;
 }
@@ -597,7 +593,7 @@ a {
 }
 
 .review-inner {
-  background: #ffffff;
+  background: var(--secondary);
   padding: 32px;
   border-radius: 20px;
 
