@@ -672,7 +672,7 @@ fetch("/data/google-reviews.json")
       if (index > reviews.length - cardsPerView) {
         index = 0;
       }
-      track.style.transform = `translateX(-${index * (100 / cardsPerView)}%)`;
+      track.style.transform = `translateX(-${index * 100}%)`;
     }, 5000);
 
   });
