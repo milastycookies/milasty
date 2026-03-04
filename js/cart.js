@@ -33,9 +33,14 @@ function addToCart(name, price, type = "normal") {
     }
 
     saveCart(cart);
-
+    
     showToast("Added to Ritual Basket");
+    
     updateBasketCount();
+    
+    renderCart();
+    
+    openCart();
 }
 
 // Remove item
@@ -117,3 +122,86 @@ function goToCart(){
 
 // Run when page loads
 document.addEventListener("DOMContentLoaded", updateBasketCount);
+
+
+
+function openCart(){
+
+document.getElementById("cartDrawer").classList.add("active");
+document.getElementById("cartOverlay").classList.add("active");
+
+renderCart();
+}
+
+function closeCart(){
+
+document.getElementById("cartDrawer").classList.remove("active");
+document.getElementById("cartOverlay").classList.remove("active");
+
+}
+
+document.getElementById("cartOverlay").onclick = closeCart;
+
+
+
+
+
+
+function renderCart(){
+
+let cart = getCart();
+
+let html = "";
+let total = 0;
+let freeDelivery = false;
+
+cart.forEach(item =>{
+
+let subtotal = item.price * item.qty;
+total += subtotal;
+
+if(item.type === "gift"){
+freeDelivery = true;
+}
+
+html += `
+<div class="cart-item">
+
+<strong>${item.name}</strong><br>
+
+₹${item.price} × ${item.qty}
+
+<div>
+
+<button onclick="changeQty('${item.name}',-1)">−</button>
+<button onclick="changeQty('${item.name}',1)">+</button>
+<button onclick="removeItem('${item.name}')">Remove</button>
+
+</div>
+
+</div>
+`;
+});
+
+document.getElementById("cart-items").innerHTML = html;
+
+
+/* Delivery */
+
+let delivery = 60;
+
+if(total >= 399 || freeDelivery){
+delivery = 0;
+}
+
+let finalTotal = total + delivery;
+
+document.getElementById("cart-summary").innerHTML = `
+<p>Subtotal: ₹${total}</p>
+<p>Delivery: ${delivery===0?"FREE":"₹60"}</p>
+<p><strong>Total: ₹${finalTotal}</strong></p>
+`;
+
+updateBasketCount();
+
+}
