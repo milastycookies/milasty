@@ -19,10 +19,17 @@ cart.forEach(item => {
 document.getElementById("cart-items").innerHTML = html;
 
 
-let delivery = 0;
+let delivery = 60;
+let freeDelivery = false;
 
-if (total < 799) {
-    delivery = 60;
+cart.forEach(item => {
+if(item.type === "gift"){
+freeDelivery = true;
+}
+});
+
+if(total >= 399 || freeDelivery){
+delivery = 0;
 }
 
 let finalTotal = total + delivery;
