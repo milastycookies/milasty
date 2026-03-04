@@ -8,24 +8,26 @@ function saveCart(cart) {
     localStorage.setItem(CART_KEY, JSON.stringify(cart));
 }
 
-function addToCart(name, price) {
+function addToCart(name, price, type) {
 
-    let cart = getCart();
+let cart = getCart();
 
-    let existing = cart.find(item => item.name === name);
+let existing = cart.find(item => item.name === name);
 
-    if (existing) {
-        existing.qty += 1;
-    } else {
-        cart.push({
-            name: name,
-            price: price,
-            qty: 1
-        });
-    }
+if(existing){
+existing.qty += 1;
+}else{
+cart.push({
+name:name,
+price:price,
+qty:1,
+type:type
+});
+}
 
-    saveCart(cart);
-    alert("Added to Ritual Basket");
+saveCart(cart);
+
+alert("Added to Ritual Basket");
 }
 
 function clearCart() {
