@@ -537,7 +537,32 @@
   }
 </script>
 
+
+  <div class="cart-overlay" id="cartOverlay"></div>
+
+<div class="cart-drawer" id="cartDrawer">
+
+  <div class="cart-header">
+    <h3>Your Ritual Basket</h3>
+    <button onclick="closeCart()">✕</button>
+  </div>
+
+  <div id="cart-items"></div>
+
+  <div id="cart-summary"></div>
+
+  <div class="cart-form">
+    <input id="name" placeholder="Name">
+    <input id="phone" placeholder="Phone">
+    <textarea id="address" placeholder="Address"></textarea>
+
+    <button onclick="sendOrder()">Send Order on WhatsApp</button>
+  </div>
+
+</div>
+
   <script src="/js/cart.js"></script>
+  <script src="/js/cart-ui.js"></script>
 
 </body>
 </html>
