@@ -717,3 +717,50 @@ body {
     font-size: 16px;
   }
 }
+
+
+
+/* Floating Basket */
+
+.floating-basket{
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+
+  background: #6b4e2e;
+  color: white;
+
+  padding: 12px 18px;
+  border-radius: 40px;
+
+  font-size: 14px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  z-index: 9999;
+
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.floating-basket:hover{
+  transform: translateY(-2px);
+  box-shadow: 0 14px 30px rgba(0,0,0,0.35);
+}
+
+#basket-count{
+  background: white;
+  color: #6b4e2e;
+
+  border-radius: 50%;
+  padding: 3px 8px;
+
+  font-size: 12px;
+  font-weight: 700;
+}
