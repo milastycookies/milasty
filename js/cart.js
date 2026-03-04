@@ -34,7 +34,8 @@ function addToCart(name, price, type = "normal") {
 
     saveCart(cart);
 
-    alert("Added to Ritual Basket");
+    showToast("Added to Ritual Basket");
+    updateBasketCount();
 }
 
 // Remove item
@@ -87,3 +88,32 @@ function getCartCount(){
 
     return count;
 }
+
+
+
+// Update basket count
+function updateBasketCount(){
+
+    const basketCount = document.getElementById("basket-count");
+    if(!basketCount) return;
+
+    let cart = getCart();
+
+    let count = 0;
+
+    cart.forEach(item=>{
+        count += item.qty;
+    });
+
+    basketCount.innerText = count;
+}
+
+
+// Go to cart
+function goToCart(){
+    window.location.href = "/cart/index.html";
+}
+
+
+// Run when page loads
+document.addEventListener("DOMContentLoaded", updateBasketCount);
