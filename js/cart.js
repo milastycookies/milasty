@@ -98,8 +98,10 @@ function getCartCount(){
 // Update basket count
 function updateBasketCount(){
 
+    const basket = document.querySelector(".floating-basket");
     const basketCount = document.getElementById("basket-count");
-    if(!basketCount) return;
+
+    if(!basket || !basketCount) return;
 
     let cart = getCart();
 
@@ -110,6 +112,14 @@ function updateBasketCount(){
     });
 
     basketCount.innerText = count;
+
+    // Hide basket if empty
+    if(count === 0){
+        basket.style.display = "none";
+    }else{
+        basket.style.display = "flex";
+    }
+
 }
 
 
