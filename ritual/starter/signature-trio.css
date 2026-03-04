@@ -240,7 +240,12 @@ ul {
 }
 
 
-
+.shipping{
+  color:#2e7d32;
+  font-size:0.95rem;
+  margin:6px 0 14px 0;
+  font-weight:500;
+}
 
 /* ===============================
    BENEFIT STRIP
