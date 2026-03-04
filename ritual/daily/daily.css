@@ -361,6 +361,18 @@ body {
    PRODUCTS SECTION – ULTRA REFINED
 ===================================== */
 
+.shipping{
+  font-size:0.9rem;
+  color:#6b4e2e;
+  margin-top:10px;
+  line-height:1.6;
+}
+
+.shipping span{
+  font-size:0.85rem;
+  opacity:0.7;
+}
+
 .daily-products {
   padding: 120px 6% 140px;
 }
