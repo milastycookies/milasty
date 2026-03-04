@@ -40,7 +40,6 @@ function addToCart(name, price, type = "normal") {
     
     renderCart();
     
-    openCart();
 }
 
 // Remove item
