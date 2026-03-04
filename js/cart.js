@@ -34,7 +34,7 @@ function addToCart(name, price, type = "normal") {
 
     saveCart(cart);
     
-    showToast("Added to Ritual Basket");
+    showToast("✔ Item added to Ritual Basket");
     
     updateBasketCount();
     
