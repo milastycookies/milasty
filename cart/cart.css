@@ -106,7 +106,10 @@ top:0;
 .cart-drawer{
 
 position:fixed;
-inset: 0 0 0 auto;
+top:0;
+right:0;
+bottom:0;
+left:auto;
 
 margin-top:0;
 
@@ -133,10 +136,11 @@ padding:22px;
 transform:translateX(100%);
 transition:transform .35s ease;
 
-overflow-x:auto;
+overflow-y:auto;
 overflow-x:hidden;
 
 will-change:transform;
+contain: layout style;
 }
 
 .cart-drawer.active{
