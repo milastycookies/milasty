@@ -265,6 +265,27 @@ return;
 
 }
 
+document.getElementById("guidelinesOverlay").classList.add("active");
+
+}
+
+
+
+
+function sendWhatsAppOrder(){
+
+let name = document.getElementById("name").value;
+let phone = document.getElementById("phone").value;
+let address = document.getElementById("address").value;
+
+if(!name || !phone || !address){
+
+alert("Please fill all details");
+
+return;
+
+}
+
 let cart = getCart();
 
 let message = "Hello MILASTY,%0A%0AOrder from website.%0A%0A";
