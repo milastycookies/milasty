@@ -132,3 +132,15 @@ function sendOrder(){
     window.open("https://wa.me/91YOURNUMBER?text=" + message);
 
 }
+
+
+
+document.addEventListener("DOMContentLoaded", function(){
+
+const overlay = document.getElementById("cartOverlay");
+
+if(overlay){
+overlay.addEventListener("click", closeCart);
+}
+
+});
