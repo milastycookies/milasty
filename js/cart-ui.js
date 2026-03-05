@@ -144,3 +144,29 @@ overlay.addEventListener("click", closeCart);
 }
 
 });
+
+
+
+
+function updateBasket(){
+
+const basket = document.querySelector(".floating-basket");
+const count = document.getElementById("basket-count");
+
+let cart = JSON.parse(localStorage.getItem("milastyCart")) || [];
+
+let totalQty = 0;
+
+cart.forEach(item=>{
+totalQty += item.qty;
+});
+
+count.innerText = totalQty;
+
+if(totalQty > 0){
+basket.style.display = "flex";
+}else{
+basket.style.display = "none";
+}
+
+}
