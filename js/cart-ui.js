@@ -13,6 +13,7 @@ renderCart();
 updateBasket();
 
 const overlay = document.getElementById("cartOverlay");
+
 if(overlay){
 overlay.addEventListener("click", closeCart);
 }
@@ -38,11 +39,14 @@ let total = 0;
 let freeDelivery = false;
 
 
-// Build cart items
+// ----------------------------------------
+// BUILD CART ITEMS
+// ----------------------------------------
 
 cart.forEach(item => {
 
 let subtotal = item.price * item.qty;
+
 total += subtotal;
 
 if(item.type === "gift"){
@@ -53,8 +57,13 @@ cartHTML += `
 <div class="cart-item new-item">
 
 <div class="cart-item-details">
+
 <div class="cart-item-title">${item.name}</div>
-<div class="cart-item-price">₹${item.price} × ${item.qty} = ₹${subtotal}</div>
+
+<div class="cart-item-price">
+₹${item.price} × ${item.qty} = ₹${subtotal}
+</div>
+
 </div>
 
 <div class="qty-controls">
@@ -65,7 +74,9 @@ cartHTML += `
 
 <button onclick="changeQty('${item.name}', 1)">+</button>
 
-<button class="cart-remove" onclick="removeItem('${item.name}')">Remove</button>
+<button class="cart-remove" onclick="removeItem('${item.name}')">
+Remove
+</button>
 
 </div>
 
@@ -90,15 +101,21 @@ delivery = 0;
 let finalTotal = total + delivery;
 
 
-// Delivery message
+// ----------------------------------------
+// DELIVERY MESSAGE
+// ----------------------------------------
 
 let deliveryMessage = "";
 
 if(freeDelivery){
+
 deliveryMessage = "🎁 Gift Ritual includes FREE delivery";
+
 }
 else if(total >= 799){
+
 deliveryMessage = "🚚 Free delivery unlocked!";
+
 }
 else{
 
@@ -127,6 +144,26 @@ summaryContainer.innerHTML = `
 
 `;
 
+
+// ----------------------------------------
+// SMART RITUAL CART ANIMATION
+// ----------------------------------------
+
+summaryContainer.classList.remove("free-delivery");
+
+if(total >= 799 || freeDelivery){
+
+summaryContainer.classList.add("free-delivery");
+
+}
+
+
+// ----------------------------------------
+// UPDATE BASKET COUNT
+// ----------------------------------------
+
+updateBasket();
+
 }
 
 
@@ -145,7 +182,7 @@ let cart = getCart();
 
 let totalQty = 0;
 
-cart.forEach(item=>{
+cart.forEach(item => {
 totalQty += item.qty;
 });
 
@@ -153,7 +190,8 @@ count.innerText = totalQty;
 
 if(totalQty > 0){
 basket.style.display = "flex";
-}else{
+}
+else{
 basket.style.display = "none";
 }
 
@@ -161,7 +199,7 @@ basket.style.display = "none";
 
 
 // ----------------------------------------
-// QTY CHANGE
+// CHANGE QUANTITY
 // ----------------------------------------
 
 function changeQty(name, delta){
@@ -187,7 +225,6 @@ return item;
 saveCart(cart);
 
 renderCart();
-updateBasket();
 
 }
 
@@ -205,7 +242,6 @@ cart = cart.filter(item => item.name !== name);
 saveCart(cart);
 
 renderCart();
-updateBasket();
 
 }
 
@@ -258,8 +294,11 @@ delivery = 0;
 let finalTotal = total + delivery;
 
 message += "%0A";
+
 message += `Subtotal: ₹${total}%0A`;
+
 message += `Delivery: ${delivery === 0 ? "FREE" : "₹60"}%0A`;
+
 message += `Total: ₹${finalTotal}%0A%0A`;
 
 message += `Name: ${name}%0A`;
