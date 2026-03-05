@@ -58,6 +58,7 @@
   <!-- PERFORMANCE -->
   <link rel="preload" as="image" href="https://milasty.com/images/HERO_1.webp">
   <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="/cart/cart.css">
 
   <!-- ================================= -->
   <!-- GOOGLE ANALYTICS -->
@@ -218,6 +219,43 @@
   
   
 <body>
+
+
+  <!-- CART OVERLAY -->
+<div id="cartOverlay" class="cart-overlay"></div>
+
+<!-- CART DRAWER -->
+<div id="cartDrawer" class="cart-drawer">
+
+  <div class="cart-header">
+    <h3>Your Ritual Basket</h3>
+    <button onclick="closeCart()">✕</button>
+  </div>
+
+  <div id="cart-items"></div>
+
+  <div id="cart-summary"></div>
+
+  <div class="cart-form">
+
+    <input id="name" placeholder="Name">
+
+    <input id="phone" placeholder="Phone">
+
+    <textarea id="address" placeholder="Address"></textarea>
+
+    <button onclick="sendOrder()">Send Order on WhatsApp</button>
+
+  </div>
+
+</div>
+
+
+<!-- FLOATING BASKET -->
+<div class="floating-basket" onclick="openCart()">
+  🧺 Ritual Basket
+  <span id="basket-count">0</span>
+</div>
 
   <section class="hero">
 
@@ -684,6 +722,8 @@ fetch("/data/google-reviews.json")
 </script>
 
 
+  <script src="/js/cart.js"></script>
+<script src="/js/cart-ui.js"></script>
 
  
 
