@@ -188,10 +188,11 @@ totalQty += item.qty;
 
 count.innerText = totalQty;
 
-if(totalQty > 0){
+const drawer = document.getElementById("cartDrawer");
+
+if(totalQty > 0 && !drawer.classList.contains("active")){
 basket.style.display = "flex";
-}
-else{
+}else{
 basket.style.display = "none";
 }
 
