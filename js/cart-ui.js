@@ -330,3 +330,24 @@ message += `Address: ${address}`;
 window.open("https://wa.me/918927142056?text=" + message);
 
 }
+
+
+
+// ----------------------------------------
+// GUIDELINES POPUP CONTROLS
+// ----------------------------------------
+
+function closeGuidelines(){
+
+document.getElementById("guidelinesOverlay").classList.remove("active");
+
+}
+
+
+function confirmGuidelines(){
+
+document.getElementById("guidelinesOverlay").classList.remove("active");
+
+sendWhatsAppOrder();
+
+}
