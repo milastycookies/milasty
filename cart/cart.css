@@ -130,7 +130,8 @@ padding:22px;
 transform:translateX(100%);
 transition:transform .35s ease;
 
-overflow:hidden;
+overflow-x:auto;
+overflow-x:hidden;
 
 will-change:transform;
 }
