@@ -459,6 +459,39 @@ transform:scale(1);
 }
 
 
+/* Free delivery celebration */
+
+.free-delivery{
+
+background:linear-gradient(
+135deg,
+#fff6e8,
+#f3e7d6
+);
+
+border:1px solid #c7a17a;
+
+animation: deliveryGlow 1.5s ease;
+
+}
+
+@keyframes deliveryGlow{
+
+0%{
+box-shadow:0 0 0 rgba(198,164,108,0);
+}
+
+50%{
+box-shadow:0 0 18px rgba(198,164,108,0.5);
+}
+
+100%{
+box-shadow:0 0 0 rgba(198,164,108,0);
+}
+
+}
+
+
 
 
 /* =====================================
