@@ -18,8 +18,21 @@ if(overlay){
 overlay.addEventListener("click", closeCart);
 }
 
-});
+/* Close guidelines popup when clicking outside */
 
+const guideOverlay = document.getElementById("guidelinesOverlay");
+
+if(guideOverlay){
+guideOverlay.addEventListener("click", function(e){
+
+if(e.target === guideOverlay){
+closeGuidelines();
+}
+
+});
+}
+
+});
 
 // ----------------------------------------
 // RENDER CART
