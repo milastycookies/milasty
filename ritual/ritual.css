@@ -39,8 +39,8 @@ body {
   margin: auto;
 }
 
-section {
-  padding: 0px 6%;
+section:not(.ritual-hero){
+  padding: 100px 6%;
 }
 
 h1, h2, h3 {
