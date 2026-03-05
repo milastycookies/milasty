@@ -301,7 +301,44 @@ return;
 
 let cart = getCart();
 
-let message = "Hello MILASTY,%0A%0AOrder from website.%0A%0A";
+/* ----------------------------------------
+GENERATE ORDER ID
+---------------------------------------- */
+
+let now = new Date();
+
+let year = now.getFullYear();
+let month = String(now.getMonth() + 1).padStart(2, "0");
+let day = String(now.getDate()).padStart(2, "0");
+
+let hour = String(now.getHours()).padStart(2, "0");
+let minute = String(now.getMinutes()).padStart(2, "0");
+let second = String(now.getSeconds()).padStart(2, "0");
+
+let millisecond = String(now.getMilliseconds()).padStart(3, "0");
+
+/* random suffix for extra safety */
+
+let random = Math.floor(Math.random() * 100).toString().padStart(2,"0");
+
+let orderId = `MIL-${year}${month}${day}-${hour}${minute}${second}-${millisecond}-${random}`;
+
+
+/* ----------------------------------------
+START MESSAGE
+---------------------------------------- */
+
+let message =
+`Hello MILASTY 🌿%0A%0A` +
+`I would like to place the following order from your website.%0A%0A` +
+`Order ID: ${orderId}%0A%0A` +
+`Order Details%0A` +
+`────────────%0A`;
+
+
+/* ----------------------------------------
+BUILD ORDER ITEMS
+---------------------------------------- */
 
 let total = 0;
 let freeDelivery = false;
@@ -320,6 +357,11 @@ message += `${item.name} × ${item.qty} = ₹${subtotal}%0A`;
 
 });
 
+
+/* ----------------------------------------
+DELIVERY LOGIC
+---------------------------------------- */
+
 let delivery = 60;
 
 if(total >= 799 || freeDelivery){
@@ -328,23 +370,37 @@ delivery = 0;
 
 let finalTotal = total + delivery;
 
-message += "%0A";
 
-message += `Subtotal: ₹${total}%0A`;
+/* ----------------------------------------
+ORDER SUMMARY
+---------------------------------------- */
 
-message += `Delivery: ${delivery === 0 ? "FREE" : "₹60"}%0A`;
+message += `%0A` +
+`Subtotal: ₹${total}%0A` +
+`Delivery: ${delivery === 0 ? "FREE" : "₹60"}%0A` +
+`Total: ₹${finalTotal}%0A%0A`;
 
-message += `Total: ₹${finalTotal}%0A%0A`;
 
-message += `Name: ${name}%0A`;
-message += `Phone: ${phone}%0A`;
-message += `Address: ${address}`;
+/* ----------------------------------------
+DELIVERY DETAILS
+---------------------------------------- */
+
+message +=
+`Delivery Details%0A` +
+`────────────%0A` +
+`Name: ${name}%0A` +
+`Phone: ${phone}%0A` +
+`Address: ${address}%0A%0A` +
+`Looking forward to this MILASTY ritual 🤍`;
+
+
+/* ----------------------------------------
+OPEN WHATSAPP
+---------------------------------------- */
 
 window.open("https://wa.me/918927142056?text=" + message);
 
 }
-
-
 
 // ----------------------------------------
 // GUIDELINES POPUP CONTROLS
