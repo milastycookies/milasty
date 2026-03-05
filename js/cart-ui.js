@@ -329,7 +329,7 @@ START MESSAGE
 ---------------------------------------- */
 
 let message =
-`Hello MILASTY 🌿%0A%0A` +
+`Hello MILASTY %0A%0A` +
 `I'd like to place the following order from your website.%0A%0A` +
 `Order ID: ${orderId}%0A%0A` +
 `Order Details%0A` +
@@ -391,8 +391,8 @@ message +=
 `Name: ${name}%0A` +
 `Phone: ${phone}%0A` +
 `Address: ${address}%0A%0A` +
-`Please press SEND in WhatsApp to confirm this order.%0A` + 
-`We will then share the payment QR to proceed 🤍`;
+`[Please press SEND in WhatsApp to confirm this order.%0A` + 
+`We will then share the payment QR to proceed]`;
 
 
 /* ----------------------------------------
