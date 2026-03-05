@@ -100,12 +100,12 @@ pointer-events:auto;
 
 .cart-drawer{
 
-position:fixed;
-top:0;
-right:0;
-bottom:0;
+position:fixed !important;
+top:0 !important;
+right:0 !important;
+bottom:0 !important;
 
-margin-top:0;
+margin-top:0 !important;
 
 width:420px;
 max-width:100%;
