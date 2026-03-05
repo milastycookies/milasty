@@ -93,6 +93,11 @@ pointer-events:auto;
 }
 
 
+.cart-overlay,
+.cart-drawer{
+position:fixed;
+top:0;
+}
 
 /* =====================================
    CART DRAWER
@@ -100,12 +105,10 @@ pointer-events:auto;
 
 .cart-drawer{
 
-position:fixed !important;
-top:0 !important;
-right:0 !important;
-bottom:0 !important;
+position:fixed;
+inset: 0 0 0 auto;
 
-margin-top:0 !important;
+margin-top:0;
 
 width:420px;
 max-width:100%;
