@@ -251,7 +251,7 @@ message += `${item.name} × ${item.qty} = ₹${subtotal}%0A`;
 
 let delivery = 60;
 
-if(total >= 399 || freeDelivery){
+if(total >= 799 || freeDelivery){
 delivery = 0;
 }
 
