@@ -526,6 +526,169 @@ overflow:hidden;
 }
 
 
+
+/* =====================================
+MILASTY POPUP
+===================================== */
+
+.milasty-popup-overlay{
+
+position:fixed;
+inset:0;
+
+background:rgba(0,0,0,0.45);
+
+display:none;
+align-items:center;
+justify-content:center;
+
+z-index:999999;
+
+padding:20px;
+
+}
+
+.milasty-popup-overlay.active{
+display:flex;
+}
+
+
+/* popup box */
+
+.milasty-popup{
+
+background:linear-gradient(180deg,#fffaf4,#f5ede4);
+
+width:520px;
+max-width:95%;
+
+border-radius:18px;
+
+padding:28px;
+
+box-shadow:0 30px 80px rgba(0,0,0,0.35);
+
+font-family:Georgia, serif;
+
+animation:popupEnter .35s ease;
+
+}
+
+@keyframes popupEnter{
+
+from{
+opacity:0;
+transform:translateY(25px);
+}
+
+to{
+opacity:1;
+transform:translateY(0);
+}
+
+}
+
+
+/* heading */
+
+.milasty-popup h3{
+
+margin-top:0;
+
+font-size:20px;
+
+color:#3b2a1f;
+
+letter-spacing:.4px;
+
+margin-bottom:18px;
+
+}
+
+
+/* content */
+
+.milasty-popup-content{
+
+font-size:14px;
+
+line-height:1.7;
+
+color:#5a4637;
+
+max-height:300px;
+
+overflow:auto;
+
+padding-right:6px;
+
+}
+
+.milasty-popup-content p{
+margin-bottom:12px;
+}
+
+
+/* buttons */
+
+.milasty-popup-actions{
+
+display:flex;
+justify-content:flex-end;
+gap:10px;
+
+margin-top:22px;
+
+}
+
+
+.milasty-btn-primary{
+
+background:linear-gradient(145deg,#8b5e3c,#6b4e2e);
+
+color:white;
+
+border:none;
+
+padding:12px 18px;
+
+border-radius:10px;
+
+cursor:pointer;
+
+font-weight:600;
+
+transition:.25s;
+
+}
+
+.milasty-btn-primary:hover{
+
+transform:translateY(-2px);
+
+box-shadow:0 8px 20px rgba(0,0,0,0.25);
+
+}
+
+
+.milasty-btn-secondary{
+
+background:#f1e7dc;
+
+border:1px solid rgba(60,40,20,0.2);
+
+padding:12px 18px;
+
+border-radius:10px;
+
+cursor:pointer;
+
+}
+
+.milasty-btn-secondary:hover{
+background:#e7d8c7;
+}
+
 /* =====================================
    MOBILE OPTIMIZATION
 ===================================== */
