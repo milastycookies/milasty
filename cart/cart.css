@@ -24,7 +24,7 @@ display:none;
 align-items:center;
 gap:8px;
 
-z-index:10000;
+z-index:999999;
 
 transition:all .25s ease;
    
@@ -84,7 +84,7 @@ pointer-events:none;
 
 transition:.3s;
 
-z-index:9998;
+z-index:999999;
 }
 
 .cart-overlay.active{
@@ -123,7 +123,7 @@ border-left:1px solid rgba(80,50,30,0.15);
 
 box-shadow:-14px 0 40px rgba(60,40,20,0.25);
 
-z-index:9999;
+z-index:999999;
 
 display:flex;
 flex-direction:column;
