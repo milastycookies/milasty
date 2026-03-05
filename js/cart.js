@@ -55,7 +55,7 @@ type: type
 saveCart(cart);
 
 // Open cart automatically for better UX
-if(typeof openCart === "function"){
+if(typeof openCart === "function" && document.getElementById("cartDrawer")){
 openCart();
 }
 
@@ -198,12 +198,9 @@ function openCart(){
 
 const drawer = document.getElementById("cartDrawer");
 const overlay = document.getElementById("cartOverlay");
-const basket = document.querySelector(".floating-basket");
 
 if(drawer) drawer.classList.add("active");
 if(overlay) overlay.classList.add("active");
-
-if(basket) basket.style.display = "none";
 
 document.body.classList.add("cart-open");
 
@@ -222,15 +219,14 @@ function closeCart(){
 
 const drawer = document.getElementById("cartDrawer");
 const overlay = document.getElementById("cartOverlay");
-const basket = document.querySelector(".floating-basket");
 
 if(drawer) drawer.classList.remove("active");
 if(overlay) overlay.classList.remove("active");
 
 document.body.classList.remove("cart-open");
 
-if(basket && getCartCount() > 0){
-basket.style.display = "flex";
+if(typeof updateBasket === "function"){
+updateBasket();
 }
 
 }
