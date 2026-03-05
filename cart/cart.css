@@ -434,6 +434,33 @@ box-shadow:0 10px 20px rgba(0,0,0,0.28);
 
 
 
+
+
+/* Highlight newly added item */
+
+.cart-item.new-item{
+
+animation: cartHighlight 1.2s ease;
+
+}
+
+@keyframes cartHighlight{
+
+0%{
+background:#fff3e6;
+transform:scale(1.02);
+}
+
+100%{
+background:#fff8f0;
+transform:scale(1);
+}
+
+}
+
+
+
+
 /* =====================================
    MOBILE OPTIMIZATION
 ===================================== */
