@@ -202,6 +202,8 @@ const overlay = document.getElementById("cartOverlay");
 if(drawer) drawer.classList.add("active");
 if(overlay) overlay.classList.add("active");
 
+document.body.classList.add("cart-open");
+
 if(typeof renderCart === "function" && drawer){
 renderCart();
 }
@@ -220,6 +222,8 @@ const overlay = document.getElementById("cartOverlay");
 
 if(drawer) drawer.classList.remove("active");
 if(overlay) overlay.classList.remove("active");
+
+document.body.classList.remove("cart-open");
 
 }
 
