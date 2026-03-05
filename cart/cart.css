@@ -129,7 +129,7 @@ left:auto;
 
 margin-top:0;
 
-width:420px;
+width:420px !important;
 max-width:100%;
 height:100vh;
 max-height:100vh;
