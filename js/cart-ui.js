@@ -50,7 +50,7 @@ freeDelivery = true;
 }
 
 cartHTML += `
-<div class="cart-item">
+<div class="cart-item new-item">
 
 <div class="cart-item-details">
 <div class="cart-item-title">${item.name}</div>
