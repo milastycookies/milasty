@@ -421,3 +421,13 @@ document.getElementById("guidelinesOverlay").classList.remove("active");
 sendWhatsAppOrder();
 
 }
+
+
+
+function showDelivery(){
+
+document.getElementById("delivery-section").style.display = "block";
+
+document.querySelector(".continue-btn").style.display = "none";
+
+}
