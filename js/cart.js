@@ -197,7 +197,7 @@ const overlay = document.getElementById("cartOverlay");
 if(drawer) drawer.classList.add("active");
 if(overlay) overlay.classList.add("active");
 
-if(typeof renderCart === "function"){
+if(typeof renderCart === "function" && drawer){
 renderCart();
 }
 
