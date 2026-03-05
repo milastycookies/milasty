@@ -5,6 +5,7 @@
   <title>Daily Ritual Favourite | MILASTY</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="daily.css">
+  <link rel="stylesheet" href="/cart/cart.css">
 </head>
 
 <body>
@@ -59,7 +60,7 @@
 
   <h2>Crafted for Your Daily Ritual</h2>
   <p class="order-note">
-    Choose your pack. Tap to order instantly via WhatsApp.
+   Choose your pack and add to your Ritual Basket.
   </p>
 
   <ul class="shipping">
@@ -84,41 +85,41 @@
       </p>
 
       <div class="pack-grid">
-        <a href="https://wa.me/918927142056?text=Hi%20MILASTY%2C%20I%20would%20like%20to%20order%20Cardamom%20Bajra%20Cookies%20-%20Trial%20Pack."
-           class="pack-btn">
+        <button type="button" class="pack-btn"
+onclick="addToCart('Cardamom Bajra Cookies - Trial Pack',99,'normal')">
         
           <span class="pack-title">Trial Pack</span>
           <span class="pack-price">₹99</span>
           <span class="pack-weight">70g</span>
         
-        </a>
+        </button>
         
-        <a href="https://wa.me/918927142056?text=Hi%20MILASTY%2C%20I%20would%20like%20to%20order%20Cardamom%20Bajra%20Cookies%20-%20Regular%20Pack."
-           class="pack-btn">
+        <button type="button" class="pack-btn"
+onclick="addToCart('Cardamom Bajra Cookies - Regular Pack',139,'normal')">
         
           <span class="pack-title">Regular Pack</span>
           <span class="pack-price">₹139</span>
           <span class="pack-weight">100g</span>
         
-        </a>
+        </button>
         
-        <a href="https://wa.me/918927142056?text=Hi%20MILASTY%2C%20I%20would%20like%20to%20order%20Cardamom%20Bajra%20Cookies%20-%20Couple%20Pack."
-           class="pack-btn">
+        <button type="button" class="pack-btn"
+onclick="addToCart('Cardamom Bajra Cookies - Couple Pack',179,'normal')">
         
           <span class="pack-title">Couple Pack</span>
           <span class="pack-price">₹179</span>
           <span class="pack-weight">130g</span>
         
-        </a>
+        </button>
         
-        <a href="https://wa.me/918927142056?text=Hi%20MILASTY%2C%20I%20would%20like%20to%20order%20Cardamom%20Bajra%20Cookies%20-%20Family%20Pack."
-           class="pack-btn">
+        <button type="button" class="pack-btn"
+onclick="addToCart('Cardamom Bajra Cookies - Family Pack',239,'normal')">
         
           <span class="pack-title">Family Pack</span>
           <span class="pack-price">₹239</span>
           <span class="pack-weight">180g</span>
         
-        </a>
+        </button>
         
       </div>
     </div>
@@ -137,41 +138,41 @@
       </p>
 
       <div class="pack-grid">
-        <a href="https://wa.me/918927142056?text=Hi%20MILASTY%2C%20I%20would%20like%20to%20order%20Coconut%20Jowar%20Cookies%20-%20trial%20pack."
-           class="pack-btn">
+        <button type="button" class="pack-btn"
+onclick="addToCart('Coconut Jowar Cookies - Trial Pack',99,'normal')">
         
           <span class="pack-title">Trial Pack</span>
           <span class="pack-price">₹99</span>
           <span class="pack-weight">70g</span>
         
-        </a>
+        </button>
         
-        <a href="https://wa.me/918927142056?text=Hi%20MILASTY%2C%20I%20would%20like%20to%20order%20Coconut%20Jowar%20Cookies%20-%20Regular%20Pack."
-           class="pack-btn">
+        <button type="button" class="pack-btn"
+onclick="addToCart('Coconut Jowar Cookies - Regular Pack',139,'normal')">
         
           <span class="pack-title">Regular Pack</span>
           <span class="pack-price">₹139</span>
           <span class="pack-weight">100g</span>
         
-        </a>
+        </button>
         
-        <a href="https://wa.me/918927142056?text=Hi%20MILASTY%2C%20I%20would%20like%20to%20order%20Coconut%20Jowar%20Cookies%20-%20Couple%20Pack."
-           class="pack-btn">
+        <button type="button" class="pack-btn"
+onclick="addToCart('Coconut Jowar Cookies - Couple Pack',179,'normal')">
         
           <span class="pack-title">Couple Pack</span>
           <span class="pack-price">₹179</span>
           <span class="pack-weight">130g</span>
         
-        </a>
+        </button>
         
-        <a href="https://wa.me/918927142056?text=Hi%20MILASTY%2C%20I%20would%20like%20to%20order%20Coconut%20Jowar%20Cookies%20-%20Family%20Pack."
-           class="pack-btn">
+        <button type="button" class="pack-btn"
+onclick="addToCart('Coconut Jowar Cookies - Family Pack',239,'normal')">
         
           <span class="pack-title">Family Pack</span>
           <span class="pack-price">₹239</span>
           <span class="pack-weight">180g</span>
         
-        </a>
+        </button>
     </div>
     </div>
     
@@ -190,44 +191,46 @@
       </p>
 
       <div class="pack-grid">
-        <a href="https://wa.me/918927142056?text=Hi%20MILASTY%2C%20I%20would%20like%20to%20order%20Cocoa%20Ragi%20Cookies%20-%20Trial%20Pack."
-           class="pack-btn">
+        <button type="button" class="pack-btn"
+onclick="addToCart('Cocoa Ragi Cookies - Trial Pack',99,'normal')">
         
           <span class="pack-title">Trial Pack</span>
           <span class="pack-price">₹99</span>
           <span class="pack-weight">70g</span>
         
-        </a>
+        </button>
         
-        <a href="https://wa.me/918927142056?text=Hi%20MILASTY%2C%20I%20would%20like%20to%20order%20Cocoa%20Ragi%20Cookies%20-%20Regular%20Pack."
-           class="pack-btn">
+        <button type="button" class="pack-btn"
+onclick="addToCart('Cocoa Ragi Cookies - Regular Pack',139,'normal')">
         
           <span class="pack-title">Regular Pack</span>
           <span class="pack-price">₹139</span>
           <span class="pack-weight">100g</span>
         
-        </a>
+        </button>
         
-        <a href="https://wa.me/918927142056?text=Hi%20MILASTY%2C%20I%20would%20like%20to%20order%20Cocoa%20Ragi%20Cookies%20-%20Couple%20Pack."
-           class="pack-btn">
+        <button type="button" class="pack-btn"
+onclick="addToCart('Cocoa Ragi Cookies - Couple Pack',179,'normal')">
         
           <span class="pack-title">Couple Pack</span>
           <span class="pack-price">₹179</span>
           <span class="pack-weight">130g</span>
         
-        </a>
+        </button>
         
-        <a href="https://wa.me/918927142056?text=Hi%20MILASTY%2C%20I%20would%20like%20to%20order%20Cocoa%20Ragi%20Cookies%20-%20Family%20Pack."
-           class="pack-btn">
+        <button type="button" class="pack-btn"
+onclick="addToCart('Cocoa Ragi Cookies - Family Pack',239,'normal')">
         
           <span class="pack-title">Family Pack</span>
           <span class="pack-price">₹239</span>
           <span class="pack-weight">180g</span>
         
-        </a>
+        </button>
     </div>
 
   </div>
+  </div>
+
 </section>
 
 
@@ -317,6 +320,10 @@
 </footer>
 
 
+<div class="floating-basket" onclick="openCart()">
+🧺 Ritual Basket <span id="basket-count">0</span>
+</div>
+
 
    <script>
     const toggleBtn = document.getElementById("menuToggle");
@@ -334,6 +341,83 @@
       });
     });
   </script>
+
+
+  <div class="cart-overlay" id="cartOverlay"></div>
+
+<div class="cart-drawer" id="cartDrawer">
+
+  <div class="cart-header">
+    <h3>Your Ritual Basket</h3>
+    <button onclick="closeCart()">✕</button>
+  </div>
+
+  <div id="cart-items"></div>
+
+  <div id="cart-summary"></div>
+
+  <div class="cart-form">
+    <input id="name" placeholder="Name">
+    <input id="phone" placeholder="Phone">
+    <textarea id="address" placeholder="Address"></textarea>
+
+    <button onclick="sendOrder()">Send Order on WhatsApp</button>
+  </div>
+
+</div>
+
+  <script src="/js/cart.js"></script>
+    <script src="/js/cart-ui.js"></script>
+
+
+
+  <!-- =====================================
+MILASTY DELIVERY GUIDELINES POPUP
+===================================== -->
+
+<div id="guidelinesOverlay" class="milasty-popup-overlay">
+
+  <div class="milasty-popup">
+
+    <h3>A Small Note Before We Confirm Your Order</h3>
+
+    <div class="milasty-popup-content">
+
+<p>Before we share the payment details, we’d just like to quickly share a few delivery guidelines to ensure your MILASTY order reaches you smoothly 🤍</p>
+
+<p>🌿 All orders are prepaid and freshly handmade in small batches.</p>
+
+<p>📍 Please ensure the address and contact number shared are correct and complete.</p>
+
+<p>🚚 Kindly make sure someone is available to receive the parcel.<br>
+If the order is returned due to incorrect address or unavailability, re-shipping charges will apply.</p>
+
+<p>📦 In case you receive a wrong or damaged product, please inform us within 24 hours with a clear unboxing video. After verification we will arrange a suitable resolution.</p>
+
+<p>Since our cookies are preservative-free food products, returns are not accepted once opened unless there is a genuine issue from our side.</p>
+
+<p>✨ Please don’t worry — these policies simply help us ensure smooth delivery and protect both you and our small handmade business.</p>
+
+<p><strong>Thank you for trusting MILASTY 🌿🤍</strong></p>
+
+    </div>
+
+    <div class="milasty-popup-actions">
+
+      <button class="milasty-btn-secondary" onclick="closeGuidelines()">
+        Cancel
+      </button>
+
+      <button class="milasty-btn-primary" onclick="confirmGuidelines()">
+        I Understand • Continue
+      </button>
+
+    </div>
+
+  </div>
+
+</div>
+  
 
 </body>
 </html>

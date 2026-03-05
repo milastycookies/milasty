@@ -5,9 +5,38 @@
   <title>Signature Trio Box | MILASTY Ritual Starter</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="signature-trio.css">
+  <link rel="stylesheet" href="/cart/cart.css">
 </head>
 
 <body>
+
+      <div class="floating-basket" onclick="openCart()">
+🧺 Ritual Basket <span id="basket-count">0</span>
+</div>
+  
+  <div class="cart-overlay" id="cartOverlay"></div>
+
+<div class="cart-drawer" id="cartDrawer">
+
+  <div class="cart-header">
+    <h3>Your Ritual Basket</h3>
+    <button onclick="closeCart()">✕</button>
+  </div>
+
+  <div id="cart-items"></div>
+
+  <div id="cart-summary"></div>
+
+  <div class="cart-form">
+    <input id="name" placeholder="Name">
+    <input id="phone" placeholder="Phone">
+    <textarea id="address" placeholder="Address"></textarea>
+
+    <button onclick="sendOrder()">Send Order on WhatsApp</button>
+  </div>
+
+</div>
+  
 
   <!-- ✅ HEADER -->
   <header class="site-header">
@@ -63,14 +92,16 @@
 
     <div class="shipping">🚚 Complimentary Delivery Across India <br> 📦 Delivered in 7–10 days</div>
 
-    <!-- <button class="add-to-cart">Begin This Ritual</button> -->
-
-    <a 
-      href="https://wa.me/918927142056?text=Hi%20MILASTY%2C%20I%20would%20like%20to%20order%20the%20Signature%20Trio%20Box%20%28%E2%82%B9549%29.%20Please%20assist%20me%20with%20the%20next%20steps."
-      class="whatsapp-btn"
-      target="_blank">
+    <button onclick="addToCart('Signature Trio Box',549,'gift')">
       Begin This Ritual
-    </a>
+    </button>
+
+    <!-- <a  -->
+      <!-- href="https://wa.me/918927142056?text=Hi%20MILASTY%2C%20I%20would%20like%20to%20order%20the%20Signature%20Trio%20Box%20%28%E2%82%B9549%29.%20Please%20assist%20me%20with%20the%20next%20steps." -->
+      <!-- class="whatsapp-btn" -->
+      <!-- target="_blank"> -->
+      <!-- Begin This Ritual -->
+    <!-- </a> -->
 
     <!-- ✅ TRUST / BENEFIT STRIP -->
     <div class="benefit-strip">
@@ -199,6 +230,8 @@
 
 
 
+
+
   <script>
     const toggleBtn = document.getElementById("menuToggle");
     const navMenu = document.getElementById("navMenu");
@@ -215,6 +248,59 @@
       });
     });
   </script>
+
+
+
+
+  <script src="/js/cart.js"></script>
+  <script src="/js/cart-ui.js"></script>
+
+  <!-- =====================================
+MILASTY DELIVERY GUIDELINES POPUP
+===================================== -->
+
+<div id="guidelinesOverlay" class="milasty-popup-overlay">
+
+  <div class="milasty-popup">
+
+    <h3>A Small Note Before We Confirm Your Order</h3>
+
+    <div class="milasty-popup-content">
+
+<p>Before we share the payment details, we’d just like to quickly share a few delivery guidelines to ensure your MILASTY order reaches you smoothly 🤍</p>
+
+<p>🌿 All orders are prepaid and freshly handmade in small batches.</p>
+
+<p>📍 Please ensure the address and contact number shared are correct and complete.</p>
+
+<p>🚚 Kindly make sure someone is available to receive the parcel.<br>
+If the order is returned due to incorrect address or unavailability, re-shipping charges will apply.</p>
+
+<p>📦 In case you receive a wrong or damaged product, please inform us within 24 hours with a clear unboxing video. After verification we will arrange a suitable resolution.</p>
+
+<p>Since our cookies are preservative-free food products, returns are not accepted once opened unless there is a genuine issue from our side.</p>
+
+<p>✨ Please don’t worry — these policies simply help us ensure smooth delivery and protect both you and our small handmade business.</p>
+
+<p><strong>Thank you for trusting MILASTY 🌿🤍</strong></p>
+
+    </div>
+
+    <div class="milasty-popup-actions">
+
+      <button class="milasty-btn-secondary" onclick="closeGuidelines()">
+        Cancel
+      </button>
+
+      <button class="milasty-btn-primary" onclick="confirmGuidelines()">
+        I Understand • Continue
+      </button>
+
+    </div>
+
+  </div>
+
+</div>
   
 
 </body>

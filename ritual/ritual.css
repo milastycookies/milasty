@@ -39,7 +39,7 @@ body {
   margin: auto;
 }
 
-section {
+section:not(.ritual-hero){
   padding: 100px 6%;
 }
 
@@ -581,3 +581,4 @@ p {
     display: none;
   }
 }
+
