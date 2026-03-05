@@ -54,6 +54,11 @@ type: type
 
 saveCart(cart);
 
+// Open cart automatically for better UX
+if(typeof openCart === "function"){
+openCart();
+}
+
 
 // Toast notification
 if(typeof showToast === "function"){
