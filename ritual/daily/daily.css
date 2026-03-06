@@ -270,16 +270,25 @@ color:#5c4633;
 }
 
 .millet-guide a{
-  color:#9a6b47;            /* warm millet brown */
+  color:#9a6b47;
   text-decoration:none;
   font-weight:500;
   border-bottom:1px solid rgba(154,107,71,0.35);
+  padding-bottom:1px;
   transition:all 0.25s ease;
 }
 
 .millet-guide a:hover{
   color:#6b4e2e;
   border-bottom:1px solid #6b4e2e;
+}
+
+@media (max-width:600px){
+
+.millet-guide a{
+  border-bottom:1.5px solid rgba(154,107,71,0.45);
+}
+
 }
 
 /* =====================================
