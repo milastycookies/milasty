@@ -1,11 +1,133 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
+  <!-- Preconnect (performance) -->
+  <link rel="preconnect" href="https://www.google-analytics.com">
+  <link rel="preconnect" href="https://www.googletagmanager.com">
+
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZH9K5NGD6Q"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-ZH9K5NGD6Q');
+  </script>
+
+  <!-- Basic Meta -->
   <meta charset="UTF-8">
-  <title>Daily Ritual Favourite | MILASTY</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- SEO Title -->
+  <title>Millet Cookies for Everyday Snacking | Daily Ritual | MILASTY</title>
+
+  <!-- Meta Description -->
+  <meta name="description"
+  content="Explore MILASTY Daily Ritual — millet cookies made with ragi, jowar and bajra. Baked with jaggery and desi ghee, no maida or palm oil. Available in multiple pack sizes and delivered across India.">
+
+  <meta name="robots" content="index, follow">
+
+  <!-- Canonical -->
+  <link rel="canonical" href="https://milasty.com/ritual/daily/daily.html">
+
+  <!-- Favicon -->
+  <link rel="icon" href="/images/favicon.ico">
+
+  <!-- Open Graph -->
+  <meta property="og:site_name" content="MILASTY">
+  <meta property="og:title" content="MILASTY Daily Ritual Millet Cookies">
+  <meta property="og:description" content="Millet cookies made with ragi, bajra and jowar, baked with jaggery and desi ghee for everyday mindful snacking.">
+  <meta property="og:image" content="https://milasty.com/images/cocoa-ragi.webp">
+  <meta property="og:url" content="https://milasty.com/ritual/daily/daily.html">
+  <meta property="og:type" content="website">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="MILASTY Daily Ritual Millet Cookies">
+  <meta name="twitter:description" content="Wholesome millet cookies baked with jaggery and desi ghee.">
+  <meta name="twitter:image" content="https://milasty.com/images/cocoa-ragi.webp">
+
+  <!-- CSS -->
   <link rel="stylesheet" href="daily.css">
   <link rel="stylesheet" href="/cart/cart.css">
+
+  <!-- Organization Schema -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"Organization",
+    "@id":"https://milasty.com/#organization",
+    "name":"MILASTY",
+    "url":"https://milasty.com",
+    "logo":"https://milasty.com/images/MILASTY-logo.webp",
+    "description":"MILASTY is an Indian millet bakery crafting small-batch cookies using traditional grains like ragi, jowar and bajra.",
+    "areaServed":"India"
+  }
+  </script>
+
+  <!-- Breadcrumb Schema -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"BreadcrumbList",
+    "itemListElement":[
+      {
+        "@type":"ListItem",
+        "position":1,
+        "name":"Home",
+        "item":"https://milasty.com/"
+      },
+      {
+        "@type":"ListItem",
+        "position":2,
+        "name":"Ritual",
+        "item":"https://milasty.com/ritual/ritual.html"
+      },
+      {
+        "@type":"ListItem",
+        "position":3,
+        "name":"Daily Ritual",
+        "item":"https://milasty.com/ritual/daily/daily.html"
+      }
+    ]
+  }
+  </script>
+
+  <!-- Collection / ItemList Schema -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"CollectionPage",
+    "name":"MILASTY Daily Ritual Millet Cookies",
+    "url":"https://milasty.com/ritual/daily/daily.html",
+    "description":"MILASTY Daily Ritual collection of millet cookies made with ragi, bajra and jowar, baked with jaggery and desi ghee.",
+    "mainEntity":{
+      "@type":"ItemList",
+      "itemListElement":[
+        {
+          "@type":"Product",
+          "position":1,
+          "name":"Cardamom Bajra Cookies",
+          "url":"https://milasty.com/cardamom-bajra-cookies/"
+        },
+        {
+          "@type":"Product",
+          "position":2,
+          "name":"Coconut Jowar Cookies",
+          "url":"https://milasty.com/coconut-jowar-cookies/"
+        },
+        {
+          "@type":"Product",
+          "position":3,
+          "name":"Cocoa Ragi Cookies",
+          "url":"https://milasty.com/cocoa-ragi-cookies/"
+        }
+      ]
+    }
+  }
+  </script>
+
 </head>
 
 <body>
@@ -181,7 +303,7 @@ onclick="addToCart('Coconut Jowar Cookies - Family Pack',239,'normal')">
     <div class="product-card">
       <img src="/images/cocoa-ragi.webp" alt="Cocoa Ragi Cookies">
 
-      <h3 class="product-title" id="CB">
+      <h3 class="product-title" id="CR">
         Cocoa Ragi Cookies
         <span class="price-from">Starting at ₹99</span>
       </h3>
