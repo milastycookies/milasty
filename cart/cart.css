@@ -760,23 +760,6 @@ font-weight:600;
 MOBILE CART DRAWER
 =============================== */
 
-@media (max-width: 768px){
-
-  .cart-drawer{
-    width: 100%;
-    right: 0;
-
-    border-radius: 16px 16px 0 0;
-
-  }
-
-  .cart-drawer.active{
-    transform: translateY(0);
-  }
-
-}
-
-
 
 .cart-drag{
 width:40px;
@@ -802,8 +785,8 @@ flex-shrink:0;
 @media (max-width:768px){
 
 .cart-drawer{
-width:95%;
-max-width:95%;
+width:90%;
+max-width:90%;
 }
 
 }
