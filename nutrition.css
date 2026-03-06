@@ -296,6 +296,25 @@ body {
 }
 
 
+.nutrition-link {
+  margin-top: 40px;
+  font-size: 15px;
+  color: #5a4a3f;
+  text-align: center;
+}
+
+.nutrition-link a {
+  color: #8a5a2b;
+  text-decoration: none;
+  font-weight: 600;
+  border-bottom: 1px solid rgba(138,90,43,0.4);
+  transition: all 0.25s ease;
+}
+
+.nutrition-link a:hover {
+  color: #6e441f;
+  border-bottom: 1px solid #6e441f;
+}
 
 
 @media (max-width: 600px) {
