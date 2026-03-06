@@ -361,6 +361,60 @@ body {
    PRODUCTS SECTION – ULTRA REFINED
 ===================================== */
 
+
+.ritual-builder{
+  text-align:center;
+  margin:40px auto 70px;
+  max-width:650px;
+}
+
+.ritual-builder h3{
+  font-size:20px;
+  letter-spacing:1px;
+  margin-bottom:10px;
+  color:#4a3425;
+}
+
+.ritual-builder p{
+  font-size:14px;
+  color:#6b4e2e;
+  margin-bottom:25px;
+}
+
+.ritual-suggestions{
+  display:flex;
+  justify-content:center;
+  gap:18px;
+  flex-wrap:wrap;
+}
+
+.ritual-combo{
+  padding:12px 18px;
+  border-radius:18px;
+  background:#f3ece5;
+  border:1px solid rgba(0,0,0,0.06);
+  font-size:13px;
+  color:#4a3425;
+  transition:0.3s ease;
+}
+
+.ritual-combo:hover{
+  background:#efe5da;
+  transform:translateY(-2px);
+}
+
+.combo-title{
+  display:block;
+  font-weight:600;
+  margin-bottom:2px;
+}
+
+.combo-desc{
+  font-size:12px;
+  opacity:0.75;
+}
+
+
 .ritual-hint{
 margin:14px auto 25px;
 font-size:14px;
