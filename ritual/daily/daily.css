@@ -361,6 +361,16 @@ body {
    PRODUCTS SECTION – ULTRA REFINED
 ===================================== */
 
+.ritual-hint{
+  margin-top:14px;
+  font-size:14px;
+  color:#6b4e2e;
+  font-style:italic;
+  letter-spacing:0.2px;
+  max-width:520px;
+  line-height:1.6;
+}
+
 .shipping{
   list-style:none;
   padding:0;
@@ -394,6 +404,23 @@ body {
   margin: 20px auto 0;
   opacity: 0.6;
 }
+
+
+
+.badge-loved{
+  display:inline-block;
+  margin-left:8px;
+  padding:3px 10px;
+  font-size:10px;
+  font-weight:600;
+  letter-spacing:0.6px;
+  text-transform:uppercase;
+  color:#6b4e2e;
+  background:#f3ece5;
+  border-radius:14px;
+}
+
+
 
 
 
