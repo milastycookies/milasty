@@ -448,3 +448,29 @@ ul {
   transform: translateY(-2px);
 }
 
+
+
+/* ==============================
+   PREMIUM CONTENT LINKS
+============================== */
+
+.content-section a{
+  color: #6b4e2e;              /* MILASTY earthy brown */
+  text-decoration: none;
+  font-weight: 500;
+  border-bottom: 1px solid rgba(107,78,46,0.35);
+  transition: all 0.25s ease;
+}
+
+/* Hover effect */
+
+.content-section a:hover{
+  color: #8a6a3c;
+  border-bottom: 1px solid #8a6a3c;
+}
+
+/* Mobile tap feel */
+
+.content-section a:active{
+  opacity: 0.7;
+}
