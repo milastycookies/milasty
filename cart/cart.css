@@ -790,3 +790,21 @@ max-width:85%;
 }
 
 }
+
+
+
+.back-to-cart{
+
+background:none;
+border:none;
+
+color:#6b4e2e;
+
+font-size:14px;
+font-weight:600;
+
+margin-bottom:12px;
+
+cursor:pointer;
+
+}
