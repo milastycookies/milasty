@@ -344,15 +344,17 @@ Continue
 
   <div id="delivery-section" class="delivery-section">
 
+    <button class="back-to-cart" onclick="showCartItems()">
+      ← Edit Your Ritual Basket
+    </button>
+
     <div class="cart-form">
     
-    <input id="name" placeholder="Name">
+      <input id="name" placeholder="Name">
+      <input id="phone" placeholder="Phone">
+      <textarea id="address" placeholder="Address"></textarea>
     
-    <input id="phone" placeholder="Phone">
-    
-    <textarea id="address" placeholder="Address"></textarea>
-    
-    <button onclick="sendOrder()">Send Order on WhatsApp</button>
+      <button onclick="sendOrder()">Send Order on WhatsApp</button>
     
     </div>
     
