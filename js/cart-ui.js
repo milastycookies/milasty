@@ -428,6 +428,9 @@ function showDelivery(){
 
 document.getElementById("delivery-section").style.display = "block";
 
+document.getElementById("cart-items").style.display = "none";
+document.getElementById("cart-summary").style.display = "none";
+
 document.querySelector(".continue-btn").style.display = "none";
 
 }
