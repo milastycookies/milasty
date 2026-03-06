@@ -426,12 +426,15 @@ sendWhatsAppOrder();
 
 function showDelivery(){
 
-document.getElementById("delivery-section").style.display = "block";
+const delivery = document.getElementById("delivery-section");
+const items = document.getElementById("cart-items");
+const summary = document.getElementById("cart-summary");
+const continueBtn = document.querySelector(".continue-btn");
 
-document.getElementById("cart-items").style.display = "none";
-document.getElementById("cart-summary").style.display = "none";
-
-document.querySelector(".continue-btn").style.display = "none";
+if(delivery) delivery.style.display = "block";
+if(items) items.style.display = "none";
+if(summary) summary.style.display = "none";
+if(continueBtn) continueBtn.style.display = "none";
 
 }
 
@@ -439,11 +442,14 @@ document.querySelector(".continue-btn").style.display = "none";
 
 function showCartItems(){
 
-document.getElementById("delivery-section").style.display = "none";
+const delivery = document.getElementById("delivery-section");
+const items = document.getElementById("cart-items");
+const summary = document.getElementById("cart-summary");
+const continueBtn = document.querySelector(".continue-btn");
 
-document.getElementById("cart-items").style.display = "block";
-document.getElementById("cart-summary").style.display = "block";
-
-document.querySelector(".continue-btn").style.display = "block";
+if(delivery) delivery.style.display = "none";
+if(items) items.style.display = "block";
+if(summary) summary.style.display = "block";
+if(continueBtn) continueBtn.style.display = "block";
 
 }
