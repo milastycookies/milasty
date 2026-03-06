@@ -317,6 +317,16 @@ body {
 }
 
 
+
+@media (max-width: 600px) {
+
+  .nutrition-link {
+    font-size: 14px;
+    padding: 0 18px;
+  }
+
+}
+
 @media (max-width: 600px) {
 
   .nutrition-hero {
