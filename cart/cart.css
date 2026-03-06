@@ -794,4 +794,10 @@ margin:6px auto 10px;
 #cart-items{
 max-height: 35vh;
 overflow-y: auto;
+flex:1;
+}
+
+
+.cart-form{
+flex-shrink:0;
 }
