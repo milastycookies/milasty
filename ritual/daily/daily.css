@@ -223,6 +223,36 @@ body {
 }
 
 
+
+
+.millet-guide{
+max-width:700px;
+margin:90px auto;
+padding:0 20px;
+text-align:left;
+}
+
+.millet-guide h2{
+font-size:30px;
+margin-bottom:18px;
+}
+
+.millet-guide h3{
+margin-top:28px;
+font-size:20px;
+}
+
+.millet-guide p{
+line-height:1.7;
+color:#5c4633;
+}
+
+.millet-guide ul{
+margin-top:10px;
+padding-left:18px;
+line-height:1.7;
+}
+
 /* =====================================
    PREMIUM CLAIM CARDS
 ===================================== */
