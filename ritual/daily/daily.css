@@ -226,15 +226,27 @@ body {
 
 
 .millet-guide{
-max-width:700px;
-margin:90px auto;
-padding:0 20px;
-text-align:left;
+  max-width:720px;
+  margin:110px auto;
+  padding:0 20px;
+  line-height:1.75;
+  color:#4a3425;
 }
 
 .millet-guide h2{
-font-size:30px;
-margin-bottom:18px;
+  font-size:32px;
+  font-weight:500;
+  margin-bottom:22px;
+  letter-spacing:0.4px;
+}
+
+.millet-guide h2::after{
+  content:"";
+  width:60px;
+  height:2px;
+  background:#c6a46c;
+  display:block;
+  margin:14px 0 0;
 }
 
 .millet-guide h3{
@@ -248,9 +260,26 @@ color:#5c4633;
 }
 
 .millet-guide ul{
-margin-top:10px;
-padding-left:18px;
-line-height:1.7;
+  padding-left:20px;
+  margin-top:14px;
+  margin-bottom:22px;
+}
+
+.millet-guide li{
+  margin-bottom:6px;
+}
+
+.millet-guide a{
+  color:#9a6b47;            /* warm millet brown */
+  text-decoration:none;
+  font-weight:500;
+  border-bottom:1px solid rgba(154,107,71,0.35);
+  transition:all 0.25s ease;
+}
+
+.millet-guide a:hover{
+  color:#6b4e2e;
+  border-bottom:1px solid #6b4e2e;
 }
 
 /* =====================================
