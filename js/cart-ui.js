@@ -431,3 +431,16 @@ document.getElementById("delivery-section").style.display = "block";
 document.querySelector(".continue-btn").style.display = "none";
 
 }
+
+
+
+function showCartItems(){
+
+document.getElementById("delivery-section").style.display = "none";
+
+document.getElementById("cart-items").style.display = "block";
+document.getElementById("cart-summary").style.display = "block";
+
+document.querySelector(".continue-btn").style.display = "block";
+
+}
