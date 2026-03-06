@@ -13,11 +13,18 @@
     
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Nutrition Transparency | MILASTY</title>
+  <title>Nutrition & Ingredients | MILASTY Millet Bakes Lab Tested</title>
 
-  <meta name="description"
-    content="MILASTY believes in complete transparency. Explore ingredients, nutrition values, and verified lab reports for every handcrafted MILASTY millet cookie." />
+  <meta name="description" content="Explore ingredients, nutrition values and verified lab reports for MILASTY millet bakes made with ragi, jowar and bajra. Complete transparency with independently tested nutrition reports." />
 
+  <link rel="canonical" href="https://milasty.com/nutrition.html" />
+
+  <meta property="og:title" content="MILASTY Nutrition Transparency" />
+  <meta property="og:description" content="Explore ingredients, nutrition values and verified lab reports for MILASTY millet bakes." />
+  <meta property="og:image" content="https://milasty.com/images/preview.webp" />
+  <meta property="og:url" content="https://milasty.com/nutrition.html" />
+  <meta property="og:type" content="website" />
+  
   <!-- Main CSS -->
   <link rel="stylesheet" href="style.css" />
 
@@ -25,9 +32,54 @@
   <link rel="stylesheet" href="nutrition.css" />
 
   <link rel="icon" href="/images/favicon.ico" />
+
+  <script type="application/ld+json">
+  {
+   "@context":"https://schema.org",
+   "@type":"WebPage",
+   "name":"MILASTY Nutrition Transparency",
+   "description":"Explore ingredients, nutrition values and verified lab reports for MILASTY millet bakes made with ragi, jowar and bajra.",
+   "publisher":{
+     "@type":"Organization",
+     "name":"MILASTY",
+     "logo":{
+       "@type":"ImageObject",
+       "url":"https://milasty.com/images/MILASTY-logo.webp"
+     }
+   }
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+   "@context":"https://schema.org",
+   "@type":"BreadcrumbList",
+   "itemListElement":[
+    {
+     "@type":"ListItem",
+     "position":1,
+     "name":"Home",
+     "item":"https://milasty.com"
+    },
+    {
+     "@type":"ListItem",
+     "position":2,
+     "name":"Nutrition",
+     "item":"https://milasty.com/nutrition.html"
+    }
+   ]
+  }
+  </script>
+
+
+  
 </head>
 
 <body>
+
+  <p style="display:none;">
+    MILASTY is an Indian millet bakery brand crafting wholesome baked goods using ragi, jowar and bajra. All MILASTY products are lab tested for nutrition transparency and made without maida, refined sugar or palm oil.
+  </p>
 
   <!-- HEADER -->
   <header class="nutrition-hero">
@@ -52,9 +104,9 @@
   <!-- REPORTS SECTION -->
   <main class="nutrition-container">
 
-    <h2>Verified Nutrition Reports</h2>
+    <h2>Lab Verified Nutrition Reports</h2>
     <p class="nutrition-subtext">
-      Ingredients, Nutrition, Independent Lab Reports - Everything we bake is shared openly. Values verified through an independent NABL accredited food laboratory.
+      Ingredients, Nutrition, Lab Reports - Everything we bake is shared openly. All nutrition values are tested through an independent NABL accredited food laboratory.
     </p>
 
     <div class="report-grid">
@@ -103,6 +155,10 @@
       </div>
 
     </div>
+
+    <p class="nutrition-subtext">
+      Explore our <a href="/ritual/ritual.html">MILASTY millet bakes</a> crafted using ragi, jowar and bajra.
+    </p>
 
   </main>
 
