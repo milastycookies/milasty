@@ -414,6 +414,35 @@ document.getElementById("guidelinesOverlay").classList.remove("active");
 }
 
 
+async function sendOrderToBackendSilent(){
+
+  const cart = JSON.parse(localStorage.getItem("cart")) || [];
+  const total = localStorage.getItem("cartTotal") || 0;
+
+  const orderData = {
+    items: cart,
+    total: total,
+    source: "milasty_website"
+  };
+
+  try{
+
+    await fetch("http://localhost:5000/create-order",{
+      method:"POST",
+      headers:{
+        "Content-Type":"application/json"
+      },
+      body: JSON.stringify(orderData)
+    });
+
+  }catch(e){
+
+    console.log("Backend logging failed (safe to ignore)");
+
+  }
+
+}
+
 function confirmGuidelines(){
 
 document.getElementById("guidelinesOverlay").classList.remove("active");
