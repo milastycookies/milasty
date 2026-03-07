@@ -481,7 +481,7 @@ async function sendOrderToBackendSilent(){
 
 }
 
-function confirmGuidelines(){
+async function confirmGuidelines(){
 
 if(orderSubmitting) return;
 
