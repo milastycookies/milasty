@@ -465,7 +465,7 @@ async function sendOrderToBackendSilent(){
 
   try{
 
-    await fetch("http://localhost:5000/create-order",{
+    await fetch("https://milasty-backend-production.up.railway.app",{
       method:"POST",
       headers:{
         "Content-Type":"application/json",
