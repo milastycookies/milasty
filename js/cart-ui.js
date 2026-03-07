@@ -465,7 +465,7 @@ async function sendOrderToBackendSilent(){
 
   try{
 
-    await fetch("https://milasty-backend-production-5de1.up.railway.app/create-order",{
+    const response = await fetch("https://milasty-backend-production-5de1.up.railway.app/create-order",{
       method:"POST",
       headers:{
         "Content-Type":"application/json",
@@ -473,6 +473,10 @@ async function sendOrderToBackendSilent(){
       },
       body: JSON.stringify(orderData)
     });
+    
+    const data = await response.json();
+    
+    console.log("Backend response:", data);
 
   }catch(e){
 
