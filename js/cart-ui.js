@@ -416,12 +416,36 @@ document.getElementById("guidelinesOverlay").classList.remove("active");
 
 async function sendOrderToBackendSilent(){
 
-  const cart = JSON.parse(localStorage.getItem("cart")) || [];
-  const total = localStorage.getItem("cartTotal") || 0;
+  let cart = getCart();
+
+  let total = 0;
+  let freeDelivery = false;
+
+  cart.forEach(item => {
+
+    let subtotal = item.price * item.qty;
+
+    total += subtotal;
+
+    if(item.type === "gift"){
+      freeDelivery = true;
+    }
+
+  });
+
+  let delivery = 60;
+
+  if(total >= 799 || freeDelivery){
+    delivery = 0;
+  }
+
+  let finalTotal = total + delivery;
 
   const orderData = {
     items: cart,
-    total: total,
+    subtotal: total,
+    delivery: delivery,
+    total: finalTotal,
     source: "milasty_website"
   };
 
