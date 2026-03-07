@@ -470,7 +470,6 @@ async function sendOrderToBackendSilent(){
       },
       body: JSON.stringify(orderData)
     });
-    localStorage.removeItem("cart");
 
   }catch(e){
 
@@ -491,6 +490,8 @@ document.getElementById("guidelinesOverlay").classList.remove("active");
 sendOrderToBackendSilent();
   
 sendWhatsAppOrder();
+
+localStorage.removeItem("cart");
 
 }
 
