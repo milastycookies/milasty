@@ -418,6 +418,10 @@ async function sendOrderToBackendSilent(){
 
   let cart = getCart();
 
+  if(cart.length === 0){
+    return;
+  }
+
   let total = 0;
   let freeDelivery = false;
 
@@ -441,7 +445,16 @@ async function sendOrderToBackendSilent(){
 
   let finalTotal = total + delivery;
 
+  let name = document.getElementById("name")?.value || "";
+  let phone = document.getElementById("phone")?.value || "";
+  let address = document.getElementById("address")?.value || "";
+
   const orderData = {
+    customer:{
+      name:name,
+      phone:phone,
+      address:address
+    },
     items: cart,
     subtotal: total,
     delivery: delivery,
