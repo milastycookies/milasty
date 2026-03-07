@@ -3,6 +3,7 @@
 // ========================================
 
 let orderSubmitting = false;
+let orderToken = null;
 
 // ----------------------------------------
 // INIT
@@ -488,7 +489,7 @@ orderSubmitting = true;
 
 document.getElementById("guidelinesOverlay").classList.remove("active");
 
-sendOrderToBackendSilent();
+await sendOrderToBackendSilent();
   
 sendWhatsAppOrder();
 
