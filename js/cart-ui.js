@@ -416,11 +416,11 @@ document.getElementById("guidelinesOverlay").classList.remove("active");
 
 async function sendOrderToBackendSilent(){
 
-  let cart = getCart();
+  let name = document.getElementById("name").value;
+  let phone = document.getElementById("phone").value;
+  let address = document.getElementById("address").value;
 
-  if(cart.length === 0){
-    return;
-  }
+  let cart = getCart();
 
   let total = 0;
   let freeDelivery = false;
@@ -445,16 +445,10 @@ async function sendOrderToBackendSilent(){
 
   let finalTotal = total + delivery;
 
-  let name = document.getElementById("name")?.value || "";
-  let phone = document.getElementById("phone")?.value || "";
-  let address = document.getElementById("address")?.value || "";
-
   const orderData = {
-    customer:{
-      name:name,
-      phone:phone,
-      address:address
-    },
+    name: name,
+    phone: phone,
+    address: address,
     items: cart,
     subtotal: total,
     delivery: delivery,
@@ -474,7 +468,7 @@ async function sendOrderToBackendSilent(){
 
   }catch(e){
 
-    console.log("Backend logging failed (safe to ignore)");
+    console.log("Backend logging failed");
 
   }
 
