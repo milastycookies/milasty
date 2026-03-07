@@ -451,6 +451,10 @@ async function sendOrderToBackendSilent(){
 
   let finalTotal = total + delivery;
 
+  if(!orderToken){
+    orderToken = "MIL-" + Date.now() + "-" + Math.random().toString(36).substring(2,10);
+  }
+  
   const orderData = {
     token: orderToken,
     name: name,
