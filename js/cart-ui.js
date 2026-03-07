@@ -279,6 +279,9 @@ return;
 
 }
 
+orderToken =
+"MIL-" + Date.now() + "-" + Math.random().toString(36).substring(2,8);
+
 document.getElementById("guidelinesOverlay").classList.add("active");
 
 }
