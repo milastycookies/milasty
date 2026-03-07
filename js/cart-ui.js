@@ -470,6 +470,7 @@ async function sendOrderToBackendSilent(){
       },
       body: JSON.stringify(orderData)
     });
+    localStorage.removeItem("cart");
 
   }catch(e){
 
