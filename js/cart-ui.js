@@ -2,6 +2,10 @@
 // MILASTY CART UI SYSTEM
 // ========================================
 
+let orderSubmitting = false;
+
+const orderToken =
+  "MIL-" + Date.now() + "-" + Math.random().toString(36).substring(2,8);
 
 // ----------------------------------------
 // INIT
@@ -416,9 +420,6 @@ document.getElementById("guidelinesOverlay").classList.remove("active");
 
 async function sendOrderToBackendSilent(){
 
-  const orderToken =
-  "MIL-" + Date.now() + "-" + Math.random().toString(36).substring(2,8);
-
   let name = document.getElementById("name").value;
   let phone = document.getElementById("phone").value;
   let address = document.getElementById("address").value;
@@ -479,6 +480,10 @@ async function sendOrderToBackendSilent(){
 }
 
 function confirmGuidelines(){
+
+if(orderSubmitting) return;
+
+orderSubmitting = true;
 
 document.getElementById("guidelinesOverlay").classList.remove("active");
 
