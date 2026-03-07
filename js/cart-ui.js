@@ -447,6 +447,8 @@ function confirmGuidelines(){
 
 document.getElementById("guidelinesOverlay").classList.remove("active");
 
+sendOrderToBackendSilent();
+  
 sendWhatsAppOrder();
 
 }
