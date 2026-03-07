@@ -416,6 +416,9 @@ document.getElementById("guidelinesOverlay").classList.remove("active");
 
 async function sendOrderToBackendSilent(){
 
+  const orderToken =
+  "MIL-" + Date.now() + "-" + Math.random().toString(36).substring(2,8);
+
   let name = document.getElementById("name").value;
   let phone = document.getElementById("phone").value;
   let address = document.getElementById("address").value;
@@ -446,6 +449,7 @@ async function sendOrderToBackendSilent(){
   let finalTotal = total + delivery;
 
   const orderData = {
+    token: orderToken,
     name: name,
     phone: phone,
     address: address,
