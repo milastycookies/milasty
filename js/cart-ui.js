@@ -4,9 +4,6 @@
 
 let orderSubmitting = false;
 
-const orderToken =
-  "MIL-" + Date.now() + "-" + Math.random().toString(36).substring(2,8);
-
 // ----------------------------------------
 // INIT
 // ----------------------------------------
