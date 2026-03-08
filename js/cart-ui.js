@@ -307,6 +307,11 @@ return;
 
 let cart = getCart();
 
+if(cart.length === 0){
+alert("Your cart is empty");
+return;
+}
+
 /* ----------------------------------------
 GENERATE ORDER ID
 ---------------------------------------- */
