@@ -508,6 +508,7 @@ const btn = document.querySelector(".confirm-btn");
 if(btn) btn.disabled = true;
 
 sendOrderToBackendSilent();
+sendWhatsAppOrder();
   
 localStorage.removeItem("cart");
 
@@ -523,8 +524,6 @@ renderCart();
 updateBasket();
 
 closeCart(); 
-
-sendWhatsAppOrder();
   
 }
 
