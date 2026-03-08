@@ -505,6 +505,8 @@ document.getElementById("address").value = "";
 
 renderCart();
 updateBasket();
+
+closeCart();
   
 }
 
