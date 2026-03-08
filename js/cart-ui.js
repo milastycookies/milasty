@@ -499,9 +499,13 @@ sendOrderToBackendSilent();
 
 localStorage.removeItem("cart");
 
-document.getElementById("name").value = "";
-document.getElementById("phone").value = "";
-document.getElementById("address").value = "";
+const nameField = document.getElementById("name");
+const phoneField = document.getElementById("phone");
+const addressField = document.getElementById("address");
+
+if(nameField) nameField.value = "";
+if(phoneField) phoneField.value = "";
+if(addressField) addressField.value = "";
 
 renderCart();
 updateBasket();
