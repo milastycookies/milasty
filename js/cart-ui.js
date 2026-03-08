@@ -496,9 +496,15 @@ document.getElementById("guidelinesOverlay").classList.remove("active");
   
 sendWhatsAppOrder();
 
+document.querySelector(".confirm-btn").disabled = true;
+
 sendOrderToBackendSilent();
 
 localStorage.removeItem("cart");
+
+document.getElementById("name").value = "";
+document.getElementById("phone").value = "";
+document.getElementById("address").value = "";
 
 }
 
