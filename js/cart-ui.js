@@ -492,7 +492,8 @@ document.getElementById("guidelinesOverlay").classList.remove("active");
   
 sendWhatsAppOrder();
 
-document.querySelector(".confirm-btn").disabled = true;
+const btn = document.querySelector(".confirm-btn");
+if(btn) btn.disabled = true;
 
 sendOrderToBackendSilent();
 
