@@ -197,9 +197,7 @@ let cart = getCart();
 
 let totalQty = 0;
 
-cart.forEach(item => {
-totalQty += item.qty;
-});
+let totalQty = cart.reduce((sum,item)=>sum+item.qty,0);
 
 count.innerText = totalQty;
 
