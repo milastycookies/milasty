@@ -399,7 +399,7 @@ message +=
 OPEN WHATSAPP
 ---------------------------------------- */
 
-window.open("https://wa.me/918927142056?text=" + message);
+window.open("https://wa.me/918927142056?text=" + encodeURIComponent(message));
 
 }
 
