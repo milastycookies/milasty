@@ -195,8 +195,6 @@ if(!basket || !count) return;
 
 let cart = getCart();
 
-let totalQty = 0;
-
 let totalQty = cart.reduce((sum,item)=>sum+item.qty,0);
 
 count.innerText = totalQty;
