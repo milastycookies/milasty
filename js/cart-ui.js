@@ -502,6 +502,9 @@ document.getElementById("name").value = "";
 document.getElementById("phone").value = "";
 document.getElementById("address").value = "";
 
+renderCart();
+updateBasket();
+  
 }
 
 
