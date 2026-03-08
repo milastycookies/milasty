@@ -325,11 +325,11 @@ START MESSAGE
 ---------------------------------------- */
 
 let message =
-`Hello MILASTY %0A%0A` +
-`I'd like to place the following order from your website.%0A%0A` +
-`Order ID: ${orderId}%0A%0A` +
-`Order Details%0A` +
-`────────────%0A`;
+`Hello MILASTY \n\n` +
+`I'd like to place the following order from your website.\n\n` +
+`Order ID: ${orderId}\n\n` +
+`Order Details\n` +
+`────────────\n`;
 
 
 /* ----------------------------------------
@@ -349,7 +349,7 @@ if(item.type === "gift"){
 freeDelivery = true;
 }
 
-message += `${item.name} × ${item.qty} = ₹${subtotal}%0A`;
+message += `${item.name} × ${item.qty} = ₹${subtotal}\n`;
 
 });
 
@@ -371,10 +371,10 @@ let finalTotal = total + delivery;
 ORDER SUMMARY
 ---------------------------------------- */
 
-message += `%0A` +
-`Subtotal: ₹${total}%0A` +
-`Delivery: ${delivery === 0 ? "FREE" : "₹60"}%0A` +
-`Total: ₹${finalTotal}%0A%0A`;
+message += `\n` +
+`Subtotal: ₹${total}\n` +
+`Delivery: ${delivery === 0 ? "FREE" : "₹60"}\n` +
+`Total: ₹${finalTotal}\n\n`;
 
 
 /* ----------------------------------------
@@ -382,12 +382,12 @@ DELIVERY DETAILS
 ---------------------------------------- */
 
 message +=
-`Delivery Details%0A` +
-`────────────%0A` +
-`Name: ${name}%0A` +
-`Phone: ${phone}%0A` +
-`Address: ${address}%0A%0A` +
-`[Please press SEND in WhatsApp to confirm this order.%0A` + 
+`Delivery Details\n` +
+`────────────\n` +
+`Name: ${name}\n` +
+`Phone: ${phone}\n` +
+`Address: ${address}\n\n` +
+`[Please press SEND in WhatsApp to confirm this order.\n` + 
 `We will then share the payment QR to proceed]`;
 
 
@@ -395,7 +395,7 @@ message +=
 OPEN WHATSAPP
 ---------------------------------------- */
 
-window.open("https://wa.me/918927142056?text=" + message);
+window.open("https://wa.me/918927142056?text=" + encodeURIComponent(message));
 
 }
 
