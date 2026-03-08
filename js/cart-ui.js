@@ -311,23 +311,12 @@ let cart = getCart();
 GENERATE ORDER ID
 ---------------------------------------- */
 
-let now = new Date();
+if(!orderToken){
+orderToken =
+"MIL-" + Date.now() + "-" + Math.random().toString(36).substring(2,10);
+}
 
-let year = now.getFullYear();
-let month = String(now.getMonth() + 1).padStart(2, "0");
-let day = String(now.getDate()).padStart(2, "0");
-
-let hour = String(now.getHours()).padStart(2, "0");
-let minute = String(now.getMinutes()).padStart(2, "0");
-let second = String(now.getSeconds()).padStart(2, "0");
-
-let millisecond = String(now.getMilliseconds()).padStart(3, "0");
-
-/* random suffix for extra safety */
-
-let random = Math.floor(Math.random() * 100).toString().padStart(2,"0");
-
-let orderId = `MIL-${year}${month}${day}-${hour}${minute}${second}-${millisecond}-${random}`;
+let orderId = orderToken;
 
 
 /* ----------------------------------------
