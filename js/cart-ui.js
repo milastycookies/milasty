@@ -508,6 +508,8 @@ const btn = document.querySelector(".confirm-btn");
 if(btn) btn.disabled = true;
 
 sendOrderToBackendSilent();
+
+sendWhatsAppOrder();
   
 localStorage.removeItem("cart");
 
@@ -522,10 +524,7 @@ if(addressField) addressField.value = "";
 renderCart();
 updateBasket();
 
-closeCart();
-
-sendWhatsAppOrder();
-  
+closeCart();  
 }
 
 
