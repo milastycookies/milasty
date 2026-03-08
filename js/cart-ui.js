@@ -490,7 +490,7 @@ async function sendOrderToBackendSilent(){
 
 }
 
-async function confirmGuidelines(){
+function confirmGuidelines(){
 
 if(orderSubmitting) return;
 
@@ -498,9 +498,11 @@ orderSubmitting = true;
 
 document.getElementById("guidelinesOverlay").classList.remove("active");
 
-await sendOrderToBackendSilent();
+
   
 sendWhatsAppOrder();
+
+sendOrderToBackendSilent();
 
 localStorage.removeItem("cart");
 
