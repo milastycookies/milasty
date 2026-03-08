@@ -395,7 +395,8 @@ message +=
 OPEN WHATSAPP
 ---------------------------------------- */
 
-window.open("https://wa.me/918927142056?text=" + encodeURIComponent(message));
+window.location.href =
+"https://wa.me/918927142056?text=" + encodeURIComponent(message);
 
 }
 
