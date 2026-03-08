@@ -504,14 +504,12 @@ orderSubmitting = true;
 
 document.getElementById("guidelinesOverlay").classList.remove("active");
 
-
+sendOrderToBackendSilent();
   
 sendWhatsAppOrder();
 
 const btn = document.querySelector(".confirm-btn");
 if(btn) btn.disabled = true;
-
-sendOrderToBackendSilent();
 
 localStorage.removeItem("cart");
 
