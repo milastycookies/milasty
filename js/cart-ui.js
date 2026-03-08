@@ -445,9 +445,24 @@ async function sendOrderToBackendSilent(){
   if(!orderToken){
     orderToken = "MIL-" + Date.now() + "-" + Math.random().toString(36).substring(2,10);
   }
+
+  let now = new Date();
+
+  let orderDate = now.toISOString().split("T")[0];
+
+  let orderTime = now.toLocaleTimeString("en-IN", {
+    hour: "2-digit",
+    minute: "2-digit",
+    second: "2-digit",
+    hour12: false
+  });
+  
   
   const orderData = {
     token: orderToken,
+    date: orderDate,
+    time:orderTime,
+    timestamp: Date.now(),
     name: name,
     phone: phone,
     address: address,
