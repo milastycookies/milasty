@@ -1,53 +1,34 @@
 // ========================================
-// MILASTY CART ENGINE (STATE ONLY)
+// MILASTY CART ENGINE
 // ========================================
 
 const CART_KEY = "milasty_cart";
 
 /* ---------------------------------------
-   INTERNAL HELPERS
+GET CART
 --------------------------------------- */
 
-function loadCart() {
+function getCart(){
   return JSON.parse(localStorage.getItem(CART_KEY)) || [];
 }
 
-function persistCart(cart) {
+/* ---------------------------------------
+SAVE CART
+--------------------------------------- */
+
+function saveCart(cart){
   localStorage.setItem(CART_KEY, JSON.stringify(cart));
-  notifyCartUpdate(cart);
 }
 
 /* ---------------------------------------
-   EVENT SYSTEM
+ADD TO CART
 --------------------------------------- */
 
-const cartListeners = [];
+function addToCart(name, price, type="normal"){
 
-function notifyCartUpdate(cart){
-  cartListeners.forEach(fn => fn(cart));
-}
+  let cart = getCart();
 
-export function onCartUpdate(fn){
-  cartListeners.push(fn);
-}
-
-/* ---------------------------------------
-   GET CART
---------------------------------------- */
-
-export function getCart(){
-  return loadCart();
-}
-
-/* ---------------------------------------
-   ADD ITEM
---------------------------------------- */
-
-export function addToCart(name, price, type="normal"){
-
-  let cart = loadCart();
-
-  const existing = cart.find(item => item.name === name);
+  let existing = cart.find(i => i.name === name);
 
   if(existing){
     existing.qty += 1;
@@ -60,33 +41,49 @@ export function addToCart(name, price, type="normal"){
     });
   }
 
-  persistCart(cart);
+  saveCart(cart);
+
+  if(typeof renderCart === "function"){
+    renderCart();
+  }
+
+  if(typeof updateBasket === "function"){
+    updateBasket();
+  }
 
 }
 
 /* ---------------------------------------
-   REMOVE ITEM
+REMOVE ITEM
 --------------------------------------- */
 
-export function removeItem(name){
+function removeItem(name){
 
-  let cart = loadCart();
+  let cart = getCart();
 
-  cart = cart.filter(item => item.name !== name);
+  cart = cart.filter(i => i.name !== name);
 
-  persistCart(cart);
+  saveCart(cart);
+
+  if(typeof renderCart === "function"){
+    renderCart();
+  }
+
+  if(typeof updateBasket === "function"){
+    updateBasket();
+  }
 
 }
 
 /* ---------------------------------------
-   CHANGE QUANTITY
+CHANGE QUANTITY
 --------------------------------------- */
 
-export function changeQty(name, delta){
+function changeQty(name, delta){
 
-  let cart = loadCart();
+  let cart = getCart();
 
-  const item = cart.find(i => i.name === name);
+  let item = cart.find(i => i.name === name);
 
   if(!item) return;
 
@@ -96,44 +93,44 @@ export function changeQty(name, delta){
     cart = cart.filter(i => i.name !== name);
   }
 
-  persistCart(cart);
+  saveCart(cart);
+
+  if(typeof renderCart === "function"){
+    renderCart();
+  }
+
+  if(typeof updateBasket === "function"){
+    updateBasket();
+  }
 
 }
 
 /* ---------------------------------------
-   CLEAR CART
+CLEAR CART
 --------------------------------------- */
 
-export function clearCart(){
+function clearCart(){
 
   localStorage.removeItem(CART_KEY);
 
-  notifyCartUpdate([]);
+  if(typeof renderCart === "function"){
+    renderCart();
+  }
+
+  if(typeof updateBasket === "function"){
+    updateBasket();
+  }
 
 }
 
 /* ---------------------------------------
-   TOTAL COUNT
+GET CART COUNT
 --------------------------------------- */
 
-export function getCartCount(){
+function getCartCount(){
 
-  const cart = loadCart();
+  let cart = getCart();
 
-  return cart.reduce((sum,item)=>sum + item.qty,0);
-
-}
-
-/* ---------------------------------------
-   CALCULATE TOTAL
---------------------------------------- */
-
-export function getCartSubtotal(){
-
-  const cart = loadCart();
-
-  return cart.reduce((sum,item)=>{
-    return sum + (item.price * item.qty);
-  },0);
+  return cart.reduce((sum,item)=>sum+item.qty,0);
 
 }
