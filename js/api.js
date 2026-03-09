@@ -5,52 +5,34 @@
 const API_BASE =
 "https://milasty-backend-production-5de1.up.railway.app";
 
-const API_KEY =
-"milasty_secure_by_kulomulo";
-
 /* ---------------------------------------
-GENERIC REQUEST HELPER
+GENERIC REQUEST
 --------------------------------------- */
 
 async function apiRequest(endpoint, payload){
 
-  try{
+  const response = await fetch(
 
-    const response = await fetch(
+    API_BASE + endpoint,
 
-      API_BASE + endpoint,
+    {
+      method: "POST",
 
-      {
-        method: "POST",
+      headers:{
+        "Content-Type":"application/json"
+      },
 
-        headers:{
-          "Content-Type":"application/json",
-          "x-api-key": API_KEY
-        },
-
-        body: JSON.stringify(payload)
-
-      }
-
-    );
-
-    if(!response.ok){
-
-      throw new Error(
-        "API error: " + response.status
-      );
+      body: JSON.stringify(payload)
 
     }
 
-    return await response.json();
+  );
 
-  }catch(error){
-
-    console.error("API request failed:", error);
-
-    throw error;
-
+  if(!response.ok){
+    throw new Error("API error");
   }
+
+  return response.json();
 
 }
 
@@ -62,7 +44,7 @@ async function createPaymentOrder(amount){
 
   return apiRequest(
     "/create-payment-order",
-    { amount: amount }
+    { amount }
   );
 
 }
