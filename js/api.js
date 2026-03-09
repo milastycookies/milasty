@@ -5,36 +5,66 @@
 const API_BASE =
 "https://milasty-backend-production-5de1.up.railway.app";
 
+
 /* ---------------------------------------
-GENERIC REQUEST
+GENERIC REQUEST HELPER
 --------------------------------------- */
 
 async function apiRequest(endpoint, payload){
 
-  const response = await fetch(
+  const controller = new AbortController();
 
-    API_BASE + endpoint,
+  const timeout = setTimeout(() => {
+    controller.abort();
+  }, 10000); // 10s timeout
 
-    {
-      method: "POST",
+  try{
 
-      headers:{
-        "Content-Type":"application/json"
-      },
+    const response = await fetch(
 
-      body: JSON.stringify(payload)
+      API_BASE + endpoint,
+
+      {
+        method: "POST",
+
+        headers:{
+          "Content-Type":"application/json"
+        },
+
+        credentials: "include",
+
+        signal: controller.signal,
+
+        body: JSON.stringify(payload)
+
+      }
+
+    );
+
+    clearTimeout(timeout);
+
+    if(!response.ok){
+
+      const text = await response.text();
+
+      throw new Error(
+        "API error: " + text
+      );
 
     }
 
-  );
+    return await response.json();
 
-  if(!response.ok){
-    throw new Error("API error");
+  }catch(err){
+
+    console.error("API request failed:", err);
+
+    throw err;
+
   }
 
-  return response.json();
-
 }
+
 
 /* ---------------------------------------
 CREATE PAYMENT ORDER
@@ -49,6 +79,7 @@ async function createPaymentOrder(amount){
 
 }
 
+
 /* ---------------------------------------
 VERIFY PAYMENT
 --------------------------------------- */
@@ -61,6 +92,7 @@ async function verifyPayment(paymentData){
   );
 
 }
+
 
 /* ---------------------------------------
 CREATE ORDER
