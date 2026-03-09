@@ -2,27 +2,43 @@
 // MILASTY CHECKOUT CONTROLLER
 // ========================================
 
+let checkoutRunning = false;
+
 async function startCheckout(orderToken){
+
+  if(checkoutRunning) return;
+
+  checkoutRunning = true;
 
   const name = document.getElementById("name").value;
   const phone = document.getElementById("phone").value;
   const address = document.getElementById("address").value;
 
   if(!name || !phone || !address){
+
     alert("Please fill all details");
+
+    checkoutRunning = false;
+
     return;
+
   }
 
   const cart = getCart();
 
   if(cart.length === 0){
+
     alert("Your cart is empty");
+
+    checkoutRunning = false;
+
     return;
+
   }
 
-  /* -----------------------------------
-     CALCULATE TOTALS
-  ----------------------------------- */
+  /* -----------------------------
+     CALCULATE TOTAL
+  ----------------------------- */
 
   let subtotal = 0;
   let freeDelivery = false;
@@ -45,9 +61,9 @@ async function startCheckout(orderToken){
 
   const finalTotal = subtotal + delivery;
 
-  /* -----------------------------------
-     DATE TIME
-  ----------------------------------- */
+  /* -----------------------------
+     DATE & TIME
+  ----------------------------- */
 
   const now = new Date();
 
@@ -62,9 +78,9 @@ async function startCheckout(orderToken){
     hour12:false
   });
 
-  /* -----------------------------------
-     ORDER DATA
-  ----------------------------------- */
+  /* -----------------------------
+     ORDER OBJECT
+  ----------------------------- */
 
   const orderData = {
 
@@ -88,16 +104,16 @@ async function startCheckout(orderToken){
 
   };
 
-  /* -----------------------------------
+  /* -----------------------------
      CREATE PAYMENT ORDER
-  ----------------------------------- */
+  ----------------------------- */
 
   const paymentOrder =
   await createPaymentOrder(finalTotal);
 
-  /* -----------------------------------
+  /* -----------------------------
      START PAYMENT
-  ----------------------------------- */
+  ----------------------------- */
 
   startPayment(paymentOrder, orderData);
 
