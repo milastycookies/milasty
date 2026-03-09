@@ -1,245 +1,139 @@
 // ========================================
-// MILASTY CART ENGINE
+// MILASTY CART ENGINE (STATE ONLY)
 // ========================================
 
 const CART_KEY = "milasty_cart";
 
+/* ---------------------------------------
+   INTERNAL HELPERS
+--------------------------------------- */
 
-// ----------------------------------------
-// GET CART
-// ----------------------------------------
+function loadCart() {
+  return JSON.parse(localStorage.getItem(CART_KEY)) || [];
+}
 
-function getCart() {
+function persistCart(cart) {
+  localStorage.setItem(CART_KEY, JSON.stringify(cart));
+  notifyCartUpdate(cart);
+}
 
-return JSON.parse(localStorage.getItem(CART_KEY)) || [];
+/* ---------------------------------------
+   EVENT SYSTEM
+--------------------------------------- */
+
+const cartListeners = [];
+
+function notifyCartUpdate(cart){
+  cartListeners.forEach(fn => fn(cart));
+}
+
+export function onCartUpdate(fn){
+  cartListeners.push(fn);
+}
+
+/* ---------------------------------------
+   GET CART
+--------------------------------------- */
+
+export function getCart(){
+  return loadCart();
+}
+
+/* ---------------------------------------
+   ADD ITEM
+--------------------------------------- */
+
+export function addToCart(name, price, type="normal"){
+
+  let cart = loadCart();
+
+  const existing = cart.find(item => item.name === name);
+
+  if(existing){
+    existing.qty += 1;
+  }else{
+    cart.push({
+      name,
+      price,
+      qty:1,
+      type
+    });
+  }
+
+  persistCart(cart);
 
 }
 
+/* ---------------------------------------
+   REMOVE ITEM
+--------------------------------------- */
 
-// ----------------------------------------
-// SAVE CART
-// ----------------------------------------
+export function removeItem(name){
 
-function saveCart(cart) {
+  let cart = loadCart();
 
-localStorage.setItem(CART_KEY, JSON.stringify(cart));
+  cart = cart.filter(item => item.name !== name);
 
-}
-
-
-// ----------------------------------------
-// ADD TO CART
-// ----------------------------------------
-
-function addToCart(name, price, type = "normal") {
-
-let cart = getCart();
-
-let existing = cart.find(item => item.name === name);
-
-if (existing) {
-
-existing.qty += 1;
-
-} else {
-
-cart.push({
-name: name,
-price: price,
-qty: 1,
-type: type
-});
+  persistCart(cart);
 
 }
 
-saveCart(cart);
+/* ---------------------------------------
+   CHANGE QUANTITY
+--------------------------------------- */
 
-// Open cart automatically for better UX
-if(typeof openCart === "function" && document.getElementById("cartDrawer")){
-openCart();
-}
+export function changeQty(name, delta){
 
+  let cart = loadCart();
 
-// Toast notification
-if(typeof showToast === "function"){
-showToast("✔ " + name + " added to Ritual Basket");
-}
+  const item = cart.find(i => i.name === name);
 
+  if(!item) return;
 
-// Update UI safely
-if(typeof updateBasket === "function"){
-updateBasket();
-}
+  item.qty += delta;
 
-if(typeof renderCart === "function"){
-renderCart();
-}
+  if(item.qty <= 0){
+    cart = cart.filter(i => i.name !== name);
+  }
+
+  persistCart(cart);
 
 }
 
+/* ---------------------------------------
+   CLEAR CART
+--------------------------------------- */
 
-// ----------------------------------------
-// REMOVE ITEM
-// ----------------------------------------
+export function clearCart(){
 
-function removeItem(name){
+  localStorage.removeItem(CART_KEY);
 
-let cart = getCart();
-
-cart = cart.filter(item => item.name !== name);
-
-saveCart(cart);
-
-
-// Refresh UI
-if(typeof renderCart === "function"){
-renderCart();
-}
-
-if(typeof updateBasket === "function"){
-updateBasket();
-}
+  notifyCartUpdate([]);
 
 }
 
+/* ---------------------------------------
+   TOTAL COUNT
+--------------------------------------- */
 
-// ----------------------------------------
-// CHANGE QUANTITY
-// ----------------------------------------
+export function getCartCount(){
 
-function changeQty(name, delta){
+  const cart = loadCart();
 
-let cart = getCart();
-
-let item = cart.find(i => i.name === name);
-
-if(!item) return;
-
-item.qty += delta;
-
-if(item.qty <= 0){
-
-cart = cart.filter(i => i.name !== name);
+  return cart.reduce((sum,item)=>sum + item.qty,0);
 
 }
 
-saveCart(cart);
+/* ---------------------------------------
+   CALCULATE TOTAL
+--------------------------------------- */
 
+export function getCartSubtotal(){
 
-// Refresh UI
-if(typeof renderCart === "function"){
-renderCart();
-}
+  const cart = loadCart();
 
-if(typeof updateBasket === "function"){
-updateBasket();
-}
-
-}
-
-
-// ----------------------------------------
-// CLEAR CART
-// ----------------------------------------
-
-function clearCart(){
-
-localStorage.removeItem(CART_KEY);
-
-if(typeof renderCart === "function"){
-renderCart();
-}
-
-if(typeof updateBasket === "function"){
-updateBasket();
-}
+  return cart.reduce((sum,item)=>{
+    return sum + (item.price * item.qty);
+  },0);
 
 }
-
-
-// ----------------------------------------
-// GET CART COUNT
-// ----------------------------------------
-
-function getCartCount(){
-
-let cart = getCart();
-
-let count = 0;
-
-cart.forEach(item => {
-count += item.qty;
-});
-
-return count;
-
-}
-
-
-// ----------------------------------------
-// UPDATE BASKET COUNT
-// (legacy compatibility)
-// ----------------------------------------
-
-function updateBasketCount(){
-
-if(typeof updateBasket === "function"){
-updateBasket();
-}
-
-}
-
-
-// ----------------------------------------
-// OPEN CART DRAWER
-// ----------------------------------------
-
-function openCart(){
-
-const drawer = document.getElementById("cartDrawer");
-const overlay = document.getElementById("cartOverlay");
-
-if(drawer) drawer.classList.add("active");
-if(overlay) overlay.classList.add("active");
-
-document.body.classList.add("cart-open");
-
-if(typeof renderCart === "function"){
-renderCart();
-}
-
-}
-
-
-// ----------------------------------------
-// CLOSE CART DRAWER
-// ----------------------------------------
-
-function closeCart(){
-
-const drawer = document.getElementById("cartDrawer");
-const overlay = document.getElementById("cartOverlay");
-
-if(drawer) drawer.classList.remove("active");
-if(overlay) overlay.classList.remove("active");
-
-document.body.classList.remove("cart-open");
-
-if(typeof updateBasket === "function"){
-updateBasket();
-}
-
-}
-
-
-// ----------------------------------------
-// INIT
-// ----------------------------------------
-
-document.addEventListener("DOMContentLoaded", function(){
-
-if(typeof updateBasket === "function"){
-updateBasket();
-}
-
-});
