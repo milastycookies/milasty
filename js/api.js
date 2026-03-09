@@ -8,6 +8,51 @@ const API_BASE =
 const API_KEY =
 "milasty_secure_by_kulomulo";
 
+/* ---------------------------------------
+GENERIC REQUEST HELPER
+--------------------------------------- */
+
+async function apiRequest(endpoint, payload){
+
+  try{
+
+    const response = await fetch(
+
+      API_BASE + endpoint,
+
+      {
+        method: "POST",
+
+        headers:{
+          "Content-Type":"application/json",
+          "x-api-key": API_KEY
+        },
+
+        body: JSON.stringify(payload)
+
+      }
+
+    );
+
+    if(!response.ok){
+
+      throw new Error(
+        "API error: " + response.status
+      );
+
+    }
+
+    return await response.json();
+
+  }catch(error){
+
+    console.error("API request failed:", error);
+
+    throw error;
+
+  }
+
+}
 
 /* ---------------------------------------
 CREATE PAYMENT ORDER
@@ -15,29 +60,12 @@ CREATE PAYMENT ORDER
 
 async function createPaymentOrder(amount){
 
-  const response = await fetch(
-
-    API_BASE + "/create-payment-order",
-
-    {
-      method: "POST",
-
-      headers:{
-        "Content-Type":"application/json",
-        "x-api-key": API_KEY
-      },
-
-      body: JSON.stringify({
-        amount: amount
-      })
-    }
-
+  return apiRequest(
+    "/create-payment-order",
+    { amount: amount }
   );
 
-  return response.json();
-
 }
-
 
 /* ---------------------------------------
 VERIFY PAYMENT
@@ -45,27 +73,12 @@ VERIFY PAYMENT
 
 async function verifyPayment(paymentData){
 
-  const response = await fetch(
-
-    API_BASE + "/verify-payment",
-
-    {
-      method:"POST",
-
-      headers:{
-        "Content-Type":"application/json",
-        "x-api-key": API_KEY
-      },
-
-      body: JSON.stringify(paymentData)
-    }
-
+  return apiRequest(
+    "/verify-payment",
+    paymentData
   );
 
-  return response.json();
-
 }
-
 
 /* ---------------------------------------
 CREATE ORDER
@@ -73,23 +86,9 @@ CREATE ORDER
 
 async function createOrder(orderData){
 
-  const response = await fetch(
-
-    API_BASE + "/create-order",
-
-    {
-      method:"POST",
-
-      headers:{
-        "Content-Type":"application/json",
-        "x-api-key": API_KEY
-      },
-
-      body: JSON.stringify(orderData)
-    }
-
+  return apiRequest(
+    "/create-order",
+    orderData
   );
-
-  return response.json();
 
 }
