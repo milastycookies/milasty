@@ -2,7 +2,13 @@
 // MILASTY PAYMENT HANDLER
 // ========================================
 
+let paymentRunning = false;
+
 function startPayment(order, orderData){
+
+  if(paymentRunning) return;
+
+  paymentRunning = true;
 
   const options = {
 
@@ -31,6 +37,8 @@ function startPayment(order, orderData){
 
           alert("Payment verification failed");
 
+          paymentRunning = false;
+
           return;
 
         }
@@ -55,18 +63,29 @@ function startPayment(order, orderData){
         if(phoneField) phoneField.value = "";
         if(addressField) addressField.value = "";
 
-        renderCart();
-        updateBasket();
+        if(typeof renderCart === "function"){
+          renderCart();
+        }
 
-        closeCart();
+        if(typeof updateBasket === "function"){
+          updateBasket();
+        }
+
+        if(typeof closeCart === "function"){
+          closeCart();
+        }
 
         alert("Payment successful! Your order has been confirmed.");
+
+        paymentRunning = false;
 
       }catch(e){
 
         console.error("Payment flow error", e);
 
         alert("Order processing failed. Please contact support.");
+
+        paymentRunning = false;
 
       }
 
@@ -75,6 +94,20 @@ function startPayment(order, orderData){
   };
 
   const rzp = new Razorpay(options);
+
+  /* ------------------------
+     HANDLE PAYMENT FAILURE
+  ------------------------ */
+
+  rzp.on("payment.failed", function (response){
+
+    console.error("Payment failed", response.error);
+
+    alert("Payment failed. Please try again.");
+
+    paymentRunning = false;
+
+  });
 
   rzp.open();
 
