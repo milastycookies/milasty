@@ -5,30 +5,43 @@
 const API_BASE = "http://localhost:5000";
 
 
+
+// ========================================
+// START CHECKOUT
+// ========================================
+
 async function startCheckout() {
 
   try {
 
-    const name = document.querySelector('input[placeholder="Name"]').value;
-    const phone = document.querySelector('input[placeholder="Phone"]').value;
-    const address = document.querySelector("textarea").value;
+    const name = document.querySelector('input[placeholder="Name"]')?.value || "";
+    const phone = document.querySelector('input[placeholder="Phone"]')?.value || "";
+    const address = document.querySelector("textarea")?.value || "";
 
     if (!name || !phone || !address) {
       alert("Please fill name, phone and address.");
       return;
     }
 
-    const cart = JSON.parse(localStorage.getItem("milastyCart") || "[]");
+    // ========================================
+    // GET CART FROM CART SYSTEM
+    // ========================================
 
-    if (cart.length === 0) {
+    const cart = getCart();
+
+    if (!cart || cart.length === 0) {
       alert("Your cart is empty.");
       return;
     }
 
+    // ========================================
+    // CALCULATE TOTAL
+    // ========================================
+
     let subtotal = 0;
 
     cart.forEach(item => {
-      subtotal += item.price * item.qty;
+      subtotal += item.price * item.quantity;
     });
 
     const delivery = subtotal >= 799 ? 0 : 60;
@@ -63,7 +76,7 @@ async function startCheckout() {
 
     const options = {
 
-      key: "rzp_test_SP8e1esl7ob6bm", // your Razorpay TEST key
+      key: "rzp_test_SP8e1esl7ob6bm",
 
       amount: orderData.amount,
 
@@ -105,6 +118,7 @@ async function startCheckout() {
     rzp.open();
 
   }
+
   catch (err) {
 
     console.error("Checkout error:", err);
@@ -117,7 +131,7 @@ async function startCheckout() {
 
 
 // ========================================
-// VERIFY PAYMENT WITH BACKEND
+// VERIFY PAYMENT
 // ========================================
 
 async function verifyPayment(paymentData, orderData) {
@@ -151,7 +165,7 @@ async function verifyPayment(paymentData, orderData) {
 
       alert("Payment successful! 🎉");
 
-      localStorage.removeItem("milastyCart");
+      clearCart();
 
       window.location.href = "/thankyou.html";
 
@@ -163,6 +177,7 @@ async function verifyPayment(paymentData, orderData) {
     }
 
   }
+
   catch (err) {
 
     console.error("Verification error:", err);
