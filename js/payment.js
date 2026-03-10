@@ -1,183 +1,189 @@
 // ========================================
-// MILASTY PAYMENT SYSTEM
+// MILASTY PAYMENT HANDLER
 // ========================================
 
-let paymentRunning = false;
+const API_BASE = "http://localhost:5000";
 
 
-/* ---------------------------------------
-START PAYMENT
---------------------------------------- */
+async function startCheckout() {
 
-async function startPayment(orderData){
+  try {
 
-  if(paymentRunning) return;
+    const name = document.querySelector('input[placeholder="Name"]').value;
+    const phone = document.querySelector('input[placeholder="Phone"]').value;
+    const address = document.querySelector("textarea").value;
 
-  paymentRunning = true;
-
-  try{
-
-    const amount = orderData.total;
-
-    if(!amount || amount <= 0){
-
-      alert("Invalid payment amount");
-      paymentRunning = false;
+    if (!name || !phone || !address) {
+      alert("Please fill name, phone and address.");
       return;
-
     }
 
-    /* ---------------------------------------
-    CREATE RAZORPAY ORDER
-    --------------------------------------- */
+    const cart = JSON.parse(localStorage.getItem("milastyCart") || "[]");
 
-    const paymentOrder =
-    await createPaymentOrder(amount);
-
-    if(!paymentOrder || !paymentOrder.id){
-
-      throw new Error("Failed to create payment order");
-
+    if (cart.length === 0) {
+      alert("Your cart is empty.");
+      return;
     }
 
-    /* ---------------------------------------
-    RAZORPAY CHECKOUT OPTIONS
-    --------------------------------------- */
+    let subtotal = 0;
+
+    cart.forEach(item => {
+      subtotal += item.price * item.qty;
+    });
+
+    const delivery = subtotal >= 799 ? 0 : 60;
+    const total = subtotal + delivery;
+
+    // ========================================
+    // CREATE ORDER ON BACKEND
+    // ========================================
+
+    const orderResponse = await fetch(
+      API_BASE + "/create-payment-order",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          amount: total
+        })
+      }
+    );
+
+    const orderData = await orderResponse.json();
+
+    if (!orderData.orderId) {
+      throw new Error("Failed to create Razorpay order");
+    }
+
+    // ========================================
+    // OPEN RAZORPAY CHECKOUT
+    // ========================================
 
     const options = {
 
-      key: "rzp_test_S4Y2x0gLxkyVYq",   // Replace with LIVE key before launch
+      key: "rzp_test_SP8e1esl7ob6bm", // your Razorpay TEST key
 
-      amount: paymentOrder.amount,
+      amount: orderData.amount,
 
-      currency: paymentOrder.currency,
+      currency: "INR",
 
       name: "MILASTY",
 
-      description: "Millet Cookie Order",
+      description: "Millet Cookie Ritual",
 
-      order_id: paymentOrder.id,
+      order_id: orderData.orderId,
+
+      handler: async function (response) {
+
+        await verifyPayment(response, {
+          name,
+          phone,
+          address,
+          cart,
+          subtotal,
+          delivery,
+          total
+        });
+
+      },
 
       prefill: {
-
-        name: orderData.name || "",
-
-        contact: orderData.phone || ""
-
+        name: name,
+        contact: phone
       },
 
       theme: {
-        color: "#6B4F2B"
-      },
-
-
-      /* ---------------------------------------
-      PAYMENT SUCCESS HANDLER
-      --------------------------------------- */
-
-      handler: async function(response){
-
-        try{
-
-          /* ---------------------------------------
-          VERIFY PAYMENT
-          --------------------------------------- */
-
-          const verifyResult =
-          await verifyPayment({
-
-            razorpay_payment_id:
-            response.razorpay_payment_id,
-
-            razorpay_order_id:
-            response.razorpay_order_id,
-
-            razorpay_signature:
-            response.razorpay_signature
-
-          });
-
-
-          if(!verifyResult || verifyResult.status !== "success"){
-
-            alert("Payment verification failed");
-
-            paymentRunning = false;
-            return;
-
-          }
-
-
-          /* ---------------------------------------
-          PAYMENT VERIFIED
-          CREATE ORDER
-          --------------------------------------- */
-
-          await createOrder(orderData);
-
-          clearCart();
-
-          alert(
-            "Payment successful! Your MILASTY order has been confirmed."
-          );
-
-          paymentRunning = false;
-
-
-        }catch(err){
-
-          console.error(
-            "Payment verification error",
-            err
-          );
-
-          alert(
-            "Payment succeeded but order processing failed. Please contact support."
-          );
-
-          paymentRunning = false;
-
-        }
-
+        color: "#8b5e34"
       }
-
 
     };
 
-
-    /* ---------------------------------------
-    OPEN RAZORPAY
-    --------------------------------------- */
-
     const rzp = new Razorpay(options);
-
-
-    rzp.on("payment.failed", function(response){
-
-      console.error("Payment failed:", response);
-
-      alert(
-        "Payment failed. Please try again."
-      );
-
-      paymentRunning = false;
-
-    });
-
 
     rzp.open();
 
+  }
+  catch (err) {
 
-  }catch(err){
-
-    console.error("Payment error:", err);
-
-    alert(
-      "Unable to start payment. Please try again."
-    );
-
-    paymentRunning = false;
+    console.error("Checkout error:", err);
+    alert("Something went wrong. Please try again.");
 
   }
 
 }
+
+
+
+// ========================================
+// VERIFY PAYMENT WITH BACKEND
+// ========================================
+
+async function verifyPayment(paymentData, orderData) {
+
+  try {
+
+    const verifyResponse = await fetch(
+      API_BASE + "/verify-payment",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+
+          razorpay_order_id: paymentData.razorpay_order_id,
+
+          razorpay_payment_id: paymentData.razorpay_payment_id,
+
+          razorpay_signature: paymentData.razorpay_signature,
+
+          orderData
+
+        })
+      }
+    );
+
+    const verifyResult = await verifyResponse.json();
+
+    if (verifyResult.success) {
+
+      alert("Payment successful! 🎉");
+
+      localStorage.removeItem("milastyCart");
+
+      window.location.href = "/thankyou.html";
+
+    }
+    else {
+
+      alert("Payment verification failed.");
+
+    }
+
+  }
+  catch (err) {
+
+    console.error("Verification error:", err);
+    alert("Payment verification failed.");
+
+  }
+
+}
+
+
+
+// ========================================
+// CONNECT CONTINUE BUTTON
+// ========================================
+
+document.addEventListener("DOMContentLoaded", () => {
+
+  const btn = document.getElementById("continueCheckout");
+
+  if (btn) {
+    btn.addEventListener("click", startCheckout);
+  }
+
+});
