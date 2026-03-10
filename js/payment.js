@@ -33,7 +33,7 @@ function startPayment(order, orderData){
         const verifyResult =
         await verifyPayment(response);
 
-        if(verifyResult.status !== "verified"){
+        if(verifyResult.status !== "success"){
 
           alert("Payment verification failed");
 
