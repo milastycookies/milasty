@@ -1,118 +1,183 @@
 // ========================================
-// MILASTY PAYMENT HANDLER
+// MILASTY PAYMENT SYSTEM
 // ========================================
 
 let paymentRunning = false;
 
-function startPayment(order, orderData){
+
+/* ---------------------------------------
+START PAYMENT
+--------------------------------------- */
+
+async function startPayment(orderData){
 
   if(paymentRunning) return;
 
   paymentRunning = true;
 
-  const options = {
+  try{
 
-    key: "rzp_test_S4Y2x0gLxkyVYq",
+    const amount = orderData.total;
 
-    amount: order.amount,
-    currency: order.currency,
+    if(!amount || amount <= 0){
 
-    order_id: order.id,
-
-    name: "MILASTY",
-    description: "Millet Cookie Ritual",
-
-    handler: async function(response){
-
-      try{
-
-        /* ------------------------
-           VERIFY PAYMENT
-        ------------------------ */
-
-        const verifyResult =
-        await verifyPayment({
-          razorpay_payment_id: response.razorpay_payment_id,
-          razorpay_order_id: response.razorpay_order_id,
-          razorpay_signature: response.razorpay_signature
-        });
-
-        if(verifyResult.status !== "success"){
-
-          alert("Payment verification failed");
-
-          paymentRunning = false;
-
-          return;
-
-        }
-
-        /* ------------------------
-           STORE ORDER
-        ------------------------ */
-
-        await createOrder(orderData);
-
-        /* ------------------------
-           CLEANUP
-        ------------------------ */
-
-        clearCart();
-
-        const nameField = document.getElementById("name");
-        const phoneField = document.getElementById("phone");
-        const addressField = document.getElementById("address");
-
-        if(nameField) nameField.value = "";
-        if(phoneField) phoneField.value = "";
-        if(addressField) addressField.value = "";
-
-        if(typeof renderCart === "function"){
-          renderCart();
-        }
-
-        if(typeof updateBasket === "function"){
-          updateBasket();
-        }
-
-        if(typeof closeCart === "function"){
-          closeCart();
-        }
-
-        alert("Payment successful! Your order has been confirmed.");
-
-        paymentRunning = false;
-
-      }catch(e){
-
-        console.error("Payment flow error", e);
-
-        alert("Order processing failed. Please contact support.");
-
-        paymentRunning = false;
-
-      }
+      alert("Invalid payment amount");
+      paymentRunning = false;
+      return;
 
     }
 
-  };
+    /* ---------------------------------------
+    CREATE RAZORPAY ORDER
+    --------------------------------------- */
 
-  const rzp = new Razorpay(options);
+    const paymentOrder =
+    await createPaymentOrder(amount);
 
-  /* ------------------------
-     HANDLE PAYMENT FAILURE
-  ------------------------ */
+    if(!paymentOrder || !paymentOrder.id){
 
-  rzp.on("payment.failed", function (response){
+      throw new Error("Failed to create payment order");
 
-    console.error("Payment failed", response.error);
+    }
 
-    alert("Payment failed. Please try again.");
+    /* ---------------------------------------
+    RAZORPAY CHECKOUT OPTIONS
+    --------------------------------------- */
+
+    const options = {
+
+      key: "rzp_test_S4Y2x0gLxkyVYq",   // Replace with LIVE key before launch
+
+      amount: paymentOrder.amount,
+
+      currency: paymentOrder.currency,
+
+      name: "MILASTY",
+
+      description: "Millet Cookie Order",
+
+      order_id: paymentOrder.id,
+
+      prefill: {
+
+        name: orderData.name || "",
+
+        contact: orderData.phone || ""
+
+      },
+
+      theme: {
+        color: "#6B4F2B"
+      },
+
+
+      /* ---------------------------------------
+      PAYMENT SUCCESS HANDLER
+      --------------------------------------- */
+
+      handler: async function(response){
+
+        try{
+
+          /* ---------------------------------------
+          VERIFY PAYMENT
+          --------------------------------------- */
+
+          const verifyResult =
+          await verifyPayment({
+
+            razorpay_payment_id:
+            response.razorpay_payment_id,
+
+            razorpay_order_id:
+            response.razorpay_order_id,
+
+            razorpay_signature:
+            response.razorpay_signature
+
+          });
+
+
+          if(!verifyResult || verifyResult.status !== "success"){
+
+            alert("Payment verification failed");
+
+            paymentRunning = false;
+            return;
+
+          }
+
+
+          /* ---------------------------------------
+          PAYMENT VERIFIED
+          CREATE ORDER
+          --------------------------------------- */
+
+          await createOrder(orderData);
+
+          clearCart();
+
+          alert(
+            "Payment successful! Your MILASTY order has been confirmed."
+          );
+
+          paymentRunning = false;
+
+
+        }catch(err){
+
+          console.error(
+            "Payment verification error",
+            err
+          );
+
+          alert(
+            "Payment succeeded but order processing failed. Please contact support."
+          );
+
+          paymentRunning = false;
+
+        }
+
+      }
+
+
+    };
+
+
+    /* ---------------------------------------
+    OPEN RAZORPAY
+    --------------------------------------- */
+
+    const rzp = new Razorpay(options);
+
+
+    rzp.on("payment.failed", function(response){
+
+      console.error("Payment failed:", response);
+
+      alert(
+        "Payment failed. Please try again."
+      );
+
+      paymentRunning = false;
+
+    });
+
+
+    rzp.open();
+
+
+  }catch(err){
+
+    console.error("Payment error:", err);
+
+    alert(
+      "Unable to start payment. Please try again."
+    );
 
     paymentRunning = false;
 
-  });
-
-  rzp.open();
+  }
 
 }
