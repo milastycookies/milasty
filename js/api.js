@@ -10,7 +10,7 @@ const API_BASE =
 GENERIC REQUEST HELPER
 --------------------------------------- */
 
-async function apiRequest(endpoint, payload){
+async function apiRequest(endpoint, payload, extraHeaders = {}){
 
   const controller = new AbortController();
 
@@ -28,7 +28,8 @@ async function apiRequest(endpoint, payload){
         method: "POST",
 
         headers:{
-          "Content-Type":"application/json"
+          "Content-Type":"application/json",
+          ...extraHeaders
         },
 
         credentials: "include",
@@ -102,7 +103,10 @@ async function createOrder(orderData){
 
   return apiRequest(
     "/create-order",
-    orderData
+    orderData,
+    {
+      "Idempotency-Key": orderData.token
+    }
   );
 
 }
