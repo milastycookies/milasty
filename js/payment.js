@@ -66,7 +66,7 @@ async function startCheckout() {
 
     const orderData = await orderResponse.json();
 
-    if (!orderData.orderId) {
+    if (!orderData.id) {
       throw new Error("Failed to create Razorpay order");
     }
 
