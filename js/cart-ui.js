@@ -2,240 +2,94 @@
 // MILASTY CART UI
 // ========================================
 
-import { getCart, changeQty, removeItem, onCartUpdate } from "./cart.js";
-import { startCheckout } from "./checkout.js";
+import {
+  getCart,
+  changeQty,
+  removeItem,
+  getCartTotal,
+  getCartCount
+} from "./cart.js";
 
-let orderToken = null;
+let drawer;
+let cartItemsContainer;
+let cartTotal;
+let cartCount;
 
-/* ----------------------------------------
-INIT
----------------------------------------- */
-
+// ------------------------------
+// Initialize
+// ------------------------------
 document.addEventListener("DOMContentLoaded", () => {
 
+  drawer = document.getElementById("cartDrawer");
+  cartItemsContainer = document.getElementById("cartItems");
+  cartTotal = document.getElementById("cartTotal");
+  cartCount = document.getElementById("cartCount");
+
   renderCart();
-  updateBasket();
 
-  const overlay = document.getElementById("cartOverlay");
-  if(overlay){
-    overlay.addEventListener("click", closeCart);
-  }
-
-  const guideOverlay = document.getElementById("guidelinesOverlay");
-
-  if(guideOverlay){
-    guideOverlay.addEventListener("click",(e)=>{
-      if(e.target === guideOverlay){
-        closeGuidelines();
-      }
-    });
-  }
-
+  window.addEventListener("cartUpdated", renderCart);
 });
 
-/* ----------------------------------------
-RENDER CART
----------------------------------------- */
+// ------------------------------
+// Render cart
+// ------------------------------
+function renderCart() {
 
-function renderCart(){
+  if (!cartItemsContainer) return;
 
   const cart = getCart();
 
-  const cartContainer = document.getElementById("cart-items");
-  const summaryContainer = document.getElementById("cart-summary");
+  cartItemsContainer.innerHTML = "";
 
-  if(!cartContainer || !summaryContainer) return;
-
-  let html = "";
-  let subtotal = 0;
-  let freeDelivery = false;
+  if (cart.length === 0) {
+    cartItemsContainer.innerHTML =
+      "<p style='text-align:center'>Cart is empty</p>";
+  }
 
   cart.forEach(item => {
 
-    const itemTotal = item.price * item.qty;
-    subtotal += itemTotal;
+    const row = document.createElement("div");
+    row.className = "cart-item";
 
-    if(item.type === "gift"){
-      freeDelivery = true;
-    }
-
-    html += `
-    <div class="cart-item">
-
-      <div class="cart-item-details">
-
-        <div class="cart-item-title">${item.name}</div>
-
-        <div class="cart-item-price">
-          ₹${item.price} × ${item.qty} = ₹${itemTotal}
-        </div>
-
+    row.innerHTML = `
+      <div class="cart-item-name">
+        ${item.name}
+        <small>${item.weight}</small>
       </div>
 
-      <div class="qty-controls">
-
-        <button onclick="changeQty('${item.name}',-1)">−</button>
+      <div class="cart-item-qty">
+        <button class="qty-btn minus">-</button>
         <span>${item.qty}</span>
-        <button onclick="changeQty('${item.name}',1)">+</button>
-
-        <button class="cart-remove"
-        onclick="removeItem('${item.name}')">
-        Remove
-        </button>
-
+        <button class="qty-btn plus">+</button>
       </div>
 
-    </div>
+      <div class="cart-item-price">
+        ₹${item.price * item.qty}
+      </div>
+
+      <button class="remove-btn">×</button>
     `;
 
+    row.querySelector(".minus").onclick = () => {
+      changeQty(item.name, item.weight, -1);
+    };
+
+    row.querySelector(".plus").onclick = () => {
+      changeQty(item.name, item.weight, 1);
+    };
+
+    row.querySelector(".remove-btn").onclick = () => {
+      removeItem(item.name, item.weight);
+    };
+
+    cartItemsContainer.appendChild(row);
   });
 
-  cartContainer.innerHTML = html;
-
-  renderSummary(subtotal, freeDelivery);
-
-}
-
-/* ----------------------------------------
-SUMMARY
----------------------------------------- */
-
-function renderSummary(subtotal, freeDelivery){
-
-  const summary = document.getElementById("cart-summary");
-
-  let delivery = 60;
-
-  if(subtotal >= 799 || freeDelivery){
-    delivery = 0;
+  if (cartTotal) {
+    cartTotal.innerText = "₹" + getCartTotal();
   }
 
-  const total = subtotal + delivery;
-
-  let message = "";
-
-  if(freeDelivery){
-    message = "🎁 Gift Ritual includes FREE delivery";
+  if (cartCount) {
+    cartCount.innerText = getCartCount();
   }
-  else if(subtotal >= 799){
-    message = "🚚 Free delivery unlocked!";
-  }
-  else{
-    message = `Add ₹${799 - subtotal} more to unlock FREE delivery`;
-  }
-
-  summary.innerHTML = `
-    <p>Subtotal: ₹${subtotal}</p>
-    <p>Delivery: ${delivery === 0 ? "FREE" : "₹60"}</p>
-    <p><strong>Total: ₹${total}</strong></p>
-    <p>${message}</p>
-  `;
-
-}
-
-/* ----------------------------------------
-BASKET
----------------------------------------- */
-
-function updateBasket(){
-
-  const basket = document.querySelector(".floating-basket");
-  const count = document.getElementById("basket-count");
-
-  if(!basket || !count) return;
-
-  const cart = getCart();
-
-  const totalQty =
-  cart.reduce((sum,item)=>sum+item.qty,0);
-
-  count.innerText = totalQty;
-
-  const drawer = document.getElementById("cartDrawer");
-
-  if(totalQty > 0 && !drawer.classList.contains("active")){
-    basket.style.display = "flex";
-  }else{
-    basket.style.display = "none";
-  }
-
-}
-
-/* ----------------------------------------
-DRAWER
----------------------------------------- */
-
-window.openCart = function(){
-
-  const drawer = document.getElementById("cartDrawer");
-  const overlay = document.getElementById("cartOverlay");
-
-  if(drawer) drawer.classList.add("active");
-  if(overlay) overlay.classList.add("active");
-
-  document.body.classList.add("cart-open");
-
-}
-
-window.closeCart = function(){
-
-  const drawer = document.getElementById("cartDrawer");
-  const overlay = document.getElementById("cartOverlay");
-
-  if(drawer) drawer.classList.remove("active");
-  if(overlay) overlay.classList.remove("active");
-
-  document.body.classList.remove("cart-open");
-
-}
-
-/* ----------------------------------------
-CHECKOUT BUTTON
----------------------------------------- */
-
-window.sendOrder = function(){
-
-  const name = document.getElementById("name").value;
-  const phone = document.getElementById("phone").value;
-  const address = document.getElementById("address").value;
-
-  if(!name || !phone || !address){
-    alert("Please fill all details");
-    return;
-  }
-
-  orderToken =
-  "MIL-" + Date.now() + "-" +
-  Math.random().toString(36).substring(2,10);
-
-  document
-  .getElementById("guidelinesOverlay")
-  .classList.add("active");
-
-}
-
-/* ----------------------------------------
-GUIDELINES CONFIRM
----------------------------------------- */
-
-window.confirmGuidelines = function(){
-
-  document
-  .getElementById("guidelinesOverlay")
-  .classList.remove("active");
-
-  startCheckout(orderToken);
-
-}
-
-/* ----------------------------------------
-CLOSE GUIDELINES
----------------------------------------- */
-
-function closeGuidelines(){
-
-  document
-  .getElementById("guidelinesOverlay")
-  .classList.remove("active");
-
 }
