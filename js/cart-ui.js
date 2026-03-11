@@ -94,3 +94,11 @@ function renderCart() {
     cartCount.innerText = getCartCount();
   }
 }
+
+
+window.addToCart = addToCart;
+window.openCart = openCart;
+window.closeCart = closeCart;
+window.showDelivery = showDelivery;
+window.showCartItems = showCartItems;
+window.sendOrder = sendOrder;
