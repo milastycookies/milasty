@@ -16,7 +16,7 @@ export function getCart(){
 SAVE CART
 --------------------------------------- */
 
-export function saveCart(cart){
+function saveCart(cart){
   localStorage.setItem(CART_KEY, JSON.stringify(cart));
 }
 
@@ -34,21 +34,21 @@ export function addToCart(name, price, type="normal"){
     existing.qty += 1;
   }else{
     cart.push({
-      name: name,
-      price: price,
-      qty: 1,
-      type: type
+      name,
+      price,
+      qty:1,
+      type
     });
   }
 
   saveCart(cart);
 
-  if(typeof renderCart === "function"){
-    renderCart();
+  if(typeof window.renderCart === "function"){
+    window.renderCart();
   }
 
-  if(typeof updateBasket === "function"){
-    updateBasket();
+  if(typeof window.updateBasket === "function"){
+    window.updateBasket();
   }
 
 }
@@ -65,12 +65,12 @@ export function removeItem(name){
 
   saveCart(cart);
 
-  if(typeof renderCart === "function"){
-    renderCart();
+  if(typeof window.renderCart === "function"){
+    window.renderCart();
   }
 
-  if(typeof updateBasket === "function"){
-    updateBasket();
+  if(typeof window.updateBasket === "function"){
+    window.updateBasket();
   }
 
 }
@@ -95,12 +95,12 @@ export function changeQty(name, delta){
 
   saveCart(cart);
 
-  if(typeof renderCart === "function"){
-    renderCart();
+  if(typeof window.renderCart === "function"){
+    window.renderCart();
   }
 
-  if(typeof updateBasket === "function"){
-    updateBasket();
+  if(typeof window.updateBasket === "function"){
+    window.updateBasket();
   }
 
 }
@@ -113,12 +113,12 @@ export function clearCart(){
 
   localStorage.removeItem(CART_KEY);
 
-  if(typeof renderCart === "function"){
-    renderCart();
+  if(typeof window.renderCart === "function"){
+    window.renderCart();
   }
 
-  if(typeof updateBasket === "function"){
-    updateBasket();
+  if(typeof window.updateBasket === "function"){
+    window.updateBasket();
   }
 
 }
@@ -131,18 +131,6 @@ export function getCartCount(){
 
   let cart = getCart();
 
-  return cart.reduce((sum, item) => sum + item.qty, 0);
-
-}
-
-/* ---------------------------------------
-GET CART TOTAL
---------------------------------------- */
-
-export function getCartTotal(){
-
-  let cart = getCart();
-
-  return cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
+  return cart.reduce((sum,item)=>sum+item.qty,0);
 
 }
