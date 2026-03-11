@@ -8,7 +8,7 @@ const CART_KEY = "milasty_cart";
 GET CART
 --------------------------------------- */
 
-export function getCart(){
+function getCart(){
   return JSON.parse(localStorage.getItem(CART_KEY)) || [];
 }
 
@@ -24,7 +24,7 @@ function saveCart(cart){
 ADD TO CART
 --------------------------------------- */
 
-export function addToCart(name, price, type="normal"){
+function addToCart(name, price, type="normal"){
 
   let cart = getCart();
 
@@ -43,12 +43,12 @@ export function addToCart(name, price, type="normal"){
 
   saveCart(cart);
 
-  if(typeof window.renderCart === "function"){
-    window.renderCart();
+  if(typeof renderCart === "function"){
+    renderCart();
   }
 
-  if(typeof window.updateBasket === "function"){
-    window.updateBasket();
+  if(typeof updateBasket === "function"){
+    updateBasket();
   }
 
 }
@@ -57,7 +57,7 @@ export function addToCart(name, price, type="normal"){
 REMOVE ITEM
 --------------------------------------- */
 
-export function removeItem(name){
+function removeItem(name){
 
   let cart = getCart();
 
@@ -65,12 +65,12 @@ export function removeItem(name){
 
   saveCart(cart);
 
-  if(typeof window.renderCart === "function"){
-    window.renderCart();
+  if(typeof renderCart === "function"){
+    renderCart();
   }
 
-  if(typeof window.updateBasket === "function"){
-    window.updateBasket();
+  if(typeof updateBasket === "function"){
+    updateBasket();
   }
 
 }
@@ -79,7 +79,7 @@ export function removeItem(name){
 CHANGE QUANTITY
 --------------------------------------- */
 
-export function changeQty(name, delta){
+function changeQty(name, delta){
 
   let cart = getCart();
 
@@ -95,12 +95,12 @@ export function changeQty(name, delta){
 
   saveCart(cart);
 
-  if(typeof window.renderCart === "function"){
-    window.renderCart();
+  if(typeof renderCart === "function"){
+    renderCart();
   }
 
-  if(typeof window.updateBasket === "function"){
-    window.updateBasket();
+  if(typeof updateBasket === "function"){
+    updateBasket();
   }
 
 }
@@ -109,16 +109,16 @@ export function changeQty(name, delta){
 CLEAR CART
 --------------------------------------- */
 
-export function clearCart(){
+function clearCart(){
 
   localStorage.removeItem(CART_KEY);
 
-  if(typeof window.renderCart === "function"){
-    window.renderCart();
+  if(typeof renderCart === "function"){
+    renderCart();
   }
 
-  if(typeof window.updateBasket === "function"){
-    window.updateBasket();
+  if(typeof updateBasket === "function"){
+    updateBasket();
   }
 
 }
@@ -127,7 +127,7 @@ export function clearCart(){
 GET CART COUNT
 --------------------------------------- */
 
-export function getCartCount(){
+function getCartCount(){
 
   let cart = getCart();
 
