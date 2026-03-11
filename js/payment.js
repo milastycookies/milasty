@@ -24,7 +24,7 @@ async function startCheckout() {
     }
 
     // ========================================
-    // GET CART FROM CART SYSTEM
+    // GET CART
     // ========================================
 
     const cart = getCart();
@@ -47,8 +47,10 @@ async function startCheckout() {
     const delivery = subtotal >= 799 ? 0 : 60;
     const total = subtotal + delivery;
 
+    console.log("Creating order for ₹", total);
+
     // ========================================
-    // CREATE ORDER ON BACKEND
+    // CREATE RAZORPAY ORDER
     // ========================================
 
     const orderResponse = await fetch(
@@ -64,10 +66,23 @@ async function startCheckout() {
       }
     );
 
+    // 🔴 Check if backend responded successfully
+    if (!orderResponse.ok) {
+
+      const text = await orderResponse.text();
+
+      console.error("Backend error:", text);
+
+      throw new Error("Backend rejected order creation");
+
+    }
+
     const orderData = await orderResponse.json();
 
+    console.log("Order created:", orderData);
+
     if (!orderData.orderId) {
-      throw new Error("Failed to create Razorpay order");
+      throw new Error("Invalid order response from server");
     }
 
     // ========================================
@@ -122,12 +137,12 @@ async function startCheckout() {
   catch (err) {
 
     console.error("Checkout error:", err);
-  
+
     alert(
       "Checkout error:\n" +
       err.message
     );
-  
+
   }
 
 }
@@ -141,6 +156,8 @@ async function startCheckout() {
 async function verifyPayment(paymentData, orderData) {
 
   try {
+
+    console.log("Verifying payment...");
 
     const verifyResponse = await fetch(
       API_BASE + "/verify-payment",
@@ -163,7 +180,19 @@ async function verifyPayment(paymentData, orderData) {
       }
     );
 
+    if (!verifyResponse.ok) {
+
+      const text = await verifyResponse.text();
+
+      console.error("Verification error:", text);
+
+      throw new Error("Verification failed on server");
+
+    }
+
     const verifyResult = await verifyResponse.json();
+
+    console.log("Verification result:", verifyResult);
 
     if (verifyResult.success) {
 
@@ -185,6 +214,7 @@ async function verifyPayment(paymentData, orderData) {
   catch (err) {
 
     console.error("Verification error:", err);
+
     alert("Payment verification failed.");
 
   }
