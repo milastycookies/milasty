@@ -1,112 +1,120 @@
 // ========================================
-// MILASTY BACKEND API
+// MILASTY CHECKOUT CONTROLLER
 // ========================================
 
-const API_BASE =
-"https://milasty-backend-production-5de1.up.railway.app";
+let checkoutRunning = false;
 
+async function startCheckout(orderToken){
 
-/* ---------------------------------------
-GENERIC REQUEST HELPER
---------------------------------------- */
+  if(checkoutRunning) return;
 
-async function apiRequest(endpoint, payload, extraHeaders = {}){
+  checkoutRunning = true;
 
-  const controller = new AbortController();
+  const name = document.getElementById("name").value;
+  const phone = document.getElementById("phone").value;
+  const address = document.getElementById("address").value;
 
-  const timeout = setTimeout(() => {
-    controller.abort();
-  }, 10000); // 10s timeout
+  if(!name || !phone || !address){
 
-  try{
+    alert("Please fill all details");
 
-    const response = await fetch(
+    checkoutRunning = false;
 
-      API_BASE + endpoint,
-
-      {
-        method: "POST",
-
-        headers:{
-          "Content-Type":"application/json",
-          ...extraHeaders
-        },
-
-        credentials: "include",
-
-        signal: controller.signal,
-
-        body: JSON.stringify(payload)
-
-      }
-
-    );
-
-    clearTimeout(timeout);
-
-    if(!response.ok){
-
-      const text = await response.text();
-
-      throw new Error(
-        "API error: " + text
-      );
-
-    }
-
-    return await response.json();
-
-  }catch(err){
-
-    console.error("API request failed:", err);
-
-    throw err;
+    return;
 
   }
 
-}
+  const cart = getCart();
 
+  if(cart.length === 0){
 
-/* ---------------------------------------
-CREATE PAYMENT ORDER
---------------------------------------- */
+    alert("Your cart is empty");
 
-async function createPaymentOrder(amount){
+    checkoutRunning = false;
 
-  return apiRequest(
-    "/create-payment-order",
-    { amount }
-  );
+    return;
 
-}
+  }
 
+  /* -----------------------------
+     CALCULATE TOTAL
+  ----------------------------- */
 
-/* ---------------------------------------
-VERIFY PAYMENT
---------------------------------------- */
+  let subtotal = 0;
+  let freeDelivery = false;
 
-async function verifyPayment(paymentData){
+  cart.forEach(item => {
 
-  return apiRequest(
-    "/verify-payment",
-    paymentData
-  );
+    subtotal += item.price * item.qty;
 
-}
-
-
-/* ---------------------------------------
-CREATE ORDER
---------------------------------------- */
-
-async function createOrder(orderData){
-
-  return apiRequest(
-    "/create-order",
-    orderData,
-    {
-      "Idempotency-Key": orderData.token
+    if(item.type === "gift"){
+      freeDelivery = true;
     }
-  );
+
+  });
+
+  let delivery = 60;
+
+  if(subtotal >= 799 || freeDelivery){
+    delivery = 0;
+  }
+
+  const finalTotal = subtotal + delivery;
+
+  /* -----------------------------
+     DATE & TIME
+  ----------------------------- */
+
+  const now = new Date();
+
+  const orderDate =
+  now.toISOString().split("T")[0];
+
+  const orderTime =
+  now.toLocaleTimeString("en-IN",{
+    hour:"2-digit",
+    minute:"2-digit",
+    second:"2-digit",
+    hour12:false
+  });
+
+  /* -----------------------------
+     ORDER OBJECT
+  ----------------------------- */
+
+  const orderData = {
+
+    token: orderToken,
+
+    date: orderDate,
+    time: orderTime,
+    timestamp: Date.now(),
+
+    name,
+    phone,
+    address,
+
+    items: cart,
+
+    subtotal,
+    delivery,
+    total: finalTotal,
+
+    source: "milasty_website"
+
+  };
+
+  /* -----------------------------
+     CREATE PAYMENT ORDER
+  ----------------------------- */
+
+  const paymentOrder =
+  await createPaymentOrder(finalTotal);
+
+  /* -----------------------------
+     START PAYMENT
+  ----------------------------- */
+
+  startPayment(paymentOrder, orderData);
 
 }
