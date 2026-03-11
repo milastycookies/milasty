@@ -40,7 +40,8 @@ async function startCheckout() {
     }
 
     // ========================================
-    // CALCULATE TOTAL (SAFE VERSION)
+    // CALCULATE TOTAL (UI / DEBUG ONLY)
+    // Backend will calculate actual amount
     // ========================================
 
     let subtotal = 0;
@@ -77,6 +78,7 @@ async function startCheckout() {
 
     // ========================================
     // CREATE RAZORPAY ORDER
+    // SEND CART (NOT AMOUNT)
     // ========================================
 
     const orderResponse = await fetch(
@@ -87,7 +89,7 @@ async function startCheckout() {
           "Content-Type": "application/json"
         },
         body: JSON.stringify({
-          amount: total
+          cart: cart
         })
       }
     );
