@@ -14,9 +14,14 @@ async function startCheckout() {
 
   try {
 
-    const name = document.querySelector('input[placeholder="Name"]')?.value || "";
-    const phone = document.querySelector('input[placeholder="Phone"]')?.value || "";
-    const address = document.querySelector("textarea")?.value || "";
+    const name =
+      document.querySelector('input[placeholder="Name"]')?.value.trim() || "";
+
+    const phone =
+      document.querySelector('input[placeholder="Phone"]')?.value.trim() || "";
+
+    const address =
+      document.querySelector("textarea")?.value.trim() || "";
 
     if (!name || !phone || !address) {
       alert("Please fill name, phone and address.");
@@ -35,19 +40,40 @@ async function startCheckout() {
     }
 
     // ========================================
-    // CALCULATE TOTAL
+    // CALCULATE TOTAL (SAFE VERSION)
     // ========================================
 
     let subtotal = 0;
 
     cart.forEach(item => {
-      subtotal += item.price * item.quantity;
+
+      const price =
+        Number(item.price ??
+        item.variantPrice ??
+        item.priceInr ??
+        0);
+
+      const quantity =
+        Number(item.quantity ??
+        item.qty ??
+        1);
+
+      subtotal += price * quantity;
+
     });
 
     const delivery = subtotal >= 799 ? 0 : 60;
     const total = subtotal + delivery;
 
-    console.log("Creating order for ₹", total);
+    console.log("Subtotal:", subtotal);
+    console.log("Delivery:", delivery);
+    console.log("Total:", total);
+
+    if (!total || isNaN(total)) {
+      alert("Cart total calculation failed.");
+      console.error("Invalid total:", total, cart);
+      return;
+    }
 
     // ========================================
     // CREATE RAZORPAY ORDER
@@ -65,25 +91,25 @@ async function startCheckout() {
         })
       }
     );
-    
-    // read backend response
+
     const orderData = await orderResponse.json();
-    
+
     if (!orderResponse.ok) {
-    
+
       console.error("Backend error:", orderData);
-    
+
       throw new Error(
-        orderData.error || "Backend rejected order creation"
+        orderData.error ||
+        "Backend rejected order creation"
       );
-    
+
     }
-    
+
     if (!orderData.orderId) {
-    
       throw new Error("Invalid order response from backend");
-    
     }
+
+    console.log("Razorpay order created:", orderData);
 
     // ========================================
     // OPEN RAZORPAY CHECKOUT
@@ -168,11 +194,14 @@ async function verifyPayment(paymentData, orderData) {
         },
         body: JSON.stringify({
 
-          razorpay_order_id: paymentData.razorpay_order_id,
+          razorpay_order_id:
+            paymentData.razorpay_order_id,
 
-          razorpay_payment_id: paymentData.razorpay_payment_id,
+          razorpay_payment_id:
+            paymentData.razorpay_payment_id,
 
-          razorpay_signature: paymentData.razorpay_signature,
+          razorpay_signature:
+            paymentData.razorpay_signature,
 
           orderData
 
@@ -194,7 +223,10 @@ async function verifyPayment(paymentData, orderData) {
 
     console.log("Verification result:", verifyResult);
 
-    if (verifyResult.success) {
+    if (
+      verifyResult.success ||
+      verifyResult.status === "success"
+    ) {
 
       alert("Payment successful! 🎉");
 
