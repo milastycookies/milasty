@@ -13,8 +13,8 @@ import {
 
 let drawer;
 let cartItemsContainer;
-let cartTotal;
-let cartCount;
+let cartSummary;
+let basketCount;
 
 // ------------------------------
 // Initialize
@@ -23,12 +23,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
   drawer = document.getElementById("cartDrawer");
   cartItemsContainer = document.getElementById("cart-items");
-  cartTotal = document.getElementById("cart-summary");
-  cartCount = document.getElementById("basket-count");
+  cartSummary = document.getElementById("cart-summary");
+  basketCount = document.getElementById("basket-count");
 
   renderCart();
 
-  window.addEventListener("cartUpdated", renderCart);
+  window.addEventListener("cartUpdated", () => {
+    renderCart();
+  });
+
 });
 
 // ------------------------------
@@ -59,9 +62,9 @@ function renderCart() {
       </div>
 
       <div class="cart-item-qty">
-        <button class="qty-btn minus">-</button>
+        <button class="minus">-</button>
         <span>${item.qty}</span>
-        <button class="qty-btn plus">+</button>
+        <button class="plus">+</button>
       </div>
 
       <div class="cart-item-price">
@@ -84,45 +87,52 @@ function renderCart() {
     };
 
     cartItemsContainer.appendChild(row);
+
   });
 
-  if (cartTotal) {
-    cartTotal.innerHTML = `<strong>Total: ₹${getCartTotal()}</strong>`;
+  if (cartSummary) {
+    cartSummary.innerHTML =
+      "<strong>Total: ₹" + getCartTotal() + "</strong>";
   }
 
-  if (cartCount) {
-    cartCount.innerText = getCartCount();
+  if (basketCount) {
+    basketCount.innerText = getCartCount();
   }
+
 }
 
 // ------------------------------
-// Cart Drawer Controls
+// Drawer
 // ------------------------------
 function openCart() {
-  if (drawer) drawer.classList.add("open");
+  if (drawer) drawer.style.display = "block";
 }
 
 function closeCart() {
-  if (drawer) drawer.classList.remove("open");
+  if (drawer) drawer.style.display = "none";
 }
 
 // ------------------------------
-// Delivery Form
+// Delivery form
 // ------------------------------
 function showDelivery() {
+
   document.getElementById("cart-items").style.display = "none";
   document.getElementById("cart-summary").style.display = "none";
   document.querySelector(".continue-btn").style.display = "none";
 
   document.getElementById("delivery-section").style.display = "block";
+
 }
 
 function showCartItems() {
+
   document.getElementById("cart-items").style.display = "block";
   document.getElementById("cart-summary").style.display = "block";
   document.querySelector(".continue-btn").style.display = "block";
 
   document.getElementById("delivery-section").style.display = "none";
+
 }
 
 // ------------------------------
@@ -161,10 +171,11 @@ function sendOrder() {
     "https://wa.me/918927142056?text=" + message;
 
   window.open(url, "_blank");
+
 }
 
 // ------------------------------
-// Expose functions to HTML
+// Global access for HTML
 // ------------------------------
 window.addToCart = addToCart;
 window.openCart = openCart;
