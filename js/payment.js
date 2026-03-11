@@ -122,8 +122,12 @@ async function startCheckout() {
   catch (err) {
 
     console.error("Checkout error:", err);
-    alert("Something went wrong. Please try again.");
-
+  
+    alert(
+      "Checkout error:\n" +
+      err.message
+    );
+  
   }
 
 }
