@@ -7,7 +7,8 @@ import {
   changeQty,
   removeItem,
   getCartTotal,
-  getCartCount
+  getCartCount,
+  addToCart
 } from "./cart.js";
 
 let drawer;
