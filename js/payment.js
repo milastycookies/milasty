@@ -65,24 +65,24 @@ async function startCheckout() {
         })
       }
     );
-
-    // 🔴 Check if backend responded successfully
-    if (!orderResponse.ok) {
-
-      const text = await orderResponse.text();
-
-      console.error("Backend error:", text);
-
-      throw new Error("Backend rejected order creation");
-
-    }
-
+    
+    // read backend response
     const orderData = await orderResponse.json();
-
-    console.log("Order created:", orderData);
-
+    
+    if (!orderResponse.ok) {
+    
+      console.error("Backend error:", orderData);
+    
+      throw new Error(
+        orderData.error || "Backend rejected order creation"
+      );
+    
+    }
+    
     if (!orderData.orderId) {
-      throw new Error("Invalid order response from server");
+    
+      throw new Error("Invalid order response from backend");
+    
     }
 
     // ========================================
