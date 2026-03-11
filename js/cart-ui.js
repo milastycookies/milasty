@@ -13,7 +13,7 @@ import {
 
 let drawer;
 let cartItemsContainer;
-let cartSummary;
+let cartSummaryContainer;
 let basketCount;
 
 // ------------------------------
@@ -23,7 +23,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   drawer = document.getElementById("cartDrawer");
   cartItemsContainer = document.getElementById("cart-items");
-  cartSummary = document.getElementById("cart-summary");
+  cartSummaryContainer = document.getElementById("cart-summary");
   basketCount = document.getElementById("basket-count");
 
   renderCart();
@@ -32,19 +32,44 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 // ------------------------------
-// Render cart
+// Open Cart
+// ------------------------------
+function openCart() {
+
+  document.getElementById("cartOverlay").style.display = "block";
+  drawer.classList.add("open");
+}
+
+// ------------------------------
+// Close Cart
+// ------------------------------
+function closeCart() {
+
+  document.getElementById("cartOverlay").style.display = "none";
+  drawer.classList.remove("open");
+}
+
+// ------------------------------
+// Render Cart
 // ------------------------------
 function renderCart() {
 
-  if (!cartItemsContainer) return;
-
   const cart = getCart();
+
+  if (!cartItemsContainer) return;
 
   cartItemsContainer.innerHTML = "";
 
   if (cart.length === 0) {
+
     cartItemsContainer.innerHTML =
-      "<p style='text-align:center'>Your Ritual Basket is empty</p>";
+      "<p style='text-align:center'>Your basket is empty</p>";
+
+    if (basketCount) basketCount.innerText = "0";
+
+    renderSummary();
+
+    return;
   }
 
   cart.forEach(item => {
@@ -55,11 +80,10 @@ function renderCart() {
     row.innerHTML = `
       <div class="cart-item-name">
         ${item.name}
-        <small>${item.weight}</small>
       </div>
 
       <div class="cart-item-qty">
-        <button class="qty-btn minus">-</button>
+        <button class="qty-btn minus">−</button>
         <span>${item.qty}</span>
         <button class="qty-btn plus">+</button>
       </div>
@@ -84,46 +108,83 @@ function renderCart() {
     };
 
     cartItemsContainer.appendChild(row);
-
   });
-
-  if (cartSummary) {
-    cartSummary.innerHTML = `<strong>Total: ₹${getCartTotal()}</strong>`;
-  }
 
   if (basketCount) {
     basketCount.innerText = getCartCount();
   }
 
+  renderSummary();
 }
 
 // ------------------------------
-// Drawer controls
+// Delivery Charge Logic
 // ------------------------------
-function openCart() {
-  if (drawer) drawer.style.display = "block";
+function getDeliveryCharge(cartTotal, cart) {
+
+  if (cartTotal >= 799) return 0;
+
+  const hasNormalProduct = cart.some(item => item.weight === "normal");
+
+  if (hasNormalProduct) return 60;
+
+  return 0;
 }
 
-function closeCart() {
-  if (drawer) drawer.style.display = "none";
+// ------------------------------
+// Render Summary
+// ------------------------------
+function renderSummary() {
+
+  const cart = getCart();
+
+  const subtotal = getCartTotal();
+
+  const delivery = getDeliveryCharge(subtotal, cart);
+
+  const total = subtotal + delivery;
+
+  cartSummaryContainer.innerHTML = `
+
+    <div class="cart-summary-row">
+      <span>Subtotal</span>
+      <span>₹${subtotal}</span>
+    </div>
+
+    <div class="cart-summary-row">
+      <span>Delivery</span>
+      <span>${delivery === 0 ? "Free" : "₹" + delivery}</span>
+    </div>
+
+    <div class="cart-summary-total">
+      <span>Total</span>
+      <span>₹${total}</span>
+    </div>
+
+  `;
 }
 
 // ------------------------------
-// Delivery section
+// Delivery Form View
 // ------------------------------
 function showDelivery() {
 
   document.getElementById("cart-items").style.display = "none";
   document.getElementById("cart-summary").style.display = "none";
+
   document.querySelector(".continue-btn").style.display = "none";
 
   document.getElementById("delivery-section").style.display = "block";
 }
 
+// ------------------------------
+// Back to Cart
+// ------------------------------
 function showCartItems() {
 
   document.getElementById("cart-items").style.display = "block";
   document.getElementById("cart-summary").style.display = "block";
+
   document.querySelector(".continue-btn").style.display = "block";
 
   document.getElementById("delivery-section").style.display = "none";
@@ -134,40 +195,46 @@ function showCartItems() {
 // ------------------------------
 function sendOrder() {
 
+  const cart = getCart();
+
   const name = document.getElementById("name").value;
   const phone = document.getElementById("phone").value;
   const address = document.getElementById("address").value;
 
-  const cart = getCart();
-
   if (!name || !phone || !address) {
-    alert("Please fill all details");
+    alert("Please fill all delivery details");
     return;
   }
 
-  if (cart.length === 0) {
-    alert("Your basket is empty");
-    return;
-  }
-
-  let message = "Hello MILASTY,%0A%0AI would like to order:%0A";
+  let message = `MILASTY Order\n\n`;
 
   cart.forEach(item => {
-    message += `• ${item.name} (${item.weight}) x ${item.qty}%0A`;
+
+    message += `${item.name}\n`;
+    message += `Qty: ${item.qty}\n`;
+    message += `Price: ₹${item.price * item.qty}\n\n`;
+
   });
 
-  message += `%0ATotal: ₹${getCartTotal()}%0A%0A`;
-  message += `Name: ${name}%0A`;
-  message += `Phone: ${phone}%0A`;
+  const subtotal = getCartTotal();
+  const delivery = getDeliveryCharge(subtotal, cart);
+  const total = subtotal + delivery;
+
+  message += `Subtotal: ₹${subtotal}\n`;
+  message += `Delivery: ${delivery === 0 ? "Free" : "₹" + delivery}\n`;
+  message += `Total: ₹${total}\n\n`;
+
+  message += `Name: ${name}\n`;
+  message += `Phone: ${phone}\n`;
   message += `Address: ${address}`;
 
-  const url = "https://wa.me/918927142056?text=" + message;
+  const encoded = encodeURIComponent(message);
 
-  window.open(url, "_blank");
+  window.open(`https://wa.me/918927142056?text=${encoded}`, "_blank");
 }
 
 // ------------------------------
-// Make functions usable in HTML
+// Make functions available to HTML
 // ------------------------------
 window.addToCart = addToCart;
 window.openCart = openCart;
