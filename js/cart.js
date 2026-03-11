@@ -8,7 +8,7 @@ const CART_KEY = "milasty_cart";
 GET CART
 --------------------------------------- */
 
-function getCart(){
+export function getCart(){
   return JSON.parse(localStorage.getItem(CART_KEY)) || [];
 }
 
@@ -16,7 +16,7 @@ function getCart(){
 SAVE CART
 --------------------------------------- */
 
-function saveCart(cart){
+export function saveCart(cart){
   localStorage.setItem(CART_KEY, JSON.stringify(cart));
 }
 
@@ -24,7 +24,7 @@ function saveCart(cart){
 ADD TO CART
 --------------------------------------- */
 
-function addToCart(name, price, type="normal"){
+export function addToCart(name, price, type="normal"){
 
   let cart = getCart();
 
@@ -34,10 +34,10 @@ function addToCart(name, price, type="normal"){
     existing.qty += 1;
   }else{
     cart.push({
-      name,
-      price,
-      qty:1,
-      type
+      name: name,
+      price: price,
+      qty: 1,
+      type: type
     });
   }
 
@@ -57,7 +57,7 @@ function addToCart(name, price, type="normal"){
 REMOVE ITEM
 --------------------------------------- */
 
-function removeItem(name){
+export function removeItem(name){
 
   let cart = getCart();
 
@@ -79,7 +79,7 @@ function removeItem(name){
 CHANGE QUANTITY
 --------------------------------------- */
 
-function changeQty(name, delta){
+export function changeQty(name, delta){
 
   let cart = getCart();
 
@@ -109,7 +109,7 @@ function changeQty(name, delta){
 CLEAR CART
 --------------------------------------- */
 
-function clearCart(){
+export function clearCart(){
 
   localStorage.removeItem(CART_KEY);
 
@@ -127,10 +127,22 @@ function clearCart(){
 GET CART COUNT
 --------------------------------------- */
 
-function getCartCount(){
+export function getCartCount(){
 
   let cart = getCart();
 
-  return cart.reduce((sum,item)=>sum+item.qty,0);
+  return cart.reduce((sum, item) => sum + item.qty, 0);
+
+}
+
+/* ---------------------------------------
+GET CART TOTAL
+--------------------------------------- */
+
+export function getCartTotal(){
+
+  let cart = getCart();
+
+  return cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
 
 }
