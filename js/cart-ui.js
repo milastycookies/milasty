@@ -28,9 +28,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   renderCart();
 
-  window.addEventListener("cartUpdated", () => {
-    renderCart();
-  });
+  window.addEventListener("cartUpdated", renderCart);
 
 });
 
@@ -47,7 +45,7 @@ function renderCart() {
 
   if (cart.length === 0) {
     cartItemsContainer.innerHTML =
-      "<p style='text-align:center'>Your ritual basket is empty</p>";
+      "<p style='text-align:center'>Your Ritual Basket is empty</p>";
   }
 
   cart.forEach(item => {
@@ -62,9 +60,9 @@ function renderCart() {
       </div>
 
       <div class="cart-item-qty">
-        <button class="minus">-</button>
+        <button class="qty-btn minus">-</button>
         <span>${item.qty}</span>
-        <button class="plus">+</button>
+        <button class="qty-btn plus">+</button>
       </div>
 
       <div class="cart-item-price">
@@ -91,8 +89,7 @@ function renderCart() {
   });
 
   if (cartSummary) {
-    cartSummary.innerHTML =
-      "<strong>Total: ₹" + getCartTotal() + "</strong>";
+    cartSummary.innerHTML = `<strong>Total: ₹${getCartTotal()}</strong>`;
   }
 
   if (basketCount) {
@@ -102,7 +99,7 @@ function renderCart() {
 }
 
 // ------------------------------
-// Drawer
+// Drawer Controls
 // ------------------------------
 function openCart() {
   if (drawer) drawer.style.display = "block";
@@ -113,7 +110,7 @@ function closeCart() {
 }
 
 // ------------------------------
-// Delivery form
+// Delivery Form
 // ------------------------------
 function showDelivery() {
 
@@ -152,7 +149,7 @@ function sendOrder() {
   }
 
   if (cart.length === 0) {
-    alert("Your cart is empty");
+    alert("Your basket is empty");
     return;
   }
 
@@ -175,7 +172,7 @@ function sendOrder() {
 }
 
 // ------------------------------
-// Global access for HTML
+// Expose functions to HTML
 // ------------------------------
 window.addToCart = addToCart;
 window.openCart = openCart;
