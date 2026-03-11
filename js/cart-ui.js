@@ -29,7 +29,6 @@ document.addEventListener("DOMContentLoaded", () => {
   renderCart();
 
   window.addEventListener("cartUpdated", renderCart);
-
 });
 
 // ------------------------------
@@ -99,7 +98,7 @@ function renderCart() {
 }
 
 // ------------------------------
-// Drawer Controls
+// Drawer controls
 // ------------------------------
 function openCart() {
   if (drawer) drawer.style.display = "block";
@@ -110,7 +109,7 @@ function closeCart() {
 }
 
 // ------------------------------
-// Delivery Form
+// Delivery section
 // ------------------------------
 function showDelivery() {
 
@@ -119,7 +118,6 @@ function showDelivery() {
   document.querySelector(".continue-btn").style.display = "none";
 
   document.getElementById("delivery-section").style.display = "block";
-
 }
 
 function showCartItems() {
@@ -129,7 +127,6 @@ function showCartItems() {
   document.querySelector(".continue-btn").style.display = "block";
 
   document.getElementById("delivery-section").style.display = "none";
-
 }
 
 // ------------------------------
@@ -164,15 +161,13 @@ function sendOrder() {
   message += `Phone: ${phone}%0A`;
   message += `Address: ${address}`;
 
-  const url =
-    "https://wa.me/918927142056?text=" + message;
+  const url = "https://wa.me/918927142056?text=" + message;
 
   window.open(url, "_blank");
-
 }
 
 // ------------------------------
-// Expose functions to HTML
+// Make functions usable in HTML
 // ------------------------------
 window.addToCart = addToCart;
 window.openCart = openCart;
