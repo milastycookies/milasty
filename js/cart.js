@@ -1,136 +1,113 @@
 // ========================================
-// MILASTY CART ENGINE
+// MILASTY CART LOGIC
 // ========================================
 
 const CART_KEY = "milasty_cart";
 
-/* ---------------------------------------
-GET CART
---------------------------------------- */
-
-function getCart(){
-  return JSON.parse(localStorage.getItem(CART_KEY)) || [];
+// ------------------------------
+// Get cart
+// ------------------------------
+export function getCart() {
+  try {
+    return JSON.parse(localStorage.getItem(CART_KEY)) || [];
+  } catch {
+    return [];
+  }
 }
 
-/* ---------------------------------------
-SAVE CART
---------------------------------------- */
-
-function saveCart(cart){
+// ------------------------------
+// Save cart
+// ------------------------------
+function saveCart(cart) {
   localStorage.setItem(CART_KEY, JSON.stringify(cart));
+  window.dispatchEvent(new Event("cartUpdated"));
 }
 
-/* ---------------------------------------
-ADD TO CART
---------------------------------------- */
+// ------------------------------
+// Add item
+// ------------------------------
+export function addToCart(name, price, weight) {
+  const cart = getCart();
 
-function addToCart(name, price, type="normal"){
+  const existing = cart.find(
+    item => item.name === name && item.weight === weight
+  );
 
-  let cart = getCart();
-
-  let existing = cart.find(i => i.name === name);
-
-  if(existing){
+  if (existing) {
     existing.qty += 1;
-  }else{
+  } else {
     cart.push({
       name,
       price,
-      qty:1,
-      type
+      weight,
+      qty: 1
     });
   }
 
   saveCart(cart);
-
-  if(typeof renderCart === "function"){
-    renderCart();
-  }
-
-  if(typeof updateBasket === "function"){
-    updateBasket();
-  }
-
 }
 
-/* ---------------------------------------
-REMOVE ITEM
---------------------------------------- */
+// ------------------------------
+// Change quantity
+// ------------------------------
+export function changeQty(name, weight, delta) {
+  const cart = getCart();
 
-function removeItem(name){
+  const item = cart.find(
+    i => i.name === name && i.weight === weight
+  );
 
-  let cart = getCart();
-
-  cart = cart.filter(i => i.name !== name);
-
-  saveCart(cart);
-
-  if(typeof renderCart === "function"){
-    renderCart();
-  }
-
-  if(typeof updateBasket === "function"){
-    updateBasket();
-  }
-
-}
-
-/* ---------------------------------------
-CHANGE QUANTITY
---------------------------------------- */
-
-function changeQty(name, delta){
-
-  let cart = getCart();
-
-  let item = cart.find(i => i.name === name);
-
-  if(!item) return;
+  if (!item) return;
 
   item.qty += delta;
 
-  if(item.qty <= 0){
-    cart = cart.filter(i => i.name !== name);
+  if (item.qty <= 0) {
+    removeItem(name, weight);
+    return;
   }
 
   saveCart(cart);
-
-  if(typeof renderCart === "function"){
-    renderCart();
-  }
-
-  if(typeof updateBasket === "function"){
-    updateBasket();
-  }
-
 }
 
-/* ---------------------------------------
-CLEAR CART
---------------------------------------- */
-
-function clearCart(){
-
-  localStorage.removeItem(CART_KEY);
-
-  if(typeof renderCart === "function"){
-    renderCart();
-  }
-
-  if(typeof updateBasket === "function"){
-    updateBasket();
-  }
-
-}
-
-/* ---------------------------------------
-GET CART COUNT
---------------------------------------- */
-
-function getCartCount(){
-
+// ------------------------------
+// Remove item
+// ------------------------------
+export function removeItem(name, weight) {
   let cart = getCart();
 
-  return cart.reduce((sum,item)=>sum+item.qty,0);
+  cart = cart.filter(
+    i => !(i.name === name && i.weight === weight)
+  );
 
+  saveCart(cart);
 }
+
+// ------------------------------
+// Clear cart
+// ------------------------------
+export function clearCart() {
+  localStorage.removeItem(CART_KEY);
+  window.dispatchEvent(new Event("cartUpdated"));
+}
+
+// ------------------------------
+// Cart count
+// ------------------------------
+export function getCartCount() {
+  return getCart().reduce((sum, item) => sum + item.qty, 0);
+}
+
+// ------------------------------
+// Cart total
+// ------------------------------
+export function getCartTotal() {
+  return getCart().reduce(
+    (sum, item) => sum + item.price * item.qty,
+    0
+  );
+}
+
+// ------------------------------
+// Make addToCart usable in HTML
+// ------------------------------
+window.addToCart = addToCart;
