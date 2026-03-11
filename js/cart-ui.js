@@ -2,14 +2,8 @@
 // MILASTY CART UI
 // ========================================
 
-import { getCart, changeQty, removeItem, addToCart } from "./cart.js";
+import { getCart, changeQty, removeItem, onCartUpdate } from "./cart.js";
 import { startCheckout } from "./checkout.js";
-
-/* expose functions to HTML buttons */
-
-window.addToCart = addToCart;
-window.changeQty = changeQty;
-window.removeItem = removeItem;
 
 let orderToken = null;
 
@@ -99,8 +93,6 @@ function renderCart(){
   cartContainer.innerHTML = html;
 
   renderSummary(subtotal, freeDelivery);
-
-  updateBasket();
 
 }
 
@@ -247,8 +239,3 @@ function closeGuidelines(){
   .classList.remove("active");
 
 }
-
-/* expose render functions */
-
-window.renderCart = renderCart;
-window.updateBasket = updateBasket;
