@@ -110,4 +110,4 @@ export function getCartTotal() {
 // ------------------------------
 // Make addToCart usable in HTML
 // ------------------------------
-window.addToCart = addToCart;
+// window.addToCart = addToCart;
