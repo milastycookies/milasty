@@ -36,8 +36,11 @@ document.addEventListener("DOMContentLoaded", () => {
 // ------------------------------
 function openCart() {
 
-  document.getElementById("cartOverlay").style.display = "block";
-  drawer.classList.add("open");
+  const overlay = document.getElementById("cartOverlay");
+
+  overlay.classList.add("active");
+  drawer.classList.add("active");
+
 }
 
 // ------------------------------
