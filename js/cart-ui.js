@@ -136,6 +136,8 @@ function getDeliveryCharge(cartTotal, cart) {
 // ------------------------------
 function renderSummary() {
 
+  if (!cartSummaryContainer) return;
+
   const cart = getCart();
 
   const subtotal = getCartTotal();
