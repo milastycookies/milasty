@@ -115,7 +115,7 @@ function renderCart() {
         ₹${item.price * item.qty}
       </div>
 
-      <button class="remove-btn">×</button>
+      <button class="remove-btn">Remove</button>
     `;
 
     row.querySelector(".minus").onclick = () => {
