@@ -101,22 +101,26 @@ function renderCart() {
     row.className = "cart-item";
 
     row.innerHTML = `
-      <div class="cart-item-name">
-        ${item.name}
-      </div>
-
+    <div class="cart-item-name">
+      ${item.name}
+    </div>
+  
+    <div class="cart-item-controls">
+  
       <div class="cart-item-qty">
         <button class="qty-btn minus">−</button>
         <span>${item.qty}</span>
         <button class="qty-btn plus">+</button>
       </div>
-
+  
       <div class="cart-item-price">
         ₹${item.price * item.qty}
       </div>
-
+  
       <button class="remove-btn">Remove</button>
-    `;
+  
+    </div>
+  `;
 
     row.querySelector(".minus").onclick = () => {
       changeQty(item.name, item.type, -1);
