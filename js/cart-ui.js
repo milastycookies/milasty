@@ -21,6 +21,7 @@ let basketCount;
 // ------------------------------
 document.addEventListener("DOMContentLoaded", () => {
 
+  document.getElementById("cartOverlay").onclick = closeCart;
   drawer = document.getElementById("cartDrawer");
   cartItemsContainer = document.getElementById("cart-items");
   cartSummaryContainer = document.getElementById("cart-summary");
@@ -48,8 +49,11 @@ function openCart() {
 // ------------------------------
 function closeCart() {
 
-  document.getElementById("cartOverlay").style.display = "none";
-  drawer.classList.remove("open");
+  const overlay = document.getElementById("cartOverlay");
+
+  overlay.classList.remove("active");
+  drawer.classList.remove("active");
+
 }
 
 // ------------------------------
