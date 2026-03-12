@@ -21,16 +21,22 @@ let basketCount;
 // ------------------------------
 document.addEventListener("DOMContentLoaded", () => {
 
-  document.getElementById("cartOverlay").onclick = closeCart;
   drawer = document.getElementById("cartDrawer");
   cartItemsContainer = document.getElementById("cart-items");
   cartSummaryContainer = document.getElementById("cart-summary");
   basketCount = document.getElementById("basket-count");
 
+  const overlay = document.getElementById("cartOverlay");
+  const basket = document.querySelector(".floating-basket");
+
+  if (overlay) overlay.onclick = closeCart;
+  if (basket) basket.addEventListener("click", openCart);
+
   renderCart();
 
   window.addEventListener("cartUpdated", renderCart);
 });
+
 
 // ------------------------------
 // Open Cart
@@ -39,10 +45,12 @@ function openCart() {
 
   const overlay = document.getElementById("cartOverlay");
 
-  overlay.classList.add("active");
-  drawer.classList.add("active");
+  if (overlay) overlay.classList.add("active");
+  if (drawer) drawer.classList.add("active");
 
+  document.body.classList.add("cart-open");
 }
+
 
 // ------------------------------
 // Close Cart
@@ -51,10 +59,12 @@ function closeCart() {
 
   const overlay = document.getElementById("cartOverlay");
 
-  overlay.classList.remove("active");
-  drawer.classList.remove("active");
+  if (overlay) overlay.classList.remove("active");
+  if (drawer) drawer.classList.remove("active");
 
+  document.body.classList.remove("cart-open");
 }
+
 
 // ------------------------------
 // Render Cart
@@ -62,8 +72,9 @@ function closeCart() {
 function renderCart() {
 
   const cart = getCart();
+
   const basket = document.querySelector(".floating-basket");
-  
+
   if (basket) {
     basket.style.display = cart.length > 0 ? "flex" : "none";
   }
@@ -129,6 +140,7 @@ function renderCart() {
   renderSummary();
 }
 
+
 // ------------------------------
 // Delivery Charge Logic
 // ------------------------------
@@ -142,6 +154,7 @@ function getDeliveryCharge(cartTotal, cart) {
 
   return 0;
 }
+
 
 // ------------------------------
 // Render Summary
@@ -178,6 +191,7 @@ function renderSummary() {
   `;
 }
 
+
 // ------------------------------
 // Delivery Form View
 // ------------------------------
@@ -191,6 +205,7 @@ function showDelivery() {
   document.getElementById("delivery-section").style.display = "block";
 }
 
+
 // ------------------------------
 // Back to Cart
 // ------------------------------
@@ -203,6 +218,7 @@ function showCartItems() {
 
   document.getElementById("delivery-section").style.display = "none";
 }
+
 
 // ------------------------------
 // WhatsApp Order
@@ -247,8 +263,9 @@ function sendOrder() {
   window.open(`https://wa.me/918927142056?text=${encoded}`, "_blank");
 }
 
+
 // ------------------------------
-// Make functions available to HTML
+// Make functions available globally
 // ------------------------------
 window.addToCart = addToCart;
 window.openCart = openCart;
