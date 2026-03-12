@@ -55,6 +55,11 @@ function closeCart() {
 function renderCart() {
 
   const cart = getCart();
+  const basket = document.querySelector(".floating-basket");
+  
+  if (basket) {
+    basket.style.display = cart.length > 0 ? "flex" : "none";
+  }
 
   if (!cartItemsContainer) return;
 
