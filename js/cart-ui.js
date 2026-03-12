@@ -96,15 +96,15 @@ function renderCart() {
     `;
 
     row.querySelector(".minus").onclick = () => {
-      changeQty(item.name, item.weight, -1);
+      changeQty(item.name, item.type, -1);
     };
 
     row.querySelector(".plus").onclick = () => {
-      changeQty(item.name, item.weight, 1);
+      changeQty(item.name, item.type, 1);
     };
 
     row.querySelector(".remove-btn").onclick = () => {
-      removeItem(item.name, item.weight);
+      removeItem(item.name, item.type);
     };
 
     cartItemsContainer.appendChild(row);
@@ -124,7 +124,7 @@ function getDeliveryCharge(cartTotal, cart) {
 
   if (cartTotal >= 799) return 0;
 
-  const hasNormalProduct = cart.some(item => item.weight === "normal");
+  const hasNormalProduct = cart.some(item => item.type === "normal");
 
   if (hasNormalProduct) return 60;
 
