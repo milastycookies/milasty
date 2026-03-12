@@ -26,11 +26,12 @@ function saveCart(cart) {
 // ------------------------------
 // Add item
 // ------------------------------
-export function addToCart(name, price, weight) {
+export function addToCart(name, price, type) {
+
   const cart = getCart();
 
   const existing = cart.find(
-    item => item.name === name && item.weight === weight
+    item => item.name === name && item.type === type
   );
 
   if (existing) {
@@ -39,7 +40,7 @@ export function addToCart(name, price, weight) {
     cart.push({
       name,
       price,
-      weight,
+      type,
       qty: 1
     });
   }
@@ -50,11 +51,12 @@ export function addToCart(name, price, weight) {
 // ------------------------------
 // Change quantity
 // ------------------------------
-export function changeQty(name, weight, delta) {
+export function changeQty(name, type, delta) {
+
   const cart = getCart();
 
   const item = cart.find(
-    i => i.name === name && i.weight === weight
+    i => i.name === name && i.type === type
   );
 
   if (!item) return;
@@ -62,7 +64,7 @@ export function changeQty(name, weight, delta) {
   item.qty += delta;
 
   if (item.qty <= 0) {
-    removeItem(name, weight);
+    removeItem(name, type);
     return;
   }
 
@@ -72,11 +74,12 @@ export function changeQty(name, weight, delta) {
 // ------------------------------
 // Remove item
 // ------------------------------
-export function removeItem(name, weight) {
+export function removeItem(name, type) {
+
   let cart = getCart();
 
   cart = cart.filter(
-    i => !(i.name === name && i.weight === weight)
+    i => !(i.name === name && i.type === type)
   );
 
   saveCart(cart);
@@ -106,8 +109,3 @@ export function getCartTotal() {
     0
   );
 }
-
-// ------------------------------
-// Make addToCart usable in HTML
-// ------------------------------
-// window.addToCart = addToCart;
