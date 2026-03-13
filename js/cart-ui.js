@@ -268,6 +268,39 @@ function sendOrder() {
 }
 
 
+
+// ------------------------------
+// MILASTY Guidelines Popup
+// ------------------------------
+function openGuidelines() {
+
+  const overlay = document.getElementById("guidelinesOverlay");
+
+  if (overlay) overlay.style.display = "flex";
+
+}
+
+function closeGuidelines() {
+
+  const overlay = document.getElementById("guidelinesOverlay");
+
+  if (overlay) overlay.style.display = "none";
+
+}
+
+function confirmGuidelines() {
+
+  const overlay = document.getElementById("guidelinesOverlay");
+
+  if (overlay) overlay.style.display = "none";
+
+  sendOrder();
+
+}
+
+
+
+
 // ------------------------------
 // Make functions available globally
 // ------------------------------
