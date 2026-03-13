@@ -660,3 +660,28 @@ border-radius:8px;
 
 cursor:pointer;
 }
+
+/* Premium divider under popup title */
+
+.milasty-popup h3{
+position:relative;
+padding-bottom:14px;
+margin-bottom:18px;
+}
+
+.milasty-popup h3::after{
+
+content:"";
+
+display:block;
+
+width:60px;
+height:2px;
+
+background:linear-gradient(90deg,#8b5e3c,#d9b99b);
+
+margin-top:10px;
+
+border-radius:2px;
+
+}
