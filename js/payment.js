@@ -2,8 +2,9 @@
 // MILASTY PAYMENT HANDLER
 // ========================================
 
-const API_BASE = "http://localhost:5000";
+const API_BASE = "https://milasty.com";
 
+let paymentProcessing = false;
 
 
 // ========================================
@@ -13,6 +14,8 @@ const API_BASE = "http://localhost:5000";
 async function startCheckout() {
 
   try {
+
+    if (paymentProcessing) return;
 
     const name =
       document.querySelector('input[placeholder="Name"]')?.value.trim() || "";
@@ -28,21 +31,12 @@ async function startCheckout() {
       return;
     }
 
-    // ========================================
-    // GET CART
-    // ========================================
-
     const cart = getCart();
 
     if (!cart || cart.length === 0) {
       alert("Your cart is empty.");
       return;
     }
-
-    // ========================================
-    // CALCULATE TOTAL (UI / DEBUG ONLY)
-    // Backend will calculate actual amount
-    // ========================================
 
     let subtotal = 0;
 
@@ -66,19 +60,13 @@ async function startCheckout() {
     const delivery = subtotal >= 799 ? 0 : 60;
     const total = subtotal + delivery;
 
-    console.log("Subtotal:", subtotal);
-    console.log("Delivery:", delivery);
-    console.log("Total:", total);
-
     if (!total || isNaN(total)) {
       alert("Cart total calculation failed.");
-      console.error("Invalid total:", total, cart);
       return;
     }
 
     // ========================================
     // CREATE RAZORPAY ORDER
-    // SEND CART (NOT AMOUNT)
     // ========================================
 
     const orderResponse = await fetch(
@@ -98,8 +86,6 @@ async function startCheckout() {
 
     if (!orderResponse.ok) {
 
-      console.error("Backend error:", orderData);
-
       throw new Error(
         orderData.error ||
         "Backend rejected order creation"
@@ -107,11 +93,9 @@ async function startCheckout() {
 
     }
 
-    if (!orderData.orderId) {
+    if (!orderData.razorpayOrderId) {
       throw new Error("Invalid order response from backend");
     }
-
-    console.log("Razorpay order created:", orderData);
 
     // ========================================
     // OPEN RAZORPAY CHECKOUT
@@ -129,9 +113,13 @@ async function startCheckout() {
 
       description: "Millet Cookie Ritual",
 
-      order_id: orderData.orderId,
+      order_id: orderData.razorpayOrderId,
 
       handler: async function (response) {
+
+        if (paymentProcessing) return;
+
+        paymentProcessing = true;
 
         await verifyPayment(response, {
           name,
@@ -185,8 +173,6 @@ async function verifyPayment(paymentData, orderData) {
 
   try {
 
-    console.log("Verifying payment...");
-
     const verifyResponse = await fetch(
       API_BASE + "/verify-payment",
       {
@@ -223,8 +209,6 @@ async function verifyPayment(paymentData, orderData) {
 
     const verifyResult = await verifyResponse.json();
 
-    console.log("Verification result:", verifyResult);
-
     if (
       verifyResult.success ||
       verifyResult.status === "success"
@@ -250,6 +234,12 @@ async function verifyPayment(paymentData, orderData) {
     console.error("Verification error:", err);
 
     alert("Payment verification failed.");
+
+  }
+
+  finally {
+
+    paymentProcessing = false;
 
   }
 
