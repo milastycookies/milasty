@@ -16,9 +16,11 @@ let cartItemsContainer;
 let cartSummaryContainer;
 let basketCount;
 
-// ------------------------------
-// Initialize
-// ------------------------------
+
+// ========================================
+// INITIALIZE
+// ========================================
+
 document.addEventListener("DOMContentLoaded", () => {
 
   drawer = document.getElementById("cartDrawer");
@@ -35,12 +37,15 @@ document.addEventListener("DOMContentLoaded", () => {
   renderCart();
 
   window.addEventListener("cartUpdated", renderCart);
+
 });
 
 
-// ------------------------------
-// Open Cart
-// ------------------------------
+
+// ========================================
+// OPEN CART
+// ========================================
+
 function openCart() {
 
   const overlay = document.getElementById("cartOverlay");
@@ -49,12 +54,15 @@ function openCart() {
   if (drawer) drawer.classList.add("active");
 
   document.body.classList.add("cart-open");
+
 }
 
 
-// ------------------------------
-// Close Cart
-// ------------------------------
+
+// ========================================
+// CLOSE CART
+// ========================================
+
 function closeCart() {
 
   const overlay = document.getElementById("cartOverlay");
@@ -63,16 +71,18 @@ function closeCart() {
   if (drawer) drawer.classList.remove("active");
 
   document.body.classList.remove("cart-open");
+
 }
 
 
-// ------------------------------
-// Render Cart
-// ------------------------------
+
+// ========================================
+// RENDER CART
+// ========================================
+
 function renderCart() {
 
   const cart = getCart();
-
   const basket = document.querySelector(".floating-basket");
 
   if (basket) {
@@ -91,8 +101,8 @@ function renderCart() {
     if (basketCount) basketCount.innerText = "0";
 
     renderSummary();
-
     return;
+
   }
 
   cart.forEach(item => {
@@ -101,26 +111,26 @@ function renderCart() {
     row.className = "cart-item";
 
     row.innerHTML = `
-    <div class="cart-item-name">
-      ${item.name}
-    </div>
-  
-    <div class="cart-item-controls">
-  
-      <div class="cart-item-qty">
-        <button class="qty-btn minus">−</button>
-        <span>${item.qty}</span>
-        <button class="qty-btn plus">+</button>
+      <div class="cart-item-name">
+        ${item.name}
       </div>
-  
-      <div class="cart-item-price">
-        ₹${item.price * item.qty}
+
+      <div class="cart-item-controls">
+
+        <div class="cart-item-qty">
+          <button class="qty-btn minus">−</button>
+          <span>${item.qty}</span>
+          <button class="qty-btn plus">+</button>
+        </div>
+
+        <div class="cart-item-price">
+          ₹${item.price * item.qty}
+        </div>
+
+        <button class="remove-btn">Remove</button>
+
       </div>
-  
-      <button class="remove-btn">Remove</button>
-  
-    </div>
-  `;
+    `;
 
     row.querySelector(".minus").onclick = () => {
       changeQty(item.name, item.type, -1);
@@ -135,6 +145,7 @@ function renderCart() {
     };
 
     cartItemsContainer.appendChild(row);
+
   });
 
   if (basketCount) {
@@ -142,12 +153,15 @@ function renderCart() {
   }
 
   renderSummary();
+
 }
 
 
-// ------------------------------
-// Delivery Charge Logic
-// ------------------------------
+
+// ========================================
+// DELIVERY CHARGE LOGIC
+// ========================================
+
 function getDeliveryCharge(cartTotal, cart) {
 
   if (cartTotal >= 799) return 0;
@@ -157,12 +171,15 @@ function getDeliveryCharge(cartTotal, cart) {
   if (hasNormalProduct) return 60;
 
   return 0;
+
 }
 
 
-// ------------------------------
-// Render Summary
-// ------------------------------
+
+// ========================================
+// RENDER SUMMARY
+// ========================================
+
 function renderSummary() {
 
   if (!cartSummaryContainer) return;
@@ -170,9 +187,7 @@ function renderSummary() {
   const cart = getCart();
 
   const subtotal = getCartTotal();
-
   const delivery = getDeliveryCharge(subtotal, cart);
-
   const total = subtotal + delivery;
 
   cartSummaryContainer.innerHTML = `
@@ -193,40 +208,57 @@ function renderSummary() {
     </div>
 
   `;
+
 }
 
 
-// ------------------------------
-// Delivery Form View
-// ------------------------------
+
+// ========================================
+// MOBILE FLOW → SHOW DELIVERY FORM
+// ========================================
+
 function showDelivery() {
 
-  document.getElementById("cart-items").style.display = "none";
-  document.getElementById("cart-summary").style.display = "none";
+  const items = document.getElementById("cart-items");
+  const continueBtn = document.querySelector(".continue-btn");
+  const deliverySection = document.getElementById("delivery-section");
 
-  document.querySelector(".continue-btn").style.display = "none";
+  if (items) items.style.display = "none";
+  if (continueBtn) continueBtn.style.display = "none";
 
-  document.getElementById("delivery-section").style.display = "block";
+  if (deliverySection) deliverySection.style.display = "block";
+
+  if (drawer) drawer.scrollTop = 0;
+
 }
 
 
-// ------------------------------
-// Back to Cart
-// ------------------------------
+
+// ========================================
+// MOBILE FLOW → BACK TO CART
+// ========================================
+
 function showCartItems() {
 
-  document.getElementById("cart-items").style.display = "block";
-  document.getElementById("cart-summary").style.display = "block";
+  const items = document.getElementById("cart-items");
+  const continueBtn = document.querySelector(".continue-btn");
+  const deliverySection = document.getElementById("delivery-section");
 
-  document.querySelector(".continue-btn").style.display = "block";
+  if (items) items.style.display = "block";
+  if (continueBtn) continueBtn.style.display = "block";
 
-  document.getElementById("delivery-section").style.display = "none";
+  if (deliverySection) deliverySection.style.display = "none";
+
+  if (drawer) drawer.scrollTop = 0;
+
 }
 
 
-// ------------------------------
-// WhatsApp Order
-// ------------------------------
+
+// ========================================
+// WHATSAPP ORDER
+// ========================================
+
 function sendOrder() {
 
   const cart = getCart();
@@ -265,13 +297,15 @@ function sendOrder() {
   const encoded = encodeURIComponent(message);
 
   window.open(`https://wa.me/918927142056?text=${encoded}`, "_blank");
+
 }
 
 
 
-// ------------------------------
-// MILASTY Guidelines Popup
-// ------------------------------
+// ========================================
+// MILASTY GUIDELINES POPUP
+// ========================================
+
 function openGuidelines() {
 
   const overlay = document.getElementById("guidelinesOverlay");
@@ -300,10 +334,10 @@ function confirmGuidelines() {
 
 
 
+// ========================================
+// GLOBAL FUNCTIONS
+// ========================================
 
-// ------------------------------
-// Make functions available globally
-// ------------------------------
 window.addToCart = addToCart;
 window.openCart = openCart;
 window.closeCart = closeCart;
