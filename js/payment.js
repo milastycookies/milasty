@@ -1,42 +1,46 @@
-// ========================================
-// MILASTY PAYMENT HANDLER
-// ========================================
+const express = require("express");
+const router = express.Router();
 
-const API_BASE = "https://milasty.com";
+const limiter = require("../middleware/rateLimiter");
 
-let paymentProcessing = false;
+const {
+  createPaymentOrder,
+  verifyPaymentSignature
+} = require("../services/razorpayService");
+
+const supabase = require("../services/supabaseService");
 
 
-// ========================================
-// START CHECKOUT
-// ========================================
+/* ======================================
+   DUPLICATE PAYMENT PROTECTION
+====================================== */
 
-async function startCheckout() {
+const processedPayments = new Set();
 
-  try {
 
-    if (paymentProcessing) return;
+/* ======================================
+   CREATE PAYMENT ORDER
+====================================== */
 
-    const name =
-      document.querySelector('input[placeholder="Name"]')?.value.trim() || "";
+router.post("/create-payment-order", limiter, async (req,res)=>{
 
-    const phone =
-      document.querySelector('input[placeholder="Phone"]')?.value.trim() || "";
+  console.log("Incoming create-payment-order request");
 
-    const address =
-      document.querySelector("textarea")?.value.trim() || "";
+  try{
 
-    if (!name || !phone || !address) {
-      alert("Please fill name, phone and address.");
-      return;
+    const { cart } = req.body;
+
+    if(!cart || !Array.isArray(cart) || cart.length === 0){
+
+      return res.status(400).json({
+        error:"Invalid cart"
+      });
+
     }
 
-    const cart = getCart();
-
-    if (!cart || cart.length === 0) {
-      alert("Your cart is empty.");
-      return;
-    }
+    /* ------------------------------------
+       CALCULATE TOTAL ON BACKEND
+    ------------------------------------ */
 
     let subtotal = 0;
 
@@ -53,6 +57,10 @@ async function startCheckout() {
         item.qty ??
         1);
 
+      if(!price || quantity <= 0){
+        throw new Error("Invalid cart item");
+      }
+
       subtotal += price * quantity;
 
     });
@@ -60,203 +68,242 @@ async function startCheckout() {
     const delivery = subtotal >= 799 ? 0 : 60;
     const total = subtotal + delivery;
 
-    if (!total || isNaN(total)) {
-      alert("Cart total calculation failed.");
-      return;
+    console.log("Calculated subtotal:", subtotal);
+    console.log("Delivery:", delivery);
+    console.log("Final total:", total);
+
+    /* ------------------------------------
+       CREATE ORDER ID
+    ------------------------------------ */
+
+    const orderId = "MIL-" + Date.now();
+
+    /* ------------------------------------
+       INSERT ORDER
+    ------------------------------------ */
+
+    const { error: insertError } = await supabase
+      .from("orders")
+      .insert({
+        order_id: orderId,
+        subtotal: subtotal,
+        delivery: delivery,
+        total: total,
+        status: "PENDING",
+        payment_status: "UNPAID",
+        payment_provider: "razorpay",
+        cart_snapshot: cart
+      });
+
+    if(insertError){
+      console.error("Supabase order insert error:", insertError);
+      throw insertError;
     }
 
-    // ========================================
-    // CREATE RAZORPAY ORDER
-    // ========================================
+    /* ------------------------------------
+       INSERT ORDER ITEMS
+    ------------------------------------ */
 
-    const orderResponse = await fetch(
-      API_BASE + "/create-payment-order",
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-          cart: cart
-        })
-      }
-    );
+    const itemRows = cart.map(item => {
 
-    const orderData = await orderResponse.json();
+      const price =
+        Number(item.price ??
+        item.variantPrice ??
+        item.priceInr ??
+        0);
 
-    if (!orderResponse.ok) {
+      const quantity =
+        Number(item.quantity ??
+        item.qty ??
+        1);
 
-      throw new Error(
-        orderData.error ||
-        "Backend rejected order creation"
-      );
+      return {
 
+        order_id: orderId,
+
+        product_id: item.id || null,
+        product_name: item.name || item.productName || "Unknown",
+        variant_name: item.variant || item.pack || null,
+        sku: item.sku || null,
+
+        qty: quantity,
+        price: price,
+
+        cost_price: null,
+        weight: null
+
+      };
+
+    });
+
+    const { error: itemsError } = await supabase
+      .from("order_items")
+      .insert(itemRows);
+
+    if(itemsError){
+      console.error("Order items insert error:", itemsError);
     }
 
-    if (!orderData.razorpayOrderId) {
-      throw new Error("Invalid order response from backend");
+    /* ------------------------------------
+       CREATE RAZORPAY ORDER
+    ------------------------------------ */
+
+    const order = await createPaymentOrder(total);
+
+    console.log("Razorpay order created:", order.id);
+
+    /* ------------------------------------
+       SAVE RAZORPAY ORDER ID
+    ------------------------------------ */
+
+    const { error: updateError } = await supabase
+      .from("orders")
+      .update({
+        payment_order_id: order.id
+      })
+      .eq("order_id", orderId);
+
+    if(updateError){
+      console.error("Supabase update error:", updateError);
     }
 
-    // ========================================
-    // OPEN RAZORPAY CHECKOUT
-    // ========================================
+    res.json({
+      razorpayOrderId: order.id,
+      internalOrderId: orderId,
+      amount: order.amount,
+      currency: order.currency
+    });
 
-    const options = {
+  }catch(err){
 
-      key: "rzp_test_SP8e1esl7ob6bm",
+    console.error("Create payment order error:",err);
 
-      amount: orderData.amount,
+    res.status(500).json({
+      error: err.message
+    });
 
-      currency: "INR",
-
-      name: "MILASTY",
-
-      description: "Millet Cookie Ritual",
-
-      order_id: orderData.razorpayOrderId,
-
-      handler: async function (response) {
-
-        if (paymentProcessing) return;
-
-        paymentProcessing = true;
-
-        await verifyPayment(response, {
-          name,
-          phone,
-          address,
-          cart,
-          subtotal,
-          delivery,
-          total
-        });
-
-      },
-
-      prefill: {
-        name: name,
-        contact: phone
-      },
-
-      theme: {
-        color: "#8b5e34"
-      }
-
-    };
-
-    const rzp = new Razorpay(options);
-
-    rzp.open();
-
-  }
-
-  catch (err) {
-
-    console.error("Checkout error:", err);
-
-    alert(
-      "Checkout error:\n" +
-      err.message
-    );
-
-  }
-
-}
-
-
-
-// ========================================
-// VERIFY PAYMENT
-// ========================================
-
-async function verifyPayment(paymentData, orderData) {
-
-  try {
-
-    const verifyResponse = await fetch(
-      API_BASE + "/verify-payment",
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-
-          razorpay_order_id:
-            paymentData.razorpay_order_id,
-
-          razorpay_payment_id:
-            paymentData.razorpay_payment_id,
-
-          razorpay_signature:
-            paymentData.razorpay_signature,
-
-          orderData
-
-        })
-      }
-    );
-
-    if (!verifyResponse.ok) {
-
-      const text = await verifyResponse.text();
-
-      console.error("Verification error:", text);
-
-      throw new Error("Verification failed on server");
-
-    }
-
-    const verifyResult = await verifyResponse.json();
-
-    if (
-      verifyResult.success ||
-      verifyResult.status === "success"
-    ) {
-
-      alert("Payment successful! 🎉");
-
-      clearCart();
-
-      window.location.href = "/thankyou.html";
-
-    }
-    else {
-
-      alert("Payment verification failed.");
-
-    }
-
-  }
-
-  catch (err) {
-
-    console.error("Verification error:", err);
-
-    alert("Payment verification failed.");
-
-  }
-
-  finally {
-
-    paymentProcessing = false;
-
-  }
-
-}
-
-
-
-// ========================================
-// CONNECT CONTINUE BUTTON
-// ========================================
-
-document.addEventListener("DOMContentLoaded", () => {
-
-  const btn = document.getElementById("continueCheckout");
-
-  if (btn) {
-    btn.addEventListener("click", startCheckout);
   }
 
 });
+
+
+/* ======================================
+   VERIFY PAYMENT
+====================================== */
+
+router.post("/verify-payment", async (req,res)=>{
+
+  try{
+
+    const {
+      razorpay_order_id,
+      razorpay_payment_id,
+      razorpay_signature,
+      orderData
+    } = req.body;
+
+    /* ------------------------------------
+       VERIFY SIGNATURE
+    ------------------------------------ */
+
+    const isValid = verifyPaymentSignature({
+      razorpay_order_id,
+      razorpay_payment_id,
+      razorpay_signature
+    });
+
+    if(!isValid){
+
+      return res.status(400).json({
+        status:"failed",
+        message:"Invalid payment signature"
+      });
+
+    }
+
+    /* ------------------------------------
+       DATABASE IDEMPOTENCY CHECK
+    ------------------------------------ */
+
+    const { data: existingPayment } = await supabase
+      .from("orders")
+      .select("payment_id")
+      .eq("payment_id", razorpay_payment_id)
+      .single();
+
+    if(existingPayment){
+
+      console.log("Duplicate payment ignored:", razorpay_payment_id);
+
+      return res.json({
+        status:"success",
+        message:"Payment already processed"
+      });
+
+    }
+
+    /* ------------------------------------
+       MEMORY DUPLICATE CHECK
+    ------------------------------------ */
+
+    if(processedPayments.has(razorpay_payment_id)){
+
+      return res.json({
+        status:"success",
+        message:"Payment already processed"
+      });
+
+    }
+
+    processedPayments.add(razorpay_payment_id);
+
+    /* ------------------------------------
+       UPDATE ORDER STATUS
+    ------------------------------------ */
+
+    const updatePayload = {
+      payment_status: "PAID",
+      status: "PAID",
+      payment_id: razorpay_payment_id,
+      paid_at: new Date()
+    };
+
+    if(orderData){
+
+      updatePayload.name = orderData.name;
+      updatePayload.phone = orderData.phone;
+      updatePayload.address_line1 = orderData.address;
+
+    }
+
+    const { error: updateError } = await supabase
+      .from("orders")
+      .update(updatePayload)
+      .eq("payment_order_id", razorpay_order_id);
+
+    if(updateError){
+      console.error("Supabase payment update error:", updateError);
+    }
+
+    console.log("Payment verified:", razorpay_payment_id);
+
+    return res.json({
+      status:"success",
+      message:"Payment verified"
+    });
+
+  }catch(err){
+
+    console.error("Payment verification error:",err);
+
+    res.status(500).json({
+      status:"error",
+      message:"Verification failed"
+    });
+
+  }
+
+});
+
+
+module.exports = router;
