@@ -549,6 +549,20 @@ overflow:hidden;
 }
 
 
+/* Hide mobile flow buttons on desktop */
+
+@media (min-width: 768px){
+
+.continue-btn{
+display:none !important;
+}
+
+.back-to-cart{
+display:none !important;
+}
+
+}
+
 
 
 /* =====================================
