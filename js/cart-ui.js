@@ -310,3 +310,7 @@ window.closeCart = closeCart;
 window.showDelivery = showDelivery;
 window.showCartItems = showCartItems;
 window.sendOrder = sendOrder;
+
+window.openGuidelines = openGuidelines;
+window.closeGuidelines = closeGuidelines;
+window.confirmGuidelines = confirmGuidelines;
