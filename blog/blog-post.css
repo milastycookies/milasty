@@ -190,31 +190,26 @@ body{
 
 
 .author-box{
-background:#faf7f2;
-border:1px solid #eee;
-border-radius:12px;
-padding:22px 26px;
-margin:40px 0;
+margin:50px 0 35px 0;
+text-align:left;
 }
 
-.author-label{
-font-size:12px;
-letter-spacing:2px;
-color:#9a8f85;
-text-transform:uppercase;
-margin-bottom:6px;
+.author-line{
+width:60px;
+height:2px;
+background:#c47428;
+margin-bottom:12px;
 }
 
-.blog-author{
+.author-credit{
 font-weight:600;
-font-size:16px;
-margin-bottom:6px;
+font-size:15px;
+margin-bottom:4px;
 }
 
 .author-desc{
 font-size:14px;
-color:#666;
-line-height:1.6;
+color:#777;
 }
 
 .blog-cta-box{
