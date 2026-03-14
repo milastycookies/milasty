@@ -166,3 +166,16 @@ body{
   border-top:1px solid #eee;
   padding-top:15px;
 }
+
+
+.blog-post-container ul{
+  margin:20px 0;
+  padding-left:0;
+  list-style-position:inside;
+}
+
+.blog-post-container li{
+  margin-bottom:12px;
+  line-height:1.7;
+  padding-left:10px;
+}
