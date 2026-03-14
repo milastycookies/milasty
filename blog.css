@@ -164,3 +164,11 @@ body{
   font-size:32px;
   margin-bottom:15px;
 }
+
+
+.blog-post-date{
+  font-size:14px;
+  color:#888;
+  margin-bottom:30px;
+  letter-spacing:0.3px;
+}
