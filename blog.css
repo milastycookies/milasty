@@ -40,7 +40,7 @@ body{
 
 .blog-grid{
   display:grid;
-  grid-template-columns:repeat(3, minmax(0,1fr));
+  grid-template-columns:repeat(auto-fit,minmax(340px,1fr));
   gap:40px;
   max-width:1200px;
   margin:0 auto;
@@ -71,6 +71,7 @@ body{
   overflow:hidden;
   border:1px solid rgba(0,0,0,0.05);
   box-shadow:0 8px 25px rgba(0,0,0,0.08);
+  position:relative;
   transition:all 0.35s ease;
 }
 
@@ -122,15 +123,19 @@ body{
 /* read more */
 
 .read-more{
-  display:inline-block;
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
   margin-top:14px;
   color:#c47428;
   font-weight:600;
   font-size:14px;
   text-decoration:none;
+  transition:0.2s;
 }
 
 .read-more:hover{
+  gap:10px;
   color:#8b4f17;
 }
 
