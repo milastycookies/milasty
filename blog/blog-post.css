@@ -179,3 +179,11 @@ body{
   line-height:1.7;
   padding-left:10px;
 }
+
+
+
+.article-divider{
+  margin:50px 0 35px 0;
+  border:none;
+  border-top:1px solid #e5e5e5;
+}
