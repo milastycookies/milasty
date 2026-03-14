@@ -93,6 +93,14 @@ body{
   transform:scale(1.08);
 }
 
+.blog-card::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(to top, rgba(0,0,0,0.03), transparent);
+  pointer-events:none;
+}
+
 /* content */
 
 .blog-content{
