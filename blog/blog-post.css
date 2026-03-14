@@ -187,3 +187,22 @@ body{
   border:none;
   border-top:1px solid #e5e5e5;
 }
+
+
+.author-box{
+  background:#faf7f2;
+  border:1px solid #eee;
+  border-radius:10px;
+  padding:18px 20px;
+  margin-bottom:35px;
+}
+
+.author-name{
+  font-weight:600;
+  margin-bottom:4px;
+}
+
+.author-desc{
+  font-size:14px;
+  color:#666;
+}
