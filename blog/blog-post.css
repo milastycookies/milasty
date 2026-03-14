@@ -253,3 +253,13 @@ background:#c47428;
 width:0%;
 z-index:9999;
 }
+
+
+.expert-note{
+background:#f7f3ee;
+border-left:4px solid #c47428;
+padding:18px 20px;
+margin:35px 0;
+border-radius:6px;
+font-size:15px;
+}
