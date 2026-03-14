@@ -206,3 +206,11 @@ body{
   font-size:14px;
   color:#666;
 }
+
+
+.blog-cta-box{
+  background:#f8efe4;
+  border-radius:12px;
+  padding:25px 28px;
+  margin-top:25px;
+}
