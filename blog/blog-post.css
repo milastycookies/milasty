@@ -112,3 +112,41 @@ body{
 }
 
 }
+
+
+
+.blog-post-meta{
+  font-size:14px;
+  color:#777;
+  margin-bottom:25px;
+}
+
+.nutrition-table{
+  width:100%;
+  border-collapse:collapse;
+  margin:25px 0;
+}
+
+.nutrition-table th,
+.nutrition-table td{
+  border:1px solid #ddd;
+  padding:12px;
+  text-align:left;
+}
+
+.nutrition-table th{
+  background:#f2f2f2;
+}
+
+
+.related-articles{
+  margin-top:50px;
+}
+
+.related-articles ul{
+  padding-left:18px;
+}
+
+.related-articles li{
+  margin-bottom:8px;
+}
