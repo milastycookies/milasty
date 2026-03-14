@@ -190,23 +190,32 @@ body{
 
 
 .author-box{
-  background:#faf7f2;
-  border:1px solid #eee;
-  border-radius:10px;
-  padding:18px 20px;
-  margin-bottom:35px;
+background:#faf7f2;
+border:1px solid #eee;
+border-radius:12px;
+padding:22px 26px;
+margin:40px 0;
 }
 
-.author-name{
-  font-weight:600;
-  margin-bottom:4px;
+.author-label{
+font-size:12px;
+letter-spacing:2px;
+color:#9a8f85;
+text-transform:uppercase;
+margin-bottom:6px;
+}
+
+.blog-author{
+font-weight:600;
+font-size:16px;
+margin-bottom:6px;
 }
 
 .author-desc{
-  font-size:14px;
-  color:#666;
+font-size:14px;
+color:#666;
+line-height:1.6;
 }
-
 
 .blog-cta-box{
   background:#f8efe4;
