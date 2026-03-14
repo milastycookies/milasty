@@ -157,3 +157,12 @@ body{
   font-size:17px;
   color:#555;
 }
+
+
+.blog-author{
+  margin-top:35px;
+  font-size:15px;
+  color:#666;
+  border-top:1px solid #eee;
+  padding-top:15px;
+}
