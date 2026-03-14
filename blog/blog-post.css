@@ -150,3 +150,10 @@ body{
 .related-articles li{
   margin-bottom:8px;
 }
+
+.blog-transition{
+  margin-top:15px;
+  margin-bottom:20px;
+  font-size:17px;
+  color:#555;
+}
