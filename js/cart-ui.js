@@ -49,11 +49,14 @@ document.addEventListener("DOMContentLoaded", () => {
 function openCart() {
 
   const overlay = document.getElementById("cartOverlay");
+  const basket = document.querySelector(".floating-basket");
 
   if (overlay) overlay.classList.add("active");
   if (drawer) drawer.classList.add("active");
 
   document.body.classList.add("cart-open");
+
+  if (basket) basket.style.display = "none";
 
 }
 
@@ -66,11 +69,14 @@ function openCart() {
 function closeCart() {
 
   const overlay = document.getElementById("cartOverlay");
+  const basket = document.querySelector(".floating-basket");
 
   if (overlay) overlay.classList.remove("active");
   if (drawer) drawer.classList.remove("active");
 
   document.body.classList.remove("cart-open");
+
+  renderCart(); // restores basket visibility
 
 }
 
