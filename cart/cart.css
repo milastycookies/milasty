@@ -514,13 +514,87 @@ max-width:85%;
 display:none;
 }
 
+
+/* ===============================
+   CONTINUE BUTTON (PREMIUM)
+================================ */
+
 .continue-btn{
+
 width:100%;
 margin-top:12px;
+
+background:linear-gradient(145deg,#8b5e3c,#6b4e2e);
+color:white;
+
+border:none;
+
+padding:14px;
+
+border-radius:10px;
+
+font-weight:600;
+letter-spacing:.3px;
+
+cursor:pointer;
+
+transition:.25s;
+
+box-shadow:0 6px 14px rgba(0,0,0,0.2);
+
 }
 
+.continue-btn:hover{
+
+transform:translateY(-2px);
+
+box-shadow:0 10px 20px rgba(0,0,0,0.28);
+
+}
+
+
+
+/* ===============================
+   EDIT BASKET (BACK BUTTON)
+================================ */
+
 .back-to-cart{
-margin-bottom:12px;
+
+display:inline-flex;
+align-items:center;
+gap:6px;
+
+background:transparent;
+
+border:1px solid rgba(60,40,20,0.18);
+
+padding:8px 14px;
+
+border-radius:8px;
+
+font-size:13px;
+font-weight:600;
+
+color:#6b4e2e;
+
+cursor:pointer;
+
+margin-bottom:14px;
+
+transition:.25s;
+
+}
+
+.back-to-cart:hover{
+
+background:#f3e6da;
+
+border-color:#8b5e3c;
+
+transform:translateX(-2px);
+
+box-shadow:0 4px 10px rgba(0,0,0,0.06);
+
 }
 
 }
