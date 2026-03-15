@@ -624,21 +624,6 @@ width:100%;
 
 
 
-/* =====================================
-   DESKTOP
-===================================== */
-
-@media (min-width:768px){
-
-.continue-btn{
-display:none !important;
-}
-
-.back-to-cart{
-display:none !important;
-}
-
-}
 
 
 
