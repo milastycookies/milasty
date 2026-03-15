@@ -85,8 +85,14 @@ function renderCart() {
   const cart = getCart();
   const basket = document.querySelector(".floating-basket");
 
-  if (basket) {
-    basket.style.display = cart.length > 0 ? "flex" : "none";
+   if (basket) {
+  
+    if (document.body.classList.contains("cart-open")) {
+      basket.style.display = "none";
+    } else {
+      basket.style.display = cart.length > 0 ? "flex" : "none";
+    }
+  
   }
 
   if (!cartItemsContainer) return;
