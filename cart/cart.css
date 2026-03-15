@@ -762,3 +762,20 @@ border-radius:8px;
 
 cursor:pointer;
 }
+
+
+/* =====================================
+   DESKTOP
+===================================== */
+
+@media (min-width:768px){
+
+.continue-btn{
+display:none !important;
+}
+
+.back-to-cart{
+display:none !important;
+}
+
+}
