@@ -585,18 +585,6 @@ transition:color .25s ease;
 }
 
 
-/* arrow */
-
-.back-to-cart::before{
-
-content:"←";
-
-font-size:16px;
-
-transition:transform .25s ease;
-
-}
-
 
 /* underline effect */
 
@@ -633,11 +621,7 @@ width:100%;
 
 }
 
-.back-to-cart:hover::before{
 
-transform:translateX(-3px);
-
-}
 
 
 /* =====================================
