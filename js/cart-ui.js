@@ -2,14 +2,14 @@
 // MILASTY CART UI
 // ========================================
 
-import {
-  getCart,
-  changeQty,
-  removeItem,
-  getCartTotal,
-  getCartCount,
-  addToCart
-} from "./cart.js";
+// import {
+//   getCart,
+//   changeQty,
+//   removeItem,
+//   getCartTotal,
+//   getCartCount,
+//   addToCart
+// } from "./cart.js";
 
 let drawer;
 let cartItemsContainer;
