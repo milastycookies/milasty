@@ -54,3 +54,7 @@ async function saveOrderToDB(orderData) {
 
   return orderNumber;
 }
+
+
+
+window.saveOrderToDB = saveOrderToDB;
