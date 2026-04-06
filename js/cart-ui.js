@@ -280,12 +280,13 @@ async function sendOrder() {
     const name = document.getElementById("name").value;
     const phone = document.getElementById("phone").value;
     const address = document.getElementById("address").value;
+    const pincode = document.getElementById("pincode").value;
 
     // Extract pincode automatically
-    const pincodeMatch = address.match(/\b\d{6}\b/);
-    const pincode = pincodeMatch ? pincodeMatch[0] : "";
+    // const pincodeMatch = address.match(/\b\d{6}\b/);
+    // const pincode = pincodeMatch ? pincodeMatch[0] : "";
 
-    if (!name || !phone || !address) {
+    if (!name || !phone || !address || !pincode) {
       alert("Please fill all delivery details");
       return;
     }
@@ -312,7 +313,7 @@ async function sendOrder() {
     });
 
     message += `Total: ₹${total}\n\n`;
-    message += `Name: ${name}\nPhone: ${phone}\nAddress: ${address}`;
+    message += `Name: ${name}\nPhone: ${phone}\nAddress: ${address}\nPin Code: ${pincode}`;
 
     const encoded = encodeURIComponent(message);
 
