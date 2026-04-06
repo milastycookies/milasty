@@ -1,6 +1,6 @@
 const supabase = window.supabase.createClient(
   "YOUR_PROJECT_URL",
-  "YOUR_ANON_KEY"
+  "sb_publishable_rVbc_Kyb_TZe2n18KsFcLQ_QWKAM63t"
 );
 
 async function saveOrderToDB(orderData) {
