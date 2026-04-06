@@ -335,6 +335,10 @@ function openGuidelines() {
 
   if (overlay) overlay.style.display = "flex";
 
+  // 🔥 hide cart drawer
+  const cart = document.querySelector(".cart-drawer");
+  if (cart) cart.style.display = "none";
+
 }
 
 function closeGuidelines() {
@@ -343,6 +347,10 @@ function closeGuidelines() {
 
   if (overlay) overlay.style.display = "none";
 
+  // 🔥 show cart back
+  const cart = document.querySelector(".cart-drawer");
+  if (cart) cart.style.display = "flex";
+
 }
 
 function confirmGuidelines() {
@@ -350,6 +358,10 @@ function confirmGuidelines() {
   const overlay = document.getElementById("guidelinesOverlay");
 
   if (overlay) overlay.style.display = "none";
+
+  // 🔥 show cart back
+  const cart = document.querySelector(".cart-drawer");
+  if (cart) cart.style.display = "flex";
 
   sendOrder();
 
