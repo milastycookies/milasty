@@ -278,8 +278,9 @@ function sendOrder() {
   const name = document.getElementById("name").value;
   const phone = document.getElementById("phone").value;
   const address = document.getElementById("address").value;
+  const pincode = document.getElementById("pincode").value;
 
-  if (!name || !phone || !address) {
+  if (!name || !phone || !address || !pincode) {
     alert("Please fill all delivery details");
     return;
   }
@@ -304,7 +305,8 @@ function sendOrder() {
 
   message += `Name: ${name}\n`;
   message += `Phone: ${phone}\n`;
-  message += `Address: ${address}`;
+  message += `Address: ${address}\n`;
+  message += `Pincode: ${pincode}\n`;
 
   const encoded = encodeURIComponent(message);
 
