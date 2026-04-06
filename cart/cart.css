@@ -498,6 +498,40 @@ box-shadow:0 10px 20px rgba(0,0,0,0.28);
 
 
 /* =====================================
+MILASTY GUIDELINES POPUP
+===================================== */
+
+.milasty-popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+  background: rgba(0,0,0,0.5);
+
+  display: none;
+
+  justify-content: center;
+  align-items: flex-end;
+
+  z-index: 9999;
+}
+
+.milasty-popup {
+  background: #fff;
+  width: 100%;
+  max-width: 500px;
+
+  border-radius: 16px 16px 0 0;
+  padding: 20px;
+
+  box-shadow: 0 -4px 20px rgba(0,0,0,0.2);
+}
+
+
+
+/* =====================================
    MOBILE OPTIMIZATION
 ===================================== */
 
