@@ -1,11 +1,18 @@
 if (!window.supabaseClient) {
-  window.supabaseClient = window.supabase.createClient(
+  if (!window.supabase) {
+    console.error("Supabase library not loaded");
+    alert("System not ready. Please refresh.");
+  }
+
+  const { createClient } = window.supabase;
+
+  window.supabaseClient = createClient(
     "https://qpdmonukpclrakkwwimb.supabase.co",
     "sb_publishable_rVbc_Kyb_TZe2n18KsFcLQ_QWKAM63t"
   );
 }
 
-const supabase = window.supabaseClient;
+const sb = window.supabaseClient;
 
 async function saveOrderToDB(orderData) {
   try {
