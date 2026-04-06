@@ -7,7 +7,7 @@ const CART_KEY = "milasty_cart";
 // ------------------------------
 // Get cart
 // ------------------------------
-export function getCart() {
+function getCart() {
   try {
     return JSON.parse(localStorage.getItem(CART_KEY)) || [];
   } catch {
@@ -26,7 +26,7 @@ function saveCart(cart) {
 // ------------------------------
 // Add item
 // ------------------------------
-export function addToCart(name, price, type) {
+function addToCart(name, price, type) {
 
   const cart = getCart();
 
@@ -51,7 +51,7 @@ export function addToCart(name, price, type) {
 // ------------------------------
 // Change quantity
 // ------------------------------
-export function changeQty(name, type, delta) {
+function changeQty(name, type, delta) {
 
   const cart = getCart();
 
@@ -74,7 +74,7 @@ export function changeQty(name, type, delta) {
 // ------------------------------
 // Remove item
 // ------------------------------
-export function removeItem(name, type) {
+function removeItem(name, type) {
 
   let cart = getCart();
 
@@ -88,7 +88,7 @@ export function removeItem(name, type) {
 // ------------------------------
 // Clear cart
 // ------------------------------
-export function clearCart() {
+function clearCart() {
   localStorage.removeItem(CART_KEY);
   window.dispatchEvent(new Event("cartUpdated"));
 }
@@ -96,16 +96,26 @@ export function clearCart() {
 // ------------------------------
 // Cart count
 // ------------------------------
-export function getCartCount() {
+function getCartCount() {
   return getCart().reduce((sum, item) => sum + item.qty, 0);
 }
 
 // ------------------------------
 // Cart total
 // ------------------------------
-export function getCartTotal() {
+function getCartTotal() {
   return getCart().reduce(
     (sum, item) => sum + item.price * item.qty,
     0
   );
 }
+
+
+
+window.getCart = getCart;
+window.addToCart = addToCart;
+window.changeQty = changeQty;
+window.removeItem = removeItem;
+window.clearCart = clearCart;
+window.getCartCount = getCartCount;
+window.getCartTotal = getCartTotal;
