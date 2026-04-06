@@ -280,7 +280,7 @@ async function sendOrder() {
     const name = document.getElementById("name").value;
     const phone = document.getElementById("phone").value;
     const address = document.getElementById("address").value;
-    const pincode: document.getElementById("pincode")?.value || ""
+    const pincode = document.getElementById("pincode")?.value || "";
 
     // Extract pincode automatically
     // const pincodeMatch = address.match(/\b\d{6}\b/);
