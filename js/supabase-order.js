@@ -4,7 +4,7 @@ const supabase = window.supabase.createClient(
 );
 
 async function saveOrderToDB(orderData) {
-  const { name, phone, address, items, total } = orderData;
+  const { name, phone, address, pincode, items, total } = orderData;
 
   // 1. Find or create customer
   let { data: existing } = await supabase
@@ -20,7 +20,7 @@ async function saveOrderToDB(orderData) {
   } else {
     const { data: newCustomer } = await supabase
       .from("customers")
-      .insert([{ name, phone, address }])
+      .insert([{ name, phone, address, pincode }])
       .select();
 
     customerId = newCustomer[0].id;
