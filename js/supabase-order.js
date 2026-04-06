@@ -2,7 +2,7 @@
 // MILASTY SUPABASE ORDER HANDLER
 // ========================================
 
-// جلوگیری duplicate execution
+// duplicate execution
 if (window.__SUPABASE_ORDER_LOADED__) {
   console.warn("Supabase order script already loaded");
 } else {
@@ -21,7 +21,7 @@ if (window.__SUPABASE_ORDER_LOADED__) {
     const { createClient } = window.supabase;
 
     window.supabaseClient = createClient(
-      "https://qpdmonukpclrakkwwimb.supabase.co",
+      "https://qpdmonukpclrkakwwimb.supabase.co",
       "sb_publishable_rVbc_Kyb_TZe2n18KsFcLQ_QWKAM63t"
     );
   }
