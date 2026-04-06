@@ -461,7 +461,13 @@ Continue
       <input id="name" placeholder="Name">
       <input id="phone" placeholder="Phone">
       <textarea id="address" placeholder="Address"></textarea>
-      <input id="pincode" placeholder="Pincode" type="number">
+      <input 
+        id="pincode" 
+        placeholder="Pincode" 
+        inputmode="numeric" 
+        maxlength="6"
+        oninput="this.value = this.value.replace(/\D/g, '').slice(0,6)"
+      >
     
       <button onclick="openGuidelines()">Send Order on WhatsApp</button>
     
