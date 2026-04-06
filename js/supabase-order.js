@@ -1,5 +1,5 @@
 const supabase = window.supabase.createClient(
-  "YOUR_PROJECT_URL",
+  "https://qpdmonukpclrakkwwimb.supabase.co",
   "sb_publishable_rVbc_Kyb_TZe2n18KsFcLQ_QWKAM63t"
 );
 
