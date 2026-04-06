@@ -295,6 +295,11 @@ async function sendOrder() {
     const delivery = getDeliveryCharge(subtotal, cart);
     const total = subtotal + delivery;
 
+    if (cart.length === 0) {
+      alert("Your cart is empty");
+      return;
+    }
+
     // 🔥 SAVE TO DB
     const orderNumber = await saveOrderToDB({
       name,
