@@ -271,49 +271,58 @@ function showCartItems() {
 // WHATSAPP ORDER
 // ========================================
 
-function sendOrder() {
+async function sendOrder() {
 
-  const cart = getCart();
+  try {
 
-  const name = document.getElementById("name").value;
-  const phone = document.getElementById("phone").value;
-  const address = document.getElementById("address").value;
-  const pincode = document.getElementById("pincode").value;
+    const cart = getCart();
 
-  if (!name || !phone || !address || !pincode) {
-    alert("Please fill all delivery details");
-    return;
+    const name = document.getElementById("name").value;
+    const phone = document.getElementById("phone").value;
+    const address = document.getElementById("address").value;
+
+    // Extract pincode automatically
+    const pincodeMatch = address.match(/\b\d{6}\b/);
+    const pincode = pincodeMatch ? pincodeMatch[0] : "";
+
+    if (!name || !phone || !address) {
+      alert("Please fill all delivery details");
+      return;
+    }
+
+    const subtotal = getCartTotal();
+    const delivery = getDeliveryCharge(subtotal, cart);
+    const total = subtotal + delivery;
+
+    // 🔥 SAVE TO DB
+    const orderNumber = await saveOrderToDB({
+      name,
+      phone,
+      address,
+      pincode,
+      items: cart,
+      total
+    });
+
+    // WhatsApp message
+    let message = `MILASTY Order\n\nOrder ID: ${orderNumber}\n\n`;
+
+    cart.forEach(item => {
+      message += `${item.name}\nQty: ${item.qty}\nPrice: ₹${item.price * item.qty}\n\n`;
+    });
+
+    message += `Total: ₹${total}\n\n`;
+    message += `Name: ${name}\nPhone: ${phone}\nAddress: ${address}`;
+
+    const encoded = encodeURIComponent(message);
+
+    window.open(`https://wa.me/918927142056?text=${encoded}`, "_blank");
+
+  } catch (err) {
+    console.error("ERROR:", err);
+    alert("Something went wrong");
   }
-
-  let message = `MILASTY Order\n\n`;
-
-  cart.forEach(item => {
-
-    message += `${item.name}\n`;
-    message += `Qty: ${item.qty}\n`;
-    message += `Price: ₹${item.price * item.qty}\n\n`;
-
-  });
-
-  const subtotal = getCartTotal();
-  const delivery = getDeliveryCharge(subtotal, cart);
-  const total = subtotal + delivery;
-
-  message += `Subtotal: ₹${subtotal}\n`;
-  message += `Delivery: ${delivery === 0 ? "Free" : "₹" + delivery}\n`;
-  message += `Total: ₹${total}\n\n`;
-
-  message += `Name: ${name}\n`;
-  message += `Phone: ${phone}\n`;
-  message += `Address: ${address}\n`;
-  message += `Pincode: ${pincode}\n`;
-
-  const encoded = encodeURIComponent(message);
-
-  window.open(`https://wa.me/918927142056?text=${encoded}`, "_blank");
-
 }
-
 
 
 // ========================================
