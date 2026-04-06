@@ -130,10 +130,12 @@ if (window.__SUPABASE_ORDER_LOADED__) {
       return orderNumber;
 
     } catch (err) {
-      console.error("❌ ORDER SAVE ERROR:", err);
-
-      alert(err.message || "Something went wrong while saving order.");
-
+      console.error("ORDER SAVE ERROR:", err);
+    
+      alert(
+        "Order failed. Please try again or contact us on WhatsApp (+91-8927142056) directly."
+      );
+    
       throw err;
     }
   }
