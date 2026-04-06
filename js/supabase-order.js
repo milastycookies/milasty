@@ -1,7 +1,11 @@
-const supabase = window.supabase.createClient(
-  "https://qpdmonukpclrakkwwimb.supabase.co",
-  "sb_publishable_rVbc_Kyb_TZe2n18KsFcLQ_QWKAM63t"
-);
+if (!window.supabaseClient) {
+  window.supabaseClient = window.supabase.createClient(
+    "https://qpdmonukpclrakkwwimb.supabase.co",
+    "sb_publishable_rVbc_Kyb_TZe2n18KsFcLQ_QWKAM63t"
+  );
+}
+
+const supabase = window.supabaseClient;
 
 async function saveOrderToDB(orderData) {
   try {
