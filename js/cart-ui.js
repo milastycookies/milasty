@@ -292,7 +292,7 @@ async function sendOrder() {
     }
 
     // 🔥 SEND TO BACKEND
-    const response = await fetch("https://YOUR-RAILWAY-URL/create-order", {
+    const response = await fetch("https://milasty-backend-production-5de1.up.railway.app/create-order", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
