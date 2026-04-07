@@ -1,5 +1,5 @@
 // ========================================
-// MILASTY CART LOGIC
+// MILASTY CART LOGIC (ID-BASED)
 // ========================================
 
 const CART_KEY = "milasty_cart";
@@ -24,23 +24,24 @@ function saveCart(cart) {
 }
 
 // ------------------------------
-// Add item
+// Add item (UPDATED)
 // ------------------------------
-function addToCart(name, price, type) {
+function addToCart(id, name, price, type) {
 
   const cart = getCart();
 
   const existing = cart.find(
-    item => item.name === name && item.type === type
+    item => item.id === id   // 🔥 match by ID
   );
 
   if (existing) {
     existing.qty += 1;
   } else {
     cart.push({
-      name,
-      price,
-      type,
+      id,        // 🔥 NEW (CRITICAL)
+      name,      // for UI
+      price,     // for UI
+      type,      // for UI
       qty: 1
     });
   }
@@ -49,14 +50,14 @@ function addToCart(name, price, type) {
 }
 
 // ------------------------------
-// Change quantity
+// Change quantity (UPDATED)
 // ------------------------------
-function changeQty(name, type, delta) {
+function changeQty(id, delta) {
 
   const cart = getCart();
 
   const item = cart.find(
-    i => i.name === name && i.type === type
+    i => i.id === id   // 🔥 match by ID
   );
 
   if (!item) return;
@@ -64,7 +65,7 @@ function changeQty(name, type, delta) {
   item.qty += delta;
 
   if (item.qty <= 0) {
-    removeItem(name, type);
+    removeItem(id);
     return;
   }
 
@@ -72,14 +73,14 @@ function changeQty(name, type, delta) {
 }
 
 // ------------------------------
-// Remove item
+// Remove item (UPDATED)
 // ------------------------------
-function removeItem(name, type) {
+function removeItem(id) {
 
   let cart = getCart();
 
   cart = cart.filter(
-    i => !(i.name === name && i.type === type)
+    i => i.id !== id   // 🔥 match by ID
   );
 
   saveCart(cart);
@@ -101,7 +102,7 @@ function getCartCount() {
 }
 
 // ------------------------------
-// Cart total
+// Cart total (UI only)
 // ------------------------------
 function getCartTotal() {
   return getCart().reduce(
