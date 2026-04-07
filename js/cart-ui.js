@@ -185,6 +185,81 @@ function renderSummary() {
   `;
 }
 
+
+// ========================================
+// MOBILE FLOW → SHOW DELIVERY FORM
+// ========================================
+
+function showDelivery() {
+
+  const items = document.getElementById("cart-items");
+  const continueBtn = document.querySelector(".continue-btn");
+  const deliverySection = document.getElementById("delivery-section");
+
+  if (items) items.style.display = "none";
+  if (continueBtn) continueBtn.style.display = "none";
+
+  if (deliverySection) deliverySection.style.display = "block";
+
+  if (drawer) drawer.scrollTop = 0;
+}
+
+
+// ========================================
+// MOBILE FLOW → BACK TO CART
+// ========================================
+
+function showCartItems() {
+
+  const items = document.getElementById("cart-items");
+  const continueBtn = document.querySelector(".continue-btn");
+  const deliverySection = document.getElementById("delivery-section");
+
+  if (items) items.style.display = "block";
+  if (continueBtn) continueBtn.style.display = "block";
+
+  if (deliverySection) deliverySection.style.display = "none";
+
+  if (drawer) drawer.scrollTop = 0;
+}
+
+
+// ========================================
+// GUIDELINES POPUP
+// ========================================
+
+function openGuidelines() {
+
+  const overlay = document.getElementById("guidelinesOverlay");
+
+  if (overlay) overlay.style.display = "flex";
+
+  const cart = document.querySelector(".cart-drawer");
+  if (cart) cart.style.display = "none";
+}
+
+function closeGuidelines() {
+
+  const overlay = document.getElementById("guidelinesOverlay");
+
+  if (overlay) overlay.style.display = "none";
+
+  const cart = document.querySelector(".cart-drawer");
+  if (cart) cart.style.display = "flex";
+}
+
+function confirmGuidelines() {
+
+  const overlay = document.getElementById("guidelinesOverlay");
+
+  if (overlay) overlay.style.display = "none";
+
+  const cart = document.querySelector(".cart-drawer");
+  if (cart) cart.style.display = "flex";
+
+  sendOrder();
+}
+
 // ========================================
 // SEND ORDER (CRITICAL FIX)
 // ========================================
