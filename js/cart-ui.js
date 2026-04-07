@@ -272,64 +272,78 @@ function showCartItems() {
 // ========================================
 
 async function sendOrder() {
-
   try {
+    const name = document.getElementById("name")?.value.trim();
+    const phone = document.getElementById("phone")?.value.trim();
+    const address = document.getElementById("address")?.value.trim();
+    const pincode = document.getElementById("pincode")?.value.trim();
 
-    const cart = getCart();
-
-    const name = document.getElementById("name").value;
-    const phone = document.getElementById("phone").value;
-    const address = document.getElementById("address").value;
-    const pincode = document.getElementById("pincode")?.value || "";
-
-    // Extract pincode automatically
-    // const pincodeMatch = address.match(/\b\d{6}\b/);
-    // const pincode = pincodeMatch ? pincodeMatch[0] : "";
+    const cart = window.getCart();
+    const total = window.getCartTotal();
 
     if (!name || !phone || !address || !pincode) {
-      alert("Please fill all delivery details");
+      alert("Please fill all details");
       return;
     }
 
-    const subtotal = getCartTotal();
-    const delivery = getDeliveryCharge(subtotal, cart);
-    const total = subtotal + delivery;
-
-    if (cart.length === 0) {
-      alert("Your cart is empty");
+    if (!cart || cart.length === 0) {
+      alert("Cart is empty");
       return;
     }
 
-    // 🔥 SAVE TO DB
-    const orderNumber = await saveOrderToDB({
-      name,
-      phone,
-      address,
-      pincode,
-      items: cart,
-      total
+    // 🔥 SEND TO BACKEND
+    const response = await fetch("https://YOUR-RAILWAY-URL/create-order", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        name,
+        phone,
+        address,
+        pincode,
+        items: cart,
+        total,
+        token: Date.now().toString(),
+        date: new Date().toLocaleDateString(),
+        time: new Date().toLocaleTimeString(),
+        timestamp: Date.now()
+      })
     });
 
-    // WhatsApp message
-    let message = `MILASTY Order\n\nOrder ID: ${orderNumber}\n\n`;
+    const result = await response.json();
+
+    if (!response.ok) {
+      throw new Error(result.error || "Order failed");
+    }
+
+    // ✅ SUCCESS
+    console.log("Order stored:", result.orderNumber);
+
+    // 📲 WhatsApp
+    let message = `Hi MILASTY, I want to confirm my order:\n\n`;
 
     cart.forEach(item => {
-      message += `${item.name}\nQty: ${item.qty}\nPrice: ₹${item.price * item.qty}\n\n`;
+      message += `• ${item.name} x${item.qty}\n`;
     });
 
-    message += `Total: ₹${total}\n\n`;
-    message += `Name: ${name}\nPhone: ${phone}\nAddress: ${address}\nPin Code: ${pincode}`;
+    message += `\nTotal: ₹${total}`;
+    message += `\nName: ${name}`;
+    message += `\nPhone: ${phone}`;
+    message += `\nAddress: ${address}`;
+    if (pincode) message += ` (${pincode})`;
 
     const encoded = encodeURIComponent(message);
 
     window.open(`https://wa.me/918927142056?text=${encoded}`, "_blank");
 
+    window.clearCart();
+
   } catch (err) {
-    console.error("ERROR:", err);
-    alert("Something went wrong");
+    console.error(err);
+    alert("Order failed. Please try again.");
   }
 }
-
 
 // ========================================
 // MILASTY GUIDELINES POPUP
