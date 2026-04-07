@@ -318,7 +318,7 @@ async function sendOrder() {
     }
 
     // ✅ SUCCESS
-    console.log("Order stored:", result.orderNumber);
+    console.log("Order stored:", result.orderId);
 
     // 📲 WhatsApp
     let message = `Hi MILASTY, I want to confirm my order:\n\n`;
