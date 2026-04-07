@@ -1,21 +1,11 @@
 // ========================================
-// MILASTY CART UI
+// MILASTY CART UI (ID-BASED)
 // ========================================
-
-// import {
-//   getCart,
-//   changeQty,
-//   removeItem,
-//   getCartTotal,
-//   getCartCount,
-//   addToCart
-// } from "./cart.js";
 
 let drawer;
 let cartItemsContainer;
 let cartSummaryContainer;
 let basketCount;
-
 
 // ========================================
 // INITIALIZE
@@ -40,14 +30,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
 });
 
-
-
 // ========================================
-// OPEN CART
+// OPEN / CLOSE CART
 // ========================================
 
 function openCart() {
-
   const overlay = document.getElementById("cartOverlay");
   const basket = document.querySelector(".floating-basket");
 
@@ -57,17 +44,9 @@ function openCart() {
   document.body.classList.add("cart-open");
 
   if (basket) basket.style.display = "none";
-
 }
 
-
-
-// ========================================
-// CLOSE CART
-// ========================================
-
 function closeCart() {
-
   const overlay = document.getElementById("cartOverlay");
   const basket = document.querySelector(".floating-basket");
 
@@ -76,11 +55,8 @@ function closeCart() {
 
   document.body.classList.remove("cart-open");
 
-  renderCart(); // restores basket visibility
-
+  renderCart();
 }
-
-
 
 // ========================================
 // RENDER CART
@@ -91,14 +67,12 @@ function renderCart() {
   const cart = getCart();
   const basket = document.querySelector(".floating-basket");
 
-   if (basket) {
-  
+  if (basket) {
     if (document.body.classList.contains("cart-open")) {
       basket.style.display = "none";
     } else {
       basket.style.display = cart.length > 0 ? "flex" : "none";
     }
-  
   }
 
   if (!cartItemsContainer) return;
@@ -114,7 +88,6 @@ function renderCart() {
 
     renderSummary();
     return;
-
   }
 
   cart.forEach(item => {
@@ -123,9 +96,7 @@ function renderCart() {
     row.className = "cart-item";
 
     row.innerHTML = `
-      <div class="cart-item-name">
-        ${item.name}
-      </div>
+      <div class="cart-item-name">${item.name}</div>
 
       <div class="cart-item-controls">
 
@@ -145,15 +116,15 @@ function renderCart() {
     `;
 
     row.querySelector(".minus").onclick = () => {
-      changeQty(item.name, item.type, -1);
+      changeQty(item.id, -1);   // 🔥 FIXED
     };
 
     row.querySelector(".plus").onclick = () => {
-      changeQty(item.name, item.type, 1);
+      changeQty(item.id, 1);    // 🔥 FIXED
     };
 
     row.querySelector(".remove-btn").onclick = () => {
-      removeItem(item.name, item.type);
+      removeItem(item.id);      // 🔥 FIXED
     };
 
     cartItemsContainer.appendChild(row);
@@ -165,28 +136,22 @@ function renderCart() {
   }
 
   renderSummary();
-
 }
 
-
-
 // ========================================
-// DELIVERY CHARGE LOGIC
+// DELIVERY LOGIC (UI ONLY)
 // ========================================
 
 function getDeliveryCharge(cartTotal, cart) {
 
   if (cartTotal >= 799) return 0;
 
-  const hasNormalProduct = cart.some(item => item.type === "normal");
+  const hasRegular = cart.some(item => item.type === "regular");
 
-  if (hasNormalProduct) return 60;
+  if (hasRegular) return 60;
 
   return 0;
-
 }
-
-
 
 // ========================================
 // RENDER SUMMARY
@@ -203,7 +168,6 @@ function renderSummary() {
   const total = subtotal + delivery;
 
   cartSummaryContainer.innerHTML = `
-
     <div class="cart-summary-row">
       <span>Subtotal</span>
       <span>₹${subtotal}</span>
@@ -218,57 +182,11 @@ function renderSummary() {
       <span>Total</span>
       <span>₹${total}</span>
     </div>
-
   `;
-
 }
 
-
-
 // ========================================
-// MOBILE FLOW → SHOW DELIVERY FORM
-// ========================================
-
-function showDelivery() {
-
-  const items = document.getElementById("cart-items");
-  const continueBtn = document.querySelector(".continue-btn");
-  const deliverySection = document.getElementById("delivery-section");
-
-  if (items) items.style.display = "none";
-  if (continueBtn) continueBtn.style.display = "none";
-
-  if (deliverySection) deliverySection.style.display = "block";
-
-  if (drawer) drawer.scrollTop = 0;
-
-}
-
-
-
-// ========================================
-// MOBILE FLOW → BACK TO CART
-// ========================================
-
-function showCartItems() {
-
-  const items = document.getElementById("cart-items");
-  const continueBtn = document.querySelector(".continue-btn");
-  const deliverySection = document.getElementById("delivery-section");
-
-  if (items) items.style.display = "block";
-  if (continueBtn) continueBtn.style.display = "block";
-
-  if (deliverySection) deliverySection.style.display = "none";
-
-  if (drawer) drawer.scrollTop = 0;
-
-}
-
-
-
-// ========================================
-// WHATSAPP ORDER
+// SEND ORDER (CRITICAL FIX)
 // ========================================
 
 async function sendOrder() {
@@ -279,7 +197,6 @@ async function sendOrder() {
     const pincode = document.getElementById("pincode")?.value.trim();
 
     const cart = window.getCart();
-    const total = window.getCartTotal();
 
     if (!name || !phone || !address || !pincode) {
       alert("Please fill all details");
@@ -291,7 +208,12 @@ async function sendOrder() {
       return;
     }
 
-    // 🔥 SEND TO BACKEND
+    // 🔥 ONLY SEND ID + QTY
+    const items = cart.map(item => ({
+      id: item.id,
+      qty: item.qty
+    }));
+
     const response = await fetch("https://milasty-backend-production-5de1.up.railway.app/create-order", {
       method: "POST",
       headers: {
@@ -302,12 +224,8 @@ async function sendOrder() {
         phone,
         address,
         pincode,
-        items: cart,
-        total,
-        token: Date.now().toString(),
-        date: new Date().toLocaleDateString(),
-        time: new Date().toLocaleTimeString(),
-        timestamp: Date.now()
+        items,    // 🔥 FIXED
+        token: Date.now().toString()
       })
     });
 
@@ -317,17 +235,15 @@ async function sendOrder() {
       throw new Error(result.error || "Order failed");
     }
 
-    // ✅ SUCCESS
-    console.log("Order stored:", result.orderId);
+    console.log("Order stored:", result.orderNumber);
 
-    // 📲 WhatsApp
+    // WhatsApp message (UI only)
     let message = `Hi MILASTY, I want to confirm my order:\n\n`;
 
     cart.forEach(item => {
       message += `• ${item.name} x${item.qty}\n`;
     });
 
-    message += `\nTotal: ₹${total}`;
     message += `\nName: ${name}`;
     message += `\nPhone: ${phone}`;
     message += `\nAddress: ${address}`;
@@ -346,60 +262,11 @@ async function sendOrder() {
 }
 
 // ========================================
-// MILASTY GUIDELINES POPUP
+// GLOBAL
 // ========================================
 
-function openGuidelines() {
-
-  const overlay = document.getElementById("guidelinesOverlay");
-
-  if (overlay) overlay.style.display = "flex";
-
-  // 🔥 hide cart drawer
-  const cart = document.querySelector(".cart-drawer");
-  if (cart) cart.style.display = "none";
-
-}
-
-function closeGuidelines() {
-
-  const overlay = document.getElementById("guidelinesOverlay");
-
-  if (overlay) overlay.style.display = "none";
-
-  // 🔥 show cart back
-  const cart = document.querySelector(".cart-drawer");
-  if (cart) cart.style.display = "flex";
-
-}
-
-function confirmGuidelines() {
-
-  const overlay = document.getElementById("guidelinesOverlay");
-
-  if (overlay) overlay.style.display = "none";
-
-  // 🔥 show cart back
-  const cart = document.querySelector(".cart-drawer");
-  if (cart) cart.style.display = "flex";
-
-  sendOrder();
-
-}
-
-
-
-// ========================================
-// GLOBAL FUNCTIONS
-// ========================================
-
-window.addToCart = addToCart;
 window.openCart = openCart;
 window.closeCart = closeCart;
 window.showDelivery = showDelivery;
 window.showCartItems = showCartItems;
 window.sendOrder = sendOrder;
-
-window.openGuidelines = openGuidelines;
-window.closeGuidelines = closeGuidelines;
-window.confirmGuidelines = confirmGuidelines;
