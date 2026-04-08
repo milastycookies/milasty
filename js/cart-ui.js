@@ -74,7 +74,7 @@ function addToCartDynamic(productId) {
     return;
   }
 
-  addToCart(product.id, product.name, product.price, product.type);
+  addToCart(product.id);
 }
 
 window.addToCartDynamic = addToCartDynamic;
