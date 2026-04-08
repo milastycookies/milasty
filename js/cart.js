@@ -1,5 +1,5 @@
 // ========================================
-// MILASTY CART LOGIC (ID-BASED, SAFE)
+// MILASTY CART LOGIC (FINAL CLEAN)
 // ========================================
 
 const CART_KEY = "milasty_cart";
@@ -24,12 +24,11 @@ function saveCart(cart) {
 }
 
 // ------------------------------
-// Add item (SAFE VERSION)
+// Add item (ONLY ID)
 // ------------------------------
-function addToCart(id, name, price, type) {
+function addToCart(id) {
 
-  // 🔴 HARD VALIDATION
-  if (!id || typeof id !== "string" || id.length < 10) {
+  if (!id || typeof id !== "string") {
     console.error("❌ Invalid product ID:", id);
     return;
   }
@@ -42,10 +41,7 @@ function addToCart(id, name, price, type) {
     existing.qty += 1;
   } else {
     cart.push({
-      id: id,                              // ✅ UUID
-      name: name || "Product",              // UI only
-      price: Number(price) || 0,            // ✅ force number
-      type: type || "normal",               // UI only
+      id,
       qty: 1
     });
   }
@@ -101,16 +97,6 @@ function getCartCount() {
   return getCart().reduce((sum, item) => sum + item.qty, 0);
 }
 
-// ------------------------------
-// Cart total (UI only)
-// ------------------------------
-function getCartTotal() {
-  return getCart().reduce(
-    (sum, item) => sum + (Number(item.price) || 0) * item.qty,
-    0
-  );
-}
-
 
 // EXPORTS
 window.getCart = getCart;
@@ -119,4 +105,3 @@ window.changeQty = changeQty;
 window.removeItem = removeItem;
 window.clearCart = clearCart;
 window.getCartCount = getCartCount;
-window.getCartTotal = getCartTotal;
