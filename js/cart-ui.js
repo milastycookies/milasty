@@ -141,8 +141,8 @@ function renderCart() {
 
     const product = PRODUCT_SLUG_MAP[item.slug];
     if (!product) {
-      console.error("❌ Missing product in PRODUCT_SLUG_MAP:", item.id);
-      removeItem(item.id);
+      console.error("❌ Missing product in PRODUCT_SLUG_MAP:", item.slug);
+      removeItem(item.slug);
       return;
     }
 
@@ -166,7 +166,7 @@ function renderCart() {
 
     row.querySelector(".minus").onclick = () => changeQty(item.slug, -1);
     row.querySelector(".plus").onclick = () => changeQty(item.slug, 1);
-    row.querySelector(".remove-btn").onclick = () => removeItem(item.id);
+    row.querySelector(".remove-btn").onclick = () => removeItem(item.slug);
 
     cartItemsContainer.appendChild(row);
 
