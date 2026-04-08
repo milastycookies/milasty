@@ -21,6 +21,10 @@ async function loadProducts() {
       "https://milasty-backend-production-5de1.up.railway.app/products"
     );
 
+    if (!res.ok) {
+      throw new Error("Failed to fetch products");
+    }
+    
     const data = await res.json();
 
     data.forEach(p => {
