@@ -6,6 +6,7 @@ let drawer;
 let cartItemsContainer;
 let cartSummaryContainer;
 let basketCount;
+let basket;
 
 let PRODUCT_MAP = {};
 let PRODUCTS_LOADED = false;
