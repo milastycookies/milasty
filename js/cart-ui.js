@@ -171,7 +171,10 @@ function renderSummary() {
 
   cart.forEach(item => {
     const product = PRODUCT_MAP[item.id];
-    if (!product) return;
+    if (!product) {
+      console.error("❌ Missing product in PRODUCT_MAP:", item.id);
+      return;
+    }
 
     subtotal += product.price * item.qty;
 
