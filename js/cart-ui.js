@@ -188,9 +188,9 @@ function renderSummary(cart) {
   let hasRegular = false;
 
   cart.forEach(item => {
-    const product = PRODUCT_MAP[item.slug];
+    const product = PRODUCT_SLUG_MAP[item.slug];
     if (!product) {
-      console.error("❌ Missing product in PRODUCT_MAP:", item.slug);
+      console.error("❌ Missing product in PRODUCT_SLUG_MAP:", item.slug);
       removeItem(item.slug);
       return;
     }
