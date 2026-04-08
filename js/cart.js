@@ -1,5 +1,5 @@
 // ========================================
-// MILASTY CART LOGIC (FINAL CLEAN)
+// MILASTY CART LOGIC (SLUG-BASED FINAL)
 // ========================================
 
 const CART_KEY = "milasty_cart";
@@ -24,24 +24,24 @@ function saveCart(cart) {
 }
 
 // ------------------------------
-// Add item (ONLY ID)
+// Add item (USING SLUG)
 // ------------------------------
-function addToCart(id) {
+function addToCart(slug) {
 
-  if (!id || typeof id !== "string") {
-    console.error("❌ Invalid product ID:", id);
+  if (!slug || typeof slug !== "string") {
+    console.error("❌ Invalid product slug:", slug);
     return;
   }
 
   const cart = getCart();
 
-  const existing = cart.find(item => item.id === id);
+  const existing = cart.find(item => item.slug === slug);
 
   if (existing) {
     existing.qty += 1;
   } else {
     cart.push({
-      id,
+      slug,
       qty: 1
     });
   }
@@ -52,18 +52,18 @@ function addToCart(id) {
 // ------------------------------
 // Change quantity
 // ------------------------------
-function changeQty(id, delta) {
+function changeQty(slug, delta) {
 
   const cart = getCart();
 
-  const item = cart.find(i => i.id === id);
+  const item = cart.find(i => i.slug === slug);
 
   if (!item) return;
 
   item.qty += delta;
 
   if (item.qty <= 0) {
-    removeItem(id);
+    removeItem(slug);
     return;
   }
 
@@ -73,11 +73,11 @@ function changeQty(id, delta) {
 // ------------------------------
 // Remove item
 // ------------------------------
-function removeItem(id) {
+function removeItem(slug) {
 
   let cart = getCart();
 
-  cart = cart.filter(i => i.id !== id);
+  cart = cart.filter(i => i.slug !== slug);
 
   saveCart(cart);
 }
