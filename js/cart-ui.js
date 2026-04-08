@@ -50,7 +50,6 @@ document.addEventListener("DOMContentLoaded", async () => {
   basket = document.querySelector(".floating-basket"); // ✅ only once
 
   const overlay = document.getElementById("cartOverlay");
-  const basket = document.querySelector(".floating-basket");
 
   if (overlay) overlay.onclick = closeCart;
   if (basket) basket.addEventListener("click", openCart);
