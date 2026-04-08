@@ -126,7 +126,10 @@ function renderCart() {
   cart.forEach(item => {
 
     const product = PRODUCT_MAP[item.id];
-    if (!product) return;
+    if (!product) {
+      console.error("❌ Missing product in PRODUCT_MAP:", item.id);
+      return;
+    }
 
     const row = document.createElement("div");
     row.className = "cart-item";
