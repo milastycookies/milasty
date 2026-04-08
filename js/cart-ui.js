@@ -201,6 +201,8 @@ function renderSummary() {
 
   const total = subtotal + delivery;
 
+  if (!cartSummaryContainer) return;
+  
   cartSummaryContainer.innerHTML = `
     <div class="cart-summary-row">
       <span>Subtotal</span>
