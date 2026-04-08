@@ -189,6 +189,7 @@ function renderSummary(cart) {
     const product = PRODUCT_MAP[item.id];
     if (!product) {
       console.error("❌ Missing product in PRODUCT_MAP:", item.id);
+      removeItem(item.id);
       return;
     }
 
