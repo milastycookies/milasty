@@ -261,7 +261,7 @@ function confirmGuidelines() {
 }
 
 // ========================================
-// SEND ORDER (CRITICAL FIX)
+// SEND ORDER (FINAL FIXED VERSION)
 // ========================================
 
 async function sendOrder() {
@@ -283,34 +283,47 @@ async function sendOrder() {
       return;
     }
 
-    // 🔥 ONLY SEND ID + QTY
+    // 🔴 STRICT VALIDATION (VERY IMPORTANT)
+    for (const item of cart) {
+      if (!item.id || item.id.length < 10) {
+        console.error("❌ Invalid product ID:", item);
+        alert("Cart error. Please refresh and try again.");
+        return;
+      }
+    }
+
+    // 🔥 SEND ONLY product_id + qty
     const items = cart.map(item => ({
-      id: item.id,
+      product_id: item.id,   // ✅ FIXED
       qty: item.qty
     }));
 
-    const response = await fetch("https://milasty-backend-production-5de1.up.railway.app/create-order", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({
-        name,
-        phone,
-        address,
-        pincode,
-        items,    // 🔥 FIXED
-        token: Date.now().toString()
-      })
-    });
+    const response = await fetch(
+      "https://milasty-backend-production-5de1.up.railway.app/create-order",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          name,
+          phone,
+          address,
+          pincode,
+          items,
+          token: Date.now().toString()
+        })
+      }
+    );
 
     const result = await response.json();
 
     if (!response.ok) {
+      console.error("Backend error:", result);
       throw new Error(result.error || "Order failed");
     }
 
-    console.log("Order stored:", result.orderNumber);
+    console.log("✅ Order stored:", result.orderNumber);
 
     // WhatsApp message (UI only)
     let message = `Hi MILASTY, I want to confirm my order:\n\n`;
@@ -331,11 +344,10 @@ async function sendOrder() {
     window.clearCart();
 
   } catch (err) {
-    console.error(err);
+    console.error("ORDER ERROR:", err);
     alert("Order failed. Please try again.");
   }
 }
-
 // ========================================
 // GLOBAL
 // ========================================
