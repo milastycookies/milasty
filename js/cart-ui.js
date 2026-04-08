@@ -79,7 +79,7 @@ function addToCartDynamic(slug) {
     return;
   }
 
-  const product = PRODUCT_MAP[slug];
+  const product = PRODUCT_SLUG_MAP[slug];
 
   if (!product) {
     console.error("❌ Product not found:", slug);
