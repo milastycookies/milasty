@@ -160,7 +160,9 @@ function renderCart() {
 
   });
 
-  basketCount.innerText = getCartCount();
+  if (basketCount) {
+    basketCount.innerText = getCartCount();
+  }
   renderSummary();
 }
 
