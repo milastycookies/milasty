@@ -172,16 +172,14 @@ function renderCart() {
   if (basketCount) {
     basketCount.innerText = getCartCount();
   }
-  renderSummary();
+  renderSummary(cart);
 }
 
 // ========================================
 // SUMMARY
 // ========================================
 
-function renderSummary() {
-
-  const cart = getCart();
+function renderSummary(cart) {
 
   let subtotal = 0;
   let hasRegular = false;
