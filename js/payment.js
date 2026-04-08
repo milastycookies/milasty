@@ -1,8 +1,8 @@
 // ========================================
-// MILASTY PAYMENT HANDLER
+// MILASTY PAYMENT HANDLER (UPDATED)
 // ========================================
 
-const API_BASE = "https://milasty.com";
+const API_BASE = "https://milasty-backend-production-5de1.up.railway.app";
 
 let paymentProcessing = false;
 
@@ -26,8 +26,11 @@ async function startCheckout() {
     const address =
       document.querySelector("textarea")?.value.trim() || "";
 
-    if (!name || !phone || !address) {
-      alert("Please fill name, phone and address.");
+    const pincode =
+      document.getElementById("pincode")?.value.trim() || "";
+
+    if (!name || !phone || !address || !pincode) {
+      alert("Please fill all details.");
       return;
     }
 
@@ -38,46 +41,38 @@ async function startCheckout() {
       return;
     }
 
-    let subtotal = 0;
-
-    cart.forEach(item => {
-
-      const price =
-        Number(item.price ??
-        item.variantPrice ??
-        item.priceInr ??
-        0);
-
-      const quantity =
-        Number(item.quantity ??
-        item.qty ??
-        1);
-
-      subtotal += price * quantity;
-
-    });
-
-    const delivery = subtotal >= 799 ? 0 : 60;
-    const total = subtotal + delivery;
-
-    if (!total || isNaN(total)) {
-      alert("Cart total calculation failed.");
-      return;
+    // 🔴 VALIDATE IDs
+    for (const item of cart) {
+      if (!item.id || item.id.length < 10) {
+        console.error("❌ Invalid product ID:", item);
+        alert("Cart error. Please refresh.");
+        return;
+      }
     }
 
     // ========================================
-    // CREATE RAZORPAY ORDER
+    // CREATE ORDER FIRST (BACKEND CALCULATES TOTAL)
     // ========================================
 
+    const items = cart.map(item => ({
+      product_id: item.id,
+      qty: item.qty
+    }));
+
     const orderResponse = await fetch(
-      API_BASE + "/create-payment-order",
+      API_BASE + "/create-order",
       {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
         },
         body: JSON.stringify({
-          cart: cart
+          name,
+          phone,
+          address,
+          pincode,
+          items,
+          token: Date.now().toString()
         })
       }
     );
@@ -85,35 +80,49 @@ async function startCheckout() {
     const orderData = await orderResponse.json();
 
     if (!orderResponse.ok) {
-
-      throw new Error(
-        orderData.error ||
-        "Backend rejected order creation"
-      );
-
+      throw new Error(orderData.error || "Order creation failed");
     }
 
-    if (!orderData.razorpayOrderId) {
-      throw new Error("Invalid order response from backend");
+    console.log("✅ Order created:", orderData.orderNumber);
+
+    // ========================================
+    // NOW CREATE PAYMENT ORDER (OPTIONAL FLOW)
+    // ========================================
+
+    const paymentOrder = await fetch(
+      API_BASE + "/create-payment-order",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          orderNumber: orderData.orderNumber
+        })
+      }
+    );
+
+    const paymentData = await paymentOrder.json();
+
+    if (!paymentOrder.ok) {
+      throw new Error("Payment order failed");
     }
 
     // ========================================
-    // OPEN RAZORPAY CHECKOUT
+    // RAZORPAY
     // ========================================
 
     const options = {
 
       key: "rzp_test_SP8e1esl7ob6bm",
 
-      amount: orderData.amount,
-
+      amount: paymentData.amount,
       currency: "INR",
 
       name: "MILASTY",
-
       description: "Millet Cookie Ritual",
 
-      order_id: orderData.razorpayOrderId,
+      order_id: paymentData.razorpayOrderId,
 
       handler: async function (response) {
 
@@ -121,15 +130,7 @@ async function startCheckout() {
 
         paymentProcessing = true;
 
-        await verifyPayment(response, {
-          name,
-          phone,
-          address,
-          cart,
-          subtotal,
-          delivery,
-          total
-        });
+        await verifyPayment(response, orderData.orderNumber);
 
       },
 
@@ -145,7 +146,6 @@ async function startCheckout() {
     };
 
     const rzp = new Razorpay(options);
-
     rzp.open();
 
   }
@@ -154,10 +154,7 @@ async function startCheckout() {
 
     console.error("Checkout error:", err);
 
-    alert(
-      "Checkout error:\n" +
-      err.message
-    );
+    alert("Checkout failed:\n" + err.message);
 
   }
 
@@ -169,7 +166,7 @@ async function startCheckout() {
 // VERIFY PAYMENT
 // ========================================
 
-async function verifyPayment(paymentData, orderData) {
+async function verifyPayment(paymentData, orderNumber) {
 
   try {
 
@@ -182,48 +179,28 @@ async function verifyPayment(paymentData, orderData) {
         },
         body: JSON.stringify({
 
-          razorpay_order_id:
-            paymentData.razorpay_order_id,
-
-          razorpay_payment_id:
-            paymentData.razorpay_payment_id,
-
-          razorpay_signature:
-            paymentData.razorpay_signature,
-
-          orderData
+          razorpay_order_id: paymentData.razorpay_order_id,
+          razorpay_payment_id: paymentData.razorpay_payment_id,
+          razorpay_signature: paymentData.razorpay_signature,
+          orderNumber
 
         })
       }
     );
 
-    if (!verifyResponse.ok) {
+    const result = await verifyResponse.json();
 
-      const text = await verifyResponse.text();
+    if (result.success) {
 
-      console.error("Verification error:", text);
-
-      throw new Error("Verification failed on server");
-
-    }
-
-    const verifyResult = await verifyResponse.json();
-
-    if (
-      verifyResult.success ||
-      verifyResult.status === "success"
-    ) {
-
-      alert("Payment successful! 🎉");
+      alert("Payment successful 🎉");
 
       clearCart();
 
       window.location.href = "/thankyou.html";
 
-    }
-    else {
+    } else {
 
-      alert("Payment verification failed.");
+      alert("Payment verification failed");
 
     }
 
@@ -248,7 +225,7 @@ async function verifyPayment(paymentData, orderData) {
 
 
 // ========================================
-// CONNECT CONTINUE BUTTON
+// CONNECT BUTTON
 // ========================================
 
 document.addEventListener("DOMContentLoaded", () => {
