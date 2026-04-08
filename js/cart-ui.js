@@ -118,7 +118,7 @@ function renderCart() {
   if (cart.length === 0) {
     cartItemsContainer.innerHTML =
       "<p style='text-align:center'>Your basket is empty</p>";
-    basketCount.innerText = "0";
+    if (basketCount) basketCount.innerText = "0";
     renderSummary();
     return;
   }
