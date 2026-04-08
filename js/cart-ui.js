@@ -9,6 +9,7 @@ let basketCount;
 let basket;
 
 let PRODUCT_MAP = {};
+let PRODUCT_SLUG_MAP = {};
 let PRODUCTS_LOADED = false;
 
 // ========================================
@@ -29,6 +30,7 @@ async function loadProducts() {
 
     data.forEach(p => {
       PRODUCT_MAP[p.id] = p;
+      PRODUCT_SLUG_MAP[p.slug] = p;
     });
 
     PRODUCTS_LOADED = true;
@@ -70,21 +72,21 @@ document.addEventListener("DOMContentLoaded", async () => {
 // ADD TO CART (DYNAMIC)
 // ========================================
 
-function addToCartDynamic(productId) {
+function addToCartDynamic(slug) {
 
   if (!PRODUCTS_LOADED) {
     console.warn("⏳ Products not ready");
     return;
   }
 
-  const product = PRODUCT_MAP[productId];
+  const product = PRODUCT_MAP[slug];
 
   if (!product) {
-    console.error("❌ Product not found:", productId);
+    console.error("❌ Product not found:", slug);
     return;
   }
 
-  addToCart(product.id);
+  addToCart(slug);
 }
 
 window.addToCartDynamic = addToCartDynamic;
@@ -137,7 +139,7 @@ function renderCart() {
 
   cart.forEach(item => {
 
-    const product = PRODUCT_MAP[item.id];
+    const product = PRODUCT_MAP[item.slug];
     if (!product) {
       console.error("❌ Missing product in PRODUCT_MAP:", item.id);
       removeItem(item.id);
@@ -162,8 +164,8 @@ function renderCart() {
       </div>
     `;
 
-    row.querySelector(".minus").onclick = () => changeQty(item.id, -1);
-    row.querySelector(".plus").onclick = () => changeQty(item.id, 1);
+    row.querySelector(".minus").onclick = () => changeQty(item.slug, -1);
+    row.querySelector(".plus").onclick = () => changeQty(item.slug, 1);
     row.querySelector(".remove-btn").onclick = () => removeItem(item.id);
 
     cartItemsContainer.appendChild(row);
@@ -186,10 +188,10 @@ function renderSummary(cart) {
   let hasRegular = false;
 
   cart.forEach(item => {
-    const product = PRODUCT_MAP[item.id];
+    const product = PRODUCT_MAP[item.slug];
     if (!product) {
-      console.error("❌ Missing product in PRODUCT_MAP:", item.id);
-      removeItem(item.id);
+      console.error("❌ Missing product in PRODUCT_MAP:", item.slug);
+      removeItem(item.slug);
       return;
     }
 
@@ -259,7 +261,7 @@ async function sendOrder() {
     }
 
     const items = cart.map(item => ({
-      product_id: item.id,
+      slug: item.slug,
       qty: item.qty
     }));
 
