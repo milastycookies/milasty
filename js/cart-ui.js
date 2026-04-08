@@ -47,6 +47,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   cartItemsContainer = document.getElementById("cart-items");
   cartSummaryContainer = document.getElementById("cart-summary");
   basketCount = document.getElementById("basket-count");
+  basket = document.querySelector(".floating-basket"); // ✅ only once
 
   const overlay = document.getElementById("cartOverlay");
   const basket = document.querySelector(".floating-basket");
