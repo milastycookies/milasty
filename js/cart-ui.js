@@ -1,5 +1,5 @@
 // ========================================
-// MILASTY CART UI (ID-BASED)
+// MILASTY CART UI (FINAL STABLE VERSION)
 // ========================================
 
 let drawer;
@@ -7,11 +7,39 @@ let cartItemsContainer;
 let cartSummaryContainer;
 let basketCount;
 
+let PRODUCT_MAP = {};
+let PRODUCTS_LOADED = false;
+
 // ========================================
-// INITIALIZE
+// LOAD PRODUCTS
 // ========================================
 
-document.addEventListener("DOMContentLoaded", () => {
+async function loadProducts() {
+  try {
+    const res = await fetch(
+      "https://milasty-backend-production-5de1.up.railway.app/products"
+    );
+
+    const data = await res.json();
+
+    data.forEach(p => {
+      PRODUCT_MAP[p.id] = p;
+    });
+
+    PRODUCTS_LOADED = true;
+
+    console.log("✅ Products loaded");
+
+  } catch (err) {
+    console.error("❌ Failed to load products", err);
+  }
+}
+
+// ========================================
+// INIT
+// ========================================
+
+document.addEventListener("DOMContentLoaded", async () => {
 
   drawer = document.getElementById("cartDrawer");
   cartItemsContainer = document.getElementById("cart-items");
@@ -24,6 +52,8 @@ document.addEventListener("DOMContentLoaded", () => {
   if (overlay) overlay.onclick = closeCart;
   if (basket) basket.addEventListener("click", openCart);
 
+  await loadProducts();
+
   renderCart();
 
   window.addEventListener("cartUpdated", renderCart);
@@ -31,30 +61,38 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 // ========================================
+// ADD TO CART (DYNAMIC)
+// ========================================
+
+function addToCartDynamic(productId) {
+
+  const product = PRODUCT_MAP[productId];
+
+  if (!product) {
+    console.error("❌ Product not found:", productId);
+    alert("Please wait, products are loading...");
+    return;
+  }
+
+  addToCart(product.id, product.name, product.price, product.type);
+}
+
+window.addToCartDynamic = addToCartDynamic;
+
+// ========================================
 // OPEN / CLOSE CART
 // ========================================
 
 function openCart() {
-  const overlay = document.getElementById("cartOverlay");
-  const basket = document.querySelector(".floating-basket");
-
-  if (overlay) overlay.classList.add("active");
-  if (drawer) drawer.classList.add("active");
-
+  document.getElementById("cartOverlay")?.classList.add("active");
+  drawer?.classList.add("active");
   document.body.classList.add("cart-open");
-
-  if (basket) basket.style.display = "none";
 }
 
 function closeCart() {
-  const overlay = document.getElementById("cartOverlay");
-  const basket = document.querySelector(".floating-basket");
-
-  if (overlay) overlay.classList.remove("active");
-  if (drawer) drawer.classList.remove("active");
-
+  document.getElementById("cartOverlay")?.classList.remove("active");
+  drawer?.classList.remove("active");
   document.body.classList.remove("cart-open");
-
   renderCart();
 }
 
@@ -64,15 +102,13 @@ function closeCart() {
 
 function renderCart() {
 
+  if (!PRODUCTS_LOADED) return;
+
   const cart = getCart();
   const basket = document.querySelector(".floating-basket");
 
   if (basket) {
-    if (document.body.classList.contains("cart-open")) {
-      basket.style.display = "none";
-    } else {
-      basket.style.display = cart.length > 0 ? "flex" : "none";
-    }
+    basket.style.display = cart.length > 0 ? "flex" : "none";
   }
 
   if (!cartItemsContainer) return;
@@ -80,91 +116,73 @@ function renderCart() {
   cartItemsContainer.innerHTML = "";
 
   if (cart.length === 0) {
-
     cartItemsContainer.innerHTML =
       "<p style='text-align:center'>Your basket is empty</p>";
-
-    if (basketCount) basketCount.innerText = "0";
-
+    basketCount.innerText = "0";
     renderSummary();
     return;
   }
 
   cart.forEach(item => {
 
+    const product = PRODUCT_MAP[item.id];
+    if (!product) return;
+
     const row = document.createElement("div");
     row.className = "cart-item";
 
     row.innerHTML = `
-      <div class="cart-item-name">${item.name}</div>
-
+      <div class="cart-item-name">${product.name}</div>
       <div class="cart-item-controls">
-
         <div class="cart-item-qty">
-          <button class="qty-btn minus">−</button>
+          <button class="minus">−</button>
           <span>${item.qty}</span>
-          <button class="qty-btn plus">+</button>
+          <button class="plus">+</button>
         </div>
-
         <div class="cart-item-price">
-          ₹${item.price * item.qty}
+          ₹${product.price * item.qty}
         </div>
-
         <button class="remove-btn">Remove</button>
-
       </div>
     `;
 
-    row.querySelector(".minus").onclick = () => {
-      changeQty(item.id, -1);   // 🔥 FIXED
-    };
-
-    row.querySelector(".plus").onclick = () => {
-      changeQty(item.id, 1);    // 🔥 FIXED
-    };
-
-    row.querySelector(".remove-btn").onclick = () => {
-      removeItem(item.id);      // 🔥 FIXED
-    };
+    row.querySelector(".minus").onclick = () => changeQty(item.id, -1);
+    row.querySelector(".plus").onclick = () => changeQty(item.id, 1);
+    row.querySelector(".remove-btn").onclick = () => removeItem(item.id);
 
     cartItemsContainer.appendChild(row);
 
   });
 
-  if (basketCount) {
-    basketCount.innerText = getCartCount();
-  }
-
+  basketCount.innerText = getCartCount();
   renderSummary();
 }
 
 // ========================================
-// DELIVERY LOGIC (UI ONLY)
-// ========================================
-
-function getDeliveryCharge(cartTotal, cart) {
-
-  if (cartTotal >= 799) return 0;
-
-  const hasRegular = cart.some(item => item.type === "regular");
-
-  if (hasRegular) return 60;
-
-  return 0;
-}
-
-// ========================================
-// RENDER SUMMARY
+// SUMMARY
 // ========================================
 
 function renderSummary() {
 
-  if (!cartSummaryContainer) return;
-
   const cart = getCart();
 
-  const subtotal = getCartTotal();
-  const delivery = getDeliveryCharge(subtotal, cart);
+  let subtotal = 0;
+  let hasRegular = false;
+
+  cart.forEach(item => {
+    const product = PRODUCT_MAP[item.id];
+    if (!product) return;
+
+    subtotal += product.price * item.qty;
+
+    if (product.type === "regular") {
+      hasRegular = true;
+    }
+  });
+
+  let delivery = 0;
+  if (subtotal < 799 && hasRegular) delivery = 60;
+
   const total = subtotal + delivery;
 
   cartSummaryContainer.innerHTML = `
@@ -172,12 +190,10 @@ function renderSummary() {
       <span>Subtotal</span>
       <span>₹${subtotal}</span>
     </div>
-
     <div class="cart-summary-row">
       <span>Delivery</span>
       <span>${delivery === 0 ? "Free" : "₹" + delivery}</span>
     </div>
-
     <div class="cart-summary-total">
       <span>Total</span>
       <span>₹${total}</span>
@@ -185,169 +201,71 @@ function renderSummary() {
   `;
 }
 
-
 // ========================================
-// MOBILE FLOW → SHOW DELIVERY FORM
+// DELIVERY FLOW (RESTORED)
 // ========================================
 
 function showDelivery() {
-
-  const items = document.getElementById("cart-items");
-  const continueBtn = document.querySelector(".continue-btn");
-  const deliverySection = document.getElementById("delivery-section");
-
-  if (items) items.style.display = "none";
-  if (continueBtn) continueBtn.style.display = "none";
-
-  if (deliverySection) deliverySection.style.display = "block";
-
-  if (drawer) drawer.scrollTop = 0;
+  document.getElementById("cart-items").style.display = "none";
+  document.querySelector(".continue-btn").style.display = "none";
+  document.getElementById("delivery-section").style.display = "block";
 }
-
-
-// ========================================
-// MOBILE FLOW → BACK TO CART
-// ========================================
 
 function showCartItems() {
-
-  const items = document.getElementById("cart-items");
-  const continueBtn = document.querySelector(".continue-btn");
-  const deliverySection = document.getElementById("delivery-section");
-
-  if (items) items.style.display = "block";
-  if (continueBtn) continueBtn.style.display = "block";
-
-  if (deliverySection) deliverySection.style.display = "none";
-
-  if (drawer) drawer.scrollTop = 0;
-}
-
-
-// ========================================
-// GUIDELINES POPUP
-// ========================================
-
-function openGuidelines() {
-
-  const overlay = document.getElementById("guidelinesOverlay");
-
-  if (overlay) overlay.style.display = "flex";
-
-  const cart = document.querySelector(".cart-drawer");
-  if (cart) cart.style.display = "none";
-}
-
-function closeGuidelines() {
-
-  const overlay = document.getElementById("guidelinesOverlay");
-
-  if (overlay) overlay.style.display = "none";
-
-  const cart = document.querySelector(".cart-drawer");
-  if (cart) cart.style.display = "flex";
-}
-
-function confirmGuidelines() {
-
-  const overlay = document.getElementById("guidelinesOverlay");
-
-  if (overlay) overlay.style.display = "none";
-
-  const cart = document.querySelector(".cart-drawer");
-  if (cart) cart.style.display = "flex";
-
-  sendOrder();
+  document.getElementById("cart-items").style.display = "block";
+  document.querySelector(".continue-btn").style.display = "block";
+  document.getElementById("delivery-section").style.display = "none";
 }
 
 // ========================================
-// SEND ORDER (FINAL FIXED VERSION)
+// SEND ORDER
 // ========================================
 
 async function sendOrder() {
   try {
-    const name = document.getElementById("name")?.value.trim();
-    const phone = document.getElementById("phone")?.value.trim();
-    const address = document.getElementById("address")?.value.trim();
-    const pincode = document.getElementById("pincode")?.value.trim();
 
-    const cart = window.getCart();
+    const name = document.getElementById("name").value.trim();
+    const phone = document.getElementById("phone").value.trim();
+    const address = document.getElementById("address").value.trim();
+    const pincode = document.getElementById("pincode").value.trim();
+
+    const cart = getCart();
 
     if (!name || !phone || !address || !pincode) {
       alert("Please fill all details");
       return;
     }
 
-    if (!cart || cart.length === 0) {
-      alert("Cart is empty");
-      return;
-    }
-
-    // 🔴 STRICT VALIDATION (VERY IMPORTANT)
-    for (const item of cart) {
-      if (!item.id || item.id.length < 10) {
-        console.error("❌ Invalid product ID:", item);
-        alert("Cart error. Please refresh and try again.");
-        return;
-      }
-    }
-
-    // 🔥 SEND ONLY product_id + qty
     const items = cart.map(item => ({
-      product_id: item.id,   // ✅ FIXED
+      product_id: item.id,
       qty: item.qty
     }));
 
-    const response = await fetch(
+    const res = await fetch(
       "https://milasty-backend-production-5de1.up.railway.app/create-order",
       {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
+        headers: {"Content-Type": "application/json"},
         body: JSON.stringify({
-          name,
-          phone,
-          address,
-          pincode,
+          name, phone, address, pincode,
           items,
           token: Date.now().toString()
         })
       }
     );
 
-    const result = await response.json();
-
-    if (!response.ok) {
-      console.error("Backend error:", result);
-      throw new Error(result.error || "Order failed");
-    }
-
-    console.log("✅ Order stored:", result.orderNumber);
-
-    // WhatsApp message (UI only)
-    let message = `Hi MILASTY, I want to confirm my order:\n\n`;
-
-    cart.forEach(item => {
-      message += `• ${item.name} x${item.qty}\n`;
-    });
-
-    message += `\nName: ${name}`;
-    message += `\nPhone: ${phone}`;
-    message += `\nAddress: ${address}`;
-    if (pincode) message += ` (${pincode})`;
-
-    const encoded = encodeURIComponent(message);
-
-    window.open(`https://wa.me/918927142056?text=${encoded}`, "_blank");
+    if (!res.ok) throw new Error("Order failed");
 
     window.clearCart();
 
+    alert("Order placed successfully!");
+
   } catch (err) {
-    console.error("ORDER ERROR:", err);
-    alert("Order failed. Please try again.");
+    console.error(err);
+    alert("Order failed");
   }
 }
+
 // ========================================
 // GLOBAL
 // ========================================
