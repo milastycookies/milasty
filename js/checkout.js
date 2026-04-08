@@ -1,5 +1,5 @@
 // ========================================
-// MILASTY CHECKOUT CONTROLLER
+// MILASTY CHECKOUT CONTROLLER (SIMPLIFIED)
 // ========================================
 
 let checkoutRunning = false;
@@ -10,18 +10,17 @@ async function startCheckout(orderToken){
 
   checkoutRunning = true;
 
-  const name = document.getElementById("name").value;
-  const phone = document.getElementById("phone").value;
-  const address = document.getElementById("address").value;
+  const name = document.getElementById("name")?.value.trim();
+  const phone = document.getElementById("phone")?.value.trim();
+  const address = document.getElementById("address")?.value.trim();
+  const pincode = document.getElementById("pincode")?.value.trim();
 
-  if(!name || !phone || !address){
+  if(!name || !phone || !address || !pincode){
 
     alert("Please fill all details");
 
     checkoutRunning = false;
-
     return;
-
   }
 
   const cart = getCart();
@@ -31,90 +30,79 @@ async function startCheckout(orderToken){
     alert("Your cart is empty");
 
     checkoutRunning = false;
-
     return;
-
   }
 
-  /* -----------------------------
-     CALCULATE TOTAL
-  ----------------------------- */
+  // 🔴 STRICT VALIDATION
+  for (const item of cart) {
+    if (!item.id || item.id.length < 10) {
+      console.error("❌ Invalid product ID:", item);
+      alert("Cart error. Please refresh and try again.");
+      checkoutRunning = false;
+      return;
+    }
+  }
 
-  let subtotal = 0;
-  let freeDelivery = false;
+  // 🔥 ONLY SEND product_id + qty
+  const items = cart.map(item => ({
+    product_id: item.id,
+    qty: item.qty
+  }));
 
-  cart.forEach(item => {
+  try {
 
-    subtotal += item.price * item.qty;
+    const response = await fetch(
+      "https://milasty-backend-production-5de1.up.railway.app/create-order",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          name,
+          phone,
+          address,
+          pincode,
+          items,
+          token: orderToken || Date.now().toString()
+        })
+      }
+    );
 
-    if(item.type === "gift"){
-      freeDelivery = true;
+    const result = await response.json();
+
+    if (!response.ok) {
+      console.error("Backend error:", result);
+      throw new Error(result.error || "Order failed");
     }
 
-  });
+    console.log("✅ Order created:", result.orderNumber);
 
-  let delivery = 60;
+    // ✅ WhatsApp confirmation
+    let message = `Hi MILASTY, I want to confirm my order:\n\n`;
 
-  if(subtotal >= 799 || freeDelivery){
-    delivery = 0;
+    cart.forEach(item => {
+      message += `• ${item.name} x${item.qty}\n`;
+    });
+
+    message += `\nName: ${name}`;
+    message += `\nPhone: ${phone}`;
+    message += `\nAddress: ${address}`;
+    if (pincode) message += ` (${pincode})`;
+
+    const encoded = encodeURIComponent(message);
+
+    window.open(`https://wa.me/918927142056?text=${encoded}`, "_blank");
+
+    clearCart();
+
+  } catch (err) {
+
+    console.error("ORDER ERROR:", err);
+    alert("Order failed. Please try again.");
+
+  } finally {
+    checkoutRunning = false;
   }
-
-  const finalTotal = subtotal + delivery;
-
-  /* -----------------------------
-     DATE & TIME
-  ----------------------------- */
-
-  const now = new Date();
-
-  const orderDate =
-  now.toISOString().split("T")[0];
-
-  const orderTime =
-  now.toLocaleTimeString("en-IN",{
-    hour:"2-digit",
-    minute:"2-digit",
-    second:"2-digit",
-    hour12:false
-  });
-
-  /* -----------------------------
-     ORDER OBJECT
-  ----------------------------- */
-
-  const orderData = {
-
-    token: orderToken,
-
-    date: orderDate,
-    time: orderTime,
-    timestamp: Date.now(),
-
-    name,
-    phone,
-    address,
-
-    items: cart,
-
-    subtotal,
-    delivery,
-    total: finalTotal,
-
-    source: "milasty_website"
-
-  };
-
-  /* -----------------------------
-     CREATE PAYMENT ORDER
-  ----------------------------- */
-
-  const paymentOrder =
-  await createPaymentOrder(finalTotal);
-
-  /* -----------------------------
-     START PAYMENT
-  ----------------------------- */
-
-  startPayment(paymentOrder, orderData);
 
 }
