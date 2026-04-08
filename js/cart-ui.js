@@ -32,6 +32,7 @@ async function loadProducts() {
 
   } catch (err) {
     console.error("❌ Failed to load products", err);
+    PRODUCTS_LOADED = true; // 🔥 allow UI to render (even empty)
   }
 }
 
