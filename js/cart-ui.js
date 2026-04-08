@@ -67,11 +67,15 @@ document.addEventListener("DOMContentLoaded", async () => {
 
 function addToCartDynamic(productId) {
 
+  if (!PRODUCTS_LOADED) {
+    console.warn("⏳ Products not ready");
+    return;
+  }
+
   const product = PRODUCT_MAP[productId];
 
   if (!product) {
     console.error("❌ Product not found:", productId);
-    alert("Please wait, products are loading...");
     return;
   }
 
