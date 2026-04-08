@@ -102,7 +102,10 @@ function closeCart() {
 
 function renderCart() {
 
-  if (!PRODUCTS_LOADED) return;
+  if (!PRODUCTS_LOADED) {
+    console.warn("⏳ Waiting for products...");
+    return;
+  }
 
   const cart = getCart();
   const basket = document.querySelector(".floating-basket");
