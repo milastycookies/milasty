@@ -11,7 +11,16 @@ let lastOrderData = null;
 // MAIN CHECKOUT FLOW
 // ========================================
 window.handleOrder = async function () {
-  await startCheckout();
+
+  const btn = document.getElementById("orderBtn");
+  if (btn) btn.disabled = true;
+
+  try {
+    await startCheckout();
+  } finally {
+    if (btn) btn.disabled = false;
+  }
+
 };
 
 // ========================================
