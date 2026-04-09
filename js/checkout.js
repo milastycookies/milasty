@@ -26,6 +26,12 @@ window.handleOrder = async function () {
     await startCheckout();
   } catch (err) {
     console.error(err);
+    alert("Something went wrong");
+    const btn = document.getElementById("orderBtn");
+    if (btn) {
+      btn.disabled = false;
+      btn.innerText = "Send Order on WhatsApp";
+    }
   } finally {
     // ❗ Do NOT re-enable immediately
     // Let flow complete (popup → confirm → WhatsApp/payment)
@@ -60,16 +66,6 @@ window.confirmGuidelines = function () {
   // confirmOrderAndSendWhatsApp();
 };
 
-
-catch (err) {
-  alert("Something went wrong");
-
-  const btn = document.getElementById("orderBtn");
-  if (btn) {
-    btn.disabled = false;
-    btn.innerText = "Send Order on WhatsApp";
-  }
-}
 
 // ========================================
 // CHECKOUT FUNCTION
