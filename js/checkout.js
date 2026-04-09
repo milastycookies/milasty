@@ -106,7 +106,8 @@ async function startCheckout(orderToken){
       phone,
       address,
       pincode,
-      cart
+      cart,
+      orderNumber: result.orderNumber
     };
 
     // ✅ SHOW GUIDELINES POPUP
