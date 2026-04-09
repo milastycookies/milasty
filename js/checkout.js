@@ -13,12 +13,22 @@ let lastOrderData = null;
 window.handleOrder = async function () {
 
   const btn = document.getElementById("orderBtn");
-  if (btn) btn.disabled = true;
+
+  // 🚫 Prevent double click
+  if (btn && btn.disabled) return;
+
+  if (btn) {
+    btn.disabled = true;
+    btn.innerText = "Processing...";
+  }
 
   try {
     await startCheckout();
+  } catch (err) {
+    console.error(err);
   } finally {
-    if (btn) btn.disabled = false;
+    // ❗ Do NOT re-enable immediately
+    // Let flow complete (popup → confirm → WhatsApp/payment)
   }
 
 };
