@@ -41,31 +41,6 @@ window.handleOrder = async function () {
 
 
 
-window.confirmGuidelines = function () {
-
-  const confirmBtn = document.getElementById("confirmBtn");
-
-  // 🚫 Prevent double click
-  if (confirmBtn && confirmBtn.disabled) return;
-
-  if (confirmBtn) {
-    confirmBtn.disabled = true;
-    confirmBtn.innerText = "Please wait...";
-  }
-
-  // Close popup
-  const el = document.getElementById("guidelinesOverlay");
-  if (el) el.style.display = "none";
-
-  // 👉 Choose your flow
-
-  // For Razorpay:
-  startCheckout();
-
-  // OR for WhatsApp:
-  // confirmOrderAndSendWhatsApp();
-};
-
 
 // ========================================
 // CHECKOUT FUNCTION
