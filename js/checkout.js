@@ -1,5 +1,5 @@
 // ========================================
-// MILASTY CHECKOUT CONTROLLER (SIMPLIFIED)
+// MILASTY CHECKOUT CONTROLLER (FINAL FIXED)
 // ========================================
 
 let checkoutRunning = false;
@@ -24,7 +24,7 @@ window.handleOrder = async function () {
 };
 
 // ========================================
-// CHECKOUT FUNCTION (MODIFIED)
+// CHECKOUT FUNCTION
 // ========================================
 async function startCheckout(orderToken){
 
@@ -38,9 +38,7 @@ async function startCheckout(orderToken){
   const pincode = document.getElementById("pincode")?.value.trim();
 
   if(!name || !phone || !address || !pincode){
-
     alert("Please fill all details");
-
     checkoutRunning = false;
     return;
   }
@@ -48,26 +46,24 @@ async function startCheckout(orderToken){
   const cart = getCart();
 
   if(cart.length === 0){
-
     alert("Your cart is empty");
-
     checkoutRunning = false;
     return;
   }
 
-  // 🔴 STRICT VALIDATION
+  // ✅ VALIDATE USING SLUG (CORRECT)
   for (const item of cart) {
-    if (!item.id || item.id.length < 10) {
-      console.error("❌ Invalid product ID:", item);
+    if (!item.slug || typeof item.slug !== "string") {
+      console.error("❌ Invalid product slug:", item);
       alert("Cart error. Please refresh and try again.");
       checkoutRunning = false;
       return;
     }
   }
 
-  // 🔥 ONLY SEND product_id + qty
+  // ✅ SEND SLUG AS product_id
   const items = cart.map(item => ({
-    product_id: item.id,
+    product_id: item.slug,
     qty: item.qty
   }));
 
@@ -100,7 +96,7 @@ async function startCheckout(orderToken){
 
     console.log("✅ Order created:", result.orderNumber);
 
-    // ✅ STORE DATA FOR WHATSAPP (instead of sending immediately)
+    // ✅ STORE DATA FOR WHATSAPP
     lastOrderData = {
       name,
       phone,
@@ -114,10 +110,8 @@ async function startCheckout(orderToken){
     openGuidelines();
 
   } catch (err) {
-
     console.error("ORDER ERROR:", err);
     alert("Order failed. Please try again.");
-
   } finally {
     checkoutRunning = false;
   }
@@ -155,8 +149,13 @@ window.confirmOrderAndSendWhatsApp = function () {
     message += `Order ID: ${orderNumber}\n\n`;
   }
 
+  // ✅ USE PRODUCT MAP (from cart-ui.js)
   cart.forEach(item => {
-    message += `• ${item.name} x${item.qty}\n`;
+    const product = window.PRODUCT_SLUG_MAP?.[item.slug];
+
+    const productName = product ? product.name : item.slug;
+
+    message += `• ${productName} x${item.qty}\n`;
   });
 
   message += `\nName: ${name}`;
