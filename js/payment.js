@@ -41,10 +41,10 @@ async function startCheckout() {
       return;
     }
 
-    // 🔴 VALIDATE IDs
+    // 🔴 VALIDATE using slug
     for (const item of cart) {
-      if (!item.id || item.id.length < 10) {
-        console.error("❌ Invalid product ID:", item);
+      if (!item.slug || typeof item.slug !== "string") {
+        console.error("❌ Invalid product slug:", item);
         alert("Cart error. Please refresh.");
         return;
       }
@@ -55,7 +55,7 @@ async function startCheckout() {
     // ========================================
 
     const items = cart.map(item => ({
-      product_id: item.id,
+      product_id: item.slug,
       qty: item.qty
     }));
 
