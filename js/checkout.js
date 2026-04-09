@@ -1,10 +1,8 @@
 // ========================================
-// MILASTY CHECKOUT CONTROLLER (FINAL FIXED)
+// MILASTY CHECKOUT CONTROLLER (FINAL CLEAN)
 // ========================================
 
 let checkoutRunning = false;
-
-// 🌟 STORE LAST ORDER DATA (for WhatsApp after guidelines)
 let lastOrderData = null;
 
 // ========================================
@@ -27,19 +25,15 @@ window.handleOrder = async function () {
   } catch (err) {
     console.error(err);
     alert("Something went wrong");
-    const btn = document.getElementById("orderBtn");
+
+    // 🔁 Re-enable on failure
     if (btn) {
       btn.disabled = false;
       btn.innerText = "Send Order on WhatsApp";
     }
-  } finally {
-    // ❗ Do NOT re-enable immediately
-    // Let flow complete (popup → confirm → WhatsApp/payment)
   }
 
 };
-
-
 
 
 // ========================================
@@ -47,7 +41,7 @@ window.handleOrder = async function () {
 // ========================================
 async function startCheckout(orderToken){
 
-  if(checkoutRunning) return;
+  if (checkoutRunning) return;
 
   checkoutRunning = true;
 
@@ -56,31 +50,36 @@ async function startCheckout(orderToken){
   const address = document.getElementById("address")?.value.trim();
   const pincode = document.getElementById("pincode")?.value.trim();
 
-  if(!name || !phone || !address || !pincode){
+  if (!name || !phone || !address || !pincode) {
     alert("Please fill all details");
     checkoutRunning = false;
+
+    resetOrderButton();
     return;
   }
 
   const cart = getCart();
 
-  if(cart.length === 0){
+  if (!cart || cart.length === 0) {
     alert("Your cart is empty");
     checkoutRunning = false;
+
+    resetOrderButton();
     return;
   }
 
-  // ✅ VALIDATE USING SLUG (CORRECT)
+  // ✅ VALIDATE SLUG
   for (const item of cart) {
     if (!item.slug || typeof item.slug !== "string") {
       console.error("❌ Invalid product slug:", item);
       alert("Cart error. Please refresh and try again.");
       checkoutRunning = false;
+
+      resetOrderButton();
       return;
     }
   }
 
-  // ✅ SEND SLUG AS product_id
   const items = cart.map(item => ({
     product_id: item.slug,
     qty: item.qty
@@ -115,7 +114,7 @@ async function startCheckout(orderToken){
 
     console.log("✅ Order created:", result.orderNumber);
 
-    // ✅ STORE DATA FOR WHATSAPP
+    // ✅ Store order for WhatsApp
     lastOrderData = {
       name,
       phone,
@@ -125,20 +124,24 @@ async function startCheckout(orderToken){
       orderNumber: result.orderNumber
     };
 
-    // ✅ SHOW GUIDELINES POPUP
     openGuidelines();
 
   } catch (err) {
+
     console.error("ORDER ERROR:", err);
     alert("Order failed. Please try again.");
+
+    resetOrderButton();
+
   } finally {
     checkoutRunning = false;
   }
 
 }
 
+
 // ========================================
-// GUIDELINES POPUP CONTROLS
+// POPUP CONTROLS
 // ========================================
 window.openGuidelines = function () {
   const el = document.getElementById("guidelinesOverlay");
@@ -150,13 +153,26 @@ window.closeGuidelines = function () {
   if (el) el.style.display = "none";
 };
 
+
 // ========================================
 // FINAL CONFIRM → WHATSAPP
 // ========================================
 window.confirmOrderAndSendWhatsApp = function () {
 
+  const btn = document.getElementById("confirmBtn");
+
+  // 🚫 Prevent double click
+  if (btn && btn.disabled) return;
+
+  if (btn) {
+    btn.disabled = true;
+    btn.innerText = "Please wait...";
+  }
+
   if (!lastOrderData) {
     alert("Something went wrong. Please try again.");
+
+    resetConfirmButton();
     return;
   }
 
@@ -168,10 +184,8 @@ window.confirmOrderAndSendWhatsApp = function () {
     message += `Order ID: ${orderNumber}\n\n`;
   }
 
-  // ✅ USE PRODUCT MAP (from cart-ui.js)
   cart.forEach(item => {
     const product = window.PRODUCT_SLUG_MAP?.[item.slug];
-
     const productName = product ? product.name : item.slug;
 
     message += `• ${productName} x${item.qty}\n`;
@@ -186,9 +200,29 @@ window.confirmOrderAndSendWhatsApp = function () {
 
   window.open(`https://wa.me/918927142056?text=${encoded}`, "_blank");
 
-  // ✅ CLEANUP
+  // ✅ Cleanup
   clearCart();
   lastOrderData = null;
 
   closeGuidelines();
 };
+
+
+// ========================================
+// HELPERS
+// ========================================
+function resetOrderButton() {
+  const btn = document.getElementById("orderBtn");
+  if (btn) {
+    btn.disabled = false;
+    btn.innerText = "Send Order on WhatsApp";
+  }
+}
+
+function resetConfirmButton() {
+  const btn = document.getElementById("confirmBtn");
+  if (btn) {
+    btn.disabled = false;
+    btn.innerText = "I Understand & Continue";
+  }
+}
