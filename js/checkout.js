@@ -146,9 +146,13 @@ window.confirmOrderAndSendWhatsApp = function () {
     return;
   }
 
-  const { name, phone, address, pincode, cart } = lastOrderData;
+  const { name, phone, address, pincode, cart, orderNumber } = lastOrderData;
 
   let message = `Hi MILASTY, I want to confirm my order:\n\n`;
+
+  if (orderNumber) {
+    message += `Order ID: ${orderNumber}\n\n`;
+  }
 
   cart.forEach(item => {
     message += `• ${item.name} x${item.qty}\n`;
