@@ -4,6 +4,19 @@
 
 let checkoutRunning = false;
 
+// 🌟 STORE LAST ORDER DATA (for WhatsApp after guidelines)
+let lastOrderData = null;
+
+// ========================================
+// MAIN CHECKOUT FLOW
+// ========================================
+window.handleOrder = async function () {
+  await startCheckout();
+};
+
+// ========================================
+// CHECKOUT FUNCTION (MODIFIED)
+// ========================================
 async function startCheckout(orderToken){
 
   if(checkoutRunning) return;
@@ -78,23 +91,17 @@ async function startCheckout(orderToken){
 
     console.log("✅ Order created:", result.orderNumber);
 
-    // ✅ WhatsApp confirmation
-    let message = `Hi MILASTY, I want to confirm my order:\n\n`;
+    // ✅ STORE DATA FOR WHATSAPP (instead of sending immediately)
+    lastOrderData = {
+      name,
+      phone,
+      address,
+      pincode,
+      cart
+    };
 
-    cart.forEach(item => {
-      message += `• ${item.name} x${item.qty}\n`;
-    });
-
-    message += `\nName: ${name}`;
-    message += `\nPhone: ${phone}`;
-    message += `\nAddress: ${address}`;
-    if (pincode) message += ` (${pincode})`;
-
-    const encoded = encodeURIComponent(message);
-
-    window.open(`https://wa.me/918927142056?text=${encoded}`, "_blank");
-
-    clearCart();
+    // ✅ SHOW GUIDELINES POPUP
+    openGuidelines();
 
   } catch (err) {
 
@@ -106,3 +113,50 @@ async function startCheckout(orderToken){
   }
 
 }
+
+// ========================================
+// GUIDELINES POPUP CONTROLS
+// ========================================
+window.openGuidelines = function () {
+  const el = document.getElementById("guidelinesOverlay");
+  if (el) el.style.display = "flex";
+};
+
+window.closeGuidelines = function () {
+  const el = document.getElementById("guidelinesOverlay");
+  if (el) el.style.display = "none";
+};
+
+// ========================================
+// FINAL CONFIRM → WHATSAPP
+// ========================================
+window.confirmOrderAndSendWhatsApp = function () {
+
+  if (!lastOrderData) {
+    alert("Something went wrong. Please try again.");
+    return;
+  }
+
+  const { name, phone, address, pincode, cart } = lastOrderData;
+
+  let message = `Hi MILASTY, I want to confirm my order:\n\n`;
+
+  cart.forEach(item => {
+    message += `• ${item.name} x${item.qty}\n`;
+  });
+
+  message += `\nName: ${name}`;
+  message += `\nPhone: ${phone}`;
+  message += `\nAddress: ${address}`;
+  if (pincode) message += ` (${pincode})`;
+
+  const encoded = encodeURIComponent(message);
+
+  window.open(`https://wa.me/918927142056?text=${encoded}`, "_blank");
+
+  // ✅ CLEANUP
+  clearCart();
+  lastOrderData = null;
+
+  closeGuidelines();
+};
