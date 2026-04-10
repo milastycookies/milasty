@@ -1,5 +1,5 @@
 // ========================================
-// MILASTY CART UI (FINAL STABLE VERSION)
+// MILASTY CART UI
 // ========================================
 
 let drawer;
@@ -12,20 +12,25 @@ let PRODUCT_MAP = {};
 let PRODUCT_SLUG_MAP = {};
 let PRODUCTS_LOADED = false;
 
+// Expose so checkout.js can build WhatsApp messages
+window.PRODUCT_SLUG_MAP = PRODUCT_SLUG_MAP;
+
+
 // ========================================
-// LOAD PRODUCTS
+// LOAD PRODUCTS FROM BACKEND
 // ========================================
 
 async function loadProducts() {
-  try {
-    const res = await fetch(
-      "https://milasty-backend-production-5de1.up.railway.app/products"
-    );
 
-    if (!res.ok) {
-      throw new Error("Failed to fetch products");
-    }
-    
+  try {
+
+    const API_BASE = window.MILASTY_CONFIG?.API_BASE ||
+      "https://milasty-backend-production-5de1.up.railway.app";
+
+    const res = await fetch(API_BASE + "/products");
+
+    if (!res.ok) throw new Error("Failed to fetch products");
+
     const data = await res.json();
 
     data.forEach(p => {
@@ -33,15 +38,24 @@ async function loadProducts() {
       PRODUCT_SLUG_MAP[p.slug] = p;
     });
 
+    // Keep window reference in sync
+    window.PRODUCT_SLUG_MAP = PRODUCT_SLUG_MAP;
+
     PRODUCTS_LOADED = true;
 
-    console.log("✅ Products loaded");
+    console.log("Products loaded:", data.length);
 
   } catch (err) {
-    console.error("❌ Failed to load products", err);
-    PRODUCTS_LOADED = true; // 🔥 allow UI to render (even empty)
+
+    console.error("Failed to load products:", err);
+
+    // Allow UI to render even if products fail to load
+    PRODUCTS_LOADED = true;
+
   }
+
 }
+
 
 // ========================================
 // INIT
@@ -53,7 +67,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   cartItemsContainer = document.getElementById("cart-items");
   cartSummaryContainer = document.getElementById("cart-summary");
   basketCount = document.getElementById("basket-count");
-  basket = document.querySelector(".floating-basket"); // ✅ only once
+  basket = document.querySelector(".floating-basket");
 
   const overlay = document.getElementById("cartOverlay");
 
@@ -68,31 +82,34 @@ document.addEventListener("DOMContentLoaded", async () => {
 
 });
 
+
 // ========================================
-// ADD TO CART (DYNAMIC)
+// ADD TO CART (DYNAMIC — slug-aware)
 // ========================================
 
 function addToCartDynamic(slug) {
 
   if (!PRODUCTS_LOADED) {
-    console.warn("⏳ Products not ready");
+    console.warn("Products not ready yet");
     return;
   }
 
   const product = PRODUCT_SLUG_MAP[slug];
 
   if (!product) {
-    console.error("❌ Product not found:", slug);
+    console.error("Product not found:", slug);
     return;
   }
 
   addToCart(slug);
+
 }
 
 window.addToCartDynamic = addToCartDynamic;
 
+
 // ========================================
-// OPEN / CLOSE CART
+// OPEN / CLOSE
 // ========================================
 
 function openCart() {
@@ -108,6 +125,7 @@ function closeCart() {
   renderCart();
 }
 
+
 // ========================================
 // RENDER CART
 // ========================================
@@ -115,7 +133,7 @@ function closeCart() {
 function renderCart() {
 
   if (!PRODUCTS_LOADED) {
-    console.warn("⏳ Waiting for products...");
+    console.warn("Waiting for products...");
     return;
   }
 
@@ -140,8 +158,9 @@ function renderCart() {
   cart.forEach(item => {
 
     const product = PRODUCT_SLUG_MAP[item.slug];
+
     if (!product) {
-      console.error("❌ Missing product in PRODUCT_SLUG_MAP:", item.slug);
+      console.error("Missing product in PRODUCT_SLUG_MAP:", item.slug);
       removeItem(item.slug);
       return;
     }
@@ -175,8 +194,11 @@ function renderCart() {
   if (basketCount) {
     basketCount.innerText = getCartCount();
   }
+
   renderSummary(cart);
+
 }
+
 
 // ========================================
 // SUMMARY
@@ -188,27 +210,24 @@ function renderSummary(cart) {
   let hasRegular = false;
 
   cart.forEach(item => {
+
     const product = PRODUCT_SLUG_MAP[item.slug];
-    if (!product) {
-      console.error("❌ Missing product in PRODUCT_SLUG_MAP:", item.slug);
-      removeItem(item.slug);
-      return;
-    }
+
+    if (!product) return;
 
     subtotal += product.price * item.qty;
 
-    if (product.type === "regular") {
+    if (product.type !== "gift") {
       hasRegular = true;
     }
+
   });
 
-  let delivery = 0;
-  if (subtotal < 799 && hasRegular) delivery = 60;
-
+  const delivery = (subtotal < 799 && hasRegular) ? 60 : 0;
   const total = subtotal + delivery;
 
   if (!cartSummaryContainer) return;
-  
+
   cartSummaryContainer.innerHTML = `
     <div class="cart-summary-row">
       <span>Subtotal</span>
@@ -223,10 +242,12 @@ function renderSummary(cart) {
       <span>₹${total}</span>
     </div>
   `;
+
 }
 
+
 // ========================================
-// DELIVERY FLOW (RESTORED)
+// DELIVERY SECTION TOGGLE
 // ========================================
 
 function showDelivery() {
@@ -241,17 +262,21 @@ function showCartItems() {
   document.getElementById("delivery-section").style.display = "none";
 }
 
+
 // ========================================
-// SEND ORDER
+// SEND ORDER (WhatsApp flow)
+// Sends items using product_id (slug) as
+// expected by the /create-order endpoint.
 // ========================================
 
 async function sendOrder() {
+
   try {
 
-    const name = document.getElementById("name").value.trim();
-    const phone = document.getElementById("phone").value.trim();
-    const address = document.getElementById("address").value.trim();
-    const pincode = document.getElementById("pincode").value.trim();
+    const name = document.getElementById("name")?.value.trim();
+    const phone = document.getElementById("phone")?.value.trim();
+    const address = document.getElementById("address")?.value.trim();
+    const pincode = document.getElementById("pincode")?.value.trim();
 
     const cart = getCart();
 
@@ -260,43 +285,51 @@ async function sendOrder() {
       return;
     }
 
-    const items = cart.map(item => ({
-      slug: item.slug,
-      qty: item.qty
-    }));
-
-    if (items.length === 0) {
+    if (cart.length === 0) {
       alert("Cart is empty");
       return;
     }
 
-    const res = await fetch(
-      "https://milasty-backend-production-5de1.up.railway.app/create-order",
-      {
-        method: "POST",
-        headers: {"Content-Type": "application/json"},
-        body: JSON.stringify({
-          name, phone, address, pincode,
-          items,
-          token: Date.now().toString()
-        })
-      }
-    );
+    // Map to { product_id, qty } — the shape /create-order expects
+    const items = cart.map(item => ({
+      product_id: item.slug,
+      qty: item.qty
+    }));
 
-    if (!res.ok) throw new Error("Order failed");
+    const API_BASE = window.MILASTY_CONFIG?.API_BASE ||
+      "https://milasty-backend-production-5de1.up.railway.app";
 
-    window.clearCart();
+    const res = await fetch(API_BASE + "/create-order", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        name, phone, address, pincode,
+        items,
+        token: Date.now().toString()
+      })
+    });
+
+    const result = await res.json();
+
+    if (!res.ok) throw new Error(result.error || "Order failed");
+
+    clearCart();
 
     alert("Order placed successfully!");
 
   } catch (err) {
-    console.error(err);
-    alert("Order failed");
+
+    console.error("sendOrder error:", err);
+
+    alert("Order failed. Please try again.");
+
   }
+
 }
 
+
 // ========================================
-// GLOBAL
+// GLOBALS
 // ========================================
 
 window.openCart = openCart;
