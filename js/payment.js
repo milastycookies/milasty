@@ -1,33 +1,52 @@
 // ========================================
-// MILASTY PAYMENT HANDLER (UPDATED)
+// MILASTY PAYMENT — RAZORPAY FLOW
+// Handles: create-order → create-payment-order
+// → Razorpay modal → verify-payment.
+//
+// NOT yet connected to a button in
+// production. When ready, add a button
+// with id="continueCheckout" to your
+// checkout page and this file wires it up.
+//
+// Does NOT define startCheckout globally —
+// uses an internal name to avoid colliding
+// with checkout.js.
 // ========================================
-
-const API_BASE = "https://milasty-backend-production-5de1.up.railway.app";
 
 let paymentProcessing = false;
 
 
 // ========================================
-// START CHECKOUT
+// RAZORPAY CHECKOUT FLOW
+// Internal name — not on window.
 // ========================================
 
-async function startCheckout() {
+async function startPaymentFlow() {
+
+  if (paymentProcessing) return;
+
+  const btn = document.getElementById("continueCheckout");
+
+  if (btn) {
+    btn.disabled = true;
+    btn.innerText = "Processing...";
+  }
 
   try {
 
-    if (paymentProcessing) return;
+    const name    = document.querySelector('input[placeholder="Name"]')?.value.trim()
+                 || document.getElementById("name")?.value.trim()
+                 || "";
 
-    const name =
-      document.querySelector('input[placeholder="Name"]')?.value.trim() || "";
+    const phone   = document.querySelector('input[placeholder="Phone"]')?.value.trim()
+                 || document.getElementById("phone")?.value.trim()
+                 || "";
 
-    const phone =
-      document.querySelector('input[placeholder="Phone"]')?.value.trim() || "";
+    const address = document.querySelector("textarea")?.value.trim()
+                 || document.getElementById("address")?.value.trim()
+                 || "";
 
-    const address =
-      document.querySelector("textarea")?.value.trim() || "";
-
-    const pincode =
-      document.getElementById("pincode")?.value.trim() || "";
+    const pincode = document.getElementById("pincode")?.value.trim() || "";
 
     if (!name || !phone || !address || !pincode) {
       alert("Please fill all details.");
@@ -41,41 +60,33 @@ async function startCheckout() {
       return;
     }
 
-    // 🔴 VALIDATE using slug
     for (const item of cart) {
       if (!item.slug || typeof item.slug !== "string") {
-        console.error("❌ Invalid product slug:", item);
+        console.error("Invalid product slug:", item);
         alert("Cart error. Please refresh.");
         return;
       }
     }
 
-    // ========================================
-    // CREATE ORDER FIRST (BACKEND CALCULATES TOTAL)
-    // ========================================
+    const API_BASE = window.MILASTY_CONFIG?.API_BASE ||
+      "https://milasty-backend-production-5de1.up.railway.app";
+
+    // ── Step 1: Create the order in our DB ──────────────────────────
 
     const items = cart.map(item => ({
       product_id: item.slug,
       qty: item.qty
     }));
 
-    const orderResponse = await fetch(
-      API_BASE + "/create-order",
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-          name,
-          phone,
-          address,
-          pincode,
-          items,
-          token: Date.now().toString()
-        })
-      }
-    );
+    const orderResponse = await fetch(API_BASE + "/create-order", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        name, phone, address, pincode,
+        items,
+        token: Date.now().toString()
+      })
+    });
 
     const orderData = await orderResponse.json();
 
@@ -83,41 +94,31 @@ async function startCheckout() {
       throw new Error(orderData.error || "Order creation failed");
     }
 
-    console.log("✅ Order created:", orderData.orderNumber);
+    console.log("Order created:", orderData.orderNumber);
 
-    // ========================================
-    // NOW CREATE PAYMENT ORDER (OPTIONAL FLOW)
-    // ========================================
+    // ── Step 2: Create Razorpay order (backend fetches total from DB) ─
 
-    const paymentOrder = await fetch(
-      API_BASE + "/create-payment-order",
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-          orderNumber: orderData.orderNumber
-        })
-      }
-    );
+    const paymentResponse = await fetch(API_BASE + "/create-payment-order", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ orderNumber: orderData.orderNumber })
+    });
 
-    const paymentData = await paymentOrder.json();
+    const paymentData = await paymentResponse.json();
 
-    if (!paymentOrder.ok) {
-      throw new Error("Payment order failed");
+    if (!paymentResponse.ok) {
+      throw new Error(paymentData.error || "Payment order creation failed");
     }
 
-    // ========================================
-    // RAZORPAY
-    // ========================================
+    // ── Step 3: Open Razorpay modal ──────────────────────────────────
+    // Key is returned by the backend (never hard-coded here)
 
     const options = {
 
-      key: "rzp_test_SP8e1esl7ob6bm",
+      key: paymentData.razorpayKeyId,
 
       amount: paymentData.amount,
-      currency: "INR",
+      currency: paymentData.currency || "INR",
 
       name: "MILASTY",
       description: "Millet Cookie Ritual",
@@ -130,7 +131,12 @@ async function startCheckout() {
 
         paymentProcessing = true;
 
-        await verifyPayment(response, orderData.orderNumber);
+        await verifyRazorpayPayment(response, {
+          orderNumber: orderData.orderNumber,
+          name,
+          phone,
+          address
+        });
 
       },
 
@@ -141,56 +147,71 @@ async function startCheckout() {
 
       theme: {
         color: "#8b5e34"
+      },
+
+      modal: {
+        ondismiss: function () {
+          // Re-enable button if user closes the modal without paying
+          resetPaymentButton();
+        }
       }
 
     };
 
     const rzp = new Razorpay(options);
+
+    rzp.on("payment.failed", function (response) {
+      console.error("Payment failed:", response.error);
+      alert("Payment failed: " + response.error.description);
+      paymentProcessing = false;
+      resetPaymentButton();
+    });
+
     rzp.open();
 
-  }
+  } catch (err) {
 
-  catch (err) {
+    console.error("Payment checkout error:", err);
 
-    console.error("Checkout error:", err);
+    alert("Checkout failed: " + err.message);
 
-    alert("Checkout failed:\n" + err.message);
+    resetPaymentButton();
 
   }
 
 }
 
 
-
 // ========================================
 // VERIFY PAYMENT
 // ========================================
 
-async function verifyPayment(paymentData, orderNumber) {
+async function verifyRazorpayPayment(paymentResponse, orderInfo) {
 
   try {
 
-    const verifyResponse = await fetch(
-      API_BASE + "/verify-payment",
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
+    const API_BASE = window.MILASTY_CONFIG?.API_BASE ||
+      "https://milasty-backend-production-5de1.up.railway.app";
 
-          razorpay_order_id: paymentData.razorpay_order_id,
-          razorpay_payment_id: paymentData.razorpay_payment_id,
-          razorpay_signature: paymentData.razorpay_signature,
-          orderNumber
-
-        })
-      }
-    );
+    const verifyResponse = await fetch(API_BASE + "/verify-payment", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        razorpay_order_id:   paymentResponse.razorpay_order_id,
+        razorpay_payment_id: paymentResponse.razorpay_payment_id,
+        razorpay_signature:  paymentResponse.razorpay_signature,
+        orderData: {
+          name:    orderInfo.name,
+          phone:   orderInfo.phone,
+          address: orderInfo.address
+        }
+      })
+    });
 
     const result = await verifyResponse.json();
 
-    if (result.success) {
+    // Backend returns { status: "success" } — check status field not result.success
+    if (result.status === "success") {
 
       alert("Payment successful 🎉");
 
@@ -200,21 +221,20 @@ async function verifyPayment(paymentData, orderNumber) {
 
     } else {
 
-      alert("Payment verification failed");
+      console.error("Verification returned non-success:", result);
+
+      alert("Payment verification failed. Please contact support with Order ID: " +
+        orderInfo.orderNumber);
 
     }
 
-  }
-
-  catch (err) {
+  } catch (err) {
 
     console.error("Verification error:", err);
 
-    alert("Payment verification failed.");
+    alert("Payment verification failed. Please contact support.");
 
-  }
-
-  finally {
+  } finally {
 
     paymentProcessing = false;
 
@@ -223,9 +243,21 @@ async function verifyPayment(paymentData, orderNumber) {
 }
 
 
+// ========================================
+// HELPERS
+// ========================================
+
+function resetPaymentButton() {
+  const btn = document.getElementById("continueCheckout");
+  if (btn) {
+    btn.disabled = false;
+    btn.innerText = "Pay Now";
+  }
+}
+
 
 // ========================================
-// CONNECT BUTTON
+// BIND TO BUTTON ON PAGE LOAD
 // ========================================
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -233,7 +265,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const btn = document.getElementById("continueCheckout");
 
   if (btn) {
-    btn.addEventListener("click", startCheckout);
+    btn.addEventListener("click", startPaymentFlow);
   }
 
 });
