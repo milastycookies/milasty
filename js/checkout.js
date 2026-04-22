@@ -59,6 +59,13 @@ async function startCheckout(orderToken){
     return;
   }
 
+  if (phone.length !== 10) {
+    alert("Enter valid 10-digit phone number");
+    checkoutRunning = false;
+    resetOrderButton();
+    return;
+  }
+
   const cart = getCart();
 
   if (!cart || cart.length === 0) {
