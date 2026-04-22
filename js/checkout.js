@@ -82,7 +82,7 @@ async function startCheckout(orderToken){
 
   const items = cart.map(item => ({
     product_id: item.slug,
-    qty: item.qty
+    qty: Number(item.qty)
   }));
 
   try {
