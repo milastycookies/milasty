@@ -88,6 +88,8 @@ async function startCheckout(orderToken){
 
   try {
 
+    const token = orderToken || crypto.randomUUID();
+    
     const response = await fetch(
       "https://milasty-backend-production-5de1.up.railway.app/create-order",
       {
@@ -101,7 +103,7 @@ async function startCheckout(orderToken){
           address,
           pincode,
           items,
-          const token = orderToken || crypto.randomUUID();
+          token
         })
       }
     );
