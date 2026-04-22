@@ -95,7 +95,11 @@ async function startCheckout(orderToken){
 
   try {
 
-    const token = orderToken || crypto.randomUUID();
+    const token =
+      orderToken ||
+      (window.crypto?.randomUUID
+        ? window.crypto.randomUUID()
+        : Date.now().toString());
     
     const response = await fetch(
       "https://milasty-backend-production-5de1.up.railway.app/create-order",
