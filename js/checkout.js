@@ -101,7 +101,7 @@ async function startCheckout(orderToken){
           address,
           pincode,
           items,
-          token: orderToken || Date.now().toString()
+          const token = orderToken || crypto.randomUUID();
         })
       }
     );
