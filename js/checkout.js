@@ -88,10 +88,32 @@ async function startCheckout(orderToken){
     }
   }
 
-  const items = cart.map(item => ({
-    product_id: item.slug,
-    qty: Number.isInteger(Number(item.qty)) ? Number(item.qty) : 1
-  }));
+
+  let items;
+  
+  try {
+    items = cart.map(item => {
+      const qty = Number(item.qty);
+  
+      if (!Number.isInteger(qty) || qty < 1) {
+        throw new Error("Invalid quantity in cart");
+      }
+  
+      return {
+        product_id: item.slug,
+        qty
+      };
+    });
+  } catch (err) {
+    console.error("CART ERROR:", err);
+  
+    alert(err.message || "Invalid cart data");
+  
+    checkoutRunning = false;
+    resetOrderButton();
+    return;
+  }
+  
 
   try {
 
