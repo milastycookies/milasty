@@ -108,8 +108,15 @@ async function startCheckout(orderToken){
     const result = await response.json();
 
     if (!response.ok) {
-      console.error("Backend error:", result);
-      throw new Error(result.error || "Order failed");
+      console.error("Backend error FULL:", result);
+    
+      const errorMsg =
+        result.details?.map(d => d.message || JSON.stringify(d)).join("\n") ||
+        result.error ||
+        "Order failed";
+    
+      alert(errorMsg);
+      return;
     }
 
     console.log("✅ Order created:", result.orderNumber);
