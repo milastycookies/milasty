@@ -274,7 +274,8 @@ async function sendOrder() {
   try {
 
     const name = document.getElementById("name")?.value.trim();
-    const phone = document.getElementById("phone")?.value.trim();
+    const rawPhone = document.getElementById("phone")?.value.trim();
+    const phone = rawPhone.replace(/\D/g, "").slice(-10);
     const address = document.getElementById("address")?.value.trim();
     const pincode = document.getElementById("pincode")?.value.trim();
 
