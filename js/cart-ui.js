@@ -282,6 +282,9 @@ document.getElementById("sendOtpBtn").onclick = async function () {
     return;
   }
 
+  const API_BASE = window.MILASTY_CONFIG?.API_BASE ||
+  "https://milasty-backend-production-5de1.up.railway.app";
+  
   const res = await fetch("/send-otp", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
@@ -314,6 +317,9 @@ document.getElementById("verifyOtpBtn").onclick = async function () {
     return;
   }
 
+  const API_BASE = window.MILASTY_CONFIG?.API_BASE ||
+  "https://milasty-backend-production-5de1.up.railway.app";
+  
   const res = await fetch("/verify-otp", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
