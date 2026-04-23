@@ -5,6 +5,8 @@
 let checkoutRunning = false;
 let lastOrderData = null;
 
+window.otpVerified = false;
+
 // ========================================
 // MAIN CHECKOUT FLOW
 // ========================================
