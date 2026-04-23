@@ -272,59 +272,84 @@ window.otpVerified = false;
 // =====================
 // SEND OTP
 // =====================
-document.getElementById("sendOtpBtn").onclick = async function () {
+document.addEventListener("DOMContentLoaded", () => {
 
-  const rawPhone = document.getElementById("phone").value.trim();
-  const phone = rawPhone.replace(/\D/g, "").slice(-10);
+  // GLOBAL STATE
+  window.otpVerified = false;
 
-  if (phone.length !== 10) {
-    alert("Enter valid phone number");
-    return;
-  }
+  // SEND OTP
+  document.getElementById("sendOtpBtn").onclick = async function () {
 
-  const API_BASE = window.MILASTY_CONFIG?.API_BASE ||
-  "https://milasty-backend-production-5de1.up.railway.app";
-  
-  const res = await fetch(API_BASE + "/send-otp", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ phone })
-  });
+    const rawPhone = document.getElementById("phone").value.trim();
+    const phone = rawPhone.replace(/\D/g, "").slice(-10);
 
-  const data = await res.json();
+    if (phone.length !== 10) {
+      alert("Enter valid phone number");
+      return;
+    }
 
-  if (!res.ok) {
-    alert(data.error || "Failed to send OTP");
-    return;
-  }
+    const API_BASE = window.MILASTY_CONFIG?.API_BASE ||
+      "https://milasty-backend-production-5de1.up.railway.app";
 
-  document.getElementById("otpBox").style.display = "block";
-  document.getElementById("otpStatus").innerText = "OTP sent ✅";
-};
+    const res = await fetch(API_BASE + "/send-otp", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ phone })
+    });
+
+    const data = await res.json();
+
+    if (!res.ok) {
+      alert(data.error || "Failed to send OTP");
+      return;
+    }
+
+    document.getElementById("otpBox").style.display = "block";
+    document.getElementById("otpStatus").innerText = "OTP sent ✅";
+  };
+
 
 
 // =====================
 // VERIFY OTP
 // =====================
-document.getElementById("verifyOtpBtn").onclick = async function () {
+  document.getElementById("verifyOtpBtn").onclick = async function () {
 
-  const rawPhone = document.getElementById("phone").value.trim();
-  const phone = rawPhone.replace(/\D/g, "").slice(-10);
-  const otp = document.getElementById("otp").value.trim();
+    const rawPhone = document.getElementById("phone").value.trim();
+    const phone = rawPhone.replace(/\D/g, "").slice(-10);
+    const otp = document.getElementById("otp").value.trim();
 
-  if (!otp) {
-    alert("Enter OTP");
-    return;
-  }
+    if (!otp) {
+      alert("Enter OTP");
+      return;
+    }
 
-  const API_BASE = window.MILASTY_CONFIG?.API_BASE ||
-  "https://milasty-backend-production-5de1.up.railway.app";
-  
-  const res = await fetch(API_BASE + "/verify-otp", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ phone, otp })
-  });
+    const API_BASE = window.MILASTY_CONFIG?.API_BASE ||
+      "https://milasty-backend-production-5de1.up.railway.app";
+
+    const res = await fetch(API_BASE + "/verify-otp", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ phone, otp })
+    });
+
+    const data = await res.json();
+
+    if (!res.ok) {
+      alert(data.error || "OTP failed");
+      return;
+    }
+
+    window.otpVerified = true;
+
+    console.log("OTP VERIFIED:", window.otpVerified);
+
+    document.getElementById("otpStatus").innerText = "Phone verified ✅";
+    document.getElementById("otpBox").style.display = "none";
+  };
+
+});
+
 
   const data = await res.json();
 
