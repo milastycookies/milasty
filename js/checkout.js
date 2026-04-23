@@ -77,6 +77,9 @@ async function startCheckout(orderToken){
     return;
   }
 
+  window.otpVerified = true;
+  console.log("OTP VERIFIED:", window.otpVerified);
+
   const cart = getCart();
 
   if (!cart || cart.length === 0) {
