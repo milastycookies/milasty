@@ -285,7 +285,7 @@ document.getElementById("sendOtpBtn").onclick = async function () {
   const API_BASE = window.MILASTY_CONFIG?.API_BASE ||
   "https://milasty-backend-production-5de1.up.railway.app";
   
-  const res = await fetch("/send-otp", {
+  const res = await fetch(API_BASE + "/send-otp", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ phone })
@@ -320,7 +320,7 @@ document.getElementById("verifyOtpBtn").onclick = async function () {
   const API_BASE = window.MILASTY_CONFIG?.API_BASE ||
   "https://milasty-backend-production-5de1.up.railway.app";
   
-  const res = await fetch("/verify-otp", {
+  const res = await fetch(API_BASE + "/verify-otp", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ phone, otp })
