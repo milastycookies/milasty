@@ -291,6 +291,12 @@ async function sendOrder() {
       return;
     }
 
+    
+    if (!window.otpVerified) {
+      alert("Please verify your phone via OTP");
+      return;
+    }
+
     // Map to { product_id, qty } — the shape /create-order expects
     const items = cart.map(item => ({
       product_id: item.slug,
@@ -306,7 +312,9 @@ async function sendOrder() {
       body: JSON.stringify({
         name, phone, address, pincode,
         items,
-        token: Date.now().toString()
+        token: window.crypto?.randomUUID
+          ? window.crypto.randomUUID()
+          : Date.now().toString()
       })
     });
 
