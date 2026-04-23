@@ -351,23 +351,6 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 
-  const data = await res.json();
-
-  if (!res.ok) {
-    alert(data.error || "OTP failed");
-    return;
-  }
-
-  // ✅ THIS IS THE KEY LINE
-  window.otpVerified = true;
-
-  console.log("OTP VERIFIED:", window.otpVerified);
-
-  document.getElementById("otpStatus").innerText = "Phone verified ✅";
-  document.getElementById("otpBox").style.display = "none";
-};
-
-
 
 // ========================================
 // SEND ORDER (WhatsApp flow)
