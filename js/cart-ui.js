@@ -263,6 +263,81 @@ function showCartItems() {
 }
 
 
+
+
+
+// GLOBAL STATE
+window.otpVerified = false;
+
+// =====================
+// SEND OTP
+// =====================
+document.getElementById("sendOtpBtn").onclick = async function () {
+
+  const rawPhone = document.getElementById("phone").value.trim();
+  const phone = rawPhone.replace(/\D/g, "").slice(-10);
+
+  if (phone.length !== 10) {
+    alert("Enter valid phone number");
+    return;
+  }
+
+  const res = await fetch("/send-otp", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ phone })
+  });
+
+  const data = await res.json();
+
+  if (!res.ok) {
+    alert(data.error || "Failed to send OTP");
+    return;
+  }
+
+  document.getElementById("otpBox").style.display = "block";
+  document.getElementById("otpStatus").innerText = "OTP sent ✅";
+};
+
+
+// =====================
+// VERIFY OTP
+// =====================
+document.getElementById("verifyOtpBtn").onclick = async function () {
+
+  const rawPhone = document.getElementById("phone").value.trim();
+  const phone = rawPhone.replace(/\D/g, "").slice(-10);
+  const otp = document.getElementById("otp").value.trim();
+
+  if (!otp) {
+    alert("Enter OTP");
+    return;
+  }
+
+  const res = await fetch("/verify-otp", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ phone, otp })
+  });
+
+  const data = await res.json();
+
+  if (!res.ok) {
+    alert(data.error || "OTP failed");
+    return;
+  }
+
+  // ✅ THIS IS THE KEY LINE
+  window.otpVerified = true;
+
+  console.log("OTP VERIFIED:", window.otpVerified);
+
+  document.getElementById("otpStatus").innerText = "Phone verified ✅";
+  document.getElementById("otpBox").style.display = "none";
+};
+
+
+
 // ========================================
 // SEND ORDER (WhatsApp flow)
 // Sends items using product_id (slug) as
