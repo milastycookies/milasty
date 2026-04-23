@@ -60,10 +60,14 @@ async function startCheckout(orderToken){
   }
 
   if (phone.length !== 10) {
-    alert("Enter valid 10-digit phone number");
-    checkoutRunning = false;
-    resetOrderButton();
-    return;
+    // 🔒 OTP verification REQUIRED
+    if (!window.otpVerified) {
+      alert("Please verify your phone via OTP");
+    
+      checkoutRunning = false;
+      resetOrderButton();
+      return;
+    }
   }
 
   const cart = getCart();
