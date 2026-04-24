@@ -47,6 +47,17 @@ window.handleOrder = async function () {
 // 🔒 Reset OTP if phone changes
 document.getElementById("phone")?.addEventListener("input", () => {
   otpToken = null;
+
+  // Reset UI
+  document.getElementById("otpStatus").innerText = "";
+  document.getElementById("otpBox").style.display = "none";
+
+  const btn = document.getElementById("sendOtpBtn");
+  if (btn) {
+    btn.disabled = false;
+    btn.innerText = "Verify Number";
+    btn.style.opacity = "1";
+  }
 });
 
 async function checkPhone(phone) {
