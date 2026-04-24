@@ -134,6 +134,12 @@ document.getElementById("sendOtpBtn")?.addEventListener("click", async () => {
     
     document.getElementById("otpBox").style.display = "block";
     document.getElementById("otpStatus").innerText = "OTP sent!";
+
+
+    if (btn.dataset.timerRunning) return;
+    clearInterval(interval);
+    btn.dataset.timerRunning = "";
+    btn.dataset.timerRunning = "true";
     
     // ⏱ Start cooldown timer
     btn.disabled = true;
