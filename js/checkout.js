@@ -115,6 +115,8 @@ document.getElementById("sendOtpBtn")?.addEventListener("click", async () => {
     
     if (!res.ok) {
       alert(data.error || "Failed to send OTP");
+      btn.disabled = false;
+      btn.innerText = "Verify Number";
       return;
     }
     
