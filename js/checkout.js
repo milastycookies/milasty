@@ -54,6 +54,28 @@ async function checkPhone(phone) {
   return await res.json();
 }
 
+router.post("/check-phone", (req, res) => {
+
+  const phone = normalizePhone(req.body.phone);
+
+  // For now (no DB yet)
+  return res.json({
+    exists: false,
+    verified: false
+  });
+
+});
+
+router.post("/get-token", (req, res) => {
+
+  const phone = normalizePhone(req.body.phone);
+
+  return res.json({
+    token: "verified-" + phone
+  });
+
+});
+
 
 // 📲 SEND OTP
 document.getElementById("sendOtpBtn")?.addEventListener("click", async () => {
