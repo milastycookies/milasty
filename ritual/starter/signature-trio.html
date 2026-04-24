@@ -176,7 +176,17 @@ Continue
     <div class="cart-form">
     
       <input id="name" placeholder="Name">
-      <input id="phone" placeholder="Phone">
+      <input id="phone" placeholder="Phone" inputmode="numeric" maxlength="10">
+
+      <button id="sendOtpBtn" type="button">Verify Number</button>
+      
+      <div id="otpBox" style="display:none;">
+        <input id="otpInput" placeholder="Enter OTP" maxlength="6">
+        <button id="verifyOtpBtn" type="button">Confirm OTP</button>
+      </div>
+      
+      <p id="otpStatus" style="font-size: 14px; margin-top: 6px;"></p>
+            
       <textarea id="address" placeholder="Address"></textarea>
       <input 
         id="pincode" 
