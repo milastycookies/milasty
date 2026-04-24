@@ -71,6 +71,7 @@ router.post("/get-token", (req, res) => {
   const phone = normalizePhone(req.body.phone);
 
   return res.json({
+    verified: true,
     token: "verified-" + phone
   });
 
