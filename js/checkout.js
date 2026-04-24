@@ -5,7 +5,7 @@
 let checkoutRunning = false;
 let lastOrderData = null;
 
-let otpToken = null;
+// let otpToken = null;
 
 // ========================================
 // MAIN CHECKOUT FLOW
