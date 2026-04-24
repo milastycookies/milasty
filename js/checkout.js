@@ -135,6 +135,8 @@ document.getElementById("sendOtpBtn")?.addEventListener("click", async () => {
     document.getElementById("otpBox").style.display = "block";
     document.getElementById("otpStatus").innerText = "OTP sent!";
 
+    document.getElementById("otpInput")?.focus();
+
 
     // ⏱ Prevent multiple timers
     if (btn.dataset.timerRunning === "true") return;
