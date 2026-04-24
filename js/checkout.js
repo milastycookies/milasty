@@ -67,6 +67,10 @@ document.getElementById("sendOtpBtn")?.addEventListener("click", async () => {
     return;
   }
 
+  const btn = document.getElementById("sendOtpBtn");
+  btn.disabled = true;
+  btn.innerText = "Sending...";
+
   try {
 
     const data = await checkPhone(phone);
@@ -109,9 +113,15 @@ document.getElementById("sendOtpBtn")?.addEventListener("click", async () => {
     document.getElementById("otpBox").style.display = "block";
     document.getElementById("otpStatus").innerText = "OTP sent!";
 
+    // 🔄 reset button
+    btn.disabled = false;
+    btn.innerText = "Resend OTP";
+
   } catch (err) {
     console.error(err);
     alert("Failed to send OTP");
+    btn.disabled = false;
+    btn.innerText = "Verify Number";
   }
 
 });
