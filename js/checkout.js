@@ -44,6 +44,11 @@ window.handleOrder = async function () {
 // OTP SYSTEM
 // ========================================
 
+// 🔒 Reset OTP if phone changes
+document.getElementById("phone")?.addEventListener("input", () => {
+  otpToken = null;
+});
+
 async function checkPhone(phone) {
   const res = await fetch("https://milasty-backend-production-5de1.up.railway.app/otp/check-phone", {
     method: "POST",
