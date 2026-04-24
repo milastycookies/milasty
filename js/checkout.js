@@ -93,12 +93,19 @@ document.getElementById("sendOtpBtn")?.addEventListener("click", async () => {
     }
 
     // ❗ Send OTP
-    await fetch("https://milasty-backend-production-5de1.up.railway.app/otp/send-otp", {
+    const res = await fetch("https://milasty-backend-production-5de1.up.railway.app/otp/send-otp", {
       method: "POST",
       headers: {"Content-Type": "application/json"},
       body: JSON.stringify({ phone })
     });
-
+    
+    const data = await res.json();
+    
+    if (!res.ok) {
+      alert(data.error || "Failed to send OTP");
+      return;
+    }
+    
     document.getElementById("otpBox").style.display = "block";
     document.getElementById("otpStatus").innerText = "OTP sent!";
 
