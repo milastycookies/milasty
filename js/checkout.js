@@ -246,13 +246,13 @@ async function startCheckout(orderToken){
   }
   
   // 🔒 OTP verification REQUIRED (CORRECT POSITION)
-  if (!otpToken) {
-    alert("Please verify your phone via OTP");
+  // if (!otpToken) {
+  //   alert("Please verify your phone via OTP");
   
-    checkoutRunning = false;
-    resetOrderButton();
-    return;
-  }
+  //   checkoutRunning = false;
+  //   resetOrderButton();
+  //   return;
+  // }
 
   const cart = getCart();
 
