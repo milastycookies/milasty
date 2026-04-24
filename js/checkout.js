@@ -49,7 +49,7 @@ document.getElementById("phone")?.addEventListener("input", () => {
   otpToken = null;
 
   // Reset UI
-  document.getElementById("otpStatus").innerText = "";
+  // document.getElementById("otpStatus").innerText = "";
   document.getElementById("otpBox").style.display = "none";
 
   const btn = document.getElementById("sendOtpBtn");
