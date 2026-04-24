@@ -74,7 +74,7 @@ document.getElementById("sendOtpBtn")?.addEventListener("click", async () => {
     // ✅ Already verified → skip OTP
     if (data.exists && data.verified) {
 
-      const res = await fetch("https://milasty-backend-production-5de1.up.railway.app/get-token", {
+      const res = await fetch("https://milasty-backend-production-5de1.up.railway.app/otp/get-token", {
         method: "POST",
         headers: {"Content-Type": "application/json"},
         body: JSON.stringify({ phone })
