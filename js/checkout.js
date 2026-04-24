@@ -100,7 +100,7 @@ document.getElementById("sendOtpBtn")?.addEventListener("click", async () => {
         body: JSON.stringify({ phone })
       });
     
-      const data = await res.json();
+      const tokenData = await res.json();
     
       otpToken = tokenData.token;
     
