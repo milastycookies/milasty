@@ -71,8 +71,22 @@ document.getElementById("sendOtpBtn")?.addEventListener("click", async () => {
 
     // ✅ Already verified → skip OTP
     if (data.exists && data.verified) {
-      otpToken = "verified";
+
+      const res = await fetch("https://milasty-backend-production-5de1.up.railway.app/get-token", {
+        method: "POST",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify({ phone })
+      });
+    
+      const tokenData = await res.json();
+    
+      otpToken = tokenData.token;
+    
       document.getElementById("otpStatus").innerText = "Already verified ✅";
+    
+      // 🔒 Lock phone field
+      document.getElementById("phone").disabled = true;
+    
       return;
     }
 
