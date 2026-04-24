@@ -38,6 +38,99 @@ window.handleOrder = async function () {
 };
 
 
+
+
+// ========================================
+// OTP SYSTEM
+// ========================================
+
+async function checkPhone(phone) {
+  const res = await fetch("https://milasty-backend-production-5de1.up.railway.app/check-phone", {
+    method: "POST",
+    headers: {"Content-Type": "application/json"},
+    body: JSON.stringify({ phone })
+  });
+
+  return await res.json();
+}
+
+
+// 📲 SEND OTP
+document.getElementById("sendOtpBtn")?.addEventListener("click", async () => {
+
+  const phone = document.getElementById("phone")?.value.trim();
+
+  if (!phone || phone.length !== 10) {
+    alert("Enter valid 10-digit phone number");
+    return;
+  }
+
+  try {
+
+    const data = await checkPhone(phone);
+
+    // ✅ Already verified → skip OTP
+    if (data.exists && data.verified) {
+      otpToken = "verified";
+      document.getElementById("otpStatus").innerText = "Already verified ✅";
+      return;
+    }
+
+    // ❗ Send OTP
+    await fetch("https://milasty-backend-production-5de1.up.railway.app/send-otp", {
+      method: "POST",
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify({ phone })
+    });
+
+    document.getElementById("otpBox").style.display = "block";
+    document.getElementById("otpStatus").innerText = "OTP sent!";
+
+  } catch (err) {
+    console.error(err);
+    alert("Failed to send OTP");
+  }
+
+});
+
+
+// ✅ VERIFY OTP
+document.getElementById("verifyOtpBtn")?.addEventListener("click", async () => {
+
+  const phone = document.getElementById("phone")?.value.trim();
+  const otp = document.getElementById("otpInput")?.value.trim();
+
+  if (!otp || otp.length !== 6) {
+    alert("Enter valid OTP");
+    return;
+  }
+
+  try {
+
+    const res = await fetch("https://milasty-backend-production-5de1.up.railway.app/verify-otp", {
+      method: "POST",
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify({ phone, otp })
+    });
+
+    const data = await res.json();
+
+    if (data.verified) {
+      otpToken = data.token;
+      document.getElementById("otpStatus").innerText = "Verified ✅";
+    } else {
+      document.getElementById("otpStatus").innerText = "Invalid OTP ❌";
+    }
+
+  } catch (err) {
+    console.error(err);
+    alert("Verification failed");
+  }
+
+});
+
+
+
 // ========================================
 // CHECKOUT FUNCTION
 // ========================================
