@@ -173,7 +173,9 @@ document.getElementById("verifyOtpBtn")?.addEventListener("click", async () => {
     if (data.verified) {
       otpToken = data.token;
     
-      document.getElementById("otpStatus").innerText = "Verified ✅";
+      const btn = document.getElementById("sendOtpBtn");
+      btn.innerText = "Verified ✓";
+      btn.style.opacity = "0.7";
     
       // 🔒 Lock phone field
       document.getElementById("phone").disabled = true;
