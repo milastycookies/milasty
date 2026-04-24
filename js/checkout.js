@@ -324,8 +324,8 @@ async function startCheckout(orderToken){
           address,
           pincode,
           items,
-          token,
-          otp_token: otpToken
+          token
+          // otp_token: otpToken
         })
       }
     );
