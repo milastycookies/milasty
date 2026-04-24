@@ -133,10 +133,23 @@ document.getElementById("sendOtpBtn")?.addEventListener("click", async () => {
     
     document.getElementById("otpBox").style.display = "block";
     document.getElementById("otpStatus").innerText = "OTP sent!";
-
-    // 🔄 reset button
-    btn.disabled = false;
-    btn.innerText = "Resend OTP";
+    
+    // ⏱ Start cooldown timer
+    btn.disabled = true;
+    btn.innerText = "Resend in 30s";
+    
+    let seconds = 30;
+    
+    const interval = setInterval(() => {
+      seconds--;
+      btn.innerText = `Resend in ${seconds}s`;
+    
+      if (seconds <= 0) {
+        clearInterval(interval);
+        btn.disabled = false;
+        btn.innerText = "Resend OTP";
+      }
+    }, 1000);
 
   } catch (err) {
     console.error(err);
