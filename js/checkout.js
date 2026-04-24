@@ -121,7 +121,7 @@ document.getElementById("verifyOtpBtn")?.addEventListener("click", async () => {
 
   try {
 
-    const res = await fetch("https://milasty-backend-production-5de1.up.railway.app/verify-otp", {
+    const res = await fetch("https://milasty-backend-production-5de1.up.railway.app/otp/verify-otp", {
       method: "POST",
       headers: {"Content-Type": "application/json"},
       body: JSON.stringify({ phone, otp })
