@@ -117,7 +117,11 @@ document.getElementById("verifyOtpBtn")?.addEventListener("click", async () => {
 
     if (data.verified) {
       otpToken = data.token;
+    
       document.getElementById("otpStatus").innerText = "Verified ✅";
+    
+      // 🔒 Lock phone field
+      document.getElementById("phone").disabled = true;
     } else {
       document.getElementById("otpStatus").innerText = "Invalid OTP ❌";
     }
