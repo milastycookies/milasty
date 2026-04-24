@@ -136,12 +136,11 @@ document.getElementById("sendOtpBtn")?.addEventListener("click", async () => {
     document.getElementById("otpStatus").innerText = "OTP sent!";
 
 
-    if (btn.dataset.timerRunning) return;
-    clearInterval(interval);
-    btn.dataset.timerRunning = "";
+    // ⏱ Prevent multiple timers
+    if (btn.dataset.timerRunning === "true") return;
+    
     btn.dataset.timerRunning = "true";
     
-    // ⏱ Start cooldown timer
     btn.disabled = true;
     btn.innerText = "Resend in 30s";
     
@@ -155,9 +154,9 @@ document.getElementById("sendOtpBtn")?.addEventListener("click", async () => {
         clearInterval(interval);
         btn.disabled = false;
         btn.innerText = "Resend OTP";
+        btn.dataset.timerRunning = "";
       }
     }, 1000);
-
   } catch (err) {
     console.error(err);
     alert("Failed to send OTP");
