@@ -5,7 +5,7 @@
 let checkoutRunning = false;
 let lastOrderData = null;
 
-window.otpVerified = false;
+let otpToken = null;
 
 // ========================================
 // MAIN CHECKOUT FLOW
@@ -69,7 +69,7 @@ async function startCheckout(orderToken){
   }
   
   // 🔒 OTP verification REQUIRED (CORRECT POSITION)
-  if (!window.otpVerified) {
+  if (!otpToken) {
     alert("Please verify your phone via OTP");
   
     checkoutRunning = false;
