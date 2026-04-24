@@ -124,7 +124,8 @@ document.getElementById("sendOtpBtn")?.addEventListener("click", async () => {
     console.error(err);
     alert("Failed to send OTP");
     btn.disabled = false;
-    btn.innerText = "Verify Number";
+    btn.innerText = "Verified ✓";
+    btn.style.opacity = "0.7";
   }
 
 });
