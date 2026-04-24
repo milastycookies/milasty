@@ -110,7 +110,8 @@ document.getElementById("sendOtpBtn")?.addEventListener("click", async () => {
     
       // 🔄 FIX: reset button
       btn.disabled = false;
-      btn.innerText = "Verified";
+      btn.innerText = "Verified ✓";
+      btn.style.opacity = "0.7";
     
       return;
     }
