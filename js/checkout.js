@@ -91,7 +91,7 @@ document.getElementById("sendOtpBtn")?.addEventListener("click", async () => {
     }
 
     // ❗ Send OTP
-    await fetch("https://milasty-backend-production-5de1.up.railway.app/send-otp", {
+    await fetch("https://milasty-backend-production-5de1.up.railway.app/otp/send-otp", {
       method: "POST",
       headers: {"Content-Type": "application/json"},
       body: JSON.stringify({ phone })
