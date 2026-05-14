@@ -353,7 +353,10 @@ async function startCheckout(orderToken){
       address,
       pincode,
       cart,
-      orderNumber: result.orderNumber
+      orderNumber: result.orderNumber,
+      subtotal: result.subtotal,
+      delivery: result.delivery,
+      total: result.total
     };
 
     openGuidelines();
