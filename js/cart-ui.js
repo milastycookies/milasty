@@ -223,7 +223,7 @@ function renderSummary(cart) {
 
   });
 
-  const delivery = (subtotal < 799 && hasRegular) ? 60 : 0;
+  const delivery = (subtotal < 499 && hasRegular) ? 60 : 0;
   const total = subtotal + delivery;
 
   if (!cartSummaryContainer) return;
