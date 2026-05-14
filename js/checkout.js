@@ -411,7 +411,7 @@ window.confirmOrderAndSendWhatsApp = function () {
     return;
   }
 
-  const { name, phone, address, pincode, cart, orderNumber } = lastOrderData;
+  const { name, phone, address, pincode, cart, orderNumber, subtotal, delivery, total } = lastOrderData;
 
   let message = `Hi MILASTY, I want to confirm my order:\n\n`;
 
@@ -425,6 +425,17 @@ window.confirmOrderAndSendWhatsApp = function () {
 
     message += `• ${productName} x${item.qty}\n`;
   });
+  
+
+  message += `\nSubtotal: ₹${subtotal}`;
+  
+  if (delivery > 0) {
+    message += `\nDelivery Charge: ₹${delivery}`;
+  } else {
+    message += `\nDelivery Charge: FREE`;
+  }
+  
+  message += `\nTotal Amount: ₹${total}\n`;
 
   message += `\nName: ${name}`;
   message += `\nPhone: ${phone}`;
