@@ -716,12 +716,29 @@ text-align:center;
 }
 
 
-.pack-price {
-  font-size: 16px;
-  font-weight: 500;
-  margin-bottom: 4px;
-  color: #3b2a1f;
+.pack-price{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:2px;
+    margin-bottom:4px;
 }
+
+.old-price{
+    font-size:11px;
+    color:#9b9b9b;
+    text-decoration:line-through;
+    font-weight:500;
+    line-height:1;
+}
+
+.new-price{
+    font-size:18px;
+    font-weight:700;
+    color:#3b2a1f;
+    line-height:1.2;
+}
+
 
 .pack-weight {
   font-size: 10px;
@@ -737,7 +754,11 @@ text-align:center;
 }
 
 .pack-btn:hover .pack-title,
-.pack-btn:hover .pack-price,
+/* Hover */
+.pack-btn:hover .old-price,
+.pack-btn:hover .new-price{
+    color:white;
+},
 .pack-btn:hover .pack-weight {
   color: white;
 }
