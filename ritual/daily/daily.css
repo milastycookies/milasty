@@ -725,18 +725,19 @@ text-align:center;
 }
 
 .old-price{
-    font-size:11px;
-    color:#9b9b9b;
+    font-size:10px;
+    color:#a8a8a8;
     text-decoration:line-through;
     font-weight:500;
     line-height:1;
+    opacity:0.9;
 }
 
 .new-price{
-    font-size:18px;
+    font-size:19px;
     font-weight:700;
     color:#3b2a1f;
-    line-height:1.2;
+    line-height:1.15;
 }
 
 
@@ -754,15 +755,11 @@ text-align:center;
 }
 
 .pack-btn:hover .pack-title,
-/* Hover */
 .pack-btn:hover .old-price,
-.pack-btn:hover .new-price{
-    color:white;
-},
+.pack-btn:hover .new-price,
 .pack-btn:hover .pack-weight {
-  color: white;
+    color: white;
 }
-
 
 
 
